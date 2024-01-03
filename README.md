@@ -20,7 +20,7 @@ Create a new MySQL database and execute the SQL script provided in the database.
 
 ### 2. Configure database connection:
 - Modify the MyConnection.java file to include your database connection details.
-- 
+  
 ### 3.Build and run the application:
 - Open the project in your preferred Java IDE.
 - Compile and run the Main.java file from the src folder.
