@@ -1,6 +1,6 @@
 # Chat-Application-
 
-This is a simple JavaFX application for user registration. Users can enter their phone number, display name, and email to register. The application checks if the user already exists before registration.
+The project is a comprehensive chat application encompassing both client-side and server-side components. On the client side, users register with a unique phone number, update profiles, add contacts, and engage in one-to-one or group chats with rich text capabilities, including various message attributes. Additional features include status management, contact blocking, notifications, and the ability to exit the application without forgetting user information. Bonus functionalities involve social network integration, application installation as a system service, and a chatbot service. On the server side, the system manages user registration, tracks client status, facilitates server announcements, and provides statistics on user demographics. It ensures data availability by maintaining user contact lists and optionally supporting chat session persistence.
 
 ## Prerequisites
 
