@@ -19,6 +19,7 @@ public class RegistrationApp extends Application {
     private TextField phoneNumberField;
     private TextField displayNameField;
     private TextField emailField;
+    private PasswordField passwordField; // Added password field
 
     public RegistrationApp() {
         DatabaseConnectionManager myConnection = new DatabaseConnectionManager();
@@ -50,12 +51,17 @@ public class RegistrationApp extends Application {
         grid.add(emailLabel, 0, 2);
         grid.add(emailField, 1, 2);
 
+        Label passwordLabel = new Label("Password:"); // Added password label
+        passwordField = new PasswordField();
+        grid.add(passwordLabel, 0, 3);
+        grid.add(passwordField, 1, 3);
+
         Button registerButton = new Button("Register");
-        grid.add(registerButton, 1, 3);
+        grid.add(registerButton, 1, 4);
 
         registerButton.setOnAction(e -> handleRegistration());
 
-        Scene scene = new Scene(grid, 400, 300);
+        Scene scene = new Scene(grid, 400, 350); // Adjusted the height to accommodate the password field
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -64,8 +70,9 @@ public class RegistrationApp extends Application {
         String phoneNumber = phoneNumberField.getText();
         String displayName = displayNameField.getText();
         String email = emailField.getText();
+        String password = passwordField.getText(); // Retrieve password
 
-        if (phoneNumber.isEmpty() || displayName.isEmpty() || email.isEmpty()) {
+        if (phoneNumber.isEmpty() || displayName.isEmpty() || email.isEmpty() || password.isEmpty()) {
             showAlert("User Registration", "Please fill in all fields", Alert.AlertType.ERROR);
             return;
         }
@@ -75,7 +82,7 @@ public class RegistrationApp extends Application {
             return;
         }
 
-        User newUser = new User(phoneNumber, displayName, email, "securepassword", "Female", "Canada", new java.util.Date(), "A short bio", "Online", "Available");
+        User newUser = new User(phoneNumber, displayName, email, password, "Female", "Canada", new java.util.Date(), "A short bio", "Online", "Available");
 
         try {
             if (userService.existsById(newUser.getPhoneNumber())) {

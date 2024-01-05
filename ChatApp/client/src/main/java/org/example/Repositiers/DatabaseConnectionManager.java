@@ -14,14 +14,14 @@ import com.mysql.cj.jdbc.MysqlDataSource;
 
 
 public class DatabaseConnectionManager {
-    static String propPath = "F:\\OneDrive_2024-01-02\\Java Project\\ChatApp\\Resources\\dp.properties";
+    static String propPath = "/media/mohamed/01D3829D52880A80/ChatApplication/ChatApp/Client/Resources/dp.properties";
 
     public  void generatePropFile() {
         Properties prop = new Properties();
 
         try (OutputStream oStream = new FileOutputStream(propPath)) {
 
-            prop.setProperty("URL", "jdbc:mysql://localhost:3306/chatapplicationdb");
+            prop.setProperty("URL", "jdbc:mysql://localhost:3306/ChatApplicationDB");
             prop.setProperty("User", "root");
             prop.setProperty("Password", "password");
 
