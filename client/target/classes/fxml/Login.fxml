@@ -14,7 +14,7 @@
         <FontAwesomeIconView fill="WHITE" glyphName="COMMENTING" size="40" styleClass="login_logo_container" />
         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="login_logo_container" text="Chat org.example.App" />
     </VBox>
-    <VBox layoutX="323.0" layoutY="46.0" prefHeight="350.0" prefWidth="350.0" styleClass="login_form_container" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+    <VBox layoutX="242.0" layoutY="20.0" prefHeight="350.0" prefWidth="350.0" styleClass="login_form_container" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="7.600000000000023" AnchorPane.topAnchor="20.0">
         <Label text="Phone Number" />
         <TextField fx:id="phone_field" />
         <Label text="Password" />

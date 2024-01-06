@@ -29,7 +29,7 @@ public class ViewFactory {
         }
         Stage stage = new Stage();
         stage.setScene(scene);
-        stage.setTitle("Chat org.example.App");
+        stage.setTitle("Chat App");
         stage.show();
 
     }
