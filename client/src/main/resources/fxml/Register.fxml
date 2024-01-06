@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="login_container" stylesheets="@../styles/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Contollers.RegisterController">
     <VBox layoutY="7.0" prefHeight="400.0" prefWidth="200.0" styleClass="login_logo_container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
         <FontAwesomeIconView fill="WHITE" glyphName="COMMENTING" size="50" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chat org.example.App" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chat App" />
     </VBox>
     <VBox layoutX="242.0" layoutY="20.0" prefHeight="350.0" prefWidth="350.0" styleClass="login_form_container" AnchorPane.bottomAnchor="20.799999999999955" AnchorPane.rightAnchor="7.600000000000023" AnchorPane.topAnchor="20.0">
         <Label text="Phone Number" />
