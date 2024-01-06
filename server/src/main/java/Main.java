@@ -12,7 +12,7 @@ import java.rmi.registry.Registry;
 public class Main {
     public static void main(String[] args) {
         try {
-            DatabaseConnectionManager connectionManager = new DatabaseConnectionManager();
+            DatabaseConnectionManager connectionManager = DatabaseConnectionManager.getInstance();
             UserRepository userRepository = new UserRepository(connectionManager.getMyConnection());
             Registration registrationService = new UserService(userRepository);
 
