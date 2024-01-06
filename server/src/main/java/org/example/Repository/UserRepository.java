@@ -1,4 +1,4 @@
-package iti.jets.Repository;
+package org.example.Repository;
 
 
 import Interfaces.Repository;
