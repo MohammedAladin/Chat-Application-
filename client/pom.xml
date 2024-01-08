@@ -56,11 +56,6 @@
             <artifactId>javafx-controls</artifactId>
             <version>18.0.1</version> <!-- Replace with your desired JavaFX version -->
         </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-            <version>18.0.1</version> <!-- Replace with your desired JavaFX version -->
-        </dependency>
 
         <dependency>
             <groupId>org.openjfx</groupId>
@@ -83,7 +78,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version> <!-- Replace with the appropriate version -->
                 <configuration>
-                    <mainClass>org.example.App</mainClass>
+                    <mainClass>org.Client.App</mainClass>
                 </configuration>
             </plugin>
         </plugins>

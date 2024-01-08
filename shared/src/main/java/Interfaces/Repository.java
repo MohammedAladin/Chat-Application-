@@ -12,8 +12,6 @@ public interface Repository<T,ID> extends Remote {
 
     List<T> findAll() throws SQLException;
 
-    void update(T entity) throws SQLException;
-
     void delete(ID id) throws SQLException;
 
 }

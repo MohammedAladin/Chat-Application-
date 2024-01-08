@@ -6,10 +6,11 @@ module client {
     requires de.jensd.fx.glyphs.fontawesome;
     requires shared;
     requires java.rmi;
+    requires server;
 
-    opens org.example to javafx.fxml;
-    exports org.example;
-    exports org.example.Contollers;
-    exports org.example.Models;
-    exports org.example.Views;
+    opens org.Client to javafx.fxml;
+    exports org.Client;
+    exports org.Client.Contollers;
+    exports org.Client.Models;
+    exports org.Client.Views;
 }
