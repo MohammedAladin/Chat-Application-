@@ -8,15 +8,12 @@ public class UserLoginDTO{
         this.phoneNumber = phoneNumber;
         this.password = password;
     }
-
     public UserLoginDTO() {
 
     }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
     public String getPassword() {
         return password;
     }
