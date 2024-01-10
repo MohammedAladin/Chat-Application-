@@ -8,8 +8,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="registerAnchorPane" prefHeight="490.0" prefWidth="626.0" stylesheets="@../styles/Register.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.RegisterController">
-    <Text fill="#5F37A5" layoutX="177.0" layoutY="50.0" nodeOrientation="LEFT_TO_RIGHT" smooth="false" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="ChatApp Registration" textAlignment="CENTER">
+<AnchorPane prefHeight="489.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.RegisterController">
+    <Text fill="#4d2890" layoutX="276.0" layoutY="56.0" nodeOrientation="LEFT_TO_RIGHT" smooth="false" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="ChatAPP Registration" textAlignment="CENTER">
         <font>
             <Font name="System Bold" size="24.0" />
         </font>
@@ -18,14 +18,14 @@
         </cursor>
     </Text>
 
-    <GridPane alignment="CENTER" hgap="20" layoutX="98.0" layoutY="64.0" prefHeight="380.0" prefWidth="430.0" vgap="20">
+    <GridPane alignment="CENTER" hgap="20" layoutX="222.0" layoutY="55.0" prefHeight="393.0" prefWidth="382.0" stylesheets="@../styles/Register.css" vgap="20">
         <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
         </padding>
 
         <columnConstraints>
-            <ColumnConstraints maxWidth="136.0" minWidth="114.0" prefWidth="114.0" />
-            <ColumnConstraints maxWidth="205.0" minWidth="183.0" prefWidth="205.0" />
+            <ColumnConstraints maxWidth="136.0" minWidth="114.0" prefWidth="127.0" />
+            <ColumnConstraints maxWidth="205.0" minWidth="183.0" prefWidth="192.0" />
         </columnConstraints>
 
         <Label text="Full Name" />
@@ -64,12 +64,6 @@
                 </FXCollections>
             </items>
         </ComboBox>
-
-        <Button fx:id="registerButton" mnemonicParsing="false" style="-fx-background-color: #5F37A5; -fx-text-fill: #FFFFFF; -fx-font-size: 14px; -fx-font-family: Arial Bold;" text="Register" textFill="#fffefe" GridPane.columnSpan="2" GridPane.rowIndex="8">
-            <font>
-                <Font name="Arial Bold" size="14.0" />
-            </font>
-        </Button>
         <rowConstraints>
             <RowConstraints />
             <RowConstraints />
@@ -79,7 +73,8 @@
             <RowConstraints />
             <RowConstraints />
             <RowConstraints />
-         <RowConstraints />
         </rowConstraints>
     </GridPane>
+   <Pane layoutX="-4.0" prefHeight="489.0" prefWidth="218.0" style="-fx-background-color: #4d2890;" />
+   <Button fx:id="registerButton" layoutX="342.0" layoutY="446.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="135.0" styleClass="ezzo" stylesheets="@../styles/Register.css" text="Register" />
 </AnchorPane>

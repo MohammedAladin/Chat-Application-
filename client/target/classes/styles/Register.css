@@ -1,36 +1,22 @@
-.text {
-    -fx-fill: #5F37A5;
-}
-
-.label {
-    -fx-font-family: "Arial";
-    -fx-font-size: 14px;
-    -fx-text-fill: #5F37A5;
-}
-
-.text-field,
-.password-field,
-.date-picker,
-.combo-box {
-    -fx-font-family: "Arial";
-    -fx-font-size: 14px;
-    -fx-prompt-text-fill: #5F37A5;
-}
-
-.button {
-    -fx-font-family: "Arial Bold";
-    -fx-font-size: 14px;
+.ezzo {
+    -fx-background-color: linear-gradient(to right, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+    -fx-border-radius: 8px;
+    -fx-border-style: none;
+    -fx-box-sizing: border-box;
     -fx-text-fill: #FFFFFF;
-    -fx-background-color: #5F37A5;
+    -fx-cursor: hand;
+    -fx-font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    -fx-font-size: 16px;
+    -fx-font-weight: 500;
+
+    -fx-text-align: center;
+    -fx-text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    -fx-transition: all 0.5s;
+    -fx-user-select: none;
+    -fx-touch-action: manipulation;
 }
 
-.button:hover {
-    -fx-background-color: #4A288B;
-}
-.root {
-    -fx-background-color: linear-gradient(to bottom, #ffffff, #f2f2f2); /* Gradient color from white to light gray */
-}
-
-.text {
-    -fx-fill: #5F37A5; /* Text color */
+.ezzo:hover {
+    -fx-box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+    -fx-transition-duration: 0.1s;
 }
