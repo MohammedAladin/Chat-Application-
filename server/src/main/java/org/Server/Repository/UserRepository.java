@@ -1,7 +1,9 @@
 package org.Server.Repository;
 
-
 import Interfaces.Repository;
+import Model.DTO.UserDto;
+import Model.DTO.UserLoginDTO;
+import Model.DTO.UserRegistrationDTO;
 import Model.Entities.User;
 import Model.Enums.StatusEnum;
 
@@ -12,18 +14,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserRepository implements Repository<User, String> {
+public class UserRepository implements Repository<UserRegistrationDTO, String> {
     private Connection myConnection;
 
     public UserRepository(Connection myConnection) {
         this.myConnection = myConnection;
     }
 
-
-
     @Override
-    public void save(User user) throws SQLException {
-        String query = "INSERT INTO Users (PhoneNumber, DisplayName, Email, Picture, Password, Gender, Country, DateOfBirth, Bio) " +
+    public void save(UserRegistrationDTO user) throws SQLException {
+        String query = "INSERT INTO Users (PhoneNumber, DisplayName, Password, Gender, Country, DateOfBirth, Bio, Status, SpecificStatus) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
@@ -31,12 +31,13 @@ public class UserRepository implements Repository<User, String> {
             preparedStatement.setString(1, user.getPhoneNumber());
             preparedStatement.setString(2, user.getDisplayName());
             preparedStatement.setString(3, user.getEmail());
-            preparedStatement.setString(4, user.getPicture());
-            preparedStatement.setString(5, user.getPassword());
-            preparedStatement.setString(6, user.getGender());
-            preparedStatement.setString(7, user.getCountry());
-            preparedStatement.setDate(8, new java.sql.Date(user.getDateOfBirth().getTime()));
-            preparedStatement.setString(9, user.getBio());
+            preparedStatement.setString(4, user.getPassword());
+            preparedStatement.setString(5, user.getGender());
+            preparedStatement.setString(6, user.getCountry());
+            preparedStatement.setDate(7, user.getDateOfBirth());
+            preparedStatement.setString(8, "BIO");
+            preparedStatement.setString(9, "Offline");
+            preparedStatement.setString(10, "Available");
 
             preparedStatement.executeUpdate();
 
@@ -46,9 +47,9 @@ public class UserRepository implements Repository<User, String> {
     }
 
     @Override
-    public User findById(String phoneNumber) throws SQLException {
+    public UserRegistrationDTO findById(String phoneNumber) throws SQLException {
         String query = "SELECT * FROM Users WHERE PhoneNumber = ?";
-        User user = null;
+        UserRegistrationDTO user = null;
 
         try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
 
@@ -56,7 +57,7 @@ public class UserRepository implements Repository<User, String> {
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    user = mapResultSetToUser(resultSet);
+                    user = mapResultSetToUserDTO(resultSet);
                 }
             }
 
@@ -68,15 +69,15 @@ public class UserRepository implements Repository<User, String> {
     }
 
     @Override
-    public List<User> findAll() throws SQLException {
+    public List<UserRegistrationDTO> findAll() throws SQLException {
         String query = "SELECT * FROM Users";
-        List<User> userList = new ArrayList<>();
+        List<UserRegistrationDTO> userList = new ArrayList<>();
 
         try (PreparedStatement preparedStatement = myConnection.prepareStatement(query);
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
             while (resultSet.next()) {
-                userList.add(mapResultSetToUser(resultSet));
+                userList.add(mapResultSetToUserDTO(resultSet));
             }
 
         } catch (SQLException e) {
@@ -99,6 +100,7 @@ public class UserRepository implements Repository<User, String> {
             e.printStackTrace();
         }
     }
+
     public void updateStatus(String phoneNumber, StatusEnum status) throws SQLException {
         String query = "UPDATE Users SET Status=? WHERE PhoneNumber=?";
 
@@ -114,26 +116,24 @@ public class UserRepository implements Repository<User, String> {
 
     @Override
     public void delete(String phoneNumber) throws SQLException {
-
+        // Implement deletion logic if needed
     }
 
-    private User mapResultSetToUser(ResultSet resultSet) throws SQLException {
-        User user = new User();
-        user.setUserID(resultSet.getInt("UserID"));
-        user.setPhoneNumber(resultSet.getString("PhoneNumber"));
-        user.setDisplayName(resultSet.getString("DisplayName"));
-        user.setEmail(resultSet.getString("Email"));
-        user.setPicture(resultSet.getString("Picture"));
-        user.setPassword(resultSet.getString("Password"));
-        user.setGender(resultSet.getString("Gender"));
-        user.setCountry(resultSet.getString("Country"));
-        user.setDateOfBirth(resultSet.getDate("DateOfBirth"));
-        user.setBio(resultSet.getString("Bio"));
-        user.setStatus(resultSet.getString("Status"));
-        user.setSpecificStatus(resultSet.getString("SpecificStatus"));
+    private UserRegistrationDTO mapResultSetToUserDTO(ResultSet resultSet) throws SQLException {
+        UserRegistrationDTO userDTO = new UserRegistrationDTO(
+                resultSet.getString("PhoneNumber"),
+                resultSet.getString("email"),
+                resultSet.getString("DisplayName"),
+                resultSet.getString("Password"),
+                resultSet.getString("Gender"),
+                resultSet.getString("Country"),
+                resultSet.getDate("DateOfBirth")
+        );
 
-        return user;
+        userDTO.setBio(resultSet.getString("Bio"));
+        userDTO.setStatus(resultSet.getString("Status"));
+        userDTO.setSpecificStatus(resultSet.getString("SpecificStatus"));
+
+        return userDTO;
     }
-
 }
-

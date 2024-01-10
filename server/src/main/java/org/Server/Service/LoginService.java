@@ -1,41 +1,29 @@
 package org.Server.Service;
 
-import Interfaces.UserServices;
-import javafx.scene.control.Alert;
+import Interfaces.RemoteLoginService;
+import Model.DTO.UserLoginDTO;
 
-public class LoginService {
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
-    private static LoginService loginService;
-    private static UserServices userService;
+public class LoginService extends UnicastRemoteObject implements RemoteLoginService {
 
-    private LoginService() {
+    private UserService userService;
+
+    public LoginService(UserService userService) throws RemoteException {
+        super();
+        this.userService = userService;
     }
-
-    public static LoginService getInstance(UserServices userService) {
-        if (loginService == null) {
-            LoginService.userService = userService;
-            loginService = new LoginService();
-        }
-        return loginService;
-    }
-
-    public void loginUser(String phone, String password) {
+    @Override
+    public int loginUser(UserLoginDTO userLoginDTO) throws RemoteException {
         try {
-            if (userService.signInUser(phone, password)) {
-                showAlert("Login Successful", Alert.AlertType.INFORMATION);
+            if (userService.signInUser(userLoginDTO)) {
+                return 0;
             } else {
-                showAlert("Invalid Phone Number or Password", Alert.AlertType.WARNING);
+                return 1;
             }
         } catch (Exception e) {
-            showAlert("User Services Failed", Alert.AlertType.ERROR);
+            return 2;
         }
-    }
-
-    private void showAlert(String content, Alert.AlertType alertType) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle("User Services");
-        alert.setHeaderText(null);
-        alert.setContentText(content);
-        alert.showAndWait();
     }
 }
