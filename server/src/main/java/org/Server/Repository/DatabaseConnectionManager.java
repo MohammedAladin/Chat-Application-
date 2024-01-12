@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DatabaseConnectionManager {
-    private static final String propPath = "/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/Resources/dp.properties";
+    private static final String propPath = "dp.properties";
     private static DatabaseConnectionManager instance;
 
     private DatabaseConnectionManager() {

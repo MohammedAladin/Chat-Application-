@@ -53,17 +53,18 @@
         </HBox>
 
         <Label text="Country" GridPane.rowIndex="7" />
-        <ComboBox fx:id="countryComboBox" promptText="Select Country" GridPane.columnIndex="1" GridPane.rowIndex="7">
 
+        <ComboBox fx:id="countryComboBox" promptText="Select Country" GridPane.columnIndex="1" GridPane.rowIndex="7">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="United States" />
                     <String fx:value="United Kingdom" />
                     <String fx:value="Canada" />
-                    <!-- Add more countries as needed -->
+
                 </FXCollections>
             </items>
         </ComboBox>
+
         <rowConstraints>
             <RowConstraints />
             <RowConstraints />
