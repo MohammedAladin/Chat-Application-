@@ -1,0 +1,17 @@
+Interfaces\RemoteLoginService.class
+Interfaces\RemoteRegistrationService.class
+Model\Entities\ServerAnnouncement.class
+Model\Entities\Message.class
+Model\DTO\UserDto.class
+Model\Enums\UserField.class
+Model\DTO\UserLoginDTO.class
+Model\DTO\UserRegistrationDTO.class
+Model\Entities\GroupMember.class
+Interfaces\Repository.class
+module-info.class
+Model\Entities\BlockedContact.class
+Model\Entities\User.class
+Model\Entities\Notification.class
+Model\Entities\Contact.class
+Model\Entities\Group.class
+Model\Enums\StatusEnum.class
