@@ -1,9 +1,10 @@
 package Model.DTO;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.time.LocalDate;
 
-public class UserRegistrationDTO extends UserLoginDTO {
+public class UserRegistrationDTO extends UserLoginDTO implements Serializable {
     private String displayName;
     private String gender;
     private String country;

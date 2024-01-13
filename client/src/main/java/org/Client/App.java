@@ -11,7 +11,6 @@ public class App extends Application {
     public void start(Stage stage) {
         Model.getInstance().getViewFactory().showLoginWindow();
     }
-
     public static void main(String[] args) {
         launch(App.class, args);
     }

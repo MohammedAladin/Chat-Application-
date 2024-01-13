@@ -1,22 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="login_container" stylesheets="@../styles/login.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.LoginController">
-    <VBox prefHeight="400.0" prefWidth="202.0" styleClass="login_logo_container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <FontAwesomeIconView fill="WHITE" glyphName="COMMENTING" size="40" styleClass="login_logo_container" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="login_logo_container" text="Chat App" />
+<AnchorPane pickOnBounds="false" prefHeight="445.0" prefWidth="592.0" styleClass="login_container" stylesheets="@../styles/login.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.LoginController">
+    <VBox prefHeight="400.0" prefWidth="197.0" styleClass="login_logo_container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="login_logo_container" text="ChatApp!">
+            <font>
+                <Font name="Verdana Bold Italic" size="25.0" />
+            </font></Text>
     </VBox>
-    <VBox layoutX="242.0" layoutY="20.0" prefHeight="350.0" prefWidth="350.0" styleClass="login_form_container" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="7.600000000000023" AnchorPane.topAnchor="20.0">
-        <Label text="Phone Number" />
-        <TextField fx:id="phone_field" />
-        <Label text="Password" />
-        <PasswordField fx:id="password_field" />
-        <Button fx:id="signing_button" mnemonicParsing="false" text="Sign In" />
-        <Label text="Not already a User ? " />
-        <Label fx:id="register_label" styleClass="login_register_label" text="Register" />
-    </VBox>
+    <Group layoutX="236.0" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="10.399999999999977" AnchorPane.topAnchor="0.0" />
+    <AnchorPane layoutX="199.0" prefHeight="500.0" prefWidth="620.0" stylesheets="@../styles/login.css">
+        <children>
+            <TextField fx:id="phone_field" layoutX="14.0" layoutY="82.0" prefHeight="30.0" prefWidth="274.0" promptText="Phone number">
+                <font>
+                    <Font name="Segoe UI" size="13.0" />
+                </font>
+            </TextField>
+            <PasswordField fx:id="password_field" layoutX="14.0" layoutY="129.0" prefHeight="30.0" prefWidth="274.0" promptText="Password">
+                <font>
+                    <Font size="13.0" />
+                </font>
+            </PasswordField>
+            <Button fx:id="signing_button" layoutX="68.0" layoutY="176.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="178.0" text="Sign In">
+                <font>
+                    <Font name="Segoe UI Italic" size="12.0" />
+                </font>
+            </Button>
+            <Label fx:id="register_label" layoutX="126.0" layoutY="252.0" prefHeight="36.0" prefWidth="61.0" styleClass="login_register_label" text="Register!">
+                <font>
+                    <Font name="Verdana" size="13.0" />
+                </font>
+            </Label>
+            <Label layoutX="93.0" layoutY="236.0" text="Not already a user?">
+                <font>
+                    <Font name="Verdana" size="13.0" />
+                </font>
+            </Label>
+        </children>
+    </AnchorPane>
 </AnchorPane>

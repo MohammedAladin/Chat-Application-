@@ -1,6 +1,4 @@
 package Interfaces;
-
-import java.rmi.Remote;
 import java.sql.SQLException;
 import java.util.List;
 

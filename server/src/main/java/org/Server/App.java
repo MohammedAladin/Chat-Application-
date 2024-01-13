@@ -2,10 +2,12 @@ package org.Server;
 
 import Interfaces.RemoteLoginService;
 import Interfaces.RemoteRegistrationService;
+import Interfaces.ServiceFactoryI;
 import org.Server.Repository.DatabaseConnectionManager;
 import org.Server.Repository.UserRepository;
-import org.Server.Service.*;
-import java.rmi.Remote;
+import org.Server.Service.Factories.ServiceFactory;
+import org.Server.Service.User.UserService;
+
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
@@ -14,24 +16,22 @@ public class App {
     public static void main(String[] args) {
         try {
             DatabaseConnectionManager connectionManager = DatabaseConnectionManager.getInstance();
-            UserRepository userRepository = new UserRepository(connectionManager.getMyConnection());
-            UserService userService = new UserService(userRepository);
+            UserService userService = new UserService(new UserRepository(connectionManager.getMyConnection()));
 
-            RemoteRegistrationService registrationService = new RegistrationService(userService);
+            ServiceFactoryI serviceFactory = new ServiceFactory(userService);
 
-            RemoteLoginService loginService = new LoginService(userService);
+            RemoteLoginService loginService = serviceFactory.createUserService().getLoginService();
+            RemoteRegistrationService registrationService = serviceFactory.createUserService().getRegistrationService();
 
             registry = LocateRegistry.createRegistry(1099);
+            registry.rebind("LoginService", loginService);
+            registry.rebind("RegistrationService", registrationService);
 
-            bindService("RegistrationServices", registrationService);
-            bindService("LoginServices", loginService);
 
             System.out.println("Server is running...");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    private static void bindService(String serviceName, Remote service) throws Exception {
-        registry.rebind(serviceName, service);
-    }
+
 }

@@ -1,12 +1,12 @@
 package org.Server.Repository;
 
 import Interfaces.Repository;
-import Model.DTO.UserDto;
 import Model.DTO.UserLoginDTO;
 import Model.DTO.UserRegistrationDTO;
-import Model.Entities.User;
 import Model.Enums.StatusEnum;
+import org.Server.Service.UserSession;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,17 +14,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserRepository implements Repository<UserRegistrationDTO, String> {
-    private Connection myConnection;
-
+public class UserRepository implements Repository<UserRegistrationDTO, String>{
+    private final Connection myConnection;
     public UserRepository(Connection myConnection) {
         this.myConnection = myConnection;
     }
 
     @Override
     public void save(UserRegistrationDTO user) throws SQLException {
-        String query = "INSERT INTO Users (PhoneNumber, DisplayName, Password, Gender, Country, DateOfBirth, Bio, Status, SpecificStatus) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO Users (PhoneNumber, DisplayName,Email ,Password, Gender, Country, DateOfBirth, Bio, Status, SpecificStatus) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
 
@@ -42,7 +41,7 @@ public class UserRepository implements Repository<UserRegistrationDTO, String> {
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle the exception appropriately
+            e.printStackTrace();
         }
     }
 

@@ -1,6 +1,8 @@
 package Model.DTO;
 
-public class UserLoginDTO{
+import java.io.Serializable;
+
+public class UserLoginDTO implements Serializable {
      String phoneNumber;
      String password;
 

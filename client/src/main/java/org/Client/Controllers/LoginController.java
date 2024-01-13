@@ -1,10 +1,10 @@
 package org.Client.Controllers;
-
 import Interfaces.RemoteLoginService;
 import Model.DTO.UserLoginDTO;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.Client.Models.Model;
+
 
 import java.net.URL;
 import java.rmi.NotBoundException;
@@ -24,11 +24,11 @@ public class LoginController implements Initializable {
 
         try {
             Registry registry = LocateRegistry.getRegistry("localhost", 1099);
-            remoteLoginService = (RemoteLoginService) registry.lookup("LoginServices");
+            remoteLoginService  = (RemoteLoginService) registry.lookup("LoginService");
+
         } catch (RemoteException | NotBoundException e) {
             throw new RuntimeException(e);
         }
-
         signing_button.setOnAction((e)->handleSignIn());
         register_label.setOnMouseClicked(e-> Model.getInstance().getViewFactory().showRegisterWindow());
     }

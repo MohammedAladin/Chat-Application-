@@ -1,13 +1,13 @@
-.login_container{
-    -fx-background-color:white;
+.login_container {
+    -fx-background-color: linear-gradient(to bottom, #A0A0A0, #707070);
 }
 
 
-/**logo container style*/
-.login_logo_container{
-    -fx-background-color: #7fde7f;
+.login_logo_container {
+    -fx-background-color: linear-gradient(to bottom, #6E00FF, #9C00FF);
     -fx-alignment: center;
 }
+
 
 .login_logo_container Text{
     -fx-font-size: 2em;
@@ -19,36 +19,24 @@
     -fx-fill: #ecf39e;
 }
 
-
-
 .login_form_container{
     -fx-spacing:15;
     -fx-alignment: top_left;
 }
 
 .login_form_container Label{
-
-        -fx-text-fill: #727272;
-        -fx-font-family: Work Sans;
-        -fx-font-size: 20px;
-        -fx-font-style: normal;
-        -fx-line-height: normal;
-        -fx-letter-spacing: -0.5px;
-
+    -fx-text-fill: #727272;
+    -fx-font-family: Work Sans;
+    -fx-font-size: 20px;
+    -fx-font-style: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: -0.5px;
 }
 
 .input_field{
     -fx-fill: white;
     -fx-pref-height: 35;
     -fx-font-size: 1.2em;
-}
-
-.login_form_container Button{
-    -fx-background-color: #7fde7f;
-    -fx-text-fill: white;
-    -fx-pref-height: 30;
-    -fx-pref-width:350;
-    -fx-font-size:1.2em;
 }
 
 .login_form_container Button:hover{
@@ -59,3 +47,10 @@
     -fx-cursor:hand;
 }
 
+#signing_button {
+    -fx-background-color: linear-gradient(to bottom, #6E00FF, #9C00FF);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8 16;
+    -fx-border-radius: 5;
+}
