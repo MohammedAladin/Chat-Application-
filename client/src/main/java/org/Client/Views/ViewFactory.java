@@ -24,10 +24,12 @@ public class ViewFactory {
             e.printStackTrace();
 
         }
+
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Chat App");
         stage.show();
+        stage.setResizable(false);
     }
 
 }
