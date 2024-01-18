@@ -29,7 +29,8 @@ public class ViewFactory {
         stage.setScene(scene);
         stage.setTitle("Chat App");
         stage.show();
-        stage.setResizable(false);
+        stage.setMinHeight(300);
+        stage.setMinWidth(574);
     }
 
 }
