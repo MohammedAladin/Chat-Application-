@@ -13,6 +13,9 @@ public class ChatParticipants {
         this.participantStartDate = participantStartDate;
     }
 
+    public ChatParticipants() {
+    }
+
     public int getChatID() {
         return chatID;
     }
