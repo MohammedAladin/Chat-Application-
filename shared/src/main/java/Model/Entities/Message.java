@@ -20,6 +20,9 @@ public class Message {
         this.isAttachment = isAttachment;
     }
 
+    public Message() {
+    }
+
     public int getMessageID() {
         return messageID;
     }

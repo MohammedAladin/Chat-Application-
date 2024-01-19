@@ -19,6 +19,9 @@ public class Chat {
         this.lastModified = lastModified;
     }
 
+    public Chat() {
+    }
+
     public int getChatID() {
         return chatID;
     }
