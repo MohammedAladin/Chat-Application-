@@ -38,18 +38,13 @@
     -fx-pref-height: 35;
     -fx-font-size: 1.2em;
 }
-.input_field:focused{
-    -fx-border-color: #66de66;
-}
 
 .login_form_container Button:hover{
     -fx-cursor:hand;
-    -fx-background-color: #6ab96a;
 }
 
 .login_register_label:hover{
     -fx-cursor:hand;
-    -fx-text-fill: #343434;
 }
 
 #signing_button {

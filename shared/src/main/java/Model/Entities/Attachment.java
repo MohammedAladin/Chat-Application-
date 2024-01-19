@@ -11,9 +11,6 @@ public class Attachment {
         this.attachment = attachment;
     }
 
-    public Attachment() {
-    }
-
     public int getAttachmentID() {
         return attachmentID;
     }
