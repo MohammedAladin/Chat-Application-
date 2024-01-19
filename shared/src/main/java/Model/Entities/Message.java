@@ -1,31 +1,25 @@
 package Model.Entities;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Message {
     private int messageID;
     private int senderID;
     private int receiverID;
-    private int groupID;
     private String messageContent;
-    private Date timestamp;
-    private String messageStatus;
-    private String messageType;
+    private Timestamp messageTimestamp;
+    private boolean isAttachment;
 
-    // Constructors
-    public Message() {}
-
-    public Message(int senderID, int receiverID, int groupID, String messageContent,
-                   String messageStatus, String messageType) {
+    public Message(int messageID, int senderID, int receiverID, String messageContent, Timestamp messageTimestamp, boolean isAttachment) {
+        this.messageID = messageID;
         this.senderID = senderID;
         this.receiverID = receiverID;
-        this.groupID = groupID;
         this.messageContent = messageContent;
-        this.messageStatus = messageStatus;
-        this.messageType = messageType;
+        this.messageTimestamp = messageTimestamp;
+        this.isAttachment = isAttachment;
     }
 
-    // Getters and Setters
     public int getMessageID() {
         return messageID;
     }
@@ -50,14 +44,6 @@ public class Message {
         this.receiverID = receiverID;
     }
 
-    public int getGroupID() {
-        return groupID;
-    }
-
-    public void setGroupID(int groupID) {
-        this.groupID = groupID;
-    }
-
     public String getMessageContent() {
         return messageContent;
     }
@@ -66,27 +52,19 @@ public class Message {
         this.messageContent = messageContent;
     }
 
-    public Date getTimestamp() {
-        return timestamp;
+    public Timestamp getMessageTimestamp() {
+        return messageTimestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+    public void setMessageTimestamp(Timestamp messageTimestamp) {
+        this.messageTimestamp = messageTimestamp;
     }
 
-    public String getMessageStatus() {
-        return messageStatus;
+    public boolean isAttachment() {
+        return isAttachment;
     }
 
-    public void setMessageStatus(String messageStatus) {
-        this.messageStatus = messageStatus;
-    }
-
-    public String getMessageType() {
-        return messageType;
-    }
-
-    public void setMessageType(String messageType) {
-        this.messageType = messageType;
+    public void setAttachment(boolean attachment) {
+        isAttachment = attachment;
     }
 }

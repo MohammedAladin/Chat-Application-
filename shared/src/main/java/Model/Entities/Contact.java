@@ -1,29 +1,25 @@
 package Model.Entities;
 
+import java.sql.Timestamp;
+
 public class Contact {
-    private int contactID;
+    private int friendID;
     private int userID;
-    private String contactPhoneNumber;
-    private String invitationStatus;
-    private boolean blockStatus;
+    private Timestamp creationDate;
 
-    // Constructors
-    public Contact() {}
 
-    public Contact(int userID, String contactPhoneNumber, String invitationStatus, boolean blockStatus) {
+    public Contact(int userID, int friendID, Timestamp creationDate) {
+        this.friendID = friendID;
         this.userID = userID;
-        this.contactPhoneNumber = contactPhoneNumber;
-        this.invitationStatus = invitationStatus;
-        this.blockStatus = blockStatus;
+        this.creationDate = creationDate;
     }
 
-    // Getters and Setters
-    public int getContactID() {
-        return contactID;
+    public int getFriendID() {
+        return friendID;
     }
 
-    public void setContactID(int contactID) {
-        this.contactID = contactID;
+    public void setFriendID(int friendID) {
+        this.friendID = friendID;
     }
 
     public int getUserID() {
@@ -34,27 +30,11 @@ public class Contact {
         this.userID = userID;
     }
 
-    public String getContactPhoneNumber() {
-        return contactPhoneNumber;
+    public Timestamp getCreationDate() {
+        return creationDate;
     }
 
-    public void setContactPhoneNumber(String contactPhoneNumber) {
-        this.contactPhoneNumber = contactPhoneNumber;
-    }
-
-    public String getInvitationStatus() {
-        return invitationStatus;
-    }
-
-    public void setInvitationStatus(String invitationStatus) {
-        this.invitationStatus = invitationStatus;
-    }
-
-    public boolean isBlockStatus() {
-        return blockStatus;
-    }
-
-    public void setBlockStatus(boolean blockStatus) {
-        this.blockStatus = blockStatus;
+    public void setCreationDate(Timestamp creationDate) {
+        this.creationDate = creationDate;
     }
 }

@@ -1,39 +1,39 @@
 package Model.Entities;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 public class User implements Serializable {
     private int userID;
     private String phoneNumber;
     private String displayName;
-    private String email;
-    private String picture;
-    private String password;
+    private String emailAddress;
+    private byte[] profilePicture;
+    private String passwordHash;
     private String gender;
     private String country;
     private Date dateOfBirth;
     private String bio;
-    private String status;
-    private String specificStatus;
+    private String userStatus;
+    private String userMode;
+    private Timestamp lastLogin;
 
-    // Constructors
-    public User() {}
+    public User( String phoneNumber, String displayName, String emailAddress, byte[] profilePicture, String passwordHash, String gender, String country, Date dateOfBirth, String bio, String userStatus, String userMode, Timestamp lastLogin) {
 
-    public User(String phoneNumber, String displayName, String email, String password,
-                String gender, String country, Date dateOfBirth, String bio, String status, String specificStatus) {
         this.phoneNumber = phoneNumber;
         this.displayName = displayName;
-        this.email = email;
-        this.password = password;
+        this.emailAddress = emailAddress;
+        this.profilePicture = profilePicture;
+        this.passwordHash = passwordHash;
         this.gender = gender;
         this.country = country;
         this.dateOfBirth = dateOfBirth;
         this.bio = bio;
-        this.status = status;
-        this.specificStatus = specificStatus;
+        this.userStatus = userStatus;
+        this.userMode = userMode;
+        this.lastLogin = lastLogin;
     }
 
-    // Getters and Setters
     public int getUserID() {
         return userID;
     }
@@ -58,28 +58,28 @@ public class User implements Serializable {
         this.displayName = displayName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
-    public String getPicture() {
-        return picture;
+    public byte[] getProfilePicture() {
+        return profilePicture;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setProfilePicture(byte[] profilePicture) {
+        this.profilePicture = profilePicture;
     }
 
     public String getPassword() {
-        return password;
+        return passwordHash;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
     public String getGender() {
@@ -114,19 +114,27 @@ public class User implements Serializable {
         this.bio = bio;
     }
 
-    public String getStatus() {
-        return status;
+    public String getUserStatus() {
+        return userStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
     }
 
-    public String getSpecificStatus() {
-        return specificStatus;
+    public String getUserMode() {
+        return userMode;
     }
 
-    public void setSpecificStatus(String specificStatus) {
-        this.specificStatus = specificStatus;
+    public void setUserMode(String userMode) {
+        this.userMode = userMode;
+    }
+
+    public Timestamp getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(Timestamp lastLogin) {
+        this.lastLogin = lastLogin;
     }
 }

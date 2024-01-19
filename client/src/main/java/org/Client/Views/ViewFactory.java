@@ -1,19 +1,13 @@
 package org.Client.Views;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class ViewFactory {
-
-
+    Stage stage;
     public ViewFactory(){}
-    public void showLoginWindow(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
-        sceneMaker(loader);
-    }
-    public void showRegisterWindow(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Register.fxml"));
+    public void showAuthWindow(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Auth.fxml"));
         sceneMaker(loader);
     }
     private void sceneMaker(FXMLLoader loader) {
@@ -22,15 +16,14 @@ public class ViewFactory {
             scene = new Scene(loader.load());
         }catch (Exception e){
             e.printStackTrace();
-
         }
-
-        Stage stage = new Stage();
+        if(stage==null){
+            stage = new Stage();
+        }
         stage.setScene(scene);
         stage.setTitle("Chat App");
         stage.show();
-        stage.setMinHeight(300);
-        stage.setMinWidth(574);
+        stage.setResizable(true);
     }
 
 }

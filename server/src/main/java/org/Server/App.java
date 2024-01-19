@@ -27,6 +27,9 @@ public class App {
             registry.rebind("LoginService", loginService);
             registry.rebind("RegistrationService", registrationService);
 
+//            for(String s : registry.list()){
+//                registry.unbind(s);
+//            }
 
             System.out.println("Server is running...");
         } catch (Exception e) {

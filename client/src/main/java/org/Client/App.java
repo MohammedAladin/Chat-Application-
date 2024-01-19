@@ -9,7 +9,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        Model.getInstance().getViewFactory().showLoginWindow();
+        Model.getInstance().getViewFactory().showAuthWindow();
+
     }
     public static void main(String[] args) {
         launch(App.class, args);

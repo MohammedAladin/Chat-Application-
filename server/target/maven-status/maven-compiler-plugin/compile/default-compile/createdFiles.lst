@@ -1,7 +1,0 @@
-org\Server\Service\LoginService.class
-module-info.class
-org\Server\Service\RegistrationService.class
-org\Server\Repository\UserRepository.class
-org\Server\Service\UserService.class
-org\Server\App.class
-org\Server\Repository\DatabaseConnectionManager.class

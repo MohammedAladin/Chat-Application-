@@ -1,20 +1,18 @@
 package org.Server.Service;
 import Model.DTO.UserLoginDTO;
-public class UserSession {
-    private static UserLoginDTO currentUser;
+import Model.Entities.User;
 
-    public static UserLoginDTO getCurrentUser() {
+public class UserSession {
+    private static User currentUser;
+    public static User getCurrentUser() {
         return currentUser;
     }
-
-    public static void setCurrentUser(UserLoginDTO user) {
+    public static void setCurrentUser(User user) {
         currentUser = user;
     }
-
     public static void clearSession() {
         currentUser = null;
     }
-
     public static boolean isLoggedIn() {
         return currentUser != null;
     }
