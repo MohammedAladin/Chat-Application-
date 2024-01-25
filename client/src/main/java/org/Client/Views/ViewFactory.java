@@ -6,8 +6,8 @@ import javafx.stage.Stage;
 public class ViewFactory {
     Stage stage;
     public ViewFactory(){}
-    public void showAuthWindow(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Auth.fxml"));
+    public void showRegisterWindow(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Register.fxml"));
         sceneMaker(loader);
     }
     public void showLoginWindow(){

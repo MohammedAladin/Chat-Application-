@@ -42,6 +42,4 @@ public class ContactsRepository implements Repository<Contact, Integer> {
     public void deleteById(Integer integer) throws SQLException {
 
     }
-
-
 }
