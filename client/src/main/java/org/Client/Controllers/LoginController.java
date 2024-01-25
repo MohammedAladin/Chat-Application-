@@ -14,51 +14,64 @@ import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
-    public Label register_label;
-    public Button signing_button;
-    public PasswordField password_field;
-    public TextField phone_field;
-    RemoteLoginService remoteLoginService;
+    public Label registerLabel;
+    public Button signingButton;
+    public PasswordField passwordField;
+    public TextField phoneField;
+    private RemoteServiceHandler remoteServiceHandler;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        try {
-            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
-            remoteLoginService  = (RemoteLoginService) registry.lookup("LoginService");
-
-        } catch (RemoteException | NotBoundException e) {
-            throw new RuntimeException(e);
-        }
-        signing_button.setOnAction((e)->handleSignIn());
-        register_label.setOnMouseClicked(e-> Model.getInstance().getViewFactory().showRegisterWindow());
+        remoteServiceHandler = RemoteServiceHandler.getInstance();
+        signingButton.setOnAction((e)->handleSignIn());
+        registerLabel.setOnMouseClicked(e-> Model.getInstance().getViewFactory().showRegistrationWindow());
     }
 
-    private void handleSignIn(){
-        String phoneNumber = phone_field.getText();
-        String password = password_field.getText();
-
-        UserLoginDTO userLogin = new UserLoginDTO(phoneNumber,password);
+    private void handleSignIn() {
         try {
-            if(remoteLoginService.loginUser(userLogin)==0){
-                showAlert("Login Successful", Alert.AlertType.INFORMATION);
-            }
-            else if(remoteLoginService.loginUser(userLogin)==1){
-                showAlert("Invalid Phone Number or Password", Alert.AlertType.WARNING);
-            }
-            else {
-                showAlert("User Services Failed", Alert.AlertType.ERROR);
-            }
+            validateUserInputLogin();
+
+            String phoneNumber = phoneField.getText();
+            String password = passwordField.getText();
+            UserLoginDTO userLogin = new UserLoginDTO(phoneNumber, password);
+
+            int loginResult = remoteServiceHandler.getRemoteLoginService().loginUser(userLogin);
+            handleLoginResult(loginResult);
+
+        }catch (IllegalArgumentException e) {
+            remoteServiceHandler.showAlert(e.getMessage(), Alert.AlertType.ERROR);
         } catch (RemoteException e) {
-            throw new RuntimeException(e);
+            handleException("Error during login", e);
+        } finally {
+            clearLoginFields();
         }
-        phone_field.clear();
-        password_field.clear();
     }
-    private void showAlert(String content, Alert.AlertType alertType) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle("User Services");
-        alert.setHeaderText(null);
-        alert.setContentText(content);
-        alert.showAndWait();
+    private void handleLoginResult(int loginResult) {
+        if (loginResult == 0) {
+            remoteServiceHandler.showAlert("Login Successful", Alert.AlertType.INFORMATION);
+        } else if (loginResult == 1) {
+            remoteServiceHandler.showAlert("Invalid Phone Number or Password", Alert.AlertType.WARNING);
+        } else {
+            remoteServiceHandler.showAlert("User Services Failed", Alert.AlertType.ERROR);
+        }
+    }
+    private void handleException(String message, Exception exception) {
+        remoteServiceHandler.showAlert(message + ": " + exception.getMessage(), Alert.AlertType.ERROR);
+    }
+    private void validateUserInputLogin() {
+        if (phoneField.getText().isEmpty() || passwordField.getText().isEmpty()) {
+            throw new IllegalArgumentException("Please enter both phone number and password");
+        }
+        if (!isPhoneNumberValid(phoneField.getText())) {
+            throw new IllegalArgumentException("Please enter a valid phone number");
+        }
+    }
+    private boolean isPhoneNumberValid(String phoneNumber) {
+        return phoneNumber.matches("[0-9]+");
+    }
+
+    private void clearLoginFields() {
+        phoneField.clear();
+        passwordField.clear();
     }
 }

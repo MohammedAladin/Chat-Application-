@@ -10,6 +10,14 @@ public class ViewFactory {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Auth.fxml"));
         sceneMaker(loader);
     }
+    public void showLoginWindow(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
+        sceneMaker(loader);
+    }
+    public void showRegistrationWindow(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Register.fxml"));
+        sceneMaker(loader);
+    }
     private void sceneMaker(FXMLLoader loader) {
         Scene scene = null;
         try{

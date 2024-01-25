@@ -49,12 +49,17 @@ public class TestApp {
 
 
         try {
+
+
             DatabaseConnectionManager connectionManager = DatabaseConnectionManager.getInstance();
             UserService userService = new UserService(new UserRepository(connectionManager.getMyConnection()));
+//            userService.registerUser(user1);
+//            userService.registerUser(user2);
 
             UserSession.setCurrentUser(userService.existsById(user2.getPhoneNumber()));
+            System.out.println("Logged Userid " + userService.existsById(user2.getPhoneNumber()).getUserID());
+            System.out.println("User To Be Accepted Userid " + userService.existsById(user1.getPhoneNumber()).getUserID());
 
-            System.out.println("User1 Has Been Logged");
 
             InvitationService invitationService = new InvitationService(
                     userService,
@@ -68,8 +73,8 @@ public class TestApp {
                     userService
             );
 
-            contactService.acceptContact("123456789");
-            System.out.println("User2 Accepted User1");
+            contactService.acceptContact(user1.getPhoneNumber());
+            System.out.println("User2 Has Accepted the Invitation from User1");
 
         } catch (RemoteException | SQLException e) {
             throw new RuntimeException(e);

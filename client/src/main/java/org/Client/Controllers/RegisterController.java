@@ -1,5 +1,7 @@
 package org.Client.Controllers;
 import Interfaces.RemoteRegistrationService;
+import Model.DTO.UserRegistrationDTO;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
@@ -14,63 +16,70 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class RegisterController implements Initializable {
-    public TextField nameField;
-    public TextField phoneNumberField;
-
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TextField phoneNumberField;
+    @FXML
     public TextField emailField;
-    public PasswordField passwordField;
-    public PasswordField confirmPasswordField;
-    public DatePicker dateOfBirthPicker;
-    public RadioButton maleRadioButton;
-    public ComboBox<String> countryComboBox;
-    public Button registerButton;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private PasswordField confirmPasswordField;
+    @FXML
+    private DatePicker dateOfBirthPicker;
+    @FXML
+
+    private RadioButton maleRadioButton;
+    @FXML
+    private ComboBox<String> countryComboBox;
+    @FXML
+    private Button registerButton;
+    @FXML
     RemoteRegistrationService registrationService;
+
+    private RemoteServiceHandler remoteServiceHandler;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
-            registrationService = (RemoteRegistrationService) registry.lookup("RegistrationService");
 
-        } catch (RemoteException | NotBoundException e) {
-            throw new RuntimeException(e);
-        }
+        remoteServiceHandler = RemoteServiceHandler.getInstance();
+        registrationService = remoteServiceHandler.getRegistrationService();
         registerButton.setOnAction(e -> handleRegistration());
     }
 
     private void handleRegistration() {
         try {
+
             validateUserInput();
-            int reg = registrationService.registerUser(
-                    phoneNumberField.getText(),
-                    emailField.getText(),
-                    nameField.getText(),
-                    passwordField.getText(),
-                    confirmPasswordField.getText(),
-                    Date.valueOf(dateOfBirthPicker.getValue()),
-                    maleRadioButton.isSelected() ? "Male" : "Female",
-                    countryComboBox.getValue());
 
-            if (reg == 0) {
-                showAlert("User Already Exists", Alert.AlertType.WARNING);
-            } else if (reg == 1) {
-                showAlert("User Added Successfully", Alert.AlertType.INFORMATION);
-            } else if (reg == 2) {
-                showAlert("Any specific message...", Alert.AlertType.INFORMATION);
-            }
+            String phoneNumber = phoneNumberField.getText();
+            String name = nameField.getText();
+            String email = emailField.getText();
+            String password = passwordField.getText();
+            Date dateOfBirth = Date.valueOf(dateOfBirthPicker.getValue());
+            String gender = maleRadioButton.isSelected() ? "Male" : "Female";
+            String country = countryComboBox.getValue();
 
-        } catch (RemoteException | IllegalArgumentException e) {
-            showAlert(e.getMessage(), Alert.AlertType.ERROR);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            UserRegistrationDTO userRegistrationDTO = new UserRegistrationDTO(
+                    phoneNumber, name, email, password, gender, country, dateOfBirth
+            );
+
+            int registrationResult = registrationService.registerUser(userRegistrationDTO);
+            handleRegistrationResult(registrationResult);
+
+        } catch (IllegalArgumentException e) {
+            remoteServiceHandler.showAlert(e.getMessage(), Alert.AlertType.ERROR);
+        } catch (RemoteException | SQLException e) {
+            handleException("Error during registration", e);
+        } finally {
+            clearRegistrationFields();
         }
-
-        nameField.clear();
-        phoneNumberField.clear();
-        passwordField.clear();
-        confirmPasswordField.clear();
     }
-    private void validateUserInput() throws IllegalArgumentException {
+    private void handleException(String message, Exception exception) {
+        remoteServiceHandler.showAlert(message + ": " + exception.getMessage(), Alert.AlertType.ERROR);
+    }
+    private void validateUserInput() {
         if (nameField.getText().isEmpty() || phoneNumberField.getText().isEmpty() ||
                 emailField.getText().isEmpty() || passwordField.getText().isEmpty() ||
                 confirmPasswordField.getText().isEmpty() || dateOfBirthPicker.getValue() == null ||
@@ -87,15 +96,23 @@ public class RegisterController implements Initializable {
             throw new IllegalArgumentException("Date of birth must be in the past");
         }
     }
-    private void showAlert(String content, Alert.AlertType alertType) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle("User Services");
-        alert.setHeaderText(null);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
     private boolean isPhoneNumberValid(String phoneNumber) {
         return phoneNumber.matches("[0-9]+");
+    }
+    private void clearRegistrationFields() {
+        nameField.clear();
+        phoneNumberField.clear();
+        emailField.clear();
+        passwordField.clear();
+        confirmPasswordField.clear();
+        dateOfBirthPicker.setValue(null);
+    }
+    private void handleRegistrationResult(int registrationResult) {
+        if (registrationResult == 0) {
+            remoteServiceHandler.showAlert("User is Already Existed", Alert.AlertType.INFORMATION);
+        } else if (registrationResult == 1) {
+            remoteServiceHandler.showAlert("Sign Up Successfully", Alert.AlertType.INFORMATION);
+        }
     }
 
 }

@@ -7,6 +7,7 @@ import Model.Entities.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,11 +20,12 @@ public class ContactsRepository implements Repository<Contact, Integer> {
     }
     @Override
     public void save(Contact contact) throws SQLException {
-        String query = "INSERT INTO Contacts (UserID, FriendID) VALUES (?, ?)";
+        String query = "INSERT INTO UserContacts (UserID, FriendID, CreationDate) VALUES (?, ?, ?)";
 
         try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
             preparedStatement.setInt(1, contact.getUserID());
             preparedStatement.setInt(2, contact.getFriendID());
+            preparedStatement.setTimestamp(3, contact.getCreationDate());
             preparedStatement.executeUpdate();
         }
     }

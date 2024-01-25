@@ -54,11 +54,12 @@ public class InvitationService {
         userNotificationList = getInvitations();
 
         invitationId = userNotificationList.stream()
-                .filter(e-> e.getSenderID()==UserInvitationIdToBeDeleted)
+                .filter(e-> e.getSenderID() == UserInvitationIdToBeDeleted)
                         .map(UserNotification::getNotificationID).findAny();
 
         if(invitationId.isPresent()){
             try {
+                System.out.println("NotificationID " + invitationId.get());
                 userNotificationRepository.deleteById(invitationId.get());
             } catch (SQLException e) {
                 throw new RuntimeException(e);

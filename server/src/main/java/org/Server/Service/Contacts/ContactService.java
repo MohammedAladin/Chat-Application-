@@ -7,6 +7,7 @@ import org.Server.Repository.ContactsRepository;
 import org.Server.Service.User.UserService;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,9 +34,12 @@ public class ContactService {
         User acceptedUser;
         try {
              acceptedUser = userService.existsById(acceptedUserPhoneNumber);
-             invitationService.deleteInvitation(acceptedUser.getUserID());
-//             Contact contact = new Contact()
-//             contactsRepository.save(loggedUser.getUserID(), acceptedUser.getUserID());
+             if(acceptedUser!=null){
+                 invitationService.deleteInvitation(acceptedUser.getUserID());
+
+//                 Contact contact = new Contact(loggedUser.getUserID(),acceptedUser.getUserID(),new Timestamp(System.currentTimeMillis()));
+//                 contactsRepository.save(contact);
+             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

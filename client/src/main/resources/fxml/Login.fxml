@@ -26,7 +26,7 @@
          <children>
             <HBox alignment="CENTER">
                <children>
-                     <TextField fx:id="phone_field" prefHeight="30.0" prefWidth="390.0" promptText="Phone number">
+                     <TextField fx:id="phoneField" prefHeight="30.0" prefWidth="390.0" promptText="Phone number">
                          <font>
                              <Font name="Segoe UI" size="13.0" />
                          </font>
@@ -41,7 +41,7 @@
             </HBox>
             <HBox alignment="CENTER">
                <children>
-                     <PasswordField fx:id="password_field" prefHeight="30.0" prefWidth="390.0" promptText="Password">
+                     <PasswordField fx:id="passwordField" prefHeight="30.0" prefWidth="390.0" promptText="Password">
                          <font>
                              <Font size="13.0" />
                          </font>
@@ -53,7 +53,7 @@
             </HBox>
             <HBox alignment="CENTER">
                <children>
-                     <Button fx:id="signing_button" mnemonicParsing="false" prefHeight="16.0" prefWidth="178.0" text="Sign In">
+                     <Button fx:id="signingButton" mnemonicParsing="false" prefHeight="16.0" prefWidth="178.0" text="Sign In">
                          <font>
                              <Font name="Segoe UI Italic" size="12.0" />
                          </font>
@@ -77,7 +77,7 @@
             </HBox>
             <HBox alignment="CENTER">
                <children>
-                     <Label fx:id="register_label" prefHeight="36.0" prefWidth="61.0" styleClass="login_register_label" text="Register!">
+                     <Label fx:id="registerLabel" prefHeight="36.0" prefWidth="61.0" styleClass="login_register_label" text="Register!">
                          <font>
                              <Font name="Verdana" size="13.0" />
                          </font>

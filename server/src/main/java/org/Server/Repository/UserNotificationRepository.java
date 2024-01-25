@@ -38,8 +38,16 @@ public class UserNotificationRepository implements Repository<UserNotification,I
         return null;
     }
     @Override
-    public void deleteById(Integer integer) throws SQLException {
+    public void deleteById(Integer notificationId) throws SQLException {
+        String query = "DELETE FROM UserNotifications WHERE NotificationID = ?";
+        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
+            preparedStatement.setInt(1, notificationId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
+
     public List<UserNotification> getInvitationsForUser(int userID) throws SQLException {
 
         List<UserNotification> userNotifications = new ArrayList<>();
@@ -58,7 +66,7 @@ public class UserNotificationRepository implements Repository<UserNotification,I
     }
     public UserNotification getNotificationFromResultSet(ResultSet resultSet) throws SQLException {
         UserNotification userNotification = new UserNotification();
-        //userNotification.setNotificationID(resultSet.getInt("NotificationID"));
+        userNotification.setNotificationID(resultSet.getInt("NotificationID"));
         userNotification.setReceiverID(resultSet.getInt("ReceiverID"));
         userNotification.setSenderID(resultSet.getInt("SenderID"));
         userNotification.setNotificationMessage(resultSet.getString("NotificationMessage"));
