@@ -1,5 +1,4 @@
 package org.Server;
-
 import Model.Entities.User;
 import org.Server.Repository.ContactsRepository;
 import org.Server.Repository.DatabaseConnectionManager;
@@ -14,10 +13,9 @@ import java.rmi.RemoteException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-
 public class TestApp {
     public static void main(String[] args) {
-        // Creating user1
+
         User user1 = new User(
                 "123456789",
                 "John Doe",
@@ -47,10 +45,7 @@ public class TestApp {
                 Timestamp.valueOf("2022-01-02 10:30:00")
         );
 
-
         try {
-
-
             DatabaseConnectionManager connectionManager = DatabaseConnectionManager.getInstance();
             UserService userService = new UserService(new UserRepository(connectionManager.getMyConnection()));
 //            userService.registerUser(user1);

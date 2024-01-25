@@ -17,34 +17,31 @@ import java.util.ResourceBundle;
 
 public class RegisterController implements Initializable {
     @FXML
-    private TextField nameField;
+    public TextField nameField;
     @FXML
-    private TextField phoneNumberField;
+    public TextField phoneNumberField;
     @FXML
     public TextField emailField;
     @FXML
-    private PasswordField passwordField;
+    public PasswordField passwordField;
     @FXML
-    private PasswordField confirmPasswordField;
+    public PasswordField confirmPasswordField;
     @FXML
-    private DatePicker dateOfBirthPicker;
+    public DatePicker dateOfBirthPicker;
     @FXML
+    public RadioButton maleRadioButton;
+    @FXML
+    public ComboBox<String> countryComboBox;
+    @FXML
+    public Button registerButton;
 
-    private RadioButton maleRadioButton;
-    @FXML
-    private ComboBox<String> countryComboBox;
-    @FXML
-    private Button registerButton;
-    @FXML
-    RemoteRegistrationService registrationService;
 
-    private RemoteServiceHandler remoteServiceHandler;
+    public RemoteServiceHandler remoteServiceHandler;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         remoteServiceHandler = RemoteServiceHandler.getInstance();
-        registrationService = remoteServiceHandler.getRegistrationService();
         registerButton.setOnAction(e -> handleRegistration());
     }
 
@@ -65,7 +62,7 @@ public class RegisterController implements Initializable {
                     phoneNumber, name, email, password, gender, country, dateOfBirth
             );
 
-            int registrationResult = registrationService.registerUser(userRegistrationDTO);
+            int registrationResult = remoteServiceHandler.getRegistrationService().registerUser(userRegistrationDTO);
             handleRegistrationResult(registrationResult);
 
         } catch (IllegalArgumentException e) {

@@ -27,6 +27,8 @@ public class ViewFactory {
         }
         if(stage==null){
             stage = new Stage();
+            stage.setMinWidth(400);
+            stage.setMinHeight(600);
         }
         stage.setScene(scene);
         stage.setTitle("Chat App");
