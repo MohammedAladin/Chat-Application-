@@ -35,10 +35,10 @@ public class ContactService {
         try {
              acceptedUser = userService.existsById(acceptedUserPhoneNumber);
              if(acceptedUser!=null){
-                 invitationService.deleteInvitation(acceptedUser.getUserID());
+//                 invitationService.deleteInvitation(acceptedUser.getUserID());
 
-//                 Contact contact = new Contact(loggedUser.getUserID(),acceptedUser.getUserID(),new Timestamp(System.currentTimeMillis()));
-//                 contactsRepository.save(contact);
+                 Contact contact = new Contact(loggedUser.getUserID(),acceptedUser.getUserID(),new Timestamp(System.currentTimeMillis()));
+                 contactsRepository.save(contact);
              }
         } catch (SQLException e) {
             throw new RuntimeException(e);

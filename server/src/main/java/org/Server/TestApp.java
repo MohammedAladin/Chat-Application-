@@ -69,7 +69,6 @@ public class TestApp {
             );
 
             contactService.acceptContact(user1.getPhoneNumber());
-            System.out.println("User2 Has Accepted the Invitation from User1");
 
         } catch (RemoteException | SQLException e) {
             throw new RuntimeException(e);
