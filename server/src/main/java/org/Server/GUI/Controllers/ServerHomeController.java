@@ -3,11 +3,9 @@ package org.Server.GUI.Controllers;
 import Interfaces.ServiceFactoryI;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import org.Server.Repository.DatabaseConnectionManager;
 import org.Server.Repository.UserRepository;
 import org.Server.Service.Factories.ServiceFactory;
-import org.Server.Service.Factories.UserServiceFactory;
 import org.Server.Service.User.LoginService;
 import org.Server.Service.User.RegistrationService;
 import org.Server.Service.User.UserService;
@@ -19,7 +17,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 
-public class ServerManager implements Initializable {
+public class ServerHomeController implements Initializable {
     private RegistrationService registrationService;
     private LoginService loginService;
     private Registry registry;

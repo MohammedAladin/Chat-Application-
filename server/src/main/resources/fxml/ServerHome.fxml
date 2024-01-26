@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/ServerHome.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Server.GUI.Controllers.ServerHomeController">
+   <center>
+      <VBox fx:id="buttons_container" alignment="CENTER" prefHeight="400.0" prefWidth="642.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Server Manager">
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER">
+               <children>
+                  <Button fx:id="start_button" mnemonicParsing="false" onAction="#start" text="Start">
+                     <HBox.margin>
+                        <Insets right="80.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="stop_button" mnemonicParsing="false" onAction="#stop" text="Stop" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="50.0" left="50.0" right="50.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <TextField fx:id="announcement_field" prefHeight="26.0" prefWidth="449.0" promptText="Send Announcement">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button fx:id="announce_button" alignment="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="136.0" text="Announce">
+                     <HBox.margin>
+                        <Insets left="15.0" right="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

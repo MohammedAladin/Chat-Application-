@@ -2,7 +2,7 @@
         -fx-background-color: linear-gradient(to bottom, #6E00FF, #9C00FF);
 }
 
-#start_button, #stop_button {
+#start_button, #stop_button, #announce_button {
     -fx-background-color: linear-gradient(to bottom, #6E00FF, #9C00FF);
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 1.2em;
@@ -15,9 +15,18 @@
 }
 
 #buttons_container {
+        -fx-background-color: linear-gradient(to bottom, #F5F5F5, #DCDCDC);
+
 }
 
 #buttons_container Label {
 
+}
+
+#announcement_field {
+    -fx-background-color: linear-gradient(to bottom, #808080, #A9A9A9);
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 1.2em;
+    -fx-padding: 8 16;
 }
 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Server.GUI.Controllers.ServerSideBarController">
+   <left>
+      <VBox fx:id="side_bar" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="60.0" stylesheets="@../styles/ServerSideBar.css" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="home_icon" fitHeight="25.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/home.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fx:id="statistics_icon" fitHeight="25.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/statistics.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fx:id="dashboard_icon" fitHeight="25.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/dashboard.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+            </ImageView>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
