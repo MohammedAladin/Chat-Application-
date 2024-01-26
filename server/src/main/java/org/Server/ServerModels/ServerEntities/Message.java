@@ -10,8 +10,7 @@ public class Message {
     private Timestamp messageTimestamp;
     private boolean isAttachment;
 
-    public Message(int messageID, int senderID, int receiverID, String messageContent, Timestamp messageTimestamp, boolean isAttachment) {
-        this.messageID = messageID;
+    public Message(int senderID, int receiverID, String messageContent, Timestamp messageTimestamp, boolean isAttachment) {
         this.senderID = senderID;
         this.receiverID = receiverID;
         this.messageContent = messageContent;

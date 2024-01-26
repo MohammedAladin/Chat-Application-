@@ -11,8 +11,8 @@ import java.sql.Connection;
 
 public class MessageRepository implements Repository<Message,Integer> {
     private final Connection connection;
-    public MessageRepository(Connection connection) {
-        this.connection = connection;
+    public MessageRepository() {
+        this.connection = DatabaseConnectionManager.getInstance().getMyConnection();
     }
 
     @Override

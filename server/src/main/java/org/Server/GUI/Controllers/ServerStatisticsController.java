@@ -33,6 +33,7 @@ public class ServerStatisticsController implements Initializable {
 
         user_gender.setData(genderChart);
 
+
         ObservableList<PieChart.Data> countryChart = FXCollections.observableArrayList(
                 new PieChart.Data("Egypt", 30),
                 new PieChart.Data("Bangladesh", 20)
