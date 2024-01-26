@@ -1,0 +1,117 @@
+/* Add these styles to your existing CSS */
+
+/* Styles for Labels */
+.label {
+    -fx-font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4d2890; /* Use the specified color */
+}
+.login_container {
+    -fx-background-color: linear-gradient(to bottom, #A0A0A0, #707070);
+}
+
+
+.login_logo_container {
+    -fx-background-color: linear-gradient(to bottom, #6E00FF, #9C00FF);
+    -fx-alignment: center;
+}
+
+
+.login_logo_container Text{
+    -fx-font-size: 2em;
+    -fx-fill: #FFFFFF;
+
+}
+
+.login_logo_container FontAwsomeIconView{
+    -fx-fill: #ecf39e;
+}
+
+.login_form_container{
+    -fx-spacing:15;
+    -fx-alignment: top_left;
+}
+
+.login_form_container Label{
+    -fx-text-fill: #727272;
+    -fx-font-family: Work Sans;
+    -fx-font-size: 20px;
+    -fx-font-style: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: -0.5px;
+}
+
+.input_field{
+    -fx-fill: white;
+    -fx-pref-height: 35;
+    -fx-font-size: 1.2em;
+}
+
+.login_form_container Button:hover{
+    -fx-cursor:hand;
+}
+
+.login_register_label:hover{
+    -fx-cursor:hand;
+}
+
+#signing_button {
+    -fx-background-color: linear-gradient(to bottom, #6E00FF, #9C00FF);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8 16;
+    -fx-border-radius: 5;
+}
+/* Styles for TextFields and PasswordFields */
+.text-field, .password-field {
+    -fx-font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #808080; /* Placeholder text color */
+}
+
+/* Styles for DatePicker */
+.date-picker {
+    -fx-font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #808080; /* Placeholder text color */
+}
+
+/* Styles for RadioButton */
+.radio-button {
+    -fx-font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: #4d2890; /* Use the specified color */
+}
+
+/* Styles for ComboBox */
+.combo-box {
+    -fx-font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #808080; /* Placeholder text color */
+    -fx-background-color: #fff; /* ComboBox background color */
+    -fx-border-color: #ccc; /* ComboBox border color */
+}
+
+.ezzo {
+    -fx-background-color: linear-gradient(to right, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+    -fx-border-radius: 8px;
+    -fx-border-style: none;
+    -fx-box-sizing: border-box;
+    -fx-text-fill: #FFFFFF;
+    -fx-cursor: hand;
+    -fx-font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    -fx-font-size: 16px;
+    -fx-font-weight: 500;
+
+    -fx-text-align: center;
+    -fx-text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    -fx-transition: all 0.5s;
+    -fx-user-select: none;
+    -fx-touch-action: manipulation;
+}
+
+.ezzo:hover {
+    -fx-box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+    -fx-transition-duration: 0.1s;
+}
