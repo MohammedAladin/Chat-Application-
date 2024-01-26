@@ -10,7 +10,7 @@
     -fx-border-radius: 5;
 }
 
-#start_button:hover, #stop_button:hover {
+#start_button:hover, #stop_button:hover, #announce_button:hover {
     -fx-background-color: linear-gradient(to bottom, #45A049, #4CAF50);
 }
 
