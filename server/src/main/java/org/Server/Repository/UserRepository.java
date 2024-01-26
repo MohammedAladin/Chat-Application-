@@ -1,19 +1,18 @@
 package org.Server.Repository;
 
-import Interfaces.Repository;
-import Model.DTO.UserRegistrationDTO;
-import Model.Entities.User;
-import Model.Enums.StatusEnum;
+import org.Server.RepoInterfaces.UserRepoInterface;
+import org.Server.ServerModels.ServerEntities.User;
+import org.Server.ServerModels.Enums.StatusEnum;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserRepository implements Repository<User, String> {
+public class UserRepository implements UserRepoInterface {
     private final Connection myConnection;
 
-    public UserRepository(Connection myConnection) {
-        this.myConnection = myConnection;
+    public UserRepository() {
+        myConnection = DatabaseConnectionManager.getInstance().getMyConnection();
     }
 
     @Override
@@ -41,8 +40,8 @@ public class UserRepository implements Repository<User, String> {
         }
     }
 
-    @Override
-    public User findById(String phoneNumber) throws SQLException {
+
+    public User findByPhoneNumber(String phoneNumber) throws SQLException {
         String query = "SELECT * FROM UserAccounts WHERE PhoneNumber = ?";
         User user = null;
 
@@ -62,7 +61,27 @@ public class UserRepository implements Repository<User, String> {
         return user;
     }
     @Override
-    public void deleteById(String s) throws SQLException {
+    public User findById(Integer id) throws SQLException {
+        String query = "SELECT * FROM UserAccounts WHERE userID = ?";
+        User user = null;
+
+        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    user = getUserFromResultSet(resultSet);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
+    @Override
+    public void deleteById(Integer id) throws SQLException {
 
     }
 
@@ -86,7 +105,7 @@ public class UserRepository implements Repository<User, String> {
         return userList;
     }
     public void updateStatus(String phoneNumber, StatusEnum status) throws SQLException {
-        String query = "UPDATE Users SET Status=? WHERE PhoneNumber=?";
+        String query = "UPDATE UserAccounts SET UserMode=? WHERE PhoneNumber=?";
 
         try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
             preparedStatement.setString(1, status.name());

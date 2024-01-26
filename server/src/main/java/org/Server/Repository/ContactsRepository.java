@@ -1,14 +1,11 @@
 package org.Server.Repository;
 
-import Interfaces.Repository;
-import Model.Entities.Contact;
-import Model.Entities.User;
+import org.Server.RepoInterfaces.Repository;
+import org.Server.ServerModels.ServerEntities.Contact;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ContactsRepository implements Repository<Contact, Integer> {

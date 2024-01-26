@@ -1,55 +1,49 @@
 package org.Server.Service.User;
 
+import Exceptions.CustomException;
+import Interfaces.RemoteUserService;
 import Model.DTO.UserLoginDTO;
 import Model.DTO.UserRegistrationDTO;
-import Model.Entities.User;
-import Model.Enums.StatusEnum;
+import org.Server.RepoInterfaces.UserRepoInterface;
 import org.Server.Repository.UserRepository;
-import org.Server.Service.UserSession;
-
+import org.Server.ServerModels.ServerEntities.User;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 
-public class UserService {
-    private final UserRepository userRepository;
-    public UserService(UserRepository userRepository) throws RemoteException {
+public class UserService extends UnicastRemoteObject implements RemoteUserService {
+
+    RegistrationService registrationService;
+    LoginService loginService;
+    UserRepoInterface userRepository;
+    public UserService() throws RemoteException {
         super();
-        this.userRepository = userRepository;
+        userRepository = new UserRepository();
+        registrationService = new RegistrationService((UserRepository)userRepository);
+        loginService = new LoginService((UserRepository) userRepository);
     }
-    public boolean registerUser(User user) throws RemoteException {
+
+    @Override
+    public boolean registerUser(UserRegistrationDTO user) throws RemoteException {
         try {
-            userRepository.save(user);
-            System.out.println("User registered successfully: " + user.getPhoneNumber());
-            return true;
-        } catch (SQLException e) {
-            handleSQLException("Error registering user", e);
+            return registrationService.registerUser(user);
+        } catch (CustomException | SQLException e) {
+            throw new RuntimeException(e);
         }
-        return false;
     }
 
-    public boolean signInUser(UserLoginDTO userLoginDTO) throws SQLException, RemoteException {
+    public boolean signInUser(UserLoginDTO userLoginDTO) throws RemoteException {
+        return loginService.loginUser(userLoginDTO);
+    }
+    public User existsByPhoneNumber(String phone){
         try {
-            User signedUser = userRepository.findById(userLoginDTO.getPhoneNumber());
-
-            if (signedUser != null && signedUser.getPassword().equals(userLoginDTO.getPassword())) {
-                userRepository.updateStatus(userLoginDTO.getPhoneNumber(), StatusEnum.ONLINE);
-
-                UserSession.setCurrentUser(signedUser);
-                System.out.println("User signed in successfully: " + userLoginDTO.getPhoneNumber());
-                return true;
-            }
+            return userRepository.findByPhoneNumber(phone);
         } catch (SQLException e) {
-            handleSQLException("Error signing in user", e);
+            throw new RuntimeException(e);
         }
-        return false;
+
     }
 
-    public User existsById(String phoneNumber) throws SQLException {
-        return userRepository.findById(phoneNumber);
-    }
 
-    private void handleSQLException(String message, SQLException e) {
-        System.err.println(message);
-        e.printStackTrace();
-    }
+
 }

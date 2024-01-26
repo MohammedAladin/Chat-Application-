@@ -1,15 +1,12 @@
 package org.Server.Service.Contacts;
 
-import Model.Entities.Contact;
-import Model.Entities.User;
-import Model.Entities.UserNotification;
+import org.Server.ServerModels.ServerEntities.Contact;
+import org.Server.ServerModels.ServerEntities.User;
 import org.Server.Repository.ContactsRepository;
 import org.Server.Service.User.UserService;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.List;
-import java.util.Optional;
 
 public class ContactService {
     private final InvitationService invitationService;
@@ -33,7 +30,7 @@ public class ContactService {
     public void acceptContact(String acceptedUserPhoneNumber){
         User acceptedUser;
         try {
-             acceptedUser = userService.existsById(acceptedUserPhoneNumber);
+             acceptedUser = userService.existsByPhoneNumber(acceptedUserPhoneNumber);
              if(acceptedUser!=null){
 //                 invitationService.deleteInvitation(acceptedUser.getUserID());
 
@@ -47,11 +44,7 @@ public class ContactService {
     }
     public void cancelContact(String canceledUserPhoneNumber){
         User canceledUser;
-        try {
-            canceledUser = userService.existsById(canceledUserPhoneNumber);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        canceledUser = userService.existsByPhoneNumber(canceledUserPhoneNumber);
         invitationService.deleteInvitation(canceledUser.getUserID());
     }
 

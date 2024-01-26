@@ -1,8 +1,7 @@
 module shared {
     exports Interfaces;
-    exports Model.Entities;
-    exports Model.Enums;
     exports Model.DTO;
+    exports Exceptions;
 
     requires java.rmi;
     requires java.sql;

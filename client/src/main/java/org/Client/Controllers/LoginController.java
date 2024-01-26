@@ -1,5 +1,4 @@
 package org.Client.Controllers;
-import Interfaces.RemoteLoginService;
 import Model.DTO.UserLoginDTO;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -7,10 +6,7 @@ import org.Client.Models.Model;
 
 
 import java.net.URL;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
@@ -35,28 +31,26 @@ public class LoginController implements Initializable {
             String password = passwordField.getText();
             UserLoginDTO userLogin = new UserLoginDTO(phoneNumber, password);
 
-            int loginResult = remoteServiceHandler.getRemoteLoginService().loginUser(userLogin);
+            boolean loginResult = remoteServiceHandler.getRemoteUserService().signInUser(userLogin);
             handleLoginResult(loginResult);
 
         }catch (IllegalArgumentException e) {
             remoteServiceHandler.showAlert(e.getMessage(), Alert.AlertType.ERROR);
         } catch (RemoteException e) {
-            handleException("Error during login", e);
+            handleException(e);
         } finally {
             clearLoginFields();
         }
     }
-    private void handleLoginResult(int loginResult) {
-        if (loginResult == 0) {
+    private void handleLoginResult(boolean loginResult) {
+        if (loginResult) {
             remoteServiceHandler.showAlert("Login Successful", Alert.AlertType.INFORMATION);
-        } else if (loginResult == 1) {
-            remoteServiceHandler.showAlert("Invalid Phone Number or Password", Alert.AlertType.WARNING);
         } else {
-            remoteServiceHandler.showAlert("User Services Failed", Alert.AlertType.ERROR);
+            remoteServiceHandler.showAlert("Invalid Phone Number or Password", Alert.AlertType.WARNING);
         }
     }
-    private void handleException(String message, Exception exception) {
-        remoteServiceHandler.showAlert(message + ": " + exception.getMessage(), Alert.AlertType.ERROR);
+    private void handleException(Exception exception) {
+        remoteServiceHandler.showAlert("Error during login" + ": " + exception.getMessage(), Alert.AlertType.ERROR);
     }
     private void validateUserInputLogin() {
         if (phoneField.getText().isEmpty() || passwordField.getText().isEmpty()) {

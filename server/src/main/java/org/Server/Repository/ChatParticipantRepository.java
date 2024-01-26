@@ -2,8 +2,8 @@ package org.Server.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import Interfaces.Repository;
-import Model.Entities.ChatParticipants;
+import org.Server.RepoInterfaces.Repository;
+import org.Server.ServerModels.ServerEntities.ChatParticipants;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

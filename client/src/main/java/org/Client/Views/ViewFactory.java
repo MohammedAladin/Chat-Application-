@@ -7,15 +7,15 @@ public class ViewFactory {
     Stage stage;
     public ViewFactory(){}
     public void showRegisterWindow(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Register.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/Register.fxml"));
         sceneMaker(loader);
     }
     public void showLoginWindow(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/Login.fxml"));
         sceneMaker(loader);
     }
     public void showRegistrationWindow(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Register.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/Register.fxml"));
         sceneMaker(loader);
     }
     private void sceneMaker(FXMLLoader loader) {
@@ -31,7 +31,7 @@ public class ViewFactory {
             stage.setMinHeight(600);
         }
         stage.setScene(scene);
-        stage.setTitle("Chat App");
+        stage.setTitle("Chat ServerApplication");
         stage.show();
         stage.setResizable(true);
     }

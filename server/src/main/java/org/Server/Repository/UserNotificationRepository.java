@@ -1,8 +1,7 @@
 package org.Server.Repository;
 
-import Interfaces.Repository;
-import Model.Entities.User;
-import Model.Entities.UserNotification;
+import org.Server.RepoInterfaces.Repository;
+import org.Server.ServerModels.ServerEntities.UserNotification;
 
 import java.sql.Connection;
 import java.util.ArrayList;

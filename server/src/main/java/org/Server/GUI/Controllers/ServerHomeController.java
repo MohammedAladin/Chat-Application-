@@ -1,11 +1,12 @@
 package org.Server.GUI.Controllers;
 
-import Interfaces.ServiceFactoryI;
+import Interfaces.RemoteUserService;
+import Interfaces.ServicesFactoryInterface;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import org.Server.Repository.DatabaseConnectionManager;
 import org.Server.Repository.UserRepository;
-import org.Server.Service.Factories.ServiceFactory;
+import org.Server.Service.Factories.ServicesFactory;
 import org.Server.Service.User.LoginService;
 import org.Server.Service.User.RegistrationService;
 import org.Server.Service.User.UserService;
@@ -18,19 +19,15 @@ import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 
 public class ServerHomeController implements Initializable {
-    private RegistrationService registrationService;
-    private LoginService loginService;
+    private RemoteUserService userService;
     private Registry registry;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            DatabaseConnectionManager connectionManager = DatabaseConnectionManager.getInstance();
-            UserService userService = new UserService(new UserRepository(connectionManager.getMyConnection()));
-            ServiceFactoryI serviceFactory = new ServiceFactory(userService);
-            registrationService = (RegistrationService) serviceFactory.createUserService().getRegistrationService();
-            loginService = (LoginService) serviceFactory.createUserService().getLoginService();
+            ServicesFactoryInterface serviceFactory = new ServicesFactory();
+            userService = serviceFactory.createUserService();
             registry = LocateRegistry.createRegistry(1099);
         } catch (RemoteException e) {
             throw new RuntimeException(e);
@@ -41,8 +38,7 @@ public class ServerHomeController implements Initializable {
     @FXML
     private void start (){
         try {
-            registry.rebind("loginService", loginService);
-            registry.rebind("registrationService", registrationService);
+            registry.rebind("UserServices", userService);
             System.out.println("working");
         } catch (RemoteException e) {
             throw new RuntimeException(e);

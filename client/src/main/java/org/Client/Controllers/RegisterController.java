@@ -1,17 +1,12 @@
 package org.Client.Controllers;
-import Interfaces.RemoteRegistrationService;
 import Model.DTO.UserRegistrationDTO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import java.net.URL;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -62,19 +57,19 @@ public class RegisterController implements Initializable {
                     phoneNumber, name, email, password, gender, country, dateOfBirth
             );
 
-            int registrationResult = remoteServiceHandler.getRegistrationService().registerUser(userRegistrationDTO);
+            boolean registrationResult = remoteServiceHandler.getRemoteUserService().registerUser(userRegistrationDTO);
             handleRegistrationResult(registrationResult);
 
         } catch (IllegalArgumentException e) {
             remoteServiceHandler.showAlert(e.getMessage(), Alert.AlertType.ERROR);
-        } catch (RemoteException | SQLException e) {
-            handleException("Error during registration", e);
+        } catch (RemoteException e) {
+            handleException(e);
         } finally {
             clearRegistrationFields();
         }
     }
-    private void handleException(String message, Exception exception) {
-        remoteServiceHandler.showAlert(message + ": " + exception.getMessage(), Alert.AlertType.ERROR);
+    private void handleException(Exception exception) {
+        remoteServiceHandler.showAlert("Error during registration" + ": " + exception.getMessage(), Alert.AlertType.ERROR);
     }
     private void validateUserInput() {
         if (nameField.getText().isEmpty() || phoneNumberField.getText().isEmpty() ||
@@ -104,10 +99,10 @@ public class RegisterController implements Initializable {
         confirmPasswordField.clear();
         dateOfBirthPicker.setValue(null);
     }
-    private void handleRegistrationResult(int registrationResult) {
-        if (registrationResult == 0) {
+    private void handleRegistrationResult(boolean registrationResult) {
+        if (registrationResult) {
             remoteServiceHandler.showAlert("User is Already Existed", Alert.AlertType.INFORMATION);
-        } else if (registrationResult == 1) {
+        } else {
             remoteServiceHandler.showAlert("Sign Up Successfully", Alert.AlertType.INFORMATION);
         }
     }

@@ -1,9 +1,8 @@
 package org.Server;
-import Model.Entities.User;
+import org.Server.ServerModels.ServerEntities.User;
 import org.Server.Repository.ContactsRepository;
 import org.Server.Repository.DatabaseConnectionManager;
 import org.Server.Repository.UserNotificationRepository;
-import org.Server.Repository.UserRepository;
 import org.Server.Service.Contacts.ContactService;
 import org.Server.Service.Contacts.InvitationService;
 import org.Server.Service.User.UserService;
@@ -47,13 +46,13 @@ public class TestApp {
 
         try {
             DatabaseConnectionManager connectionManager = DatabaseConnectionManager.getInstance();
-            UserService userService = new UserService(new UserRepository(connectionManager.getMyConnection()));
+            UserService userService = new UserService();
 //            userService.registerUser(user1);
 //            userService.registerUser(user2);
 
-            UserSession.setCurrentUser(userService.existsById(user2.getPhoneNumber()));
-            System.out.println("Logged Userid " + userService.existsById(user2.getPhoneNumber()).getUserID());
-            System.out.println("User To Be Accepted Userid " + userService.existsById(user1.getPhoneNumber()).getUserID());
+            UserSession.setCurrentUser(userService.existsByPhoneNumber(user2.getPhoneNumber()));
+            System.out.println("Logged Userid " + userService.existsByPhoneNumber(user2.getPhoneNumber()).getUserID());
+            System.out.println("User To Be Accepted Userid " + userService.existsByPhoneNumber(user1.getPhoneNumber()).getUserID());
 
 
             InvitationService invitationService = new InvitationService(
@@ -70,7 +69,7 @@ public class TestApp {
 
             contactService.acceptContact(user1.getPhoneNumber());
 
-        } catch (RemoteException | SQLException e) {
+        } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
 

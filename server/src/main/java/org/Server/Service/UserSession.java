@@ -1,6 +1,5 @@
 package org.Server.Service;
-import Model.DTO.UserLoginDTO;
-import Model.Entities.User;
+import org.Server.ServerModels.ServerEntities.User;
 
 public class UserSession {
     private static User currentUser;

@@ -3,6 +3,7 @@ package org.Client.Controllers;
 
 import Interfaces.RemoteLoginService;
 import Interfaces.RemoteRegistrationService;
+import Interfaces.RemoteUserService;
 import javafx.scene.control.Alert;
 
 import java.rmi.NotBoundException;
@@ -15,36 +16,32 @@ public class RemoteServiceHandler {
     private Registry registry;
     private static RemoteServiceHandler remoteServiceHandler;
 
-    private RemoteServiceHandler(){}
+    private RemoteServiceHandler(){
+        try {
+            registry = LocateRegistry.getRegistry("localhost", 1099);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public static RemoteServiceHandler getInstance(){
         if(remoteServiceHandler == null){
             remoteServiceHandler = new RemoteServiceHandler();
         }
+
         return remoteServiceHandler;
     }
 
-    public RemoteLoginService getRemoteLoginService() {
-        RemoteLoginService remoteLoginService;
+    public RemoteUserService getRemoteUserService() {
+        RemoteUserService remoteUserService;
         try {
-            registry = LocateRegistry.getRegistry("localhost", 1099);
-            remoteLoginService = (RemoteLoginService) registry.lookup("LoginService");
+            remoteUserService = (RemoteUserService) registry.lookup("UserServices");
         } catch (RemoteException | NotBoundException e) {
             throw new RuntimeException(e);
         }
-        return remoteLoginService;
+        return remoteUserService;
     }
 
-    public RemoteRegistrationService getRegistrationService() {
-        RemoteRegistrationService registrationService;
-        try {
-            registry = LocateRegistry.getRegistry("localhost", 1099);
-            registrationService = (RemoteRegistrationService) registry.lookup("RegistrationService");
-        } catch (RemoteException | NotBoundException e) {
-            throw new RuntimeException(e);
-        }
-        return registrationService;
-    }
 
     public void showAlert(String content, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);

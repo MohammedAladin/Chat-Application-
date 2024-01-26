@@ -1,7 +1,7 @@
 package org.Server.Repository;
 
-import Interfaces.Repository;
-import Model.Entities.Message;
+import org.Server.RepoInterfaces.Repository;
+import org.Server.ServerModels.ServerEntities.Message;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -6,14 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import org.Server.App;
+import org.Server.ServerApplication;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static org.Server.App.home;
-import static org.Server.App.statistics;
+import static org.Server.ServerApplication.home;
+import static org.Server.ServerApplication.statistics;
 
 public class ServerSideBarController implements Initializable {
     @Override
@@ -23,11 +23,11 @@ public class ServerSideBarController implements Initializable {
 
     @FXML
     private void showStatistics () {
-        App.sideBar.setCenter(statistics);
+        ServerApplication.sideBar.setCenter(statistics);
     }
 
     @FXML
     private void showHome () {
-        App.sideBar.setCenter(home);
+        ServerApplication.sideBar.setCenter(home);
     }
 }

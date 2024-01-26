@@ -27,7 +27,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>ChatApp/org.openjfx.org.Server.App</mainClass>
+                    <mainClass>ChatApp/org.openjfx.org.Server.ServerApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

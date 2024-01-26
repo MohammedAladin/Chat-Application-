@@ -1,7 +1,7 @@
 package org.Server.Service.Contacts;
 
-import Model.Entities.User;
-import Model.Entities.UserNotification;
+import org.Server.ServerModels.ServerEntities.User;
+import org.Server.ServerModels.ServerEntities.UserNotification;
 import org.Server.Repository.UserNotificationRepository;
 import org.Server.Service.User.UserService;
 import org.Server.Service.UserSession;
@@ -25,14 +25,10 @@ public class InvitationService {
         if(loggedUser==null){
             throw new NullPointerException("You Must Be Signed In");
         }
-        try {
-            invitedUser = userService.existsById(contactPhoneNumber);
+        invitedUser = userService.existsByPhoneNumber(contactPhoneNumber);
 
-            if(invitedUser==null){
-                return;
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Server Error....");
+        if(invitedUser==null){
+            return;
         }
         //try to send invitation from logged user to the new contact
         try {

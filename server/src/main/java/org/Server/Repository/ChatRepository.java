@@ -1,7 +1,7 @@
 package org.Server.Repository;
 
-import Interfaces.Repository;
-import Model.Entities.Chat;
+import org.Server.RepoInterfaces.Repository;
+import org.Server.ServerModels.ServerEntities.Chat;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

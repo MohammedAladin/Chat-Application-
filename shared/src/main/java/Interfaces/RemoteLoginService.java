@@ -1,11 +1,10 @@
 package Interfaces;
 
-
 import Model.DTO.UserLoginDTO;
 
-import java.rmi.Remote;
+import java.io.Serializable;
 import java.rmi.RemoteException;
 
-public interface RemoteLoginService extends Remote {
-    int loginUser(UserLoginDTO userLoginDTO) throws RemoteException;
+public interface RemoteLoginService extends Serializable {
+    boolean loginUser(UserLoginDTO userLoginDTO) throws RemoteException;
 }
