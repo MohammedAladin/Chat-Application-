@@ -1,15 +1,15 @@
 package org.Server.GUI.Controllers;
 
 import Interfaces.RemoteUserService;
+import Interfaces.ServerCallbacks;
 import Interfaces.ServicesFactoryInterface;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import org.Server.Repository.DatabaseConnectionManager;
-import org.Server.Repository.UserRepository;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import org.Server.Service.Factories.ServicesFactory;
-import org.Server.Service.User.LoginService;
-import org.Server.Service.User.RegistrationService;
-import org.Server.Service.User.UserService;
+import org.Server.Service.ServerCallBacksImp;
+
 
 import java.net.URL;
 import java.rmi.NotBoundException;
@@ -19,16 +19,22 @@ import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 
 public class ServerHomeController implements Initializable {
+
+    public Button announceButton;
+    public TextField announcementField;
     private RemoteUserService userService;
     private Registry registry;
-
+    private ServerCallbacks serverCallbacks;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             ServicesFactoryInterface serviceFactory = new ServicesFactory();
             userService = serviceFactory.createUserService();
+            serverCallbacks = new ServerCallBacksImp();
             registry = LocateRegistry.createRegistry(1099);
+
+            announceButton.setOnAction((e)->handleAnnouncement());
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
@@ -39,6 +45,7 @@ public class ServerHomeController implements Initializable {
     private void start (){
         try {
             registry.rebind("UserServices", userService);
+            registry.rebind("Callbacks", serverCallbacks);
             System.out.println("working");
         } catch (RemoteException e) {
             throw new RuntimeException(e);
@@ -52,6 +59,14 @@ public class ServerHomeController implements Initializable {
             }
             System.out.println("stopping");
         } catch (RemoteException | NotBoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private void handleAnnouncement() {
+        String announcement = announcementField.getText();
+        try {
+            serverCallbacks.sendAnnouncement(announcement);
+        } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
     }

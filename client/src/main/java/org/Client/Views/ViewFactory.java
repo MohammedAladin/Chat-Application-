@@ -1,10 +1,34 @@
 package org.Client.Views;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class ViewFactory {
     Stage stage;
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    public String getServerAnnouncement() {
+        return serverAnnouncement.get();
+    }
+
+    public StringProperty serverAnnouncementProperty() {
+        return serverAnnouncement;
+    }
+
+    public void setServerAnnouncement(String serverAnnouncement) {
+        this.serverAnnouncement.set(serverAnnouncement);
+    }
+
+    StringProperty serverAnnouncement = new SimpleStringProperty();
     public ViewFactory(){}
     public void showRegisterWindow(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/Register.fxml"));

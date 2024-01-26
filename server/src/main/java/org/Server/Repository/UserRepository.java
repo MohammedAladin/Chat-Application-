@@ -116,7 +116,18 @@ public class UserRepository implements UserRepoInterface {
             e.printStackTrace();
         }
     }
+    public void updateLoginDate(String phoneNumber, Timestamp lastLogin) throws SQLException {
+        String query = "UPDATE UserAccounts SET LastLogin=? WHERE PhoneNumber=?";
 
+        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
+            preparedStatement.setTimestamp(1, lastLogin);
+            preparedStatement.setString(2, phoneNumber);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void update(String phoneNumber, String fieldName, String value) throws SQLException {
         String query = "UPDATE UserAccounts SET " + fieldName + "=? WHERE PhoneNumber=?";

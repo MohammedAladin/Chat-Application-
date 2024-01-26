@@ -1,8 +1,13 @@
 package org.Client.Controllers;
+import Interfaces.ClientInterface;
+import Interfaces.ServerCallbacks;
 import Model.DTO.UserLoginDTO;
+import javafx.beans.Observable;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.Client.Models.Model;
+import org.Client.Service.ClientServiceImp;
 
 
 import java.net.URL;
@@ -15,10 +20,16 @@ public class LoginController implements Initializable {
     public PasswordField passwordField;
     public TextField phoneField;
     private RemoteServiceHandler remoteServiceHandler;
+    private ClientInterface clientService;
+    private ServerCallbacks serverCallbacks;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         remoteServiceHandler = RemoteServiceHandler.getInstance();
+        Model.getInstance().getViewFactory().serverAnnouncementProperty().addListener((observable, newValue, oldValue)->{
+            remoteServiceHandler.showAlert(oldValue, Alert.AlertType.INFORMATION);
+        } );
         signingButton.setOnAction((e)->handleSignIn());
         registerLabel.setOnMouseClicked(e-> Model.getInstance().getViewFactory().showRegistrationWindow());
     }
@@ -44,7 +55,19 @@ public class LoginController implements Initializable {
     }
     private void handleLoginResult(boolean loginResult) {
         if (loginResult) {
-            remoteServiceHandler.showAlert("Login Successful", Alert.AlertType.INFORMATION);
+            try {
+                remoteServiceHandler.showAlert("Login Successful", Alert.AlertType.INFORMATION);
+
+                clientService = new ClientServiceImp();// client representation to be sent.
+                serverCallbacks =  remoteServiceHandler.getCallbacks();
+
+                serverCallbacks.register(clientService);
+
+            } catch (RemoteException e) {
+                throw new RuntimeException(e);
+            }
+
+
         } else {
             remoteServiceHandler.showAlert("Invalid Phone Number or Password", Alert.AlertType.WARNING);
         }

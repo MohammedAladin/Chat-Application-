@@ -10,7 +10,7 @@
     -fx-border-radius: 5;
 }
 
-#start_button:hover, #stop_button:hover, #announce_button:hover {
+#start_button:hover, #stop_button:hover, #announceButton:hover {
     -fx-background-color: linear-gradient(to bottom, #45A049, #4CAF50);
 }
 
@@ -23,7 +23,7 @@
 
 }
 
-#announcement_field {
+#announcementField {
     -fx-background-color: linear-gradient(to bottom, #808080, #A9A9A9);
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 1.2em;

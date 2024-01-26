@@ -100,7 +100,7 @@ public class RegisterController implements Initializable {
         dateOfBirthPicker.setValue(null);
     }
     private void handleRegistrationResult(boolean registrationResult) {
-        if (registrationResult) {
+        if (!registrationResult) {
             remoteServiceHandler.showAlert("User is Already Existed", Alert.AlertType.INFORMATION);
         } else {
             remoteServiceHandler.showAlert("Sign Up Successfully", Alert.AlertType.INFORMATION);

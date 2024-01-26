@@ -9,10 +9,9 @@ import org.Server.Repository.UserRepository;
 import org.Server.Service.UserSession;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class LoginService implements RemoteLoginService {
-
-
     UserRepoInterface userRepository;
 
     public LoginService(UserRepository userRepository) throws RemoteException {
@@ -27,6 +26,7 @@ public class LoginService implements RemoteLoginService {
             if (signedUser != null && signedUser.getPassword().equals(userLoginDTO.getPassword())) {
                 System.out.println("user phone" + userLoginDTO.getPhoneNumber());
                 userRepository.updateStatus(userLoginDTO.getPhoneNumber(), StatusEnum.ONLINE);
+                userRepository.updateLoginDate(userLoginDTO.getPhoneNumber(), new Timestamp(System.currentTimeMillis()));
 
                 UserSession.setCurrentUser(signedUser);
                 System.out.println("User signed in successfully: " + userLoginDTO.getPhoneNumber());

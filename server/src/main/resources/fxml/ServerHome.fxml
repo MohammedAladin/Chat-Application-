@@ -34,12 +34,12 @@
       </HBox>
       <HBox alignment="CENTER">
          <children>
-            <TextField fx:id="announcement_field" prefHeight="26.0" prefWidth="449.0" promptText="Send Announcement">
+            <TextField fx:id="announcementField" prefHeight="26.0" prefWidth="449.0" promptText="Send Announcement">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>
             </TextField>
-            <Button fx:id="announce_button" alignment="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="136.0" text="Announce">
+            <Button fx:id="announceButton" alignment="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="136.0" text="Announce">
                <HBox.margin>
                   <Insets left="15.0" right="20.0" />
                </HBox.margin>

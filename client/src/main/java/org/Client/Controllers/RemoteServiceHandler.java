@@ -4,6 +4,8 @@ package org.Client.Controllers;
 import Interfaces.RemoteLoginService;
 import Interfaces.RemoteRegistrationService;
 import Interfaces.RemoteUserService;
+import Interfaces.ServerCallbacks;
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
 
 import java.rmi.NotBoundException;
@@ -13,7 +15,7 @@ import java.rmi.registry.Registry;
 
 public class RemoteServiceHandler {
 
-    private Registry registry;
+    private final Registry registry;
     private static RemoteServiceHandler remoteServiceHandler;
 
     private RemoteServiceHandler(){
@@ -23,7 +25,6 @@ public class RemoteServiceHandler {
             throw new RuntimeException(e);
         }
     }
-
     public static RemoteServiceHandler getInstance(){
         if(remoteServiceHandler == null){
             remoteServiceHandler = new RemoteServiceHandler();
@@ -31,7 +32,6 @@ public class RemoteServiceHandler {
 
         return remoteServiceHandler;
     }
-
     public RemoteUserService getRemoteUserService() {
         RemoteUserService remoteUserService;
         try {
@@ -41,13 +41,26 @@ public class RemoteServiceHandler {
         }
         return remoteUserService;
     }
+    public ServerCallbacks getCallbacks(){
+        ServerCallbacks serverCallbacks;
+        try {
+            serverCallbacks = (ServerCallbacks) registry.lookup("Callbacks");
+        } catch (RemoteException | NotBoundException e) {
+            throw new RuntimeException(e);
+        }
+        return serverCallbacks;
+    }
 
 
     public void showAlert(String content, Alert.AlertType alertType) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle("User Services");
-        alert.setHeaderText(null);
-        alert.setContentText(content);
-        alert.showAndWait();
+        Platform.runLater(()->{
+            Alert alert = new Alert(alertType);
+            alert.setTitle("User Services");
+            alert.setHeaderText(null);
+            alert.setContentText(content);
+            alert.showAndWait();
+        });
+
     }
+
 }

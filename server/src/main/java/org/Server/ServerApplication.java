@@ -25,6 +25,7 @@ public class ServerApplication extends Application {
         // Home
         FXMLLoader loader2 = new FXMLLoader (getClass().getResource("/fxml/ServerHome.fxml"));
         home = loader2.load();
+
         // sideBar
         FXMLLoader loader = new FXMLLoader (getClass().getResource("/fxml/ServerSideBar.fxml"));
         sideBar = loader.load();

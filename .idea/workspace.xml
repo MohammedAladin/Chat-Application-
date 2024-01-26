@@ -5,119 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="add server gui side bar, home and statistics">
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/RepoInterfaces/UserRepoInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Factories/ServicesFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shared/src/main/java/Exceptions/CustomException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/RemoteUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/ServicesFactoryInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacksImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/ClientInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/ServerCallbacks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/ClientApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/AuthController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/RemoteServiceHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/RemoteServiceHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Views/ViewFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/resources/Images/reg.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientImages/reg.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/resources/fxml/Auth.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/resources/fxml/Login.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/resources/fxml/Register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/Register.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/resources/styles/Register.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientStyles/Register.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/resources/styles/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientStyles/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/Images/reg.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/fxml/Auth.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/fxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/fxml/Register.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/AuthController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/RegisterController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/RemoteServiceHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/RemoteServiceHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/styles/Register.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/styles/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerHomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerSideBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerSideBarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/AttachmentReopsitory.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/AttachmentReopsitory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/ChatParticipantRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/ChatParticipantRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/ChatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/ChatRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/ContactsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/ContactsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/MessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/MessageRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/UserNotificationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/UserNotificationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/RepoInterfaces/UserRepoInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/RepoInterfaces/UserRepoInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Contacts/ContactService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Contacts/ContactService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Contacts/InvitationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Contacts/InvitationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Factories/ServiceFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Factories/UserServiceFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/User/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/User/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/User/RegistrationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/User/RegistrationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/User/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/User/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/UserSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/UserSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/TestApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/TestApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/AttachmentReopsitory.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/AttachmentReopsitory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ChatParticipantRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ChatParticipantRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ChatRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ChatRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ContactsRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ContactsRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/MessageRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/MessageRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/UserNotificationRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/UserNotificationRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/fxml/ServerHome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/fxml/ServerHome.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/styles/ServerHome.css" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/styles/ServerHome.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/fxml/ServerHome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/fxml/ServerHome.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerHomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerHomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/RepoInterfaces/UserRepoInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/RepoInterfaces/UserRepoInterface.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Contacts/ContactService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Contacts/ContactService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Contacts/InvitationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Contacts/InvitationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Factories/ServiceFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Factories/UserServiceFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/ServerApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/ServerApplication.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/LoginService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/RegistrationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/RegistrationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/UserSession.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/UserSession.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/TestApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/TestApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/RemoteLoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/RemoteLoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/RemoteRegistrationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/RemoteRegistrationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/RepoInterfaces/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/ServiceFactoryI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/UserServiceFactoryI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/DTO/UserRegistrationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Model/DTO/UserRegistrationDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/Entities/Attachment.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerModels/ServerEntities/Attachment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/Entities/BlockedContact.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerModels/ServerEntities/BlockedContact.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/Entities/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerModels/ServerEntities/Chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/Entities/ChatParticipants.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerModels/ServerEntities/ChatParticipants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/Entities/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerModels/ServerEntities/Contact.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/Entities/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerModels/ServerEntities/Group.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/Entities/GroupMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerModels/ServerEntities/GroupMember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/Entities/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerModels/ServerEntities/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/Entities/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerModels/ServerEntities/Notification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/Entities/ServerAnnouncement.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerModels/ServerEntities/ServerAnnouncement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/Entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerModels/ServerEntities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/Entities/UserNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerModels/ServerEntities/UserNotification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/Enums/StatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerModels/Enums/StatusEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/Enums/UserField.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerModels/Enums/UserField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/RemoteLoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/Interfaces/RemoteLoginService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/RemoteRegistrationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/Interfaces/RemoteRegistrationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/Repository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/ServiceFactoryI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/UserServiceFactoryI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Model/DTO/UserRegistrationDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/Model/DTO/UserRegistrationDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Model/Entities/Attachment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Model/Entities/BlockedContact.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Model/Entities/Chat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Model/Entities/ChatParticipants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Model/Entities/Contact.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Model/Entities/Group.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Model/Entities/GroupMember.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Model/Entities/Message.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Model/Entities/Notification.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Model/Entities/ServerAnnouncement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Model/Entities/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Model/Entities/UserNotification.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Model/Enums/StatusEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Model/Enums/UserField.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/styles/ServerHome.css" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/styles/ServerHome.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,6 +41,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -169,16 +83,24 @@
       <recent name="C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.Server.App" />
+  <component name="RunManager" selected="Application.Mohammed">
+    <configuration name="Amin" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.Client.ClientApplication" />
+      <module name="client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Mohammed" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.Client.ClientApplication" />
+      <module name="client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.Server.ServerApplication" />
       <module name="server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.Server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -196,11 +118,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.App" />
-      </list>
-    </recent_temporary>
+    <list>
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.Mohammed" />
+      <item itemvalue="Application.Amin" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -250,7 +172,23 @@
       <option name="project" value="LOCAL" />
       <updated>1706234351986</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add server gui side bar, home and statistics">
+      <option name="closed" value="true" />
+      <created>1706271863126</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1706271863126</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add server gui side bar, home and statistics">
+      <option name="closed" value="true" />
+      <created>1706271900538</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1706271900538</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
