@@ -13,8 +13,8 @@ import java.util.List;
 public class ChatRepository implements Repository<Chat,Integer> {
     private final Connection connection;
 
-    public ChatRepository(Connection connection) {
-        this.connection = connection;
+    public ChatRepository() {
+        this.connection = DatabaseConnectionManager.getInstance().getMyConnection();
     }
 
     @Override
@@ -49,7 +49,24 @@ public class ChatRepository implements Repository<Chat,Integer> {
             }
         }
         return chat;
-
+    }
+    public Chat findByName(String chatName) throws SQLException {
+        String query ="select * from Chat where ChatName = ?";
+        Chat chat= new Chat();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, chatName);
+            try(ResultSet resultSet =preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    chat.setChatID(resultSet.getInt("ChatId"));
+                    chat.setChatName(resultSet.getString("ChatName"));
+                    chat.setChatImage(resultSet.getBytes("ChatImage"));
+                    chat.setAdminID(resultSet.getInt("AdminID"));
+                    chat.setCreationDate(resultSet.getTimestamp("CreationDate"));
+                    chat.setLastModified(resultSet.getTimestamp("LastModified"));
+                }
+            }
+        }
+        return chat;
     }
 
     @Override

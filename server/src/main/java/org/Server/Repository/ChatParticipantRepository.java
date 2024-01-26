@@ -13,8 +13,8 @@ import java.util.List;
 public class ChatParticipantRepository implements Repository<ChatParticipants,Integer> {
     private final Connection connection;
 
-    public ChatParticipantRepository(Connection connection) {
-        this.connection = connection;
+    public ChatParticipantRepository() {
+        this.connection = DatabaseConnectionManager.getInstance().getMyConnection();
     }
     @Override
     public void save(ChatParticipants participant) throws SQLException {

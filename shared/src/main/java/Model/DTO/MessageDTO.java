@@ -1,22 +1,20 @@
 package Model.DTO;
 
 public class MessageDTO {
-    private String phoneNumber;
+    private String chatName;
     private String content;
     private Integer isAttachment;
-
-    public MessageDTO(String phoneNumber, String content, Integer isAttachment) {
-        this.phoneNumber = phoneNumber;
+    public MessageDTO(String chatName, String content, Integer isAttachment) {
+        this.chatName = chatName;
         this.content = content;
         this.isAttachment = isAttachment;
     }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getChatName() {
+        return chatName;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setChatName(String chatName) {
+        this.chatName = chatName;
     }
 
     public String getContent() {

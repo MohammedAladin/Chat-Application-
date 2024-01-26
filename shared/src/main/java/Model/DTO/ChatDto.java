@@ -1,33 +1,21 @@
-package org.Server.ServerModels.ServerEntities;
+package Model.DTO;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Chat {
-    private int chatID;
+public class ChatDto implements Serializable {
     private String chatName;
     private byte[] chatImage;
-    private int adminID;
+    private Integer adminID;
     private Timestamp creationDate;
     private Timestamp lastModified;
 
-    public Chat( String chatName, byte[] chatImage, int adminID, Timestamp creationDate, Timestamp lastModified) {
-
+    public ChatDto( String chatName, byte[] chatImage, Integer adminID, Timestamp creationDate, Timestamp lastModified) {
         this.chatName = chatName;
         this.chatImage = chatImage;
         this.adminID = adminID;
         this.creationDate = creationDate;
         this.lastModified = lastModified;
-    }
-
-    public Chat() {
-    }
-
-    public int getChatID() {
-        return chatID;
-    }
-
-    public void setChatID(int chatID) {
-        this.chatID = chatID;
     }
 
     public String getChatName() {
@@ -46,11 +34,11 @@ public class Chat {
         this.chatImage = chatImage;
     }
 
-    public int getAdminID() {
+    public Integer getAdminID() {
         return adminID;
     }
 
-    public void setAdminID(int adminID) {
+    public void setAdminID(Integer adminID) {
         this.adminID = adminID;
     }
 

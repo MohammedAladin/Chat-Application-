@@ -17,7 +17,7 @@ public class MessageRepository implements Repository<Message,Integer> {
 
     @Override
     public void save(Message message) {
-        String query = "INSERT INTO Messages (SenderID, ReceiverID, MessageContent, IsAttachment) " +
+        String query = "INSERT INTO Messages (SenderID, ReceiverID, MessageContent, IsAttachement) " +
                 "VALUES (?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
