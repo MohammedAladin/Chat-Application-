@@ -13,6 +13,6 @@ public class ServicesFactory extends UnicastRemoteObject implements ServicesFact
         super();
     }
     public UserService createUserService() throws RemoteException {
-        return new UserService();
+        return UserService.getInstance();
     }
 }

@@ -1,11 +1,13 @@
 package org.Server.Service.User;
 
 import Interfaces.RemoteLoginService;
+import Model.DTO.ChatDto;
 import org.Server.RepoInterfaces.UserRepoInterface;
 import Model.DTO.UserLoginDTO;
 import org.Server.ServerModels.ServerEntities.User;
 import org.Server.ServerModels.Enums.StatusEnum;
 import org.Server.Repository.UserRepository;
+import org.Server.Service.Chat.ChatServices;
 import org.Server.Service.UserSession;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -14,9 +16,11 @@ import java.sql.Timestamp;
 public class LoginService implements RemoteLoginService {
     UserRepoInterface userRepository;
 
+
     public LoginService(UserRepository userRepository) throws RemoteException {
         super();
         this.userRepository = userRepository;
+
     }
 
     public boolean loginUser(UserLoginDTO userLoginDTO) throws RemoteException {
@@ -28,6 +32,7 @@ public class LoginService implements RemoteLoginService {
                 userRepository.updateStatus(userLoginDTO.getPhoneNumber(), StatusEnum.ONLINE);
                 userRepository.updateLoginDate(userLoginDTO.getPhoneNumber(), new Timestamp(System.currentTimeMillis()));
 
+                //callback --> (list of contacts)->ObservUser(Name, id, byte [] image, status, mode, phone)
                 UserSession.setCurrentUser(signedUser);
                 System.out.println("User signed in successfully: " + userLoginDTO.getPhoneNumber());
                 return true;

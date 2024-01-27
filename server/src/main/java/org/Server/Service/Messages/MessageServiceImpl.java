@@ -17,7 +17,7 @@ public class MessageServiceImpl extends UnicastRemoteObject implements MessageSe
     MessageRepository messageRepository;
     static MessageServiceImpl messageServiceImpl;
 
-    private ChatServices chatServices;
+    private final ChatServices chatServices;
     private MessageServiceImpl() throws RemoteException {
         super();
         messageRepository = new MessageRepository();

@@ -10,9 +10,16 @@ import java.sql.*;
 
 public class UserNotificationRepository implements Repository<UserNotification,Integer> {
     private final Connection myConnection;
+    private static UserNotificationRepository userNotificationRepository;
 
-    public UserNotificationRepository(Connection myConnection) {
-        this.myConnection = myConnection;
+    private UserNotificationRepository() {
+        myConnection = DatabaseConnectionManager.getInstance().getMyConnection();
+    }
+    public static UserNotificationRepository getInstance(){
+        if(userNotificationRepository==null){
+            userNotificationRepository = new UserNotificationRepository();
+        }
+        return userNotificationRepository;
     }
     @Override
     public void save(UserNotification entity) throws SQLException {

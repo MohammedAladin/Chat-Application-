@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ChatParticipantServices {
     private static ChatParticipantServices chatParticipantServices;
-    private ChatParticipantRepository chatParticipantRepository;
+    private final ChatParticipantRepository chatParticipantRepository;
     private ChatParticipantServices(){
         chatParticipantRepository = new ChatParticipantRepository();
     }

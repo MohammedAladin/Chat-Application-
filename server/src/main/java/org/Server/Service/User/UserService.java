@@ -16,12 +16,25 @@ public class UserService extends UnicastRemoteObject implements RemoteUserServic
     RegistrationService registrationService;
     LoginService loginService;
     UserRepoInterface userRepository;
-    public UserService() throws RemoteException {
+    private static UserService userService;
+    private UserService() throws RemoteException {
         super();
         userRepository = new UserRepository();
         registrationService = new RegistrationService((UserRepository)userRepository);
         loginService = new LoginService((UserRepository) userRepository);
     }
+    public static UserService getInstance(){
+        if(userService == null){
+            try {
+                userService = new UserService();
+            } catch (RemoteException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return userService;
+    }
+
+
 
     @Override
     public boolean registerUser(UserRegistrationDTO user) throws RemoteException {

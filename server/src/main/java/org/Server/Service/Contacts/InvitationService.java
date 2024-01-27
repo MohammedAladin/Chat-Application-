@@ -15,9 +15,9 @@ public class InvitationService {
 
     private final UserService userService;
     private final UserNotificationRepository userNotificationRepository;
-    public InvitationService(UserService userService, UserNotificationRepository userNotificationRepository){
-        this.userService = userService;
-        this.userNotificationRepository = userNotificationRepository;
+    public InvitationService(){
+        this.userService = UserService.getInstance();
+        this.userNotificationRepository = UserNotificationRepository.getInstance();
     }
     public void sendInvitation(User loggedUser, String contactPhoneNumber) throws NullPointerException{
         //get the logged user and check if there is a logged user

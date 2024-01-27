@@ -16,38 +16,40 @@ public class ChatServices {
     private ChatRepository chatRepository;
     private UserService userService;
     private ChatParticipantServices chatParticipantServices;
-    private ChatServices(){
-        try {
-            userService = new UserService();
-            chatRepository = new ChatRepository();
-            chatParticipantServices = ChatParticipantServices.getInstance();
-        } catch (RemoteException e) {
-            throw new RuntimeException(e);
-        }
+    private ChatServices() throws RemoteException {
+        userService = UserService.getInstance();
+        chatRepository = new ChatRepository();
+        chatParticipantServices = ChatParticipantServices.getInstance();
     }
+
     public static ChatServices getInstance(){
         if(chatServices ==null){
-            chatServices = new ChatServices();
+            try {
+                chatServices = new ChatServices();
+            } catch (RemoteException e) {
+                throw new RuntimeException(e);
+            }
         }
         return chatServices;
     }
-    public void createNewChat(ChatDto chatDto, List<String> participantsPhoneNumber){
+    public void createNewChat(ChatDto chatDto, List<User> participants){
         if(chatDto.getAdminID()==null){ //private chat
 
         }
         else{ //group
             chatRepository.save(mapToChat(chatDto));
-
-            List<User> users =  participantsPhoneNumber.stream().
-                    map((phone)->userService.existsByPhoneNumber(phone)).collect(Collectors.toList());
             try {
-                chatParticipantServices.addParticipants(chatRepository.findByName(chatDto.getChatName()).getChatID(), users);
+                int chatId = getChatId(chatRepository.findByName(chatDto.getChatName()).getChatName());
+                chatParticipantServices.addParticipants(
+                        chatId,
+                        participants
+                );
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-
         }
     }
+
     public int getChatId(String chatName){
         try {
             return chatRepository.findByName(chatName).getChatID();
@@ -55,6 +57,7 @@ public class ChatServices {
             throw new RuntimeException(e);
         }
     }
+
     private Chat mapToChat(ChatDto dto){
         return new Chat(
                 dto.getChatName(),

@@ -11,9 +11,17 @@ import java.util.List;
 public class ContactsRepository implements Repository<Contact, Integer> {
 
     private final Connection myConnection;
+    private static  ContactsRepository contactsRepository;
 
-    public ContactsRepository(Connection myConnection) {
-        this.myConnection = myConnection;
+    private ContactsRepository() {
+        this.myConnection = DatabaseConnectionManager.getInstance().getMyConnection();
+    }
+
+    public static ContactsRepository getInstance(){
+        if(contactsRepository == null){
+            contactsRepository = new ContactsRepository();
+        }
+        return contactsRepository;
     }
     @Override
     public void save(Contact contact) throws SQLException {

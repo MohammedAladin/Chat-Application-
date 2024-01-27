@@ -47,7 +47,7 @@ public class TestApp {
         );
 
         try {
-            UserService userService = new UserService();
+            UserService userService = UserService.getInstance();
 //            userService.registerUser(user1);
 //            userService.registerUser(user2);
 
@@ -57,12 +57,12 @@ public class TestApp {
 
             ChatServices chatServices = ChatServices.getInstance();
 
-            List<String> users = new ArrayList<>();
-            users.add(user1.getPhoneNumber()); users.add(user2.getPhoneNumber());
+            List<User> users = new ArrayList<>();
+            users.add(user1); users.add(user2);
             int id = userService.existsByPhoneNumber(user1.getPhoneNumber()).getUserID();
 
             chatServices.createNewChat(
-                    new ChatDto("Amin", null,id,new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis())),
+                    new ChatDto("Amin", null, id, new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis())),
                     users
             );
 
