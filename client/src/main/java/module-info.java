@@ -8,6 +8,7 @@ module client {
     requires server;
 
     opens org.Client to javafx.fxml;
+    opens org.Client.Controllers to javafx.fxml;
     exports org.Client;
     exports org.Client.Controllers;
     exports org.Client.Models;
