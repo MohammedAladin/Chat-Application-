@@ -118,7 +118,7 @@ public class ViewFactory {
     public void showChatArea() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/ChatUser.fxml"));
         ChatUserController controller = new ChatUserController();
-        controller.setUsername(selectedChat.get().getName());
+        controller.setName(selectedChat.get().getName());
         controller.setImage(selectedChat.get().getImage());
         fxmlLoader.setController(controller);
         try {

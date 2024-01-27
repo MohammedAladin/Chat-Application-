@@ -1,4 +1,4 @@
-package Model.Entities;
+package org.Server.ServerModels.ServerEntities;
 
 import java.sql.Timestamp;
 

@@ -29,7 +29,7 @@ public class DatabaseConnectionManager {
             OutputStream oStream = new FileOutputStream(propPath);
             prop.setProperty("URL", "jdbc:mysql://localhost:3306/ChatApplicationDB");
             prop.setProperty("User", "root");
-            prop.setProperty("Password", "password");
+            prop.setProperty("Password", "youssef110");
             prop.store(oStream, null);
             oStream.close();
         } catch (IOException e) {
