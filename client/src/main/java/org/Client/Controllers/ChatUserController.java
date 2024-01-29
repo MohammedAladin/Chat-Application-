@@ -54,8 +54,8 @@ public class ChatUserController implements Initializable {
                 Text text = new Text(textFieldID.getText());
                 try {
                     HBox hBox = loader.load();
-                    MessageSent messageSent = loader.getController();
-                    messageSent.setLabelID(text);
+//                    MessageSent messageSent = loader.getController();
+//                    messageSent.setLabelID(text);
                     chatVBoxID.getChildren().add(hBox);
                     chatVBoxID.setSpacing(10);
                     textFieldID.clear();

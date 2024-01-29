@@ -1,5 +1,7 @@
 package org.Server.ServerModels.ServerEntities;
 
+
+
 import java.sql.Timestamp;
 
 public class Chat {

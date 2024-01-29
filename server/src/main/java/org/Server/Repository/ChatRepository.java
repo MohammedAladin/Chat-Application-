@@ -1,5 +1,6 @@
 package org.Server.Repository;
 
+import org.Server.RepoInterfaces.ChatRepoInterface;
 import org.Server.RepoInterfaces.Repository;
 import org.Server.ServerModels.ServerEntities.Chat;
 
@@ -10,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatRepository implements Repository<Chat,Integer> {
+public class ChatRepository implements ChatRepoInterface {
     private final Connection connection;
 
     public ChatRepository() {
@@ -101,5 +102,26 @@ public class ChatRepository implements Repository<Chat,Integer> {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         }
+    }
+
+    @Override
+    public List<Chat> getAllPrivateChats(Integer userID, Integer phoneNumber) {
+        String sql =
+                "SELECT c.ChatID, us.DisplayName, us.ProfilePicture \n" +
+                "FROM Chat c \n" +
+                "INNER JOIN ChatParticipants cp ON c.chatId = cp.ChatId \n" +
+                "INNER JOIN UserAccounts us ON us.UserID = cp.ParticipantUserID\n" +
+                "INNER JOIN UserContacts uc ON uc.UserID = ?" +
+                "WHERE c.adminId IS NULL " +
+                "AND us.PhoneNumber != ?";
+
+
+
+        return null;
+    }
+
+    @Override
+    public List<Chat> getGroupChats(Integer userID) {
+        return null;
     }
 }
