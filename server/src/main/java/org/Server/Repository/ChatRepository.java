@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ChatRepository implements ChatRepoInterface {
     private final Connection connection;
 
@@ -105,22 +106,58 @@ public class ChatRepository implements ChatRepoInterface {
     }
 
     @Override
-    public List<Chat> getAllPrivateChats(Integer userID, Integer phoneNumber) {
+    public List<Chat> getAllPrivateChats(Integer userID, String phoneNumber) {
         String sql =
-                "SELECT c.ChatID, us.DisplayName, us.ProfilePicture \n" +
-                "FROM Chat c \n" +
-                "INNER JOIN ChatParticipants cp ON c.chatId = cp.ChatId \n" +
-                "INNER JOIN UserAccounts us ON us.UserID = cp.ParticipantUserID\n" +
-                "INNER JOIN UserContacts uc ON uc.UserID = ?" +
+                "SELECT c.ChatID, us.DisplayName, us.ProfilePicture " +
+                "FROM Chat c " +
+                "INNER JOIN ChatParticipants cp ON c.chatId = cp.ChatId " +
+                "INNER JOIN UserAccounts us ON us.UserID = cp.ParticipantUserID " +
+                "INNER JOIN UserContacts uc ON uc.UserID = ? " +
                 "WHERE c.adminId IS NULL " +
                 "AND us.PhoneNumber != ?";
-
-        return null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userID);
+            preparedStatement.setString(2, phoneNumber);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            List<Chat> chatList = new ArrayList<>();
+            while (resultSet.next()) {
+                Chat chat = new Chat();
+                chat.setChatID(resultSet.getInt("ChatID"));
+                chat.setChatName(resultSet.getString("DisplayName"));
+                chat.setChatImage(resultSet.getBytes("ProfilePicture"));
+                chatList.add(chat);
+            }
+            return chatList;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public List<Chat> getGroupChats(Integer userID) {
-        return null;
+        String sql =
+                "SELECT c.ChatID, c.ChatImage, c.ChatName " +
+                        "FROM Chat c " +
+                        "INNER JOIN ChatParticipants cp ON c.chatId = cp.ChatId " +
+                        "WHERE c.adminId IS NOT NULL" +
+                        "AND cp.ParticipantUserID = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            List<Chat> chatList = new ArrayList<>();
+            while (resultSet.next()) {
+                Chat chat = new Chat();
+                chat.setChatID(resultSet.getInt("ChatID"));
+                chat.setChatName(resultSet.getString("ChatName"));
+                chat.setChatImage(resultSet.getBytes("ChatImage"));
+                chatList.add(chat);
+            }
+            return chatList;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
