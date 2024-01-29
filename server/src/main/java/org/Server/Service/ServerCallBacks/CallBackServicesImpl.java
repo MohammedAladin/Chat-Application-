@@ -1,7 +1,6 @@
 package org.Server.Service.ServerCallBacks;
 
 import Interfaces.CallBacks.Client.CallBackServicesClient;
-import Interfaces.CallBacks.Client.RemoteClientAnnouncement;
 import Interfaces.CallBacks.Server.CallBackServicesServer;
 import Model.DTO.MessageDTO;
 import org.Server.Service.Chat.ChatServices;
