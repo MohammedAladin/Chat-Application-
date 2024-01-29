@@ -1,7 +1,6 @@
 package org.Server.GUI.Controllers;
 
 import Interfaces.CallBacks.Client.CallBackServicesClient;
-import Interfaces.CallBacks.Client.RemoteClientAnnouncement;
 import Interfaces.CallBacks.Server.CallBackServicesServer;
 import Interfaces.RmiServices.RemoteUserService;
 import Interfaces.RmiServices.ServicesFactoryInterface;

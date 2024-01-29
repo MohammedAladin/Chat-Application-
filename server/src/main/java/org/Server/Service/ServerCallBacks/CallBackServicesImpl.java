@@ -37,6 +37,11 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         List<Integer> chatParticipantsIds = chatServices.getAllParticipants(messageDTO.getChatID());
 
     }
+    @Override
+    public void unRegister(CallBackServicesClient client) throws RemoteException {
+
+    }
+
     public void sendAnnouncement(String announcement) throws RemoteException{
 
     }
