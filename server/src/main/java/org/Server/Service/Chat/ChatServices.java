@@ -13,11 +13,9 @@ import java.util.stream.Collectors;
 
 public class ChatServices {
     private static ChatServices chatServices;
-    private ChatRepository chatRepository;
-    private UserService userService;
-    private ChatParticipantServices chatParticipantServices;
+    private final ChatRepository chatRepository;
+    private final ChatParticipantServices chatParticipantServices;
     private ChatServices() throws RemoteException {
-        userService = UserService.getInstance();
         chatRepository = new ChatRepository();
         chatParticipantServices = ChatParticipantServices.getInstance();
     }
@@ -32,24 +30,25 @@ public class ChatServices {
         }
         return chatServices;
     }
-    public void createNewChat(ChatDto chatDto, List<User> participants){
+    public void createNewChat(ChatDto chatDto, List<Integer> participantsIds){
         if(chatDto.getAdminID()==null){ //private chat
 
         }
         else{ //group
             chatRepository.save(mapToChat(chatDto));
+//            List<User> users =  participantsPhoneNumber.stream().
+//                    map((phone)->userService.existsByPhoneNumber(phone)).collect(Collectors.toList());
             try {
-                int chatId = getChatId(chatRepository.findByName(chatDto.getChatName()).getChatName());
+                int chatId = chatRepository.findByName(chatDto.getChatName()).getChatID();
                 chatParticipantServices.addParticipants(
                         chatId,
-                        participants
+                        participantsIds
                 );
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
         }
     }
-
     public int getChatId(String chatName){
         try {
             return chatRepository.findByName(chatName).getChatID();
@@ -57,7 +56,6 @@ public class ChatServices {
             throw new RuntimeException(e);
         }
     }
-
     private Chat mapToChat(ChatDto dto){
         return new Chat(
                 dto.getChatName(),

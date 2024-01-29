@@ -20,10 +20,10 @@ public class ChatParticipantServices {
         }
         return chatParticipantServices;
     }
-    public void addParticipants(int chatId, List<User> users){
-        for(User user : users){
+    public void addParticipants(int chatId, List<Integer> usersIds){
+        for(Integer userId : usersIds){
             try {
-                ChatParticipants chatParticipants = new ChatParticipants(chatId, user.getUserID(), new Timestamp(System.currentTimeMillis()));
+                ChatParticipants chatParticipants = new ChatParticipants(chatId, userId, new Timestamp(System.currentTimeMillis()));
                 chatParticipantRepository.save(chatParticipants);
             } catch (SQLException e) {
                 throw new RuntimeException(e);

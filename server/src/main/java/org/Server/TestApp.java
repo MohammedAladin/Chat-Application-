@@ -57,8 +57,8 @@ public class TestApp {
 
             ChatServices chatServices = ChatServices.getInstance();
 
-            List<User> users = new ArrayList<>();
-            users.add(user1); users.add(user2);
+            List<Integer> users = new ArrayList<>();
+            users.add(user1.getUserID()); users.add(user2.getUserID());
             int id = userService.existsByPhoneNumber(user1.getPhoneNumber()).getUserID();
 
             chatServices.createNewChat(

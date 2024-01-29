@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class ContactService {
     private final InvitationService invitationService;
@@ -33,9 +34,15 @@ public class ContactService {
         Timestamp current = new Timestamp(System.currentTimeMillis());
         ChatDto chatDto = new ChatDto(null,null,null, current, current);
 
+        int user1Id = UserSession.getCurrentUser().getUserID();
+        int user2Id = acceptedUser.getUserID();
+
+        List<Integer> ids = new ArrayList<>();
+        ids.add(user1Id); ids.add(user2Id);
+
         chatServices.createNewChat(
                 chatDto,
-                new ArrayList<>(Arrays.asList(UserSession.getCurrentUser(),acceptedUser))
+                ids
         );
     }
     public void acceptInvitation(String acceptedUserPhoneNumber){
