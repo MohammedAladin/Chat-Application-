@@ -115,8 +115,6 @@ public class ChatRepository implements ChatRepoInterface {
                 "WHERE c.adminId IS NULL " +
                 "AND us.PhoneNumber != ?";
 
-
-
         return null;
     }
 
