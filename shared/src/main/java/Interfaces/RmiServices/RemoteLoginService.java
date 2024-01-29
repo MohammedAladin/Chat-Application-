@@ -1,4 +1,4 @@
-package Interfaces;
+package Interfaces.RmiServices;
 
 import Model.DTO.UserLoginDTO;
 

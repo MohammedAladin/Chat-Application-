@@ -1,4 +1,4 @@
-package Interfaces;
+package Interfaces.RmiServices;
 
 import Exceptions.CustomException;
 import Model.DTO.UserRegistrationDTO;

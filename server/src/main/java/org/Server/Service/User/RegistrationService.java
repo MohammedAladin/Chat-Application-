@@ -1,13 +1,12 @@
 package org.Server.Service.User;
 
 import Exceptions.CustomException;
-import Interfaces.RemoteRegistrationService;
+import Interfaces.RmiServices.RemoteRegistrationService;
 import Model.DTO.UserRegistrationDTO;
 import org.Server.ServerModels.ServerEntities.User;
 import org.Server.RepoInterfaces.UserRepoInterface;
 import org.Server.Repository.UserRepository;
 
-import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 

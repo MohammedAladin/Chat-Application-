@@ -1,14 +1,16 @@
 package org.Server.GUI.Controllers;
 
-import Interfaces.RemoteUserService;
-import Interfaces.ServerCallbacks;
-import Interfaces.ServicesFactoryInterface;
+import Interfaces.CallBacks.Client.CallBackServicesClient;
+import Interfaces.CallBacks.Client.RemoteClientAnnouncement;
+import Interfaces.CallBacks.Server.CallBackServicesServer;
+import Interfaces.RmiServices.RemoteUserService;
+import Interfaces.RmiServices.ServicesFactoryInterface;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.Server.Service.Factories.ServicesFactory;
-import org.Server.Service.ServerCallBacksImp;
+import org.Server.Service.ServerCallBacks.CallBackServicesImpl;
 
 
 import java.net.URL;
@@ -24,14 +26,14 @@ public class ServerHomeController implements Initializable {
     public TextField announcementField;
     private RemoteUserService userService;
     private Registry registry;
-    private ServerCallbacks serverCallbacks;
+    private CallBackServicesServer callBackServices;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             ServicesFactoryInterface serviceFactory = new ServicesFactory();
             userService = serviceFactory.createUserService();
-            serverCallbacks = new ServerCallBacksImp();
+            callBackServices = new CallBackServicesImpl();
             registry = LocateRegistry.createRegistry(1099);
 
             announceButton.setOnAction((e)->handleAnnouncement());
@@ -45,7 +47,7 @@ public class ServerHomeController implements Initializable {
     private void start (){
         try {
             registry.rebind("UserServices", userService);
-            registry.rebind("Callbacks", serverCallbacks);
+            registry.rebind("Callbacks", callBackServices);
             System.out.println("working");
         } catch (RemoteException e) {
             throw new RuntimeException(e);
@@ -65,7 +67,7 @@ public class ServerHomeController implements Initializable {
     private void handleAnnouncement() {
         String announcement = announcementField.getText();
         try {
-            serverCallbacks.sendAnnouncement(announcement);
+            callBackServices.sendAnnouncement(announcement);
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }

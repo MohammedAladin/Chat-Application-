@@ -1,10 +1,8 @@
 // RemoteServiceHandler.java
 package org.Client.Controllers;
 
-import Interfaces.RemoteLoginService;
-import Interfaces.RemoteRegistrationService;
-import Interfaces.RemoteUserService;
-import Interfaces.ServerCallbacks;
+import Interfaces.CallBacks.Server.CallBackServicesServer;
+import Interfaces.RmiServices.RemoteUserService;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 
@@ -41,10 +39,10 @@ public class RemoteServiceHandler {
         }
         return remoteUserService;
     }
-    public ServerCallbacks getCallbacks(){
-        ServerCallbacks serverCallbacks;
+    public CallBackServicesServer getCallbacks(){
+        CallBackServicesServer serverCallbacks;
         try {
-            serverCallbacks = (ServerCallbacks) registry.lookup("Callbacks");
+            serverCallbacks = (CallBackServicesServer) registry.lookup("Callbacks");
         } catch (RemoteException | NotBoundException e) {
             throw new RuntimeException(e);
         }

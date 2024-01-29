@@ -1,7 +1,7 @@
 package org.Server.Service.User;
 
 import Exceptions.CustomException;
-import Interfaces.RemoteUserService;
+import Interfaces.RmiServices.RemoteUserService;
 import Model.DTO.UserLoginDTO;
 import Model.DTO.UserRegistrationDTO;
 import org.Server.RepoInterfaces.UserRepoInterface;

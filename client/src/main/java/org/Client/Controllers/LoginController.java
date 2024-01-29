@@ -1,15 +1,11 @@
 package org.Client.Controllers;
-import Interfaces.ClientInterface;
-import Interfaces.ServerCallbacks;
+import Interfaces.CallBacks.Client.CallBackServicesClient;
+import Interfaces.CallBacks.Server.CallBackServicesServer;
 import Model.DTO.UserLoginDTO;
-import javafx.beans.Observable;
-import javafx.beans.property.StringProperty;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.Client.Models.Model;
-import org.Client.Service.ClientServiceImp;
-
-
+import org.Client.Service.ClientServicesImp;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ResourceBundle;
@@ -20,8 +16,8 @@ public class LoginController implements Initializable {
     public PasswordField passwordField;
     public TextField phoneField;
     private RemoteServiceHandler remoteServiceHandler;
-    private ClientInterface clientService;
-    private ServerCallbacks serverCallbacks;
+    private CallBackServicesClient callBackServicesClient;
+    private CallBackServicesServer callBackServicesServer;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -58,10 +54,10 @@ public class LoginController implements Initializable {
             try {
                 remoteServiceHandler.showAlert("Login Successful", Alert.AlertType.INFORMATION);
 
-                clientService = new ClientServiceImp();// client representation to be sent.
-                serverCallbacks =  remoteServiceHandler.getCallbacks();
+                callBackServicesClient = new ClientServicesImp();// client representation to be sent.
+                callBackServicesServer =  remoteServiceHandler.getCallbacks();
                 Model.getInstance().getViewFactory().showHomePage(signingButton);
-                serverCallbacks.register(clientService);
+                callBackServicesServer.register(callBackServicesClient);
 
             } catch (RemoteException e) {
                 throw new RuntimeException(e);

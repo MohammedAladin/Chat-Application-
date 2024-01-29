@@ -1,6 +1,6 @@
 package org.Server.Service.Factories;
 
-import Interfaces.ServicesFactoryInterface;
+import Interfaces.RmiServices.ServicesFactoryInterface;
 import org.Server.Service.User.UserService;
 
 

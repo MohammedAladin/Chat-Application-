@@ -122,4 +122,29 @@ public class ChatRepository implements ChatRepoInterface {
     public List<Chat> getGroupChats(Integer userID) {
         return null;
     }
+
+    @Override
+    public List<Integer> getAllParticipants(Integer chatId) {
+        List<Integer> participants = new ArrayList<>();
+
+        String query = "SELECT cp.participantuserId " +
+                "FROM ChatParticipants cp " +
+                "INNER JOIN Chat c ON c.chatID = cp.chatID " +
+                "WHERE c.chatID = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, chatId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    int participantId = resultSet.getInt("participantuserId");
+                    participants.add(participantId);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return participants;
+    }
+
 }

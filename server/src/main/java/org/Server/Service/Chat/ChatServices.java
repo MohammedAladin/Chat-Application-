@@ -27,20 +27,20 @@ public class ChatServices {
         }
         return chatServices;
     }
-    public void createNewChat(ChatDto chatDto, List<Integer> participantsIds){
-            chatRepository.save(mapToChat(chatDto));
-            try {
-                int chatId = chatRepository.findByName(chatDto.getChatName()).getChatID();
-                chatParticipantServices.addParticipants(
-                        chatId,
-                        participantsIds
-                );
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+    public void createNewChat(ChatDto chatDto, List<Integer> participantsIds) {
+        chatRepository.save(mapToChat(chatDto));
+        try {
+            int chatId = chatRepository.findByName(chatDto.getChatName()).getChatID();
+            chatParticipantServices.addParticipants(
+                    chatId,
+                    participantsIds
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
-    public void getAllChats(){
-
+    public List<Integer> getAllParticipants(Integer chatID){
+        return chatRepository.getAllParticipants(chatID);
     }
     public int getChatId(String chatName){
         try {

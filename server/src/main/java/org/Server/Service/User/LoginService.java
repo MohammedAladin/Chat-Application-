@@ -1,13 +1,11 @@
 package org.Server.Service.User;
 
-import Interfaces.RemoteLoginService;
-import Model.DTO.ChatDto;
+import Interfaces.RmiServices.RemoteLoginService;
 import org.Server.RepoInterfaces.UserRepoInterface;
 import Model.DTO.UserLoginDTO;
 import org.Server.ServerModels.ServerEntities.User;
 import org.Server.ServerModels.Enums.StatusEnum;
 import org.Server.Repository.UserRepository;
-import org.Server.Service.Chat.ChatServices;
 import org.Server.Service.UserSession;
 import java.rmi.RemoteException;
 import java.sql.SQLException;

@@ -68,7 +68,7 @@ public class TestApp {
 
             MessageServiceImpl messageService = MessageServiceImpl.getInstance();
 
-            messageService.sendMessage(new MessageDTO("Amin", "Hello..", 0));
+            messageService.sendMessage(new MessageDTO(2, "Hello..", 0));
 
             System.out.println("Message has been sent... ");
 
