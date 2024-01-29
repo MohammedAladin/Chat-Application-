@@ -60,7 +60,7 @@ public class LoginController implements Initializable {
 
                 clientService = new ClientServiceImp();// client representation to be sent.
                 serverCallbacks =  remoteServiceHandler.getCallbacks();
-
+                Model.getInstance().getViewFactory().showHomePage(signingButton);
                 serverCallbacks.register(clientService);
 
             } catch (RemoteException e) {

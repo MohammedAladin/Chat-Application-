@@ -4,12 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="Chat, Chat participants and message Services have been added Successfully.">
+    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="connect server FXMLs together">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_25_2024_2_55_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_25_2024_2_55_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_25_2024_2_55_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_25_2024_2_55_PM__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24__2_12_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24__2_12_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24__2_12_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24__2_12_PM__Changes_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Chat/ChatServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Chat/ChatServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ChatParticipants/ChatParticipantServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ChatParticipants/ChatParticipantServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Contacts/ContactService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Contacts/ContactService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/TestApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/TestApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Views/ViewFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/ChatUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/ChatUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dp.properties" beforeDir="false" afterPath="$PROJECT_DIR$/dp.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/DatabaseConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/DatabaseConnectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/fxml/ServerStatistics.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/fxml/ServerStatistics.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ChatParticipantRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ChatParticipantRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ChatRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ChatRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/DatabaseConnectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/DatabaseConnectionManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/Message.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/TestApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/TestApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/Entities/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerModels/ServerEntities/Chat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,28 +65,42 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Amin.executor": "Run",
     "Application.App.executor": "Run",
     "Application.Mohammed.executor": "Run",
     "Application.Server.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "youssef",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-",
+    "last_opened_file_path": "D:/iti/Java/advanced javaFx/Chat",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\try\Chat-Application\client\src\main\resources\ClientImages" />
+      <recent name="E:\try\Chat-Application\client\src\main\resources\ClientStyles" />
+      <recent name="E:\try\Chat-Application\client\src\main\resources\ClientFxml" />
+      <recent name="E:\try\Chat-Application\client\src\main\java\org\Client\Controllers" />
       <recent name="C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\resources" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.Server.ServerModels.ServerEntities" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.Client.Controllers" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Server">
+  <component name="RunManager" selected="Application.Mohammed">
     <configuration name="Amin" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.Client.ClientApplication" />
       <module name="client" />
@@ -91,31 +122,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="client" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="client" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.Mohammed" />
       <item itemvalue="Application.Amin" />
     </list>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-f98dd351" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -125,9 +136,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1705699356125</updated>
-      <workItem from="1706344370168" duration="3998000" />
-      <workItem from="1706364568466" duration="8000" />
-      <workItem from="1706435324328" duration="236000" />
+      <workItem from="1706338039675" duration="102000" />
+      <workItem from="1706338256715" duration="1701000" />
+      <workItem from="1706359578368" duration="6976000" />
     </task>
     <task id="LOCAL-00001" summary="Add server gui">
       <option name="closed" value="true" />
@@ -185,15 +196,7 @@
       <option name="project" value="LOCAL" />
       <updated>1706283750567</updated>
     </task>
-    <task id="LOCAL-00008" summary="Chat, Chat participants and message Services have been added Successfully.">
-      <option name="closed" value="true" />
-      <created>1706300797073</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1706300797073</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,7 +229,6 @@
     <MESSAGE value="Add server gui" />
     <MESSAGE value="add server gui side bar, home and statistics" />
     <MESSAGE value="connect server FXMLs together" />
-    <MESSAGE value="Chat, Chat participants and message Services have been added Successfully." />
-    <option name="LAST_COMMIT_MESSAGE" value="Chat, Chat participants and message Services have been added Successfully." />
+    <option name="LAST_COMMIT_MESSAGE" value="connect server FXMLs together" />
   </component>
 </project>
