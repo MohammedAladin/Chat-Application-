@@ -1,5 +1,7 @@
 package org.Client.Controllers;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -20,28 +22,39 @@ public class ChatController implements Initializable {
     @FXML
     private Circle contactStatus;
 
+    @FXML
+    private Label lastText;
+
 
     public void setName(String name) {
         this.name = name;
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        this.status.set(status);
     }
 
     public void setMessage(String message) {
         this.message = message;
     }
 
-    public void setImage(Image image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 
     private String name;
-    private String status;
-    private String message;
-    private Image image;
 
+    public String getStatus() {
+        return status.get();
+    }
+
+    public StringProperty statusProperty() {
+        return status;
+    }
+
+    private StringProperty status = new SimpleStringProperty();
+    private String message;
+    private byte[] image;
 
 
     @Override
@@ -49,9 +62,19 @@ public class ChatController implements Initializable {
         Circle clip = new Circle(25, 25, 25);
         contactImage.setClip(clip);
         contactName.setText(name);
-        contactImage.setImage(image);
-        contactName.setText(name);
-        if (status.equals("online")) {
+        //contactImage.setImage(image);
+        lastText.setText(message);
+        changeStatus();
+        status.addListener((observableValue, s, t1) -> {
+            changeStatus();
+            System.out.println(t1);
+        });
+
+
+    }
+
+    public void changeStatus() {
+        if (status.get().equals("Online")) {
             contactStatus.setStyle("-fx-fill: green");
             contactStatus.setStroke(null);
         } else {

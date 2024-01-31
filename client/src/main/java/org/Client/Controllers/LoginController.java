@@ -16,6 +16,7 @@ public class LoginController implements Initializable {
     public PasswordField passwordField;
     public TextField phoneField;
     private RemoteServiceHandler remoteServiceHandler;
+    String phoneNumber;
     private CallBackServicesClient callBackServicesClient;
     private CallBackServicesServer callBackServicesServer;
 
@@ -34,7 +35,7 @@ public class LoginController implements Initializable {
         try {
             validateUserInputLogin();
 
-            String phoneNumber = phoneField.getText();
+            phoneNumber = phoneField.getText();
             String password = passwordField.getText();
             UserLoginDTO userLogin = new UserLoginDTO(phoneNumber, password);
 
@@ -54,10 +55,11 @@ public class LoginController implements Initializable {
             try {
                 remoteServiceHandler.showAlert("Login Successful", Alert.AlertType.INFORMATION);
 
-                callBackServicesClient = new ClientServicesImp();// client representation to be sent.
+                Model.getInstance().setCallBackServicesClient(new ClientServicesImp());// client representation to be sent.
                 callBackServicesServer =  remoteServiceHandler.getCallbacks();
+                Model.getInstance().setCallBackServicesServer(callBackServicesServer);
                 Model.getInstance().getViewFactory().showHomePage(signingButton);
-                //callBackServicesServer.register(callBackServicesClient, id);
+                callBackServicesServer.register(Model.getInstance().getCallBackServicesClient(), phoneNumber);
 
             } catch (RemoteException e) {
                 throw new RuntimeException(e);

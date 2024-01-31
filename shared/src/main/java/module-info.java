@@ -7,5 +7,6 @@ module shared {
 
     requires java.rmi;
     requires java.sql;
+    requires javafx.base;
 
 }

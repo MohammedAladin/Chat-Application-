@@ -4,8 +4,6 @@ import org.Server.ServerModels.ServerEntities.User;
 import org.Server.ServerModels.ServerEntities.UserNotification;
 import org.Server.Repository.UserNotificationRepository;
 import org.Server.Service.User.UserService;
-import org.Server.Service.UserSession;
-
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
@@ -19,35 +17,33 @@ public class InvitationService {
         this.userService = UserService.getInstance();
         this.userNotificationRepository = UserNotificationRepository.getInstance();
     }
-    public void sendInvitation(User loggedUser, String contactPhoneNumber) throws NullPointerException{
+    public boolean sendInvitation(int loggedUser, String contactPhoneNumber) throws NullPointerException{
         //get the logged user and check if there is a logged user
         User invitedUser;
-        if(loggedUser==null){
-            throw new NullPointerException("You Must Be Signed In");
-        }
         invitedUser = userService.existsByPhoneNumber(contactPhoneNumber);
 
         if(invitedUser==null){
-            return;
+            return false;
         }
         //try to send invitation from logged user to the new contact
         try {
 
-            System.out.println("loggedUserID... " + loggedUser.getUserID());
+            System.out.println("loggedUserID... " + loggedUser);
             System.out.println("invitedUserID... " + invitedUser.getUserID());
 
-            UserNotification notification = new UserNotification(loggedUser.getUserID(), invitedUser.getUserID(),
+            UserNotification notification = new UserNotification(loggedUser, invitedUser.getUserID(),
                    "Please Accept My Invitation", new Timestamp(System.currentTimeMillis()));
             userNotificationRepository.save(notification);
+            return true;
         } catch (SQLException e) {
             throw new RuntimeException("Server Error...." + e.getMessage());
         }
     }
-    public void deleteInvitation(Integer UserInvitationIdToBeDeleted) {
+    public void deleteInvitation(Integer UserInvitationIdToBeDeleted,Integer userID) {
 
         Optional<Integer> invitationId;
         List<UserNotification> userNotificationList;
-        userNotificationList = getInvitations();
+        userNotificationList = getInvitations(userID);
 
         invitationId = userNotificationList.stream()
                 .filter(e-> e.getSenderID() == UserInvitationIdToBeDeleted)
@@ -63,11 +59,10 @@ public class InvitationService {
         }
 
     }
-    public List<UserNotification> getInvitations(){
+    public List<UserNotification> getInvitations(Integer userID){
         List<UserNotification> notificationList;
-        User loggedUser = UserSession.getCurrentUser();
         try {
-            notificationList = userNotificationRepository.getInvitationsForUser(loggedUser.getUserID());
+            notificationList = userNotificationRepository.getInvitationsForUser(userID);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

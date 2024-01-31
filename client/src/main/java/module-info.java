@@ -13,4 +13,6 @@ module client {
     exports org.Client.Controllers;
     exports org.Client.Models;
     exports org.Client.Views;
+    exports org.Client.ClientEntities;
+    opens org.Client.ClientEntities to javafx.fxml;
 }

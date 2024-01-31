@@ -1,6 +1,8 @@
 package org.Server.Service.Contacts;
 
 import Model.DTO.ChatDto;
+import Model.DTO.ContactDto;
+import org.Server.Repository.UserRepository;
 import org.Server.ServerModels.ServerEntities.Contact;
 import org.Server.ServerModels.ServerEntities.User;
 import org.Server.Repository.ContactsRepository;
@@ -17,60 +19,96 @@ import java.util.List;
 public class ContactService {
     private final InvitationService invitationService;
     private final ContactsRepository contactsRepository;
-    private final User loggedUser;
+    //private final User loggedUser;
     private final UserService userService;
     private final ChatServices chatServices;
 
 
-
-    public ContactService(){
+    public ContactService() {
         this.invitationService = new InvitationService();
         this.contactsRepository = ContactsRepository.getInstance();
-        this.loggedUser = UserSession.getCurrentUser();
+        //this.loggedUser = UserSession.getCurrentUser();
         this.userService = UserService.getInstance();
         chatServices = ChatServices.getInstance();
     }
-    private void createNewChat(User acceptedUser){
-        Timestamp current = new Timestamp(System.currentTimeMillis());
-        ChatDto chatDto = new ChatDto(null,null,null, current, current);
 
-        int user1Id = UserSession.getCurrentUser().getUserID();
-        int user2Id = acceptedUser.getUserID();
+    private void createNewChat(Integer acceptedUserID, Integer userId) {
+        Timestamp current = new Timestamp(System.currentTimeMillis());
+        ChatDto chatDto = new ChatDto(null, null, null, current, current);
+
+        int user1Id = userId;
+        int user2Id = acceptedUserID;
 
         List<Integer> ids = new ArrayList<>();
-        ids.add(user1Id); ids.add(user2Id);
+        ids.add(user1Id);
+        ids.add(user2Id);
 
         chatServices.createNewChat(
                 chatDto,
                 ids
         );
     }
-    public void acceptInvitation(String acceptedUserPhoneNumber){
-        User acceptedUser;
-        try {
-             acceptedUser = userService.existsByPhoneNumber(acceptedUserPhoneNumber);
-             if(acceptedUser!=null){
-                 invitationService.deleteInvitation(acceptedUser.getUserID());
-                 Contact contact = new Contact(loggedUser.getUserID(),acceptedUser.getUserID(),new Timestamp(System.currentTimeMillis()));
-                 contactsRepository.save(contact);
 
-                 createNewChat(acceptedUser);
-             }
+    public void acceptInvitation(int userId, Integer acceptedUserID) {
+
+        try {
+            //acceptedUser = userService.existsByPhoneNumber(acceptedUserPhoneNumber);
+
+            invitationService.deleteInvitation(acceptedUserID, userId);
+            Contact contact = new Contact(userId, acceptedUserID, new Timestamp(System.currentTimeMillis()));
+            contactsRepository.save(contact);
+
+            createNewChat(acceptedUserID, userId);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-    public void cancelInvitation(String canceledUserPhoneNumber){
+
+    public void cancelInvitation(String canceledUserPhoneNumber, Integer userId) {
         User canceledUser;
         canceledUser = userService.existsByPhoneNumber(canceledUserPhoneNumber);
-        invitationService.deleteInvitation(canceledUser.getUserID());
-    }
-    public void addContact(String phone){
-        invitationService.sendInvitation(loggedUser, phone);
+        invitationService.deleteInvitation(canceledUser.getUserID(), userId);
     }
 
-    public void deleteContact(){
+    public boolean addContact(int loggedUser, String phone) {
+        return invitationService.sendInvitation(loggedUser, phone);
+    }
+
+    public void deleteContact() {
 
     }
+
+    public List<ContactDto> getContacts(int userId) {
+        List<Integer> contact_ids = null;
+        contact_ids = contactsRepository.getContacts(userId);
+
+        List<ContactDto> contacts = new ArrayList<>();
+        for (Integer id : contact_ids) {
+            try {
+                User user = new UserRepository().findById(id);
+                contacts.add(mapUserToContactDto(user));
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return contacts;
+    }
+
+    public ContactDto mapUserToContactDto(User user) {
+        ContactDto contactDto = new ContactDto();
+        contactDto.setContactID(user.getUserID());
+        contactDto.setContactImage(user.getProfilePicture());
+        contactDto.setContactName(user.getDisplayName());
+        if (user.getBio() != null)
+            contactDto.setBio(user.getBio());
+        contactDto.setStatus(user.getUserStatus());
+        contactDto.setMode(user.getUserMode());
+
+        // Continue setting other properties as needed
+
+        return contactDto;
+    }
+
 
 }

@@ -5,9 +5,110 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="Chat participants has been added">
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/ClientEntities/Chat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/AddContactController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/EditProfileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/FriendRequestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/NotificationCellFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/NotificationListController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/UserCardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ImageServices.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/NotificationServices.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/NotificationList.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/addContact.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/editProfile.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/friendRequest.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/userCard.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/ClientImages/defaultUser.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/ClientStyles/FriendRequestStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/ClientStyles/profile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Contacts/NotificationMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/Model/DTO/ContactDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/Model/DTO/GroupDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/Model/DTO/NotificationDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/RepoInterfaces/ChatRepoInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/RepoInterfaces/ChatRepoInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/ChatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/ChatRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_25_2024_2_55_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_25_2024_2_55_PM_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_25_2024_2_55_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_25_2024_2_55_PM__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]/AttachmentReopsitory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]/ChatParticipantRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]/ChatRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]/ContactService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]/ContactsRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]/InvitationService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]/TestApp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]/UserNotificationRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]/UserRegistrationDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]/UserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]/UserSession.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]/ViewFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]1/AttachmentReopsitory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]1/ChatParticipantRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]1/ChatRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]1/ContactService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]1/ContactsRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]1/InvitationService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]1/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]1/TestApp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]1/UserNotificationRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]1/UserRegistrationDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]1/UserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]1/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]1/UserSession.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]1/ViewFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24,_2_12_PM_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24__2_12_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_26_24__2_12_PM__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/Chat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatAreaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatAreaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatCellFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatCellFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/StatusPopUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/StatusPopUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/UserMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/UserMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Models/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Views/ViewFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/UserMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/UserMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/RegisterController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/RemoteServiceHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/RemoteServiceHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Models/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Models/Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/ContactsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/ContactsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/DatabaseConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/DatabaseConnectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Chat/ChatServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Chat/ChatServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Contacts/ContactService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Contacts/ContactService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Contacts/InvitationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Contacts/InvitationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/User/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/User/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerHomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerHomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ChatRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ChatRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ContactsRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ContactsRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/DatabaseConnectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/DatabaseConnectionManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Contacts/ContactService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Contacts/ContactService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Contacts/InvitationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Contacts/InvitationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Factories/ServicesFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Factories/ServicesFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/LoginService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/RegistrationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/RegistrationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/TestApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/TestApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Client/CallBackServicesClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Client/CallBackServicesClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Server/CallBackServicesServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Server/CallBackServicesServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/RemoteLoginService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/RemoteRegistrationService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/RemoteUserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/ServicesFactoryInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,9 +118,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Enum" />
         <option value="Interface" />
+        <option value="CSS File" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -31,6 +133,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -57,6 +160,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/iti/Java/advanced javaFx/Chat&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
@@ -110,6 +214,13 @@
       <item itemvalue="Application.Amin" />
     </list>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -123,6 +234,18 @@
       <workItem from="1706359578368" duration="6976000" />
       <workItem from="1706528342353" duration="2120000" />
       <workItem from="1706536373701" duration="7760000" />
+      <workItem from="1706549822455" duration="28000" />
+      <workItem from="1706549872742" duration="3482000" />
+      <workItem from="1706553893447" duration="15784000" />
+      <workItem from="1706596733323" duration="1160000" />
+      <workItem from="1706604320531" duration="4158000" />
+      <workItem from="1706667958395" duration="34000" />
+      <workItem from="1706676332581" duration="558000" />
+      <workItem from="1706678000886" duration="3181000" />
+      <workItem from="1706681769833" duration="41000" />
+      <workItem from="1706692559129" duration="1302000" />
+      <workItem from="1706695055590" duration="9385000" />
+      <workItem from="1706709227022" duration="2428000" />
     </task>
     <task id="LOCAL-00001" summary="Add server gui">
       <option name="closed" value="true" />

@@ -1,12 +1,12 @@
 package org.Server.Service.Chat;
 import Model.DTO.ChatDto;
 import org.Server.Repository.ChatRepository;
-import org.Server.ServerModels.ServerEntities.Chat;
 import org.Server.Service.ChatParticipants.ChatParticipantServices;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
+import org.Server.ServerModels.ServerEntities.Chat;
 
 public class ChatServices {
     private static ChatServices chatServices;
@@ -49,15 +49,24 @@ public class ChatServices {
             throw new RuntimeException(e);
         }
     }
-    private Chat mapToChat(ChatDto dto){
+    private Chat mapToChat(ChatDto dto) {
+        if (dto == null) {
+            System.out.println("ChatServices.mapToChat: dto is null");
+        }
+
+        Integer adminID = dto.getAdminID(); // Can be null
+        String ChatName=dto.getChatName();
+        byte [] ChatImage =dto.getChatImage();
+
         return new Chat(
-                dto.getChatName(),
-                dto.getChatImage(),
-                dto.getAdminID(),
+                ChatName,
+                ChatImage,
+                adminID,  // Use the possibly null adminID directly
                 new Timestamp(System.currentTimeMillis()),
                 new Timestamp(System.currentTimeMillis())
         );
     }
+
 
 
 }

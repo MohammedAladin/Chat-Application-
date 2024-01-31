@@ -31,7 +31,7 @@ public class LoginService implements RemoteLoginService {
                 userRepository.updateLoginDate(userLoginDTO.getPhoneNumber(), new Timestamp(System.currentTimeMillis()));
 
                 //callback --> (list of contacts)->ObservUser(Name, id, byte [] image, status, mode, phone)
-                UserSession.setCurrentUser(signedUser);
+                //UserSession.setCurrentUser(signedUser);
                 System.out.println("User signed in successfully: " + userLoginDTO.getPhoneNumber());
                 return true;
 

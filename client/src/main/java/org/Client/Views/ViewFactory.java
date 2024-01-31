@@ -1,7 +1,9 @@
 package org.Client.Views;
+
+import Model.DTO.ContactDto;
 import javafx.beans.property.ObjectProperty;
 import javafx.scene.image.Image;
-import org.Client.Controllers.Chat;
+import org.Client.ClientEntities.Chat;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -15,7 +17,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import org.Client.Controllers.ChatUserController;
-import org.Client.Controllers.HomeController;
+import org.Client.Controllers.UserCardController;
 
 import java.io.IOException;
 
@@ -29,8 +31,25 @@ public class ViewFactory {
     Popup popup;
 
     private Node homeIcon;
+    Popup addContactPopup;
+    Popup notificationPopup;
 
-    private ObjectProperty<Chat> selectedChat = new SimpleObjectProperty<>();
+    private ObjectProperty<ContactDto> selectedChat = new SimpleObjectProperty<>();
+    private String phoneNumber;
+
+    public String getStatus() {
+        return Status.get();
+    }
+
+    public StringProperty statusProperty() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        this.Status.set(status);
+    }
+
+    private StringProperty Status = new SimpleStringProperty("online");
 
     public String getSelectedMenuItem() {
         return selectedMenuItem.get();
@@ -45,17 +64,18 @@ public class ViewFactory {
         this.selectedMenuItem.set(selectedMenuItem);
     }
 
-    public Chat getSelectedChat() {
+    public ContactDto getSelectedChat() {
         return selectedChat.get();
     }
 
-    public ObjectProperty<Chat> selectedChatProperty() {
+    public ObjectProperty<ContactDto> selectedChatProperty() {
         return selectedChat;
     }
 
-    public void setSelectedChat(Chat selectedChat) {
+    public void setSelectedChat(ContactDto selectedChat) {
         this.selectedChat.set(selectedChat);
     }
+
     public Stage getStage() {
         return stage;
     }
@@ -77,16 +97,21 @@ public class ViewFactory {
     }
 
     StringProperty serverAnnouncement = new SimpleStringProperty();
-    public ViewFactory(){}
-    public void showRegisterWindow(){
+
+    public ViewFactory() {
+    }
+
+    public void showRegisterWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/Register.fxml"));
         sceneMaker(loader);
     }
-    public void showLoginWindow(){
+
+    public void showLoginWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/Login.fxml"));
         sceneMaker(loader);
     }
-    public void showRegistrationWindow(){
+
+    public void showRegistrationWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/Register.fxml"));
         sceneMaker(loader);
     }
@@ -97,20 +122,20 @@ public class ViewFactory {
 
             home = fxmlLoader.load();
             Scene scene = new Scene(home);
-            Stage loginStage=(Stage) button.getScene().getWindow();
+            Stage loginStage = (Stage) button.getScene().getWindow();
             loginStage.close();
             Stage stage = new Stage();
             stage.setMinWidth(800);
             stage.setMinHeight(800);
             stage.setTitle("Chat App");
-            stage.getIcons().add(new Image(getClass().getResourceAsStream( "/ClientImages/icon.png" )));
-            stage.setOnCloseRequest(e->{
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/ClientImages/icon.png")));
+            stage.setOnCloseRequest(e -> {
                 System.exit(0);
             });
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
-           e.printStackTrace();
+            e.printStackTrace();
         }
 
     }
@@ -118,8 +143,8 @@ public class ViewFactory {
     public void showChatArea() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/ChatUser.fxml"));
         ChatUserController controller = new ChatUserController();
-        controller.setName(selectedChat.get().getName());
-        controller.setImage(selectedChat.get().getImage());
+        controller.setName(selectedChat.get().getContactName());
+        //controller.setImage(selectedChat.get().getContactImage()Image());
         fxmlLoader.setController(controller);
         try {
             home.setCenter(fxmlLoader.load());
@@ -175,14 +200,15 @@ public class ViewFactory {
         }
         return homeIcon;
     }
+
     private void sceneMaker(FXMLLoader loader) {
         Scene scene = null;
-        try{
+        try {
             scene = new Scene(loader.load());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        if(stage==null){
+        if (stage == null) {
             stage = new Stage();
             stage.setMinWidth(400);
             stage.setMinHeight(600);
@@ -193,4 +219,87 @@ public class ViewFactory {
         stage.setResizable(true);
     }
 
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public Node showProfile() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/editProfile.fxml"));
+        try {
+            return fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void showAddContacts(Button button) {
+        Bounds buttonBounds = button.localToScreen(button.getBoundsInLocal());
+        double popupX = buttonBounds.getMaxX() - 30;
+        double popupY = buttonBounds.getMinY();
+        if (addContactPopup == null) {
+            addContactPopup = new Popup();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/addContact.fxml"));
+
+
+            // Set the position of the popup next to the button
+
+            try {
+                AnchorPane root = fxmlLoader.load();
+                addContactPopup.getContent().add(root);
+                System.out.println(popupX + "   " + popupY);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        addContactPopup.show(button.getParent(), popupX, popupY);
+        addContactPopup.setAutoHide(true);
+    }
+
+    public void showNotificationPopUp(Button button){
+        Bounds buttonBounds = button.localToScreen(button.getBoundsInLocal());
+        double popupX = buttonBounds.getMaxX() - 30;
+        double popupY = buttonBounds.getMinY();
+        if (notificationPopup == null) {
+            notificationPopup = new Popup();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/NotificationList.fxml"));
+
+
+            // Set the position of the popup next to the button
+
+            try {
+                AnchorPane root = fxmlLoader.load();
+                notificationPopup.getContent().add(root);
+                System.out.println(popupX + "   " + popupY);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        notificationPopup.show(button.getParent(), popupX, popupY);
+        notificationPopup.setAutoHide(true);
+
+    }
+
+    public AnchorPane showUserCard(ContactDto user,String phoneNumber) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/UserCard.fxml"));
+        try {
+            UserCardController controller = new UserCardController();
+            controller.setName(user.getContactName());
+            controller.setPhoneNumber(phoneNumber);
+            //controller.setImage(user.getContactImage());
+            fxmlLoader.setController(controller);
+            AnchorPane card = fxmlLoader.load();
+            return card;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

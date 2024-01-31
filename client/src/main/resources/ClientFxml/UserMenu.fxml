@@ -36,6 +36,16 @@
                      <FontAwesomeIconView fill="WHITE" glyphName="USER" size="30" text="" wrappingWidth="24.62859869003296" />
                   </graphic>
                </Button>
+               <Button fx:id="addContact_btn" mnemonicParsing="false" prefHeight="51.0" prefWidth="113.0" styleClass="menu_container" textFill="WHITE">
+                  <graphic>
+                     <FontAwesomeIconView fill="WHITE" glyphName="USER_PLUS" size="30" />
+                  </graphic>
+               </Button>
+               <Button fx:id="group_btn" mnemonicParsing="false" prefHeight="51.0" prefWidth="113.0" styleClass="menu_container" textFill="WHITE">
+                  <graphic>
+                     <FontAwesomeIconView fill="WHITE" glyphName="GROUP" size="30" />
+                  </graphic>
+               </Button>
                <Button fx:id="settings_btn" mnemonicParsing="false" prefHeight="51.0" prefWidth="113.0" styleClass="menu_container" textFill="WHITE">
                   <graphic>
                      <FontAwesomeIconView fill="WHITE" glyphName="GEAR" size="30" />

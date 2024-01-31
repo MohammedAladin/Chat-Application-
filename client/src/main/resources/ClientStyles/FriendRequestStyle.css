@@ -1,0 +1,42 @@
+.accept{
+    -fx-background-color: #8155c9;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-width: 2;
+    -fx-text-fill: white;
+
+}
+
+.reject{
+    -fx-background-color: #8155c9;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-width: 2;
+    -fx-text-fill: white;
+
+}
+
+.background{
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-width: 2;
+
+}
+.accept:hover{
+    -fx-background-color: #00ff00;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-width: 2;
+    -fx-text-fill: #000000;
+
+}
+
+.reject:hover{
+    -fx-background-color: #ff0000;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-width: 2;
+    -fx-text-fill: #000000;
+
+}

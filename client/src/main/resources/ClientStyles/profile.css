@@ -1,0 +1,14 @@
+.background{
+    -fx-background-color: #e9e9ff;
+    -fx-alignment: center;
+    -fx-background-radius: 20;
+}
+
+.text-field{
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 25px;
+    -fx-border-color: #e9e9ff;
+    -fx-border-radius: 25px;
+    -fx-pref-height: 35;
+    -fx-font-size: 1.2em;
+}
