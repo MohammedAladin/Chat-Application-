@@ -23,6 +23,7 @@ public class ChatCellFactory extends ListCell<ContactDto> {
             controller.setStatus(chat.getStatus());
             controller.setMessage(chat.getBio());
 
+
             try {
                 setGraphic(fxmlLoader.load());
 

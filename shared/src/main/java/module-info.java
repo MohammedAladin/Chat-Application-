@@ -4,6 +4,7 @@ module shared {
     exports Interfaces.RmiServices;
     exports Interfaces.CallBacks.Client;
     exports Interfaces.CallBacks.Server;
+    exports SharedEnums;
 
     requires java.rmi;
     requires java.sql;

@@ -5,6 +5,7 @@ import Interfaces.CallBacks.Server.CallBackServicesServer;
 import Model.DTO.ContactDto;
 import Model.DTO.MessageDTO;
 import Model.DTO.NotificationDTO;
+import SharedEnums.StatusEnum;
 import javafx.application.Platform;
 import org.Server.Repository.ContactsRepository;
 import org.Server.Repository.UserRepository;
@@ -42,6 +43,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         ArrayList<NotificationDTO> notificationDTOS = getNotificationList(clientId);
 
         clients.put(clientId, client);
+        client.setPhone(clientphone);
         client.setClientId(clientId);
         try {
             client.setNotificationList(notificationDTOS);
@@ -87,10 +89,19 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
 
     public void addContact(Integer clientId, String contactPhoneNumber) throws RemoteException {
         CallBackServicesClient client = clients.get(clientId);
+        User user;
+        try {
+            user = new UserRepository().findByPhoneNumber(contactPhoneNumber);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         boolean exists = new ContactService().addContact(clientId, contactPhoneNumber);
         Platform.runLater(() -> {
             try {
                 client.contactExists(exists);
+                if (clients.containsKey(user.getUserID()))
+                    clients.get(user.getUserID()).setNotificationList(getNotificationList(user.getUserID()));
             } catch (RemoteException e) {
                 throw new RuntimeException(e);
             }
@@ -127,15 +138,21 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         });
     }
 
-    public void changeStatus(Integer ID, String status) throws RemoteException{
+    public void changeStatus(Integer ID, String status) throws RemoteException {
+        try {
+            new UserRepository().updateStatus(clients.get(ID).getPhone(), StatusEnum.fromValue(status));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         List<Integer> contacts = ContactsRepository.getInstance().getContacts(ID);
         for (Integer contact : contacts) {
-            if(!clients.containsKey(contact))
+            if (!clients.containsKey(contact))
                 continue;
             CallBackServicesClient client = clients.get(contact);
             Platform.runLater(() -> {
                 try {
                     client.changeStatus(ID, status);
+                    client.setContactList(new ContactService().getContacts(contact));
                 } catch (RemoteException e) {
                     throw new RuntimeException(e);
                 }
@@ -147,8 +164,8 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     @Override
     public ContactDto searchForContact(String phoneNumber) throws RemoteException {
         try {
-            User user =new UserRepository().findByPhoneNumber(phoneNumber);
-            if(user == null)
+            User user = new UserRepository().findByPhoneNumber(phoneNumber);
+            if (user == null)
                 return null;
             else return new ContactService().mapUserToContactDto(user);
         } catch (SQLException e) {

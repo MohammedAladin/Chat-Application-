@@ -68,7 +68,31 @@ public class ChatController implements Initializable {
             contactImage.setImage(defaultImage);
         else contactImage.setImage(ImageServices.convertToImage(image));
         lastText.setText(message);
-        changeStatus();
+        if (status.get().equals("Online")) {
+            contactStatus.setStyle("-fx-fill: green");
+            contactStatus.setStroke(null);
+        } else if (status.get().equals("Offline")){
+            contactStatus.setStyle("-fx-fill: gray");
+            contactStatus.setStroke(null);
+        }
+        else if (status.get().equals("Available")){
+            contactStatus.setStyle("-fx-fill: green");
+            contactStatus.setStroke(null);
+        }
+        else if (status.get().equals("Busy")){
+            contactStatus.setStyle("-fx-fill: red");
+            contactStatus.setStroke(null);
+        }
+        else if (status.get().equals("Away")){
+            contactStatus.setStyle("-fx-fill: yellow");
+            contactStatus.setStroke(null);
+        }
+        else {
+            contactStatus.setStyle("-fx-fill: red");
+            contactStatus.setStroke(null);
+        }
+
+
         status.addListener((observableValue, s, t1) -> {
             changeStatus();
             System.out.println(t1);
@@ -81,7 +105,23 @@ public class ChatController implements Initializable {
         if (status.get().equals("Online")) {
             contactStatus.setStyle("-fx-fill: green");
             contactStatus.setStroke(null);
-        } else {
+        } else if (status.get().equals("Offline")){
+            contactStatus.setStyle("-fx-fill: gray");
+            contactStatus.setStroke(null);
+        }
+        else if (status.get().equals("Available")){
+            contactStatus.setStyle("-fx-fill: green");
+            contactStatus.setStroke(null);
+        }
+        else if (status.get().equals("Busy")){
+            contactStatus.setStyle("-fx-fill: red");
+            contactStatus.setStroke(null);
+        }
+        else if (status.get().equals("Away")){
+            contactStatus.setStyle("-fx-fill: yellow");
+            contactStatus.setStroke(null);
+        }
+        else {
             contactStatus.setStyle("-fx-fill: red");
             contactStatus.setStroke(null);
         }

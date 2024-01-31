@@ -18,6 +18,16 @@ public class Model {
     private CallBackServicesClient callBackServicesClient;
     private CallBackServicesServer callBackServicesServer;
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    private String phoneNumber;
+
     public ObservableList<ContactDto> getContacts() {
         return contacts;
     }
@@ -85,6 +95,7 @@ public class Model {
     }
 
     public void setContacts(List<ContactDto> contacts) {
+        this.contacts.clear();
         this.contacts.addAll(contacts);
         System.out.println(contacts);
     }

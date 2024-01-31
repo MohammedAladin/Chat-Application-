@@ -49,7 +49,7 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
     }
 
     public void setContactList(List<ContactDto> contacts) throws RemoteException{
-        Model.getInstance().setContacts(contacts);
+        Platform.runLater(()->Model.getInstance().setContacts(contacts));
     }
 
     @Override
@@ -62,4 +62,15 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
             }
         });
     }
+
+    @Override
+    public void setPhone(String clientphone) throws RemoteException {
+        Model.getInstance().setPhoneNumber(clientphone);
+    }
+
+    @Override
+    public String getPhone() throws RemoteException {
+        return Model.getInstance().getPhoneNumber();
+    }
+
 }

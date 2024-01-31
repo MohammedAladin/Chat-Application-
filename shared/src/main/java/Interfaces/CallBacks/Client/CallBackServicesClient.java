@@ -23,4 +23,9 @@ public interface CallBackServicesClient extends Remote {
     void setContactList(List<ContactDto> contacts) throws RemoteException;
 
     void changeStatus(Integer id, String status) throws RemoteException;
+
+
+    void setPhone(String clientphone) throws RemoteException;
+
+    String getPhone() throws RemoteException;
 }

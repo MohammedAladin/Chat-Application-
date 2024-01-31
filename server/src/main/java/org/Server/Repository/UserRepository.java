@@ -2,7 +2,7 @@ package org.Server.Repository;
 
 import org.Server.RepoInterfaces.UserRepoInterface;
 import org.Server.ServerModels.ServerEntities.User;
-import org.Server.ServerModels.Enums.StatusEnum;
+import SharedEnums.StatusEnum;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -105,7 +105,7 @@ public class UserRepository implements UserRepoInterface {
         return userList;
     }
     public void updateStatus(String phoneNumber, StatusEnum status) throws SQLException {
-        String query = "UPDATE UserAccounts SET UserMode=? WHERE PhoneNumber=?";
+        String query = "UPDATE UserAccounts SET UserStatus=? WHERE PhoneNumber=?";
 
         try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
             preparedStatement.setString(1, status.name());

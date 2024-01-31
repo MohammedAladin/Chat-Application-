@@ -1,7 +1,7 @@
 package org.Server.RepoInterfaces;
 
 import org.Server.ServerModels.ServerEntities.User;
-import org.Server.ServerModels.Enums.StatusEnum;
+import SharedEnums.StatusEnum;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;

@@ -1,8 +1,14 @@
-package org.Server.ServerModels.Enums;
+package SharedEnums;
 
 public enum StatusEnum {
     ONLINE("Online"),
-    OFFLINE("Offline");
+    OFFLINE("Offline"),
+    AVAILABLE("Available"),
+
+    BUSY("Busy"),
+    AWAY("Away");
+
+
 
     private final String value;
 

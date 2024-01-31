@@ -38,10 +38,20 @@ public class StatusPopUpController implements Initializable {
         Busy.setOnMouseClicked(e->{
             currentStatus.getChildrenUnmodifiable().get(0).setStyle("-fx-fill: #ff0000; -fx-stroke: transparent");
             Model.getInstance().getViewFactory().closePopUp();
+            try {
+                Model.getInstance().getCallBackServicesServer().changeStatus(Model.getInstance().getClientId(),"Busy");
+            } catch (RemoteException remoteException) {
+                remoteException.printStackTrace();
+            }
         });
         Away.setOnMouseClicked(e->{
             currentStatus.getChildrenUnmodifiable().get(0).setStyle("-fx-fill: #ffff00; -fx-stroke: transparent");
             Model.getInstance().getViewFactory().closePopUp();
+            try {
+                Model.getInstance().getCallBackServicesServer().changeStatus(Model.getInstance().getClientId(),"Away");
+            } catch (RemoteException remoteException) {
+                remoteException.printStackTrace();
+            }
         });
         Offline.setOnMouseClicked(e->{
             currentStatus.getChildrenUnmodifiable().get(0).setStyle("-fx-fill: #696a6b; -fx-stroke: transparent");
