@@ -2,6 +2,7 @@ package org.Client.Controllers;
 
 import Model.DTO.ChatDto;
 import Model.DTO.ContactDto;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,6 +41,10 @@ public class ChatAreaController implements Initializable {
             }
         });
         searchBar.setPromptText("Search");
+        Model.getInstance().getContacts().addListener((javafx.collections.ListChangeListener.Change<? extends ContactDto> c) -> {
+            // Refresh the ListView whenever the ObservableList changes
+            Platform.runLater(() -> chatList.refresh());
+        });
 
         chatList.setItems(Model.getInstance().getContacts());
 

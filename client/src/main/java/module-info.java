@@ -6,6 +6,8 @@ module client {
     requires shared;
     requires java.rmi;
     requires server;
+    requires java.desktop;
+    requires javafx.swing;
 
     opens org.Client to javafx.fxml;
     opens org.Client.Controllers to javafx.fxml;

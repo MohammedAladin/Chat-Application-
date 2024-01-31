@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import org.Client.Models.Model;
+import org.Client.Service.ImageServices;
 
 import java.net.URL;
 import java.rmi.RemoteException;
@@ -34,31 +35,38 @@ public class UserCardController implements Initializable {
 
     String phoneNumber;
 
-    public Image getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 
-    Image image;
+    byte[] image;
+    Image defaultImage = new Image(getClass().getResource("/ClientImages/defaultUser.jpg").toString());
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         name_label.setText(name);
-        add_btn.setOnAction(e->addContact(phoneNumber));
+        add_btn.setOnAction(e -> addContact(phoneNumber));
+        if (image == null) {
+            userImage.setImage(defaultImage);
+        } else {
+            userImage.setImage(ImageServices.convertToImage(image));
+        }
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void addContact(String contact){
+    public void addContact(String contact) {
         try {
-            RemoteServiceHandler.getInstance().getCallbacks().addContact(Model.getInstance().getClientId(),contact);
+            RemoteServiceHandler.getInstance().getCallbacks().addContact(Model.getInstance().getClientId(), contact);
             System.out.println("Contact added");
-            ((VBox)parentPane.getParent()).getChildren().remove(parentPane);
+            ((VBox) parentPane.getParent()).getChildren().remove(parentPane);
         } catch (RemoteException e) {
             e.printStackTrace();
         }

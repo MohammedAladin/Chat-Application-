@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
+import org.Client.Service.ImageServices;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -55,14 +56,17 @@ public class ChatController implements Initializable {
     private StringProperty status = new SimpleStringProperty();
     private String message;
     private byte[] image;
+    Image defaultImage = new Image(getClass().getResource("/ClientImages/defaultUser.jpg").toString());
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Circle clip = new Circle(25, 25, 25);
-        contactImage.setClip(clip);
+        //Circle clip = new Circle(75, 75, 75);
+        //contactImage.setClip(clip);
         contactName.setText(name);
-        //contactImage.setImage(image);
+        if(image == null)
+            contactImage.setImage(defaultImage);
+        else contactImage.setImage(ImageServices.convertToImage(image));
         lastText.setText(message);
         changeStatus();
         status.addListener((observableValue, s, t1) -> {

@@ -294,7 +294,7 @@ public class ViewFactory {
             UserCardController controller = new UserCardController();
             controller.setName(user.getContactName());
             controller.setPhoneNumber(phoneNumber);
-            //controller.setImage(user.getContactImage());
+            controller.setImage(user.getContactImage());
             fxmlLoader.setController(controller);
             AnchorPane card = fxmlLoader.load();
             return card;

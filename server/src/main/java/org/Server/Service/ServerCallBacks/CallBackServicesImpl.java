@@ -119,7 +119,8 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         new InvitationService().deleteInvitation(clientId, username);
         Platform.runLater(() -> {
             try {
-                client.deleteNotification(username);
+                client.deleteNotification(clientId);
+                System.out.println("rejected client" + clientId);
             } catch (RemoteException e) {
                 throw new RuntimeException(e);
             }

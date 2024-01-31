@@ -57,6 +57,9 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
         Platform.runLater(()->{
             Model.getInstance().getContacts().stream().filter(contactDto -> contactDto.getContactID().equals(id)).findFirst().get().setStatus(status);
             System.out.println(id + "changed status to " + status);
+            for(ContactDto contactDto : Model.getInstance().getContacts()){
+                System.out.println(contactDto.getContactID() + " " + contactDto.getStatus());
+            }
         });
     }
 }

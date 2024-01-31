@@ -18,6 +18,7 @@ public class NotificationCellFactory extends ListCell<NotificationDTO> {
             controller.setUsername(notification.getSenderID());
             controller.setNotificationId(notification.getNotificationID());
 
+
             try {
                 setGraphic(fxmlLoader.load());
 
