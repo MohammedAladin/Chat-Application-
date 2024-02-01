@@ -21,6 +21,17 @@ public class ChatRepository implements ChatRepoInterface {
 
     @Override
     public void save(Chat entity)  {
+        String query = "INSERT INTO Chat (ChatName) VALUES (?)";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, entity.getChatName());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveGroup(Chat entity)  {
         String query = "INSERT INTO Chat (ChatName,ChatImage,AdminID) VALUES (?, ?, ?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {

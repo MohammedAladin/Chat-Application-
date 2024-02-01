@@ -39,6 +39,22 @@ public class ChatServices {
             throw new RuntimeException(e);
         }
     }
+    public void createPrivateChat(Integer user1,Integer user2){
+        Timestamp current = new Timestamp(System.currentTimeMillis());
+        ChatDto chatDto = new ChatDto(user1+user2+"", null, null, current, current);
+        List<Integer> ids = List.of(user1,user2);
+        chatRepository.save(mapToChat(chatDto));
+        try {
+            int chatId = chatRepository.findByName(chatDto.getChatName()).getChatID();
+            chatParticipantServices.addParticipants(
+                    chatId,
+                    ids
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
     public List<Integer> getAllParticipants(Integer chatID){
         return chatRepository.getAllParticipants(chatID);
     }

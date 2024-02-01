@@ -2,6 +2,7 @@ package org.Server.Service.Contacts;
 
 import Model.DTO.ChatDto;
 import Model.DTO.ContactDto;
+import org.Server.Repository.ChatRepository;
 import org.Server.Repository.UserRepository;
 import org.Server.ServerModels.ServerEntities.Contact;
 import org.Server.ServerModels.ServerEntities.User;
@@ -58,7 +59,7 @@ public class ContactService {
             Contact contact = new Contact(userId, acceptedUserID, new Timestamp(System.currentTimeMillis()));
             contactsRepository.save(contact);
 
-            createNewChat(acceptedUserID, userId);
+            chatServices.createPrivateChat(acceptedUserID, userId);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -109,6 +110,8 @@ public class ContactService {
 
         return contactDto;
     }
+
+
 
 
 }
