@@ -42,6 +42,8 @@ public class UserMenuController implements Initializable {
         noti_btn.setOnAction(e->{
            Model.getInstance().getViewFactory().showNotificationPopUp(noti_btn);
         });
-
+        group_btn.setOnAction(e ->{
+            Model.getInstance().getViewFactory().showAddGroup(group_btn);
+        });
     }
 }

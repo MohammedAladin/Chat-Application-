@@ -28,7 +28,7 @@ public class ChatServices {
         return chatServices;
     }
     public void createNewChat(ChatDto chatDto, List<Integer> participantsIds) {
-        chatRepository.save(mapToChat(chatDto));
+        chatRepository.saveGroup(mapToChat(chatDto));
         try {
             int chatId = chatRepository.findByName(chatDto.getChatName()).getChatID();
             chatParticipantServices.addParticipants(

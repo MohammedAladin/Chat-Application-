@@ -6,6 +6,7 @@ import Model.DTO.MessageDTO;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 public interface CallBackServicesServer extends Remote {
 
@@ -26,4 +27,6 @@ public interface CallBackServicesServer extends Remote {
     void changeStatus(Integer ID, String status) throws RemoteException;
 
     ContactDto searchForContact(String phoneNumber) throws RemoteException;
+    void createGroupChat(Integer clientId, String text, ArrayList<Integer> selected) throws RemoteException;
+
 }

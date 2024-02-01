@@ -177,5 +177,10 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         return null;
     }
 
-
+    @Override
+    public void createGroupChat(Integer clientId, String text, ArrayList<Integer> selected) throws RemoteException {
+        ContactService contactService = new ContactService();
+        System.out.println("callback imp : " + clientId);
+        contactService.createNewGroup(clientId,selected,text);
+    }
 }
