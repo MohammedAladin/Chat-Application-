@@ -2,19 +2,21 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="297.0" prefWidth="370.0" styleClass="background" stylesheets="@../ClientStyles/contactStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.AddContactController">
+<AnchorPane prefHeight="297.0" prefWidth="370.0" styleClass="main-container" stylesheets="@../ClientStyles/AddContactStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.AddContactController">
    <children>
-      <TextField fx:id="searchField" layoutX="101.0" layoutY="31.0" AnchorPane.leftAnchor="101.0" AnchorPane.rightAnchor="119.6" AnchorPane.topAnchor="31.0" />
-      <Text fx:id="error" layoutX="164.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
-      <VBox fx:id="vbox" layoutX="126.4" layoutY="93.0" prefHeight="200.0" prefWidth="244.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <TextField fx:id="searchField" layoutX="100.8" layoutY="31.799999999999997" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.leftAnchor="100.8" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="40.0" />
+      <Text fx:id="error" layoutX="164.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="error_text" text="Text" visible="false" wrappingWidth="27.6708984375" AnchorPane.leftAnchor="190.0" AnchorPane.topAnchor="90.0" />
+      <VBox fx:id="vbox" layoutX="126.4" layoutY="111.0" prefHeight="182.0" prefWidth="421.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding></VBox>
-      <Button fx:id="find_btn" layoutX="286.0" layoutY="32.0" mnemonicParsing="false" text="find user" />
+      <Button fx:id="find_btn" layoutX="328.0" layoutY="40.0" mnemonicParsing="false" text="Find User" AnchorPane.rightAnchor="20.0" />
+      <Label layoutX="154.0" layoutY="10.0" text="Find Your Friends !" />
    </children>
 </AnchorPane>

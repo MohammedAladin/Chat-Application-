@@ -26,7 +26,11 @@ public class ChatRepository implements ChatRepoInterface {
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, entity.getChatName());
             preparedStatement.setBytes(2, entity.getChatImage());
-            preparedStatement.setInt(3, entity.getAdminID());
+            if (entity.getAdminID() != null) {
+                preparedStatement.setInt(3, entity.getAdminID());
+            } else {
+                preparedStatement.setNull(3, java.sql.Types.INTEGER);
+            }
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -65,6 +69,7 @@ public class ChatRepository implements ChatRepoInterface {
                     chat.setAdminID(resultSet.getInt("AdminID"));
                     chat.setCreationDate(resultSet.getTimestamp("CreationDate"));
                     chat.setLastModified(resultSet.getTimestamp("LastModified"));
+                    System.out.println(chat.getChatID());
                 }
             }
         }

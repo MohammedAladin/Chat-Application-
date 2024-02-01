@@ -1,8 +1,8 @@
 .contactName{
-    -fx-font-size: 18px;
+    -fx-font-size: 16px;
     -fx-font-weight: 600;
     -fx-text-fill: #000000;
-    -fx-font-family: Roboto;
+    -fx-font-family: Montserrat;
 }
 
 .lastText{
@@ -16,7 +16,7 @@
 }
 
 .background{
-    -fx-background-color: #EFF6FC;
+    -fx-background-color: #eff6fc;
 }
 
 .contact{
@@ -24,7 +24,7 @@
 }
 
 .contact:hover{
-    -fx-background-color: #b0bff8;
+    -fx-background-color: #e7e7e7;
 }
 
 .status{
@@ -36,7 +36,7 @@
     -fx-background-color: #ffffff;
     -fx-background-radius: 25px;
     -fx-pref-height: 80px;
-    -fx-effect: dropshadow(two-pass-box, #8c7bc7,5,0,0,4);
+    -fx-effect: dropshadow(two-pass-box, #c5e5f7,5,0,0,4);
     -fx-text-size: 20px;
 
 }
@@ -46,7 +46,7 @@
 .list-view{
     -fx-background-color: #ffffff;
     -fx-background-radius: 25px;
-    -fx-effect: dropshadow(two-pass-box,#79c5ef,5,0,0,4);
+    -fx-effect: dropshadow(two-pass-box,#c5e5f7,5,0,0,4);
 
 }
 

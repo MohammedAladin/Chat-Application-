@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<HBox prefHeight="801.0" prefWidth="501.0" spacing="30.0" stylesheets="@../ClientStyles/UserMenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.UserMenuController">
+<HBox prefHeight="801.0" prefWidth="501.0" spacing="15.0" stylesheets="@../ClientStyles/UserMenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.UserMenuController">
    <children>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="772.0" prefWidth="130.0" styleClass="menu_container">
          <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="118.0" styleClass="left_container">
@@ -20,40 +20,40 @@
                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title_container" text="Chat App" />
             </VBox>
             <VBox layoutX="6.0" layoutY="132.0" prefHeight="502.0" prefWidth="126.0" spacing="30.0">
-               <Button fx:id="home_btn" mnemonicParsing="false" prefHeight="51.0" prefWidth="113.0" styleClass="menu_container">
+               <Button fx:id="home_btn" mnemonicParsing="false" prefHeight="51.0" prefWidth="110.0" styleClass="menu_container">
                   <graphic>
                      <FontAwesomeIconView fill="WHITE" glyphName="HOME" size="30" strokeType="INSIDE" styleClass="IconView" />
                   </graphic>
                </Button>
-               <Button fx:id="noti_btn" mnemonicParsing="false" prefHeight="54.0" prefWidth="113.0" styleClass="menu_container">
+               <Button fx:id="noti_btn" mnemonicParsing="false" prefHeight="54.0" prefWidth="109.0" styleClass="menu_container">
                   <graphic>
                      <FontAwesomeIconView fill="WHITE" glyphName="BELL" size="30" text="" wrappingWidth="29.99993908405304" />
                   </graphic>
                </Button>
                <Line endX="8.492881774902344" endY="0.0016578793292865157" startX="-100.0" stroke="#92ea9b" />
-               <Button fx:id="profile_btn" mnemonicParsing="false" prefHeight="51.0" prefWidth="113.0" styleClass="menu_container">
+               <Button fx:id="profile_btn" mnemonicParsing="false" prefHeight="51.0" prefWidth="110.0" styleClass="menu_container">
                   <graphic>
                      <FontAwesomeIconView fill="WHITE" glyphName="USER" size="30" text="" wrappingWidth="24.62859869003296" />
                   </graphic>
                </Button>
-               <Button fx:id="addContact_btn" mnemonicParsing="false" prefHeight="51.0" prefWidth="113.0" styleClass="menu_container" textFill="WHITE">
+               <Button fx:id="addContact_btn" mnemonicParsing="false" prefHeight="51.0" prefWidth="110.0" styleClass="menu_container" textFill="WHITE">
                   <graphic>
                      <FontAwesomeIconView fill="WHITE" glyphName="USER_PLUS" size="30" />
                   </graphic>
                </Button>
-               <Button fx:id="group_btn" mnemonicParsing="false" prefHeight="51.0" prefWidth="113.0" styleClass="menu_container" textFill="WHITE">
+               <Button fx:id="group_btn" mnemonicParsing="false" prefHeight="51.0" prefWidth="110.0" styleClass="menu_container" textFill="WHITE">
                   <graphic>
                      <FontAwesomeIconView fill="WHITE" glyphName="GROUP" size="30" />
                   </graphic>
                </Button>
-               <Button fx:id="settings_btn" mnemonicParsing="false" prefHeight="51.0" prefWidth="113.0" styleClass="menu_container" textFill="WHITE">
+               <Button fx:id="settings_btn" mnemonicParsing="false" prefHeight="51.0" prefWidth="110.0" styleClass="menu_container" textFill="WHITE">
                   <graphic>
                      <FontAwesomeIconView fill="WHITE" glyphName="GEAR" size="30" />
                   </graphic></Button>
             </VBox>
-            <VBox layoutX="21.0" layoutY="670.0" prefHeight="48.0" prefWidth="72.0">
+            <VBox layoutX="19.0" layoutY="670.0" prefHeight="48.0" prefWidth="96.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="menu_container">
+                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="97.0" styleClass="menu_container">
                      <graphic>
                         <FontAwesomeIconView fx:id="logout_btn" fill="WHITE" glyphName="SIGN_OUT" size="30" />
                      </graphic>

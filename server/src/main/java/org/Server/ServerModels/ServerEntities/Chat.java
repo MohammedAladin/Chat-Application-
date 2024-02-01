@@ -5,14 +5,14 @@ package org.Server.ServerModels.ServerEntities;
 import java.sql.Timestamp;
 
 public class Chat {
-    private int chatID;
+    private Integer chatID;
     private String chatName;
     private byte[] chatImage;
-    private int adminID;
+    private Integer adminID;
     private Timestamp creationDate;
     private Timestamp lastModified;
 
-    public Chat( String chatName, byte[] chatImage, int adminID, Timestamp creationDate, Timestamp lastModified) {
+    public Chat( String chatName, byte[] chatImage, Integer adminID, Timestamp creationDate, Timestamp lastModified) {
 
         this.chatName = chatName;
         this.chatImage = chatImage;
@@ -24,11 +24,11 @@ public class Chat {
     public Chat() {
     }
 
-    public int getChatID() {
+    public Integer getChatID() {
         return chatID;
     }
 
-    public void setChatID(int chatID) {
+    public void setChatID(Integer chatID) {
         this.chatID = chatID;
     }
 
@@ -48,11 +48,11 @@ public class Chat {
         this.chatImage = chatImage;
     }
 
-    public int getAdminID() {
+    public Integer getAdminID() {
         return adminID;
     }
 
-    public void setAdminID(int adminID) {
+    public void setAdminID(Integer adminID) {
         this.adminID = adminID;
     }
 

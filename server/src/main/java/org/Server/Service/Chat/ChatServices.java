@@ -54,9 +54,13 @@ public class ChatServices {
             System.out.println("ChatServices.mapToChat: dto is null");
         }
 
-        Integer adminID = dto.getAdminID(); // Can be null
+        // Can be null
         String ChatName=dto.getChatName();
         byte [] ChatImage =dto.getChatImage();
+        Integer adminID = dto.getAdminID();
+        if (ChatImage==null){
+            ChatImage = new byte[0];
+        }
 
         return new Chat(
                 ChatName,
