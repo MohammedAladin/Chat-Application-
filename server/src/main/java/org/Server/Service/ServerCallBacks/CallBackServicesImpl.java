@@ -113,11 +113,14 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     @Override
     public void acceptInvitation(Integer clientId, Integer acceptedUserID) throws RemoteException {
         CallBackServicesClient client = clients.get(clientId);
+        CallBackServicesClient acceptedClient = clients.get(acceptedUserID);
         new ContactService().acceptInvitation(clientId, acceptedUserID);
         System.out.println("accepted client" + acceptedUserID);
         Platform.runLater(() -> {
             try {
                 client.deleteNotification(acceptedUserID);
+                client.setContactList(new ContactService().getContacts(clientId));
+                acceptedClient.setContactList(new ContactService().getContacts(acceptedUserID));
             } catch (RemoteException e) {
                 throw new RuntimeException(e);
             }
