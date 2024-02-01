@@ -27,6 +27,9 @@ public class UserMenuController implements Initializable {
         addContact_btn.setOnAction(e -> {
             Model.getInstance().getViewFactory().showAddContacts(addContact_btn);
         });
+        group_btn.setOnAction(e ->{
+            Model.getInstance().getViewFactory().showAddGroup(group_btn);
+        });
 
         home_btn.setOnAction(e -> {
             if (Model.getInstance().getViewFactory().selectedMenuItemProperty().get().equals("home")) {

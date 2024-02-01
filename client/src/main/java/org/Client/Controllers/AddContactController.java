@@ -23,7 +23,6 @@ public class AddContactController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         searchField.setOnAction(e->search());
         find_btn.setOnAction(e->search());
-
     }
     public void search(){
         if (validate()){

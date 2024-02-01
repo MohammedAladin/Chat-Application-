@@ -3,6 +3,7 @@ package org.Client.Views;
 import Model.DTO.ContactDto;
 import javafx.beans.property.ObjectProperty;
 import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
 import org.Client.ClientEntities.Chat;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -33,7 +34,7 @@ public class ViewFactory {
     private Node homeIcon;
     Popup addContactPopup;
     Popup notificationPopup;
-
+    Popup addGroupPopup;
     private ObjectProperty<ContactDto> selectedChat = new SimpleObjectProperty<>();
     private String phoneNumber;
 
@@ -236,6 +237,25 @@ public class ViewFactory {
         }
         return null;
     }
+    public void showAddGroup(Button groupBtn) {
+        Bounds buttonBounds = groupBtn.localToScreen(groupBtn.getBoundsInLocal());
+        double popupX = buttonBounds.getMaxX() - 30;
+        double popupY = buttonBounds.getMinY();
+        if (addGroupPopup == null){
+            addGroupPopup = new Popup();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/AddGroup.fxml"));
+            try {
+                VBox root = loader.load();
+                addGroupPopup.getContent().add(root);
+                System.out.println(popupX + "   " + popupY);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        addGroupPopup.show(groupBtn.getParent(), popupX, popupY);
+        addGroupPopup.setAutoHide(true);
+    }
 
     public void showAddContacts(Button button) {
         Bounds buttonBounds = button.localToScreen(button.getBoundsInLocal());
@@ -302,4 +322,5 @@ public class ViewFactory {
             throw new RuntimeException(e);
         }
     }
+
 }

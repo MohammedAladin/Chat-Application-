@@ -40,7 +40,6 @@ public class ServerHomeController implements Initializable {
             throw new RuntimeException(e);
         }
 
-
     }
     @FXML
     private void start (){

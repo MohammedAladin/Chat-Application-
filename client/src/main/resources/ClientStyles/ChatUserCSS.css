@@ -1,7 +1,11 @@
 .container{
-    -fx-background-color: #e9e9ff;
+    /*-fx-background-color: #e9e9ff;
     -fx-alignment: center;
-    -fx-background-radius: 20;
+    -fx-background-radius: 20;*/
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 25px;
+    -fx-effect: dropshadow(two-pass-box,#79c5ef,5,0,0,4);
+
 }
 .attachment{
     -fx-background-color: #4B0082;
@@ -25,4 +29,7 @@
     -fx-background-radius: 15px;
     -fx-wrap-text: true;
     -fx-padding: 10px;
+}
+.top-area{
+    -fx-background-color: #ffcbff;
 }

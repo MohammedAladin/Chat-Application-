@@ -156,5 +156,10 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         return null;
     }
 
+    @Override
+    public void createGroupChat(Integer clientId, String text, ArrayList<Integer> selected) {
+        ContactService contactService = new ContactService();
+        contactService.createNewGroup(clientId,selected,text);
+    }
 
 }
