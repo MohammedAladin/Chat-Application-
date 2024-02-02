@@ -48,10 +48,10 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
             e.printStackTrace();
         }
         ArrayList<NotificationDTO> notificationDTOS = getNotificationList(clientId);
-        System.out.println("Image length is"+user.getProfilePicture().length);
         clients.put(clientId, client);
-        client.setData(clientphone, username, profilePicture);
         client.setClientId(clientId);
+        System.out.println("Client registered :id = " + clientId);
+        client.setData(clientphone, username, profilePicture);
         try {
             client.setNotificationList(notificationDTOS);
             client.setContactList(new ContactService().getContacts(clientId));
