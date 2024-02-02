@@ -83,4 +83,9 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
         System.out.println("Group list set to " + groupChats);
     }
 
+    @Override
+    public void updateGroupList(ChatDto newGroup) throws RemoteException {
+        Model.getInstance().getGroupList().add(newGroup);
+    }
+
 }

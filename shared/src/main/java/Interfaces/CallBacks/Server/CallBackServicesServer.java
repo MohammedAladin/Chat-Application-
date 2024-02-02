@@ -1,6 +1,7 @@
 package Interfaces.CallBacks.Server;
 
 import Interfaces.CallBacks.Client.CallBackServicesClient;
+import Model.DTO.ChatDto;
 import Model.DTO.ContactDto;
 import Model.DTO.MessageDTO;
 

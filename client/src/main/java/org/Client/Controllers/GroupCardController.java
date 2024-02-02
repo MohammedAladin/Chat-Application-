@@ -48,13 +48,14 @@ public class GroupCardController implements Initializable {
     private Integer adminID;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(chatImage.length>0){
-            imageCircle.setFill(new ImagePattern(ImageServices.convertToImage(chatImage)));
-            System.out.println("Image set and not the default");
-        }
-        else {
+        if(chatImage == null || chatImage.length == 0){
+
             imageCircle.setFill(new ImagePattern(new Image(getClass().getResource("/ClientImages/groupgray.png").toString())));
             System.out.println("Image set to default");
+        }
+        else {
+            imageCircle.setFill(new ImagePattern(ImageServices.convertToImage(chatImage)));
+            System.out.println("Image set and not the default");
         }
         chatNamelabel.setText(chatName);
 

@@ -31,4 +31,6 @@ public interface CallBackServicesClient extends Remote {
     String getPhone() throws RemoteException;
 
     void setGroupList(ArrayList<ChatDto> groupChats) throws RemoteException;
+    void updateGroupList(ChatDto newGroup) throws RemoteException;
+
 }

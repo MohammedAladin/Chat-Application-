@@ -2,6 +2,7 @@ package org.Server.Service.ServerCallBacks;
 
 import Interfaces.CallBacks.Client.CallBackServicesClient;
 import Interfaces.CallBacks.Server.CallBackServicesServer;
+import Model.DTO.ChatDto;
 import Model.DTO.ContactDto;
 import Model.DTO.MessageDTO;
 import Model.DTO.NotificationDTO;
@@ -189,6 +190,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     public void createGroupChat(Integer clientId, String text, ArrayList<Integer> selected) throws RemoteException {
         ContactService contactService = new ContactService();
         System.out.println("callback imp : " + clientId);
-        contactService.createNewGroup(clientId, selected, text);
+        ChatDto newGrp =  contactService.createNewGroup(clientId, selected, text);
+        clients.get(clientId).updateGroupList(newGrp);
     }
 }

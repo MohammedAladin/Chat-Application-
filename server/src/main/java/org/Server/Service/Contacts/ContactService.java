@@ -112,7 +112,7 @@ public class ContactService {
     }
 
 
-    public void createNewGroup(Integer adminID, List<Integer> participants,String grpName) {
+    public ChatDto createNewGroup(Integer adminID, List<Integer> participants,String grpName) {
         Timestamp current = new Timestamp(System.currentTimeMillis());
         ChatDto chatDto = new ChatDto(grpName, null, adminID, current, current);
         System.out.println("contactService : "+ chatDto.getAdminID());
@@ -120,6 +120,7 @@ public class ContactService {
                 chatDto,
                 participants
         );
+        return chatDto;
     }
 
 }
