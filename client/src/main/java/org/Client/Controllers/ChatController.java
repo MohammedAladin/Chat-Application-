@@ -71,7 +71,7 @@ public class ChatController implements Initializable {
         if (status.get().equals("Online")) {
             contactStatus.setStyle("-fx-fill: green");
             contactStatus.setStroke(null);
-        } else if (status.get().equals("Offline")){
+        } else if (status.get().equals("Busy")){
             contactStatus.setStyle("-fx-fill: gray");
             contactStatus.setStroke(null);
         }
@@ -79,7 +79,7 @@ public class ChatController implements Initializable {
             contactStatus.setStyle("-fx-fill: green");
             contactStatus.setStroke(null);
         }
-        else if (status.get().equals("Busy")){
+        else if (status.get().equals("Offline")){
             contactStatus.setStyle("-fx-fill: red");
             contactStatus.setStroke(null);
         }

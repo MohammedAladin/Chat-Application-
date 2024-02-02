@@ -10,6 +10,7 @@ import SharedEnums.StatusEnum;
 import javafx.application.Platform;
 import org.Server.Repository.ContactsRepository;
 import org.Server.Repository.UserRepository;
+import org.Server.ServerModels.ServerEntities.Contact;
 import org.Server.ServerModels.ServerEntities.User;
 import org.Server.ServerModels.ServerEntities.UserNotification;
 import org.Server.Service.Chat.ChatServices;
@@ -57,6 +58,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
             client.setNotificationList(notificationDTOS);
             client.setContactList(new ContactService().getContacts(clientId));
             client.setGroupList(ChatServices.getInstance().getGroupChats(clientId));
+            changeStatus(clientId, "Online");
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -70,9 +72,13 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         return notificationMapper.mapToDTOList(notifications);
     }
 
-    public void unRegister(Integer clientId) {
+    public void unRegister(Integer clientId , String phoneNumber) throws RemoteException {
+        changeStatus(clientId, "Offline");
         clients.remove(clientId);
+
+
     }
+
 
     public CallBackServicesImpl() throws RemoteException {
         messageService = MessageServiceImpl.getInstance();
@@ -87,10 +93,6 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
 
     }
 
-    @Override
-    public void unRegister(CallBackServicesClient client) throws RemoteException {
-
-    }
 
     public void sendAnnouncement(String announcement) throws RemoteException {
 
@@ -193,4 +195,5 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         ChatDto newGrp =  contactService.createNewGroup(clientId, selected, text);
         clients.get(clientId).updateGroupList(newGrp);
     }
+
 }

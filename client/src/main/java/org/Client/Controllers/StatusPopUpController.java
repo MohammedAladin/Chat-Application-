@@ -39,7 +39,7 @@ public class StatusPopUpController implements Initializable {
             currentStatus.getChildrenUnmodifiable().get(0).setStyle("-fx-fill: #ff0000; -fx-stroke: transparent");
             Model.getInstance().getViewFactory().closePopUp();
             try {
-                Model.getInstance().getCallBackServicesServer().changeStatus(Model.getInstance().getClientId(),"Busy");
+                Model.getInstance().getCallBackServicesServer().changeStatus(Model.getInstance().getClientId(),"Offline");
             } catch (RemoteException remoteException) {
                 remoteException.printStackTrace();
             }
@@ -56,7 +56,7 @@ public class StatusPopUpController implements Initializable {
         Offline.setOnMouseClicked(e->{
             currentStatus.getChildrenUnmodifiable().get(0).setStyle("-fx-fill: #696a6b; -fx-stroke: transparent");
             try {
-                Model.getInstance().getCallBackServicesServer().changeStatus(Model.getInstance().getClientId(),"Offline");
+                Model.getInstance().getCallBackServicesServer().changeStatus(Model.getInstance().getClientId(),"Busy");
             } catch (RemoteException ex) {
                 throw new RuntimeException(ex);
             }

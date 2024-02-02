@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 
-
 <AnchorPane prefHeight="160.0" prefWidth="166.0" styleClass="background" stylesheets="@../ClientStyles/Status.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.StatusPopUpController">
    <children>
       <Label fx:id="currentStatus" layoutX="15.0" layoutY="14.0" styleClass="Titlelabel" text="Current Status">
@@ -23,12 +22,12 @@
             <Circle fill="#edff4f" radius="9.0" stroke="#ebff14" strokeType="INSIDE" />
          </graphic>
       </Label>
-      <Label fx:id="Busy" layoutX="38.0" layoutY="100.0" styleClass="labels" text="Busy">
+      <Label fx:id="Busy" layoutX="38.0" layoutY="100.0" styleClass="labels" text="Offline">
          <graphic>
             <Circle fill="#ff3e1f" radius="9.0" stroke="#ff3e1f" strokeType="INSIDE" />
          </graphic>
       </Label>
-      <Label fx:id="Offline" layoutX="38.0" layoutY="126.0" styleClass="labels" text="Offline">
+      <Label fx:id="Offline" layoutX="38.0" layoutY="126.0" styleClass="labels" text="Busy">
          <graphic>
             <Circle fill="#696a6b" radius="9.0" stroke="#696a6b" strokeType="INSIDE" />
          </graphic>

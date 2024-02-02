@@ -17,15 +17,18 @@ public class Model {
     private static Model model;
     private boolean contactExists;
     private Integer clientId;
+    private String phoneNumber;
+    private ObservableList<ChatDto> groupList = javafx.collections.FXCollections.observableArrayList();
+    private ObservableList<ContactDto> contacts = javafx.collections.FXCollections.observableArrayList();
 
     public void setGroupList(ArrayList<ChatDto> groupList) {
         this.groupList.clear();
         this.groupList.setAll(groupList);
-        System.out.println("this is the group list"+groupList);
+        System.out.println("this is the group list" + groupList);
     }
 
-    private ObservableList<ChatDto> groupList = javafx.collections.FXCollections.observableArrayList();
     private ListProperty<ChatDto> groupListProperty;
+
     public ListProperty<ChatDto> groupListProperty() {
         if (groupListProperty == null) {
             groupListProperty = new SimpleListProperty<>(getGroupList());
@@ -46,7 +49,7 @@ public class Model {
         this.name.set(name);
     }
 
-    private StringProperty name=new SimpleStringProperty();
+    private StringProperty name = new SimpleStringProperty();
 
     public ObjectProperty<byte[]> profilePictureProperty() {
         return profilePicture;
@@ -60,7 +63,7 @@ public class Model {
         this.profilePicture.set(profilePicture);
     }
 
-    ObjectProperty<byte[]> profilePicture=new SimpleObjectProperty<>();
+    ObjectProperty<byte[]> profilePicture = new SimpleObjectProperty<>();
 
     private CallBackServicesClient callBackServicesClient;
     private CallBackServicesServer callBackServicesServer;
@@ -73,13 +76,11 @@ public class Model {
         this.phoneNumber = phoneNumber;
     }
 
-    private String phoneNumber;
 
     public ObservableList<ContactDto> getContacts() {
         return contacts;
     }
 
-    private ObservableList<ContactDto> contacts = javafx.collections.FXCollections.observableArrayList();
 
     public ObservableList<NotificationDTO> getNotifications() {
         return notifications;
@@ -154,7 +155,7 @@ public class Model {
 
 
     public ObservableList<ChatDto> getGroupList() {
-        System.out.println("this is the group list"+groupList);
+        System.out.println("this is the group list" + groupList);
         return groupList;
 
     }

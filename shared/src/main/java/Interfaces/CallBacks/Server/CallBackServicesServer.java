@@ -15,7 +15,7 @@ public interface CallBackServicesServer extends Remote {
 
     void register(CallBackServicesClient client, String clientphone) throws RemoteException;
 
-    void unRegister(CallBackServicesClient client) throws RemoteException;
+    void unRegister(Integer client,String phoneNumber) throws RemoteException;
 
     void sendAnnouncement(String announcement) throws RemoteException;
 
