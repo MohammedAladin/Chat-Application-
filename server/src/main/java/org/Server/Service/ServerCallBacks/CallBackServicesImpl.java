@@ -55,6 +55,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         try {
             client.setNotificationList(notificationDTOS);
             client.setContactList(new ContactService().getContacts(clientId));
+            client.setGroupList(ChatServices.getInstance().getGroupChats(clientId));
         } catch (RemoteException e) {
             e.printStackTrace();
         }

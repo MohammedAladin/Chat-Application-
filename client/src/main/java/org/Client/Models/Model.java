@@ -2,12 +2,10 @@ package org.Client.Models;
 
 import Interfaces.CallBacks.Client.CallBackServicesClient;
 import Interfaces.CallBacks.Server.CallBackServicesServer;
+import Model.DTO.ChatDto;
 import Model.DTO.ContactDto;
 import Model.DTO.NotificationDTO;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.collections.ObservableList;
 import org.Client.Views.ViewFactory;
 
@@ -19,6 +17,21 @@ public class Model {
     private static Model model;
     private boolean contactExists;
     private Integer clientId;
+
+    public void setGroupList(ArrayList<ChatDto> groupList) {
+        this.groupList.clear();
+        this.groupList.setAll(groupList);
+        System.out.println("this is the group list"+groupList);
+    }
+
+    private ObservableList<ChatDto> groupList = javafx.collections.FXCollections.observableArrayList();
+    private ListProperty<ChatDto> groupListProperty;
+    public ListProperty<ChatDto> groupListProperty() {
+        if (groupListProperty == null) {
+            groupListProperty = new SimpleListProperty<>(getGroupList());
+        }
+        return groupListProperty;
+    }
 
     public String getName() {
         return name.get();
@@ -73,6 +86,7 @@ public class Model {
     }
 
     public void setNotifications(ArrayList<NotificationDTO> notifications) {
+        this.notifications.clear();
         this.notifications.addAll(notifications);
         System.out.println(notifications);
     }
@@ -139,4 +153,9 @@ public class Model {
     }
 
 
+    public ObservableList<ChatDto> getGroupList() {
+        System.out.println("this is the group list"+groupList);
+        return groupList;
+
+    }
 }

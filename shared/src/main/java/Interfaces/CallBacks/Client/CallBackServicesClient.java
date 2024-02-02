@@ -1,5 +1,6 @@
 package Interfaces.CallBacks.Client;
 
+import Model.DTO.ChatDto;
 import Model.DTO.ContactDto;
 import Model.DTO.NotificationDTO;
 
@@ -28,4 +29,6 @@ public interface CallBackServicesClient extends Remote {
     void setData(String clientphone,String name,byte[] pic) throws RemoteException;
 
     String getPhone() throws RemoteException;
+
+    void setGroupList(ArrayList<ChatDto> groupChats) throws RemoteException;
 }

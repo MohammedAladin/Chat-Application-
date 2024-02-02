@@ -5,6 +5,7 @@ import org.Server.Service.ChatParticipants.ChatParticipantServices;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import org.Server.ServerModels.ServerEntities.Chat;
 
@@ -86,7 +87,25 @@ public class ChatServices {
                 new Timestamp(System.currentTimeMillis())
         );
     }
+    public ArrayList<ChatDto> getGroupChats(int userId){
+        ArrayList<Chat> chats = new ArrayList<>(chatRepository.getGroupChats(userId));
+        ArrayList<ChatDto> chatDtos = new ArrayList<>();
+        for (Chat chat:chats){
+            chatDtos.add(mapToChatDto(chat));
+        }
+        return chatDtos;
+    }
 
+    private ChatDto mapToChatDto(Chat chat) {
+        return new ChatDto(
+                chat.getChatName()+"",
+                chat.getChatImage(),
+                chat.getAdminID(),
+                chat.getCreationDate(),
+                chat.getLastModified(),
+                chat.getChatID()
+        );
+    }
 
 
 }

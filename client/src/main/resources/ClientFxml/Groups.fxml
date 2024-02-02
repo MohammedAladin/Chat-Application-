@@ -6,20 +6,34 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="400.0" styleClass="background" stylesheets="@../ClientStyles/contactStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+
+<VBox prefHeight="392.0" prefWidth="421.0" styleClass="background" stylesheets="@../ClientStyles/contactStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.GroupsController">
    <children>
-      <HBox alignment="CENTER" prefHeight="46.0" prefWidth="400.0">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="334.0" prefWidth="400.0" styleClass="listViewContainer" stylesheets="@../ClientStyles/contactStyle.css">
          <children>
-            <Label styleClass="titleLabel" text="Groups" />
+            <HBox alignment="CENTER" prefHeight="46.0" prefWidth="400.0">
+               <children>
+                  <Label styleClass="titleLabel" text="Groups" />
+               </children>
+            </HBox>
+            <ListView fx:id="groupsListView" prefHeight="274.0" prefWidth="400.0">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+            </ListView>
          </children>
-      </HBox>
-      <ListView fx:id="groupsListView" prefHeight="274.0" prefWidth="400.0">
          <VBox.margin>
-            <Insets left="20.0" right="20.0" />
+            <Insets />
          </VBox.margin>
          <padding>
-            <Insets bottom="20.0" top="20.0" />
+            <Insets top="20.0" />
          </padding>
-      </ListView>
+      </VBox>
    </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+   </padding>
 </VBox>

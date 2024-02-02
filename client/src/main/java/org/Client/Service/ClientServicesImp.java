@@ -1,6 +1,7 @@
 package org.Client.Service;
 
 import Interfaces.CallBacks.Client.CallBackServicesClient;
+import Model.DTO.ChatDto;
 import Model.DTO.ContactDto;
 import Model.DTO.NotificationDTO;
 import javafx.application.Platform;
@@ -66,9 +67,6 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
     @Override
     public void setData(String clientphone,String name,byte[] profilepic) throws RemoteException {
         Platform.runLater(()->{Model.getInstance().setPhoneNumber(clientphone);
-        System.out.println("Client phone number set to " + clientphone);
-        System.out.println("Client name set to " + name);
-        System.out.println("Client profile picture set to " + profilepic);
         Model.getInstance().setDisplayName(name);
         Model.getInstance().setProfilePicture(profilepic);
     });
@@ -77,6 +75,12 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
     @Override
     public String getPhone() throws RemoteException {
         return Model.getInstance().getPhoneNumber();
+    }
+
+    @Override
+    public void setGroupList(ArrayList<ChatDto> groupChats) throws RemoteException {
+        Platform.runLater(()->Model.getInstance().setGroupList(groupChats));
+        System.out.println("Group list set to " + groupChats);
     }
 
 }

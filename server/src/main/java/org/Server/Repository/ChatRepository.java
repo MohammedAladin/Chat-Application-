@@ -156,7 +156,7 @@ public class ChatRepository implements ChatRepoInterface {
                 "SELECT c.ChatID, c.ChatImage, c.ChatName " +
                         "FROM Chat c " +
                         "INNER JOIN ChatParticipants cp ON c.chatId = cp.ChatId " +
-                        "WHERE c.adminId IS NOT NULL" +
+                        "WHERE c.adminId IS NOT NULL " +
                         "AND cp.ParticipantUserID = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);

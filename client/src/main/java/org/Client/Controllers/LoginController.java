@@ -58,8 +58,8 @@ public class LoginController implements Initializable {
                 Model.getInstance().setCallBackServicesClient(new ClientServicesImp());// client representation to be sent.
                 callBackServicesServer =  remoteServiceHandler.getCallbacks();
                 Model.getInstance().setCallBackServicesServer(callBackServicesServer);
-                Model.getInstance().getViewFactory().showHomePage(signingButton);
                 callBackServicesServer.register(Model.getInstance().getCallBackServicesClient(), phoneNumber);
+                Model.getInstance().getViewFactory().showHomePage(signingButton);
 
             } catch (RemoteException e) {
                 throw new RuntimeException(e);

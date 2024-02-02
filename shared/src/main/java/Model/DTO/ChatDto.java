@@ -10,6 +10,25 @@ public class ChatDto implements Serializable {
     private Timestamp creationDate;
     private Timestamp lastModified;
 
+    public ChatDto(String chatName, byte[] chatImage, Integer adminID, Timestamp creationDate, Timestamp lastModified, Integer chatID) {
+        this.chatName = chatName;
+        this.chatImage = chatImage;
+        this.adminID = adminID;
+        this.creationDate = creationDate;
+        this.lastModified = lastModified;
+        this.chatID = chatID;
+    }
+
+    public Integer getChatID() {
+        return chatID;
+    }
+
+    public void setChatID(Integer chatID) {
+        this.chatID = chatID;
+    }
+
+    private Integer chatID;
+
     public ChatDto( String chatName, byte[] chatImage, Integer adminID, Timestamp creationDate, Timestamp lastModified) {
         this.chatName = chatName;
         this.chatImage = chatImage;

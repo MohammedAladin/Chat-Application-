@@ -26,7 +26,7 @@ public class NotificationListController implements Initializable {
                 return new NotificationCellFactory();
             }
         });
-        noti_listview.getItems().addAll(Model.getInstance().getNotifications());
+        noti_listview.setItems(Model.getInstance().getNotifications());
 
     }
 }

@@ -41,12 +41,14 @@
 
 }
 
-
+.listViewContainer{
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 25px;
+    -fx-effect: dropshadow(two-pass-box, #c5e5f7,5,0,0,4);
+}
 
 .list-view{
     -fx-background-color: #ffffff;
-    -fx-background-radius: 25px;
-    -fx-effect: dropshadow(two-pass-box,#c5e5f7,5,0,0,4);
 
 }
 
@@ -60,9 +62,45 @@
 
 .titleLabel{
     -fx-font-size: 20px;
-    -fx-font-weight: 700;
+    -fx-font-weight: 600;
     -fx-text-fill: #2f2f2f;
     -fx-font-family: Roboto;
 }
+.list-view .scroll-bar:vertical {
+    -fx-background-color:transparent;
+}
+
+.list-view .increment-button ,.list-view .decrement-button {
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
+    -fx-opacity: 0;
+    -fx-scale-x: 0;
+    -fx-scale-y: 0;
+}
+
+
+
+.list-view .scroll-bar:vertical .thumb {
+    -fx-background-color:#eff6fc;
+    -fx-background-insets: 5, 5, 5;
+    -fx-background-radius: 5;
+}
+
+.list-view .scroll-bar:horizontal {
+    -fx-scale-x: 0;
+}
+.virtual-flow > .corner {
+    -fx-background-color: transparent;
+}
+
+.notification{
+    -fx-background-color: #eff6fc;
+    -fx-background-radius: 25px;
+    -fx-effect: dropshadow(two-pass-box, #c5e5f7,5,0,0,4);
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+    -fx-alignment: center;
+}
+
 
 
