@@ -2,9 +2,6 @@ package org.Client.Views;
 
 import Model.DTO.ContactDto;
 import javafx.beans.property.ObjectProperty;
-import javafx.scene.image.Image;
-import javafx.scene.layout.VBox;
-import org.Client.ClientEntities.Chat;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -13,8 +10,10 @@ import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import org.Client.Controllers.ChatUserController;
@@ -267,25 +266,25 @@ public class ViewFactory {
         addContactPopup.setAutoHide(true);
     }
 
-    public void showNotificationPopUp(Button button){
+    public void showNotificationPopUp(Button button) {
         Bounds buttonBounds = button.localToScreen(button.getBoundsInLocal());
         double popupX = buttonBounds.getMaxX() - 30;
         double popupY = buttonBounds.getMinY();
 
-            notificationPopup = new Popup();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/NotificationList.fxml"));
+        notificationPopup = new Popup();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/NotificationList.fxml"));
 
 
-            // Set the position of the popup next to the button
+        // Set the position of the popup next to the button
 
-            try {
-                AnchorPane root = fxmlLoader.load();
-                notificationPopup.getContent().add(root);
-                System.out.println(popupX + "   " + popupY);
+        try {
+            AnchorPane root = fxmlLoader.load();
+            notificationPopup.getContent().add(root);
+            System.out.println(popupX + "   " + popupY);
 
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
 
         notificationPopup.show(button.getParent(), popupX, popupY);
@@ -293,7 +292,7 @@ public class ViewFactory {
 
     }
 
-    public AnchorPane showUserCard(ContactDto user,String phoneNumber) {
+    public AnchorPane showUserCard(ContactDto user, String phoneNumber) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/UserCard.fxml"));
         try {
             UserCardController controller = new UserCardController();
@@ -307,23 +306,23 @@ public class ViewFactory {
             throw new RuntimeException(e);
         }
     }
+
     public void showAddGroup(Button groupBtn) {
         Bounds buttonBounds = groupBtn.localToScreen(groupBtn.getBoundsInLocal());
         double popupX = buttonBounds.getMaxX() - 30;
         double popupY = buttonBounds.getMinY();
-        if (addGroupPopup == null){
-            addGroupPopup = new Popup();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/AddGroup.fxml"));
-            try {
-                VBox root = loader.load();
-                addGroupPopup.getContent().add(root);
-                System.out.println(popupX + "   " + popupY);
 
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        addGroupPopup = new Popup();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/AddGroup.fxml"));
+        try {
+            VBox root = loader.load();
+            addGroupPopup.getContent().add(root);
+            System.out.println(popupX + "   " + popupY);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+
         addGroupPopup.show(groupBtn.getParent(), popupX, popupY);
-        addGroupPopup.setAutoHide(true);
     }
 }

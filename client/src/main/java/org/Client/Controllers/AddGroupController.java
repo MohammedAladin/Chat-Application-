@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
+import javafx.stage.Popup;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import org.Client.Models.Model;
@@ -77,7 +78,6 @@ public void initialize(URL url, ResourceBundle resourceBundle) {
             return null; // not used
         }
     }));
-
     createBtn.setOnAction(event -> {
         System.out.println(textFieldID.getText() + " " +selected.size());
         int adminID = Model.getInstance().getClientId();
@@ -88,6 +88,8 @@ public void initialize(URL url, ResourceBundle resourceBundle) {
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
+        ((Popup)createBtn.getScene().getWindow()).hide();
+
     });
     imageViewID.setOnMouseClicked(mouseEvent -> {
         changePic();
@@ -100,7 +102,7 @@ public void initialize(URL url, ResourceBundle resourceBundle) {
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
         );
 
-        File image = fileChooser.showOpenDialog(imageViewID.getScene().getWindow());
+        File image = fileChooser.showOpenDialog(imageViewID.getParent().getParent().getScene().getWindow());
         try {
             grpImage = ImageServices.convertToByte(ImageIO.read(image));
         } catch (IOException e) {
