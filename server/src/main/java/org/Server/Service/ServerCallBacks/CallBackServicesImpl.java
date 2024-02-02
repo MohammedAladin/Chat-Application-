@@ -188,10 +188,10 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     }
 
     @Override
-    public void createGroupChat(Integer clientId, String text, ArrayList<Integer> selected) throws RemoteException {
+    public void createGroupChat(Integer clientId, String text, ArrayList<Integer> selected , byte[] grpImage) throws RemoteException {
         ContactService contactService = new ContactService();
         System.out.println("callback imp : " + clientId);
-        ChatDto newGrp =  contactService.createNewGroup(clientId, selected, text);
+        ChatDto newGrp =  contactService.createNewGroup(clientId, selected, text, grpImage);
         clients.get(clientId).updateGroupList(newGrp);
     }
 

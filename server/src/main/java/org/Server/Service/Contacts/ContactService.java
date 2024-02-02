@@ -114,9 +114,9 @@ public class ContactService {
     }
 
 
-    public ChatDto createNewGroup(Integer adminID, List<Integer> participants,String grpName) {
+    public ChatDto createNewGroup(Integer adminID, List<Integer> participants,String grpName, byte[] grpImage) {
         Timestamp current = new Timestamp(System.currentTimeMillis());
-        ChatDto chatDto = new ChatDto(grpName, null, adminID, current, current);
+        ChatDto chatDto = new ChatDto(grpName, grpImage, adminID, current, current);
         System.out.println("contactService : "+ chatDto.getAdminID());
         chatServices.createNewChat(
                 chatDto,

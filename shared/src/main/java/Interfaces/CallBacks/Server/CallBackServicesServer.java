@@ -28,7 +28,7 @@ public interface CallBackServicesServer extends Remote {
     void changeStatus(Integer ID, String status) throws RemoteException;
 
     ContactDto searchForContact(String phoneNumber) throws RemoteException;
-    void createGroupChat(Integer clientId, String text, ArrayList<Integer> selected) throws RemoteException;
+    void createGroupChat(Integer clientId, String text, ArrayList<Integer> selected , byte[] grpImage) throws RemoteException;
 
 
 
