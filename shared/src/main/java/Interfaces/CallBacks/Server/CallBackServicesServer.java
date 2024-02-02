@@ -30,4 +30,7 @@ public interface CallBackServicesServer extends Remote {
     ContactDto searchForContact(String phoneNumber) throws RemoteException;
     void createGroupChat(Integer clientId, String text, ArrayList<Integer> selected) throws RemoteException;
 
+
+
+    void getPrivateChatMessages(Integer chatId, CallBackServicesClient client) throws RemoteException;
 }

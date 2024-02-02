@@ -200,4 +200,26 @@ public class ChatRepository implements ChatRepoInterface {
         return participants;
     }
 
+    public Integer getChatID(int userId, Integer id) {
+        String query="SELECT c.ChatID\n" +
+                "FROM chat c\n" +
+                "JOIN chatparticipants cp1 ON c.ChatID = cp1.ChatID\n" +
+                "JOIN chatparticipants cp2 ON c.ChatID = cp2.ChatID\n" +
+                "WHERE cp1.ParticipantUserID = ? \n" +
+                "  AND cp2.ParticipantUserID = ? \n" +
+                "  AND c.adminid IS NULL\n" +
+                "GROUP BY c.chatid";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            preparedStatement.setInt(1,userId);
+            preparedStatement.setInt(2,id);
+            try(ResultSet resultSet = preparedStatement.executeQuery()){
+                if(resultSet.next()){
+                    return resultSet.getInt("ChatID");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

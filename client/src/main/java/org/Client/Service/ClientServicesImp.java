@@ -3,6 +3,7 @@ package org.Client.Service;
 import Interfaces.CallBacks.Client.CallBackServicesClient;
 import Model.DTO.ChatDto;
 import Model.DTO.ContactDto;
+import Model.DTO.MessageDTO;
 import Model.DTO.NotificationDTO;
 import javafx.application.Platform;
 import org.Client.Models.Model;
@@ -86,6 +87,11 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
     @Override
     public void updateGroupList(ChatDto newGroup) throws RemoteException {
         Model.getInstance().getGroupList().add(newGroup);
+    }
+
+    @Override
+    public void setPrivateMessages(ArrayList<MessageDTO> messages,Integer chatId) throws RemoteException {
+        Platform.runLater(()->Model.getInstance().setPrivateChats(chatId,messages));
     }
 
 }

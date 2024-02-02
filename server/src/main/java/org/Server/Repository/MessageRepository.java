@@ -11,6 +11,7 @@ import java.sql.Connection;
 
 public class MessageRepository implements Repository<Message,Integer> {
     private final Connection connection;
+
     public MessageRepository() {
         this.connection = DatabaseConnectionManager.getInstance().getMyConnection();
     }
@@ -21,10 +22,10 @@ public class MessageRepository implements Repository<Message,Integer> {
                 "VALUES (?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            preparedStatement.setInt(1,message.getSenderID());
-            preparedStatement.setInt(2,message.getReceiverID());
-            preparedStatement.setString(3,message.getMessageContent());
-            preparedStatement.setInt(4,message.isAttachment()?1:0);
+            preparedStatement.setInt(1, message.getSenderID());
+            preparedStatement.setInt(2, message.getReceiverID());
+            preparedStatement.setString(3, message.getMessageContent());
+            preparedStatement.setInt(4, message.isAttachment() ? 1 : 0);
 
             preparedStatement.executeUpdate();
 
@@ -34,14 +35,14 @@ public class MessageRepository implements Repository<Message,Integer> {
     }
 
     @Override
-    public Message findById(Integer id){
-        String query ="select * from messages where MessageID = ?";
-        Message message= new Message();
+    public Message findById(Integer id) {
+        String query = "select * from messages where MessageID = ?";
+        Message message = new Message();
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1, id);
 
-            ResultSet resultSet =preparedStatement.executeQuery();
+            ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 mapToMessage(message, resultSet);
 
@@ -60,13 +61,14 @@ public class MessageRepository implements Repository<Message,Integer> {
         message.setReceiverID(resultSet.getInt("ReceiverID"));
         message.setMessageContent(resultSet.getString("MessageContent"));
         message.setMessageTimestamp(resultSet.getTimestamp("MessageTimestamp"));
-        message.setAttachment(resultSet.getInt("IsAttachment")==1?true:false);
+        message.setAttachment(resultSet.getInt("IsAttachment") == 1 ? true : false);
+        resultSet.close();
     }
 
     @Override
-    public List<Message> findAll(){
-        List <Message> messagesList = new ArrayList<>();
-        String query ="select * from messages";
+    public List<Message> findAll() {
+        List<Message> messagesList = new ArrayList<>();
+        String query = "select * from messages";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -86,19 +88,38 @@ public class MessageRepository implements Repository<Message,Integer> {
     }
 
     @Override
-    public void deleteById(Integer id){
+    public void deleteById(Integer id) {
 
         String query = "DELETE FROM Messages " +
                 "WHERE MessageID = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-                preparedStatement.setInt(1,id);
-                 preparedStatement.executeUpdate();
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+    }
+
+    public List<Message> getPrivateChatMessages(Integer chatID) {
+        List<Message> messagesList = new ArrayList<>();
+        String query = "select * from messages where ReceiverID=?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, chatID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Message message = new Message();
+                mapToMessage(message, resultSet);
+                messagesList.add(message);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return messagesList;
     }
 }
 

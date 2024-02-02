@@ -4,11 +4,22 @@ public class MessageDTO {
     private Integer chatID;
     private String content;
     private Integer isAttachment;
+
+    public MessageDTO(Integer chatID, String content, Integer isAttachment, Integer senderID) {
+        this.chatID = chatID;
+        this.content = content;
+        this.isAttachment = isAttachment;
+        this.senderID = senderID;
+    }
+
+    private Integer senderID;
+
     public MessageDTO(Integer chatID, String content, Integer isAttachment) {
         this.chatID = chatID;
         this.content = content;
         this.isAttachment = isAttachment;
     }
+
     public Integer getChatID() {
         return chatID;
     }

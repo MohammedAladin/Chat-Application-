@@ -17,6 +17,7 @@ import org.Client.ClientEntities.Chat;
 import org.Client.Models.Model;
 
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -53,6 +54,8 @@ public class ChatAreaController implements Initializable {
                 ContactDto chat = chatList.getSelectionModel().getSelectedItem();
                 Model.getInstance().getViewFactory().setSelectedChat(chat);
                 System.out.println("Selected Item: " + newValue.getContactName());
+                System.out.println("Chat ID " + newValue.getChatId());
+                getChat(newValue.getChatId());
                 Model.getInstance().getViewFactory().showChatArea();
                 System.out.println("function called ");
             }
@@ -61,10 +64,19 @@ public class ChatAreaController implements Initializable {
 
     }
 
-    public void getContactList() {
-        //get a list of contacts for this user : the contacts are of type user -- aka from the useraccounts table
-        //here I'm using a chat object to represent each contact
-        //the image should be an array of byte and should be converted here
-
+    private void getChat(Integer chatId) {
+        if(Model.getInstance().getPrivateChats().containsKey(chatId)){
+            System.out.println("Chat exists");
+        }else{
+            System.out.println("Chat does not exist");
+            try {
+                Model.getInstance().getCallBackServicesServer().getPrivateChatMessages(chatId,Model.getInstance().getCallBackServicesClient());
+                System.out.println(Model.getInstance().getPrivateChats().get(11)+"this is the chat");
+            } catch (RemoteException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
+
 }
+

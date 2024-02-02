@@ -88,7 +88,8 @@ public class ContactService {
         for (Integer id : contact_ids) {
             try {
                 User user = new UserRepository().findById(id);
-                contacts.add(mapUserToContactDto(user));
+                Integer chatID = new ChatRepository().getChatID(userId, id);
+                contacts.add(mapUserToContactDto(user,chatID));
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -96,7 +97,7 @@ public class ContactService {
         return contacts;
     }
 
-    public ContactDto mapUserToContactDto(User user) {
+    public ContactDto mapUserToContactDto(User user,Integer chatId) {
         ContactDto contactDto = new ContactDto();
         contactDto.setContactID(user.getUserID());
         contactDto.setContactImage(user.getProfilePicture());
@@ -105,6 +106,7 @@ public class ContactService {
             contactDto.setBio(user.getBio());
         contactDto.setStatus(user.getUserStatus());
         contactDto.setMode(user.getUserMode());
+        contactDto.setChatID(chatId);
 
         // Continue setting other properties as needed
 

@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import org.Client.Service.ImageServices;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,20 +33,24 @@ public class ChatUserController implements Initializable {
     private Label statusID;
     @FXML
     private VBox chatVBoxID;
-    Image image;
+    byte[] image;
     String name;
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
-    public void setImage(Image image){
+
+    public void setImage(byte[] image) {
         this.image = image;
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         nameID.setText(name);
-        circleID.setFill(new ImagePattern(image));
-        statusID.setText("Online");
+        if (image == null) {
+            circleID.setFill(new ImagePattern(new Image(getClass().getResource("/ClientImages/defaultUser.jpg").toString())));
+        } else circleID.setFill(new ImagePattern(ImageServices.convertToImage(image)));
+        //statusID.setText();
         //testing gui
         textFieldID.setOnAction(actionEvent -> {
             FXMLLoader loader = new FXMLLoader();

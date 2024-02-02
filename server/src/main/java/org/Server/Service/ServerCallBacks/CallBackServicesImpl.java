@@ -10,7 +10,6 @@ import SharedEnums.StatusEnum;
 import javafx.application.Platform;
 import org.Server.Repository.ContactsRepository;
 import org.Server.Repository.UserRepository;
-import org.Server.ServerModels.ServerEntities.Contact;
 import org.Server.ServerModels.ServerEntities.User;
 import org.Server.ServerModels.ServerEntities.UserNotification;
 import org.Server.Service.Chat.ChatServices;
@@ -181,7 +180,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
             User user = new UserRepository().findByPhoneNumber(phoneNumber);
             if (user == null)
                 return null;
-            else return new ContactService().mapUserToContactDto(user);
+            else return new ContactService().mapUserToContactDto(user,null);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -194,6 +193,12 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         System.out.println("callback imp : " + clientId);
         ChatDto newGrp =  contactService.createNewGroup(clientId, selected, text);
         clients.get(clientId).updateGroupList(newGrp);
+    }
+
+    @Override
+    public void getPrivateChatMessages(Integer chatId, CallBackServicesClient client) throws RemoteException {
+        ArrayList<MessageDTO> messages = new ArrayList<>(MessageServiceImpl.getInstance().getPrivateChatMessages(chatId));
+        client.setPrivateMessages(messages,chatId);
     }
 
 }

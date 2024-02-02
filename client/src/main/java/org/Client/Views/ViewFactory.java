@@ -149,7 +149,7 @@ public class ViewFactory {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/ChatUser.fxml"));
         ChatUserController controller = new ChatUserController();
         controller.setName(selectedChat.get().getContactName());
-        //controller.setImage(selectedChat.get().getContactImage()Image());
+        controller.setImage(selectedChat.get().getContactImage());
         fxmlLoader.setController(controller);
         try {
             home.setCenter(fxmlLoader.load());

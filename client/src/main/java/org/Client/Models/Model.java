@@ -4,9 +4,12 @@ import Interfaces.CallBacks.Client.CallBackServicesClient;
 import Interfaces.CallBacks.Server.CallBackServicesServer;
 import Model.DTO.ChatDto;
 import Model.DTO.ContactDto;
+import Model.DTO.MessageDTO;
 import Model.DTO.NotificationDTO;
 import javafx.beans.property.*;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import org.Client.Views.ViewFactory;
 
 import java.util.ArrayList;
@@ -20,6 +23,21 @@ public class Model {
     private String phoneNumber;
     private ObservableList<ChatDto> groupList = javafx.collections.FXCollections.observableArrayList();
     private ObservableList<ContactDto> contacts = javafx.collections.FXCollections.observableArrayList();
+
+    public ObservableMap<Integer, List<MessageDTO>> getPrivateChats() {
+        return privateChats.get();
+    }
+
+    public MapProperty<Integer, List<MessageDTO>> privateChatsProperty() {
+        return privateChats;
+    }
+
+    public void setPrivateChats(Integer ChatID, List<MessageDTO> privateChats) {
+        this.privateChats.putIfAbsent(ChatID, privateChats);
+        System.out.println("this is the private chat" + privateChats+" "+ChatID);
+    }
+
+    private MapProperty<Integer,List<MessageDTO>> privateChats = new SimpleMapProperty<>(FXCollections.observableHashMap());
 
     public void setGroupList(ArrayList<ChatDto> groupList) {
         this.groupList.clear();

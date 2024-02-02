@@ -15,6 +15,13 @@ public class ContactDto implements Serializable {
     String bio;
     byte[] contactImage;
 
+    public Integer getChatId() {
+        return chatId;
+    }
+
+
+    private Integer chatId;
+
 
     public ContactDto() {
     }
@@ -23,12 +30,13 @@ public class ContactDto implements Serializable {
         return contactID;
     }
 
-    public ContactDto(int contactID, String contactName, String status, String bio, byte[] contactImage) {
+    public ContactDto(int contactID, String contactName, String status, String bio, byte[] contactImage, Integer chatId) {
         this.contactID = contactID;
         this.contactName = contactName;
         this.status.set(status);
         this.bio = bio;
         this.contactImage = contactImage;
+        this.chatId = chatId;
 
     }
 
@@ -98,6 +106,7 @@ public class ContactDto implements Serializable {
     }
 
 
-
-
+    public void setChatID(Integer chatId) {
+        this.chatId = chatId;
+    }
 }

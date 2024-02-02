@@ -2,6 +2,7 @@ package Interfaces.CallBacks.Client;
 
 import Model.DTO.ChatDto;
 import Model.DTO.ContactDto;
+import Model.DTO.MessageDTO;
 import Model.DTO.NotificationDTO;
 
 import java.rmi.Remote;
@@ -33,4 +34,5 @@ public interface CallBackServicesClient extends Remote {
     void setGroupList(ArrayList<ChatDto> groupChats) throws RemoteException;
     void updateGroupList(ChatDto newGroup) throws RemoteException;
 
+    void setPrivateMessages(ArrayList<MessageDTO> messages,Integer chatID) throws RemoteException;
 }

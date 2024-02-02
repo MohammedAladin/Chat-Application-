@@ -9,6 +9,8 @@ import org.Server.Service.UserSession;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MessageServiceImpl {
     MessageRepository messageRepository;
@@ -49,4 +51,24 @@ public class MessageServiceImpl {
                 messageDTO.getIsAttachment() == 1
         );
     }
+
+    public List<MessageDTO> getPrivateChatMessages(Integer chatID){
+        List<Message> list =new MessageRepository().getPrivateChatMessages(chatID);
+        ArrayList<MessageDTO> messageDTOS=new ArrayList<>();
+        for (Message message : list) {
+            messageDTOS.add(mapToMessageDTO(message));
+        }
+        return messageDTOS;
+    }
+
+    private MessageDTO mapToMessageDTO(Message message) {
+        return new MessageDTO(
+                message.getMessageID(),
+                message.getMessageContent(),
+                message.isAttachment() ? 1 : 0,
+                message.getSenderID()
+        );
+    }
+
+
 }
