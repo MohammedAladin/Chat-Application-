@@ -4,20 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="bug fixes in the create chat function for private chats">
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/AddGroupController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/AddGroup.fxml" afterDir="false" />
+    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="Callbacks in the add contact , when the user accepts the invitation they both appear in each other's contact list">
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/Groups.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatAreaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatAreaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/EditProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/EditProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/UserMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/UserMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Models/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ImageServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ImageServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Views/ViewFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/Home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/UserMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/UserMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/chatArea.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/chatArea.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/editProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/editProfile.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientStyles/contactStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientStyles/contactStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientStyles/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientStyles/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Models/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Models/Model.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/DatabaseConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/DatabaseConnectionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Chat/ChatServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Chat/ChatServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Contacts/ContactService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Contacts/ContactService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/DatabaseConnectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/DatabaseConnectionManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Contacts/ContactService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Contacts/ContactService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Server/CallBackServicesServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Server/CallBackServicesServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/TestApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/TestApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/TestApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/TestApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Client/CallBackServicesClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Client/CallBackServicesClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,16 +41,16 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
-        <option value="FxmlFile" />
         <option value="Class" />
         <option value="CSS File" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="youssef2.0" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -59,35 +71,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Amin.executor": "Run",
-    "Application.App.executor": "Run",
-    "Application.Mohammed.executor": "Run",
-    "Application.Server.executor": "Run",
-    "Application.TestApp.executor": "Run",
-    "Application.org.Server.TestApp.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/iti/Java/chat project/backup2.0/Chat-Application-",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Amin.executor&quot;: &quot;Run&quot;,
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Mohammed.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Server.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestApp.executor&quot;: &quot;Run&quot;,
+    &quot;Application.org.Server.TestApp.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Chat-Application-/server/src/main/resources&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\iti\Java\chat project\Final code\Chat-Application-\client\src\main\resources\ClientFxml" />
+      <recent name="E:\Chat-Application-\server\src\main\resources" />
       <recent name="E:\try\Chat-Application\client\src\main\resources\ClientImages" />
       <recent name="E:\try\Chat-Application\client\src\main\resources\ClientStyles" />
       <recent name="E:\try\Chat-Application\client\src\main\resources\ClientFxml" />
@@ -100,7 +112,7 @@
       <recent name="org.Client.Controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Mohammed">
+  <component name="RunManager" selected="Application.Amin">
     <configuration name="Amin" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.Client.ClientApplication" />
       <module name="client" />
@@ -157,8 +169,6 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestApp" />
-        <item itemvalue="Application.org.Server.TestApp" />
         <item itemvalue="Application.org.Server.TestApp" />
         <item itemvalue="Application.TestApp" />
       </list>
@@ -195,7 +205,11 @@
       <workItem from="1706732693078" duration="2239000" />
       <workItem from="1706779578700" duration="4589000" />
       <workItem from="1706797649572" duration="3086000" />
-      <workItem from="1706802310090" duration="297000" />
+      <workItem from="1706802310090" duration="2337000" />
+      <workItem from="1706807052502" duration="2509000" />
+      <workItem from="1706820321625" duration="7384000" />
+      <workItem from="1706828261687" duration="1141000" />
+      <workItem from="1706853213775" duration="4489000" />
     </task>
     <task id="LOCAL-00001" summary="Add server gui">
       <option name="closed" value="true" />
@@ -293,7 +307,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706800369480</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Callbacks in the add contact , when the user accepts the invitation they both appear in each other's contact list">
+      <option name="closed" value="true" />
+      <created>1706802908088</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1706802908089</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,6 +352,7 @@
     <MESSAGE value=" list of contacts added to the home page, status update with callbacks implemented, searching for and adding a new contact , list of notifications added" />
     <MESSAGE value="bug fixes ine the callbacks of change status as well as implementing callbacks for the friend requests notification" />
     <MESSAGE value="bug fixes in the create chat function for private chats" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixes in the create chat function for private chats" />
+    <MESSAGE value="Callbacks in the add contact , when the user accepts the invitation they both appear in each other's contact list" />
+    <option name="LAST_COMMIT_MESSAGE" value="Callbacks in the add contact , when the user accepts the invitation they both appear in each other's contact list" />
   </component>
 </project>

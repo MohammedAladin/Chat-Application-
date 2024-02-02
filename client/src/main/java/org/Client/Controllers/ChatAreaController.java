@@ -25,8 +25,8 @@ public class ChatAreaController implements Initializable {
     @FXML
     private ListView<ContactDto> chatList;
 
-    @FXML
-    private TextField searchBar;
+    //@FXML
+   // private TextField searchBar;
 
     private Image image = new Image(getClass().getResource("/ClientImages/cat.jpg").toString());
     private Image image2 = new Image(getClass().getResource("/ClientImages/cat2.jpg").toString());
@@ -40,7 +40,7 @@ public class ChatAreaController implements Initializable {
                 return new ChatCellFactory();
             }
         });
-        searchBar.setPromptText("Search");
+        //searchBar.setPromptText("Search");
         Model.getInstance().getContacts().addListener((javafx.collections.ListChangeListener.Change<? extends ContactDto> c) -> {
             // Refresh the ListView whenever the ObservableList changes
             Platform.runLater(() -> chatList.refresh());

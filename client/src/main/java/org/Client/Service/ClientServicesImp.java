@@ -64,8 +64,14 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
     }
 
     @Override
-    public void setPhone(String clientphone) throws RemoteException {
-        Model.getInstance().setPhoneNumber(clientphone);
+    public void setData(String clientphone,String name,byte[] profilepic) throws RemoteException {
+        Platform.runLater(()->{Model.getInstance().setPhoneNumber(clientphone);
+        System.out.println("Client phone number set to " + clientphone);
+        System.out.println("Client name set to " + name);
+        System.out.println("Client profile picture set to " + profilepic);
+        Model.getInstance().setDisplayName(name);
+        Model.getInstance().setProfilePicture(profilepic);
+    });
     }
 
     @Override

@@ -1,26 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="400.0" spacing="30.0" styleClass="background" stylesheets="@../ClientStyles/contactStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.ChatAreaController">
-   <HBox prefHeight="49.0" prefWidth="400.0" spacing="20.0" styleClass="background">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="400.0" spacing="10.0" styleClass="background" stylesheets="@../ClientStyles/contactStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.ChatAreaController">
+   <Label styleClass="titleLabel" text="People">
       <VBox.margin>
-         <Insets />
+         <Insets left="170.0" />
       </VBox.margin>
-      <padding>
-         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-      </padding>
-      <TextField fx:id="searchBar" prefHeight="45.0" prefWidth="330.0" styleClass="searchbar">
-         <HBox.margin>
-            <Insets left="30.0" right="30.0" />
-         </HBox.margin>
-      </TextField>
-   </HBox>
-   <ListView fx:id="chatList" prefHeight="347.0" prefWidth="400.0" styleClass="background" VBox.vgrow="ALWAYS">
+   </Label>
+   <ListView fx:id="chatList" prefHeight="346.0" prefWidth="360.0" styleClass="background">
       <padding>
          <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
       </padding>

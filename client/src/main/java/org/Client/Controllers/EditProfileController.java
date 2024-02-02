@@ -8,6 +8,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import org.Client.Models.Model;
+import org.Client.Service.ImageServices;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,7 +31,11 @@ public class EditProfileController implements Initializable {
         Circle clip = new Circle(50, 50, 50);
         userImage.setClip(clip);
         editPic.setOnMouseClicked(mouseEvent -> {changePic();});
-        userImage.setImage(profilePic);
+        if(Model.getInstance().getProfilePicture() != null)
+            userImage.setImage(ImageServices.convertToImage(Model.getInstance().getProfilePicture()));
+        else userImage.setImage(profilePic);
+        nameField.setText(Model.getInstance().getName());
+
 
     }
 

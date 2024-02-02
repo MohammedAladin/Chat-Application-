@@ -147,7 +147,7 @@ public class UserRepository implements UserRepoInterface {
                 resultSet.getString("PhoneNumber"),
                 resultSet.getString("DisplayName"),
                 resultSet.getString("EmailAddress"),
-                null,  // You may need to handle profile picture separately
+                resultSet.getBytes("ProfilePicture"),  // You may need to handle profile picture separately
                 resultSet.getString("PasswordHash"),  // Use PasswordHash instead of Password
                 resultSet.getString("Gender"),
                 resultSet.getString("Country"),
@@ -162,4 +162,14 @@ public class UserRepository implements UserRepoInterface {
         return user;
     }
 
+    public void updateUserImage(int i,byte[] image) {
+        String query = "UPDATE UserAccounts SET ProfilePicture = ?  WHERE UserID=?";
+        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
+            preparedStatement.setBytes(1, image);
+            preparedStatement.setInt(2, i);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

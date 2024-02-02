@@ -35,15 +35,22 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     public void register(CallBackServicesClient client, String clientphone) throws RemoteException {
         UserRepository userRepository = new UserRepository();
         Integer clientId = null;
+        User user = null;
+        String username = null;
+        byte[] profilePicture = null;
         try {
-            clientId = userRepository.findByPhoneNumber(clientphone).getUserID();
+            user = userRepository.findByPhoneNumber(clientphone);
+            clientId = user.getUserID();
+            username = user.getDisplayName();
+            profilePicture = user.getProfilePicture();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
         ArrayList<NotificationDTO> notificationDTOS = getNotificationList(clientId);
-
+        System.out.println("Image length is"+user.getProfilePicture().length);
         clients.put(clientId, client);
-        client.setPhone(clientphone);
+        client.setData(clientphone, username, profilePicture);
         client.setClientId(clientId);
         try {
             client.setNotificationList(notificationDTOS);
@@ -181,6 +188,6 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     public void createGroupChat(Integer clientId, String text, ArrayList<Integer> selected) throws RemoteException {
         ContactService contactService = new ContactService();
         System.out.println("callback imp : " + clientId);
-        contactService.createNewGroup(clientId,selected,text);
+        contactService.createNewGroup(clientId, selected, text);
     }
 }

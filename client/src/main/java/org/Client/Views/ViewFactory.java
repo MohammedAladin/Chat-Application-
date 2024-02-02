@@ -18,6 +18,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import org.Client.Controllers.ChatUserController;
+import org.Client.Controllers.HomeController;
 import org.Client.Controllers.UserCardController;
 
 import java.io.IOException;
@@ -121,6 +122,7 @@ public class ViewFactory {
 
     public void showHomePage(Button button) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/Home.fxml"));
+        HomeController controller = new HomeController();
         try {
 
             home = fxmlLoader.load();
@@ -269,7 +271,7 @@ public class ViewFactory {
         Bounds buttonBounds = button.localToScreen(button.getBoundsInLocal());
         double popupX = buttonBounds.getMaxX() - 30;
         double popupY = buttonBounds.getMinY();
-        if (notificationPopup == null) {
+
             notificationPopup = new Popup();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/NotificationList.fxml"));
 
@@ -284,7 +286,7 @@ public class ViewFactory {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
+
 
         notificationPopup.show(button.getParent(), popupX, popupY);
         notificationPopup.setAutoHide(true);

@@ -58,4 +58,11 @@
 
 }
 
+.titleLabel{
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #2f2f2f;
+    -fx-font-family: Roboto;
+}
+
 

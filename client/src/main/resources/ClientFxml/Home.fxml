@@ -2,13 +2,12 @@
 
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="parentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.HomeController">
-   <left>
-        <fx:include source="UserMenu.fxml" />
-   </left>
 
-    <center>
+<BorderPane fx:id="parentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.HomeController">
+
+      
+          <center>
         <fx:include source="ChatHomeIcon.fxml" />
     </center>
 
-</BorderPane>
+      </BorderPane>

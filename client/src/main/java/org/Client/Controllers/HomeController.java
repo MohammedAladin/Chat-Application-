@@ -1,6 +1,7 @@
 package org.Client.Controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
 import org.Client.Models.Model;
@@ -16,6 +17,17 @@ public class HomeController implements Initializable{
     private BorderPane parentPane;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        FXMLLoader includedLoader = new FXMLLoader(getClass().getResource("/ClientFxml/UserMenu.fxml"));
+        UserMenuController userMenuController = new UserMenuController();
+        System.out.println("the Model got the name"+Model.getInstance().getName());
+        userMenuController.setName(Model.getInstance().getName());
+        userMenuController.setImagebytes(Model.getInstance().getProfilePicture());
+        includedLoader.setController(userMenuController);
+        try {
+            parentPane.setLeft(includedLoader.load());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         Model.getInstance().getViewFactory().selectedMenuItemProperty().addListener((observableValue, oldValue, newValue) -> {
 
             if(newValue.equals("home")){

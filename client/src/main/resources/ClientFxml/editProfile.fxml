@@ -1,64 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane styleClass="background" stylesheets="@../ClientStyles/profile.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.EditProfileController">
+<AnchorPane styleClass="background" stylesheets="@../ClientStyles/contactStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.EditProfileController">
    <children>
       <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane prefHeight="456.0" prefWidth="600.0" styleClass="background" stylesheets="@../ClientStyles/profile.css">
+            <AnchorPane prefHeight="635.0" prefWidth="620.0" styleClass="background" stylesheets="@../ClientStyles/profile.css">
                <children>
-                  <ImageView fx:id="userImage" fitHeight="83.0" fitWidth="136.0" layoutX="228.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="358.6" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="236.0" AnchorPane.topAnchor="14.0" />
-                  <VBox layoutX="83.0" layoutY="202.0" prefHeight="200.0" prefWidth="473.0" spacing="20.0" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="200.0">
+                  <HBox layoutX="228.0" layoutY="14.399999618530273" prefHeight="83.0" prefWidth="156.0" AnchorPane.bottomAnchor="543.0" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="236.0" AnchorPane.topAnchor="14.0">
                      <children>
-                        <GridPane>
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="245.599951171875" minWidth="10.0" prefWidth="130.20001220703125" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="342.99998779296874" minWidth="10.0" prefWidth="342.99998779296874" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
+                        <ImageView fx:id="userImage" fitHeight="83.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="editPic" styleClass="imagePicker">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="EDIT" size="20" />
+                           </graphic>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <VBox layoutX="43.2" layoutY="116.0" prefHeight="284.0" prefWidth="558.0" spacing="20.0" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="116.0">
+                     <children>
+                        <HBox prefWidth="492.0" spacing="30.0">
+                           <children>
+                              <Label text="Edit your Bio" />
+                              <TextField fx:id="bio" prefWidth="378.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="35.0" prefWidth="511.0">
                            <children>
                               <Label prefHeight="18.0" prefWidth="126.0" text="Display Name" />
-                              <TextField fx:id="nameField" GridPane.columnIndex="1" />
+                              <TextField fx:id="nameField" prefWidth="406.0" />
                            </children>
-                        </GridPane>
-                        <GridPane>
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="213.9999755859375" minWidth="10.0" prefWidth="130.79996337890626" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.800048828125" minWidth="10.0" prefWidth="343.60003662109375" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
+                        </HBox>
+                        <HBox spacing="15.0">
                            <children>
                               <Label prefHeight="18.0" prefWidth="66.0" text="Email" />
-                              <TextField fx:id="emailField" prefHeight="26.0" GridPane.columnIndex="1" />
+                              <TextField fx:id="emailField" prefHeight="26.0" prefWidth="395.0" />
                            </children>
-                        </GridPane>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="80.0">
+                           <children>
+                              <Label text="Date Of Birth " />
+                              <DatePicker prefHeight="37.0" prefWidth="372.0" />
+                           </children>
+                        </HBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefWidth="166.0" styleClass="saveButton" text="Save Changes" />
+                           </children>
+                           <padding>
+                              <Insets left="220.0" top="50.0" />
+                           </padding>
+                        </VBox>
                      </children>
                   </VBox>
-                  <VBox layoutX="83.0" layoutY="120.0" prefHeight="53.0" prefWidth="472.0" AnchorPane.bottomAnchor="283.0" AnchorPane.topAnchor="120.0">
-                     <children>
-                        <Label text="Edit your Bio" />
-                        <TextField fx:id="bio" />
-                     </children>
-                  </VBox>
-                  <Label fx:id="editPic" layoutX="371.0" layoutY="77.0" AnchorPane.bottomAnchor="359.0" AnchorPane.leftAnchor="371.0" AnchorPane.rightAnchor="209.0" AnchorPane.topAnchor="77.0">
-                     <graphic>
-                        <FontAwesomeIconView glyphName="EDIT" size="20" />
-                     </graphic>
-                  </Label>
                </children>
             </AnchorPane>
          </children>

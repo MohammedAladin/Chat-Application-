@@ -4,6 +4,10 @@ import Interfaces.CallBacks.Client.CallBackServicesClient;
 import Interfaces.CallBacks.Server.CallBackServicesServer;
 import Model.DTO.ContactDto;
 import Model.DTO.NotificationDTO;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import org.Client.Views.ViewFactory;
 
@@ -15,6 +19,36 @@ public class Model {
     private static Model model;
     private boolean contactExists;
     private Integer clientId;
+
+    public String getName() {
+        return name.get();
+    }
+
+
+    public StringProperty nameProperty() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name.set(name);
+    }
+
+    private StringProperty name=new SimpleStringProperty();
+
+    public ObjectProperty<byte[]> profilePictureProperty() {
+        return profilePicture;
+    }
+
+    public byte[] getProfilePicture() {
+        return profilePicture.get();
+    }
+
+    public void setProfilePicture(byte[] profilePicture) {
+        this.profilePicture.set(profilePicture);
+    }
+
+    ObjectProperty<byte[]> profilePicture=new SimpleObjectProperty<>();
+
     private CallBackServicesClient callBackServicesClient;
     private CallBackServicesServer callBackServicesServer;
 
@@ -75,7 +109,6 @@ public class Model {
             model = new Model();
         }
         return model;
-
     }
 
     public ViewFactory getViewFactory() {
@@ -99,4 +132,11 @@ public class Model {
         this.contacts.addAll(contacts);
         System.out.println(contacts);
     }
+
+    public void setDisplayName(String name) {
+        this.name.set(name);
+
+    }
+
+
 }
