@@ -2,6 +2,7 @@ package org.Client.Controllers;
 
 import Model.DTO.ContactDto;
 import Model.DTO.MessageDTO;
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,11 +22,13 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
+import javafx.util.Duration;
 import org.Client.Models.Model;
 import org.Client.Service.ImageServices;
 
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
 public class ChatUserController implements Initializable {
@@ -75,22 +78,27 @@ public class ChatUserController implements Initializable {
             send_btn.fire();
         });
 
-
-        send_btn.setOnAction(e -> sendMessage());
-        messageListView.setItems(Model.getInstance().getPrivateChats().get(chatID));
-
-
         messageListView.setCellFactory(new Callback<ListView<MessageDTO>, ListCell<MessageDTO>>() {
             @Override
             public ListCell<MessageDTO> call(ListView<MessageDTO> chatListView) {
                 return new MessageCellFactory();
             }
         });
+        send_btn.setOnAction(e -> sendMessage());
+        messageListView.setItems(Model.getInstance().getPrivateChats().get(chatID));
+        messageListView.refresh();
     }
 
     private void sendMessage() {
-        Model.getInstance().getPrivateChats().get(chatID).add(new MessageDTO(chatID, textFieldID.getText(), 0, Model.getInstance().getClientId()));
-        System.out.println(Model.getInstance().getPrivateChats().get(chatID).get(0).getContent() + " this is the message");
+        if (textFieldID.getText().isEmpty()) {
+            return;
+        }
+        MessageDTO message = new MessageDTO(chatID, textFieldID.getText(), 0, Model.getInstance().getClientId());
+        try {
+            Model.getInstance().getCallBackServicesServer().sendMessage(message);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
         messageListView.setItems(Model.getInstance().getPrivateChats().get(chatID));
         textFieldID.clear();
     }

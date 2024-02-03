@@ -54,9 +54,9 @@
             </VBox>
             <VBox layoutX="19.0" layoutY="670.0" prefHeight="48.0" prefWidth="96.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="97.0" styleClass="menu_container">
+                  <Button  fx:id="logout_btn" mnemonicParsing="false" prefHeight="40.0" prefWidth="97.0" styleClass="menu_container">
                      <graphic>
-                        <FontAwesomeIconView fx:id="logout_btn" fill="WHITE" glyphName="SIGN_OUT" size="30" />
+                        <FontAwesomeIconView fill="WHITE" glyphName="SIGN_OUT" size="30" />
                      </graphic>
                   </Button>
                </children></VBox>

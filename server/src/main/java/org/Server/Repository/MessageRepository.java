@@ -61,8 +61,8 @@ public class MessageRepository implements Repository<Message,Integer> {
         message.setReceiverID(resultSet.getInt("ReceiverID"));
         message.setMessageContent(resultSet.getString("MessageContent"));
         message.setMessageTimestamp(resultSet.getTimestamp("MessageTimestamp"));
-        message.setAttachment(resultSet.getInt("IsAttachment") == 1 ? true : false);
-        resultSet.close();
+        message.setAttachment(resultSet.getInt("IsAttachement") == 1 ? true : false);
+
     }
 
     @Override
@@ -113,8 +113,10 @@ public class MessageRepository implements Repository<Message,Integer> {
             while (resultSet.next()) {
                 Message message = new Message();
                 mapToMessage(message, resultSet);
+                System.out.println("message" + message.getMessageContent());
                 messagesList.add(message);
             }
+            resultSet.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

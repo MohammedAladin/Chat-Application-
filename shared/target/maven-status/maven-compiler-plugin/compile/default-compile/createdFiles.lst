@@ -6,6 +6,7 @@ Model\DTO\ChatDto.class
 Interfaces\CallBacks\Server\CallBackServicesServer.class
 Model\DTO\GroupDTO.class
 Model\DTO\UserDto.class
+Model\Enums\UserField.class
 Model\DTO\UserLoginDTO.class
 SharedEnums\StatusEnum.class
 Interfaces\RmiServices\RemoteRegistrationService.class

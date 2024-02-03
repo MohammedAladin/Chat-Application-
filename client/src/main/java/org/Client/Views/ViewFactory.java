@@ -126,8 +126,10 @@ public class ViewFactory {
 
             home = fxmlLoader.load();
             Scene scene = new Scene(home);
-            Stage loginStage = (Stage) button.getScene().getWindow();
-            loginStage.close();
+            if(button != null) {
+                Stage loginStage = (Stage) button.getScene().getWindow();
+                loginStage.close();
+            }
             Stage stage = new Stage();
             stage.setMinWidth(800);
             stage.setMinHeight(800);
@@ -144,12 +146,12 @@ public class ViewFactory {
 
     }
 
-    public void showChatArea() {
+    public void showChatArea(ContactDto selectedChat) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/PrivateChat.fxml"));
         ChatUserController controller = new ChatUserController();
-        controller.setName(selectedChat.get().getContactName());
-        controller.setImage(selectedChat.get().getContactImage());
-        controller.setChatID(selectedChat.get().getChatId());
+        controller.setName(selectedChat.getContactName());
+        controller.setImage(selectedChat.getContactImage());
+        controller.setChatID(selectedChat.getChatId());
         fxmlLoader.setController(controller);
         try {
             home.setCenter(fxmlLoader.load());
@@ -325,5 +327,8 @@ public class ViewFactory {
         }
 
         addGroupPopup.show(groupBtn.getParent(), popupX, popupY);
+    }
+
+    public void showLogoutPopup(Button logoutBtn) {
     }
 }

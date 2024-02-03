@@ -36,7 +36,6 @@ org\Server\GUI\Controllers\ServerSideBarController.class
 org\Server\ServerModels\ServerEntities\Message.class
 org\Server\ServerModels\ServerEntities\Attachment.class
 org\Server\Repository\UserNotificationRepository.class
-org\Server\ServerModels\Enums\UserField.class
 org\Server\Service\User\LoginService.class
 org\Server\GUI\Controllers\ServerHomeController.class
 org\Server\ServerModels\ServerEntities\Notification.class

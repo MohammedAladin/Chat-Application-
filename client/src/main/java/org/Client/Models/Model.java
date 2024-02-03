@@ -33,7 +33,7 @@ public class Model {
     }
 
     public void setPrivateChats(Integer ChatID, List<MessageDTO> privateChats) {
-        this.privateChats.putIfAbsent(ChatID, new SimpleListProperty<>(FXCollections.observableArrayList(privateChats)));
+        this.privateChats.put(ChatID, FXCollections.observableArrayList(privateChats));
         System.out.println("this is the private chat" + privateChats + " " + ChatID);
     }
 
@@ -176,5 +176,10 @@ public class Model {
         System.out.println("this is the group list" + groupList);
         return groupList;
 
+    }
+
+    public void addMessage(MessageDTO messageDTO) {
+        privateChats.get(messageDTO.getChatID()).add(messageDTO);
+        System.out.println("this is the message" + messageDTO.getContent());
     }
 }

@@ -51,12 +51,12 @@ public class ChatAreaController implements Initializable {
 
         chatList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
+                getChat(newValue.getChatId());
                 ContactDto chat = chatList.getSelectionModel().getSelectedItem();
-                Model.getInstance().getViewFactory().setSelectedChat(chat);
                 System.out.println("Selected Item: " + newValue.getContactName());
                 System.out.println("Chat ID " + newValue.getChatId());
-                getChat(newValue.getChatId());
-                Model.getInstance().getViewFactory().showChatArea();
+                Model.getInstance().getViewFactory().setSelectedChat(chat);
+                Model.getInstance().getViewFactory().showChatArea(newValue);
                 System.out.println("function called ");
             }
         });
@@ -71,7 +71,7 @@ public class ChatAreaController implements Initializable {
             System.out.println("Chat does not exist");
             try {
                 Model.getInstance().getCallBackServicesServer().getPrivateChatMessages(chatId,Model.getInstance().getCallBackServicesClient());
-                System.out.println(Model.getInstance().getPrivateChats().get(11)+"this is the chat");
+               // System.out.println(Model.getInstance().getPrivateChats().get(11)+"this is the chat");
             } catch (RemoteException e) {
                 throw new RuntimeException(e);
             }

@@ -1,6 +1,8 @@
 package Model.DTO;
 
-public class MessageDTO {
+import java.io.Serializable;
+
+public class MessageDTO implements Serializable {
     private Integer chatID;
     private String content;
     private Integer isAttachment;

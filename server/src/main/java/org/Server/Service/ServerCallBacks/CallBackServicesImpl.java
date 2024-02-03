@@ -87,8 +87,19 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     @Override
     public void sendMessage(MessageDTO messageDTO) throws RemoteException {
         messageService.sendMessage(messageDTO);
-
         List<Integer> chatParticipantsIds = chatServices.getAllParticipants(messageDTO.getChatID());
+        for(Integer id : chatParticipantsIds){
+            if(clients.containsKey(id)){
+                CallBackServicesClient client = clients.get(id);
+                Platform.runLater(() -> {
+                    try {
+                        client.receiveMessage(messageDTO);
+                    } catch (RemoteException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            }
+        }
 
     }
 

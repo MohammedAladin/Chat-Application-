@@ -94,4 +94,9 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
         Platform.runLater(()->Model.getInstance().setPrivateChats(chatId,messages));
     }
 
+    @Override
+    public void receiveMessage(MessageDTO messageDTO) throws RemoteException {
+        Platform.runLater(()->Model.getInstance().addMessage(messageDTO));
+    }
+
 }

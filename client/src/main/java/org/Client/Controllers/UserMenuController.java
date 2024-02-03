@@ -13,11 +13,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import org.Client.Models.Model;
 import org.Client.Service.ImageServices;
+import org.Client.UserSessionManager;
 
 import javax.imageio.ImageIO;
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
 public class UserMenuController implements Initializable {
@@ -26,7 +29,8 @@ public class UserMenuController implements Initializable {
     public Button noti_btn;
     public Button profile_btn;
     public Button settings_btn;
-    public FontAwesomeIconView logout_btn;
+    @FXML
+    public Button logout_btn;
     public Button addContact_btn;
     public Label userName;
     @FXML
@@ -107,6 +111,18 @@ public class UserMenuController implements Initializable {
         });
         group_btn.setOnAction(e -> {
             Model.getInstance().getViewFactory().showAddGroup(group_btn);
+        });
+
+        logout_btn.setOnAction(e -> {
+            Model.getInstance().getViewFactory().showLogoutPopup(logout_btn);
+            try {
+                Model.getInstance().getCallBackServicesServer().unRegister(Model.getInstance().getClientId(), Model.getInstance().getPhoneNumber());
+                ((Stage)logout_btn.getParent().getScene().getWindow()).close();
+                UserSessionManager.deleteUserInfo();
+                Model.getInstance().getViewFactory().showLoginWindow();
+            } catch (RemoteException ex) {
+                throw new RuntimeException(ex);
+            }
         });
     }
 }

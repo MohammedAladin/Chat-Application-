@@ -16,7 +16,7 @@ public class MessageCellFactory extends ListCell<MessageDTO> {
             setGraphic(null);
             setText(null);
         } else {
-            if (message.getSenderID() == Model.getInstance().getClientId()) {
+            if (message.getSenderID().equals(Model.getInstance().getClientId()) ){
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/Message_sent.fxml"));
                 MessageSent messageSent = new MessageSent();
                 messageSent.setMessage(message.getContent());

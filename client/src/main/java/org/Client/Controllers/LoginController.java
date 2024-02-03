@@ -24,25 +24,6 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
-        if (UserSessionManager.checkFileExisted()) {
-            try {
-                String[] userInfo = UserSessionManager.loadUserInfo();
-                System.out.println("found");
-                UserLoginDTO userLogin = new UserLoginDTO( userInfo[0],userInfo[1]);
-                boolean loginResult = remoteServiceHandler.getRemoteUserService().signInUser(userLogin);
-                if(loginResult) {
-                    handleLoginResult(true , userInfo[0], userInfo[1]);
-                }
-            } catch (RemoteException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        Model.getInstance().getViewFactory().serverAnnouncementProperty().addListener((observable, newValue, oldValue)->{
-            remoteServiceHandler.showAlert(oldValue, Alert.AlertType.INFORMATION);
-        } );
-
         signingButton.setOnAction((e)->handleSignIn());
         registerLabel.setOnMouseClicked(e-> Model.getInstance().getViewFactory().showRegistrationWindow());
     }
@@ -67,7 +48,7 @@ public class LoginController implements Initializable {
             clearLoginFields();
         }
     }
-    private void handleLoginResult(boolean loginResult, String phoneNumber, String password) {
+    public void handleLoginResult(boolean loginResult, String phoneNumber, String password) {
         if (loginResult) {
             try {
                 remoteServiceHandler.showAlert("Login Successful", Alert.AlertType.INFORMATION);

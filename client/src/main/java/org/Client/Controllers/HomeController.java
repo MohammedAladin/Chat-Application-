@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import org.Client.Models.Model;
 
@@ -52,6 +53,9 @@ public class HomeController implements Initializable {
                 }
             });
         });
+                Model.getInstance().getViewFactory().serverAnnouncementProperty().addListener((observable, newValue, oldValue)->{
+            RemoteServiceHandler.getInstance().showAlert(oldValue, Alert.AlertType.INFORMATION);
+        } );
 
     }
 }

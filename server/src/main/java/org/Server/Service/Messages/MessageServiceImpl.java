@@ -44,7 +44,7 @@ public class MessageServiceImpl {
 
     private Message messageDTOToMessage (MessageDTO messageDTO){
         return new Message (
-                UserSession.getCurrentUser().getUserID(),
+                messageDTO.getSenderID(),
                 messageDTO.getChatID(),
                 messageDTO.getContent(),
                 new Timestamp(System.currentTimeMillis()),
