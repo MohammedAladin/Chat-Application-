@@ -10,7 +10,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ServerStatisticsController implements Initializable {
-
     @FXML
     private PieChart user_status;
     @FXML
