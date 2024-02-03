@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.Client.Models.Model;
 import org.Client.Service.ClientServicesImp;
+import org.Client.UserSessionManager;
+
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ResourceBundle;
@@ -15,18 +17,32 @@ public class LoginController implements Initializable {
     public Button signingButton;
     public PasswordField passwordField;
     public TextField phoneField;
-    private RemoteServiceHandler remoteServiceHandler;
-    String phoneNumber;
-    private CallBackServicesClient callBackServicesClient;
-    private CallBackServicesServer callBackServicesServer;
+    private final RemoteServiceHandler remoteServiceHandler = RemoteServiceHandler.getInstance();
+    private final CallBackServicesServer callBackServicesServer = remoteServiceHandler.getCallbacks();
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        remoteServiceHandler = RemoteServiceHandler.getInstance();
+
+        if (UserSessionManager.checkFileExisted()) {
+            try {
+                String[] userInfo = UserSessionManager.loadUserInfo();
+                System.out.println("found");
+                UserLoginDTO userLogin = new UserLoginDTO( userInfo[0],userInfo[1]);
+                boolean loginResult = remoteServiceHandler.getRemoteUserService().signInUser(userLogin);
+                if(loginResult) {
+                    handleLoginResult(true , userInfo[0], userInfo[1]);
+                }
+            } catch (RemoteException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
         Model.getInstance().getViewFactory().serverAnnouncementProperty().addListener((observable, newValue, oldValue)->{
             remoteServiceHandler.showAlert(oldValue, Alert.AlertType.INFORMATION);
         } );
+
         signingButton.setOnAction((e)->handleSignIn());
         registerLabel.setOnMouseClicked(e-> Model.getInstance().getViewFactory().showRegistrationWindow());
     }
@@ -35,12 +51,13 @@ public class LoginController implements Initializable {
         try {
             validateUserInputLogin();
 
-            phoneNumber = phoneField.getText();
+            String phoneNumber = phoneField.getText();
             String password = passwordField.getText();
+
             UserLoginDTO userLogin = new UserLoginDTO(phoneNumber, password);
 
             boolean loginResult = remoteServiceHandler.getRemoteUserService().signInUser(userLogin);
-            handleLoginResult(loginResult);
+            handleLoginResult(loginResult, phoneNumber, password);
 
         }catch (IllegalArgumentException e) {
             remoteServiceHandler.showAlert(e.getMessage(), Alert.AlertType.ERROR);
@@ -50,16 +67,16 @@ public class LoginController implements Initializable {
             clearLoginFields();
         }
     }
-    private void handleLoginResult(boolean loginResult) {
+    private void handleLoginResult(boolean loginResult, String phoneNumber, String password) {
         if (loginResult) {
             try {
                 remoteServiceHandler.showAlert("Login Successful", Alert.AlertType.INFORMATION);
 
                 Model.getInstance().setCallBackServicesClient(new ClientServicesImp());// client representation to be sent.
-                callBackServicesServer =  remoteServiceHandler.getCallbacks();
                 Model.getInstance().setCallBackServicesServer(callBackServicesServer);
-                callBackServicesServer.register(Model.getInstance().getCallBackServicesClient(), phoneNumber);
                 Model.getInstance().getViewFactory().showHomePage(signingButton);
+                callBackServicesServer.register(Model.getInstance().getCallBackServicesClient(), phoneNumber);
+                UserSessionManager.saveUserInfo(phoneNumber,password);
 
             } catch (RemoteException e) {
                 throw new RuntimeException(e);

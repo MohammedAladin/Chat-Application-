@@ -294,7 +294,7 @@ public class ViewFactory {
     }
 
     public AnchorPane showUserCard(ContactDto user, String phoneNumber) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/UserCard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/userCard.fxml"));
         try {
             UserCardController controller = new UserCardController();
             controller.setName(user.getContactName());

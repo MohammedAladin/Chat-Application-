@@ -129,6 +129,20 @@ public class UserRepository implements UserRepoInterface {
         }
     }
 
+    @Override
+    public void updateDateOfBirth(String phoneNumber, Date dof) throws SQLException {
+        String query = "UPDATE UserAccounts SET DateOfBirth=? WHERE PhoneNumber=?";
+
+        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
+            preparedStatement.setDate(1, new Date(dof.getTime()));
+            preparedStatement.setString(2, phoneNumber);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void update(String phoneNumber, String fieldName, String value) throws SQLException {
         String query = "UPDATE UserAccounts SET " + fieldName + "=? WHERE PhoneNumber=?";
 

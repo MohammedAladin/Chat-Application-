@@ -94,6 +94,9 @@ public class ContactService {
                 throw new RuntimeException(e);
             }
         }
+        for(ContactDto contactDto : contacts ){
+            System.out.println(contactDto.getContactName());
+        }
         return contacts;
     }
 

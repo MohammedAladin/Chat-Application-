@@ -55,7 +55,7 @@ public class ContactsRepository implements Repository<Contact, Integer> {
 
     public List<Integer> getContacts(int userID)  {
         List<Integer> contacts = new ArrayList<>();
-        String query = "SELECT * FROM usercontacts WHERE userid = ? or friendid=?";
+        String query = "SELECT * FROM UserContacts WHERE userid = ? or friendid=?";
         try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             preparedStatement.setInt(2, userID);
