@@ -2,14 +2,12 @@ package org.Server.Service.ServerCallBacks;
 
 import Interfaces.CallBacks.Client.CallBackServicesClient;
 import Interfaces.CallBacks.Server.CallBackServicesServer;
-import Model.DTO.ChatDto;
-import Model.DTO.ContactDto;
-import Model.DTO.MessageDTO;
-import Model.DTO.NotificationDTO;
+import Model.DTO.*;
 import SharedEnums.StatusEnum;
 import javafx.application.Platform;
 import org.Server.Repository.ContactsRepository;
 import org.Server.Repository.UserRepository;
+import org.Server.ServerModels.ServerEntities.Attachment;
 import org.Server.ServerModels.ServerEntities.User;
 import org.Server.ServerModels.ServerEntities.UserNotification;
 import org.Server.Service.Chat.ChatServices;
@@ -25,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CallBackServicesImpl extends UnicastRemoteObject implements CallBackServicesServer {
     MessageServiceImpl messageService;
@@ -87,6 +86,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     @Override
     public void sendMessage(MessageDTO messageDTO) throws RemoteException {
         messageService.sendMessage(messageDTO);
+        System.out.println("ChatId serverSide----> " + messageDTO.getChatID());
         List<Integer> chatParticipantsIds = chatServices.getAllParticipants(messageDTO.getChatID());
         for(Integer id : chatParticipantsIds){
             if(clients.containsKey(id)){
@@ -100,9 +100,22 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
                 });
             }
         }
+    }
+    @Override
+    public void sendAttachment(AttachmentDto attachmentMessage) throws RemoteException {
+        messageService.sendAttachment(attachmentMessage);
+        List<Integer> chatParticipantsIds = chatServices.getAllParticipants(attachmentMessage.getChatID());
+
+        List<CallBackServicesClient> selectedClients = clients.entrySet().stream()
+                .filter(entry -> chatParticipantsIds.contains(entry.getKey()))
+                .map(Map.Entry::getValue)
+                .collect(Collectors.toList());
+
+        for (CallBackServicesClient client : selectedClients) {
+                client.receiveAttachment(attachmentMessage);
+            }
 
     }
-
 
     public void sendAnnouncement(String announcement) throws RemoteException {
 
@@ -136,7 +149,9 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         CallBackServicesClient client = clients.get(clientId);
         CallBackServicesClient acceptedClient = clients.get(acceptedUserID);
         new ContactService().acceptInvitation(clientId, acceptedUserID);
+
         System.out.println("accepted client" + acceptedUserID);
+
         Platform.runLater(() -> {
             try {
                 client.deleteNotification(acceptedUserID);

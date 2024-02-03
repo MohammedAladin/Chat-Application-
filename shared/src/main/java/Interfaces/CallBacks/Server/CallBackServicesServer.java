@@ -1,6 +1,7 @@
 package Interfaces.CallBacks.Server;
 
 import Interfaces.CallBacks.Client.CallBackServicesClient;
+import Model.DTO.AttachmentDto;
 import Model.DTO.ChatDto;
 import Model.DTO.ContactDto;
 import Model.DTO.MessageDTO;
@@ -30,7 +31,7 @@ public interface CallBackServicesServer extends Remote {
     ContactDto searchForContact(String phoneNumber) throws RemoteException;
     void createGroupChat(Integer clientId, String text, ArrayList<Integer> selected , byte[] grpImage) throws RemoteException;
 
-
+    public void sendAttachment(AttachmentDto attachmentMessage) throws RemoteException;
 
     void getPrivateChatMessages(Integer chatId, CallBackServicesClient client) throws RemoteException;
 }

@@ -1,10 +1,7 @@
 package org.Client.Service;
 
 import Interfaces.CallBacks.Client.CallBackServicesClient;
-import Model.DTO.ChatDto;
-import Model.DTO.ContactDto;
-import Model.DTO.MessageDTO;
-import Model.DTO.NotificationDTO;
+import Model.DTO.*;
 import javafx.application.Platform;
 import org.Client.Models.Model;
 
@@ -24,6 +21,11 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
 
     @Override
     public void ReceiveMessageFromServer() throws RemoteException {
+
+    }
+
+    @Override
+    public void receiveAttachment(AttachmentDto attachment) throws RemoteException {
 
     }
 

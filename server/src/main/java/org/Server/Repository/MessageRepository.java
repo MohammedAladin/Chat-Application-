@@ -1,5 +1,6 @@
 package org.Server.Repository;
 
+import org.Server.RepoInterfaces.MessageRepoInterface;
 import org.Server.RepoInterfaces.Repository;
 import org.Server.ServerModels.ServerEntities.Message;
 import java.sql.PreparedStatement;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Connection;
 
-public class MessageRepository implements Repository<Message,Integer> {
+public class MessageRepository implements MessageRepoInterface {
     private final Connection connection;
 
     public MessageRepository() {
@@ -33,6 +34,21 @@ public class MessageRepository implements Repository<Message,Integer> {
             e.printStackTrace();
         }
     }
+
+    @Override
+     public Integer getLastInsertedId() throws SQLException {
+        int lastInsertedId = -1;
+        String query = "SELECT LAST_INSERT_ID()";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                lastInsertedId = resultSet.getInt(1);
+            }
+        }
+        return lastInsertedId;
+    }
+
+
 
     @Override
     public Message findById(Integer id) {

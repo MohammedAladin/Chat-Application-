@@ -9,6 +9,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javafx.scene.image.ImageView;
+import org.Client.UserSessionManager;
+
 import java.sql.Date;
 
 import java.io.File;
@@ -68,8 +70,9 @@ public class ProfileEditController implements Initializable {
         String oldPassword = oldPasswordTextField.getText();
         String newPassword = newPasswordTextField.getText();
         String confirmPassword = confirmPasswordTextField.getText();
+        String []info = UserSessionManager.loadUserInfo();
 
-        if(isValidPassword(confirmPassword,newPassword)) {
+        if(info[1].equals(oldPassword) && isValidPassword(confirmPassword,newPassword)) {
             Map<String, String> updatedFields = new HashMap<>();
             updatedFields.put(UserField.PASSWORD.getFieldName(), newPassword);
             if (name != null && !name.isEmpty()) {

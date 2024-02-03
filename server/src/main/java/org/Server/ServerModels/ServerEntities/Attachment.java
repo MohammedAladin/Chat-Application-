@@ -1,12 +1,12 @@
 package org.Server.ServerModels.ServerEntities;
 
 public class Attachment {
-    private int attachmentID;
-    private int messageID;
+    private Integer attachmentID;
+    private Integer messageID;
     private byte[] attachment;
 
-    public Attachment(int attachmentID, int messageID, byte[] attachment) {
-        this.attachmentID = attachmentID;
+    public Attachment(Integer messageID, byte[] attachment) {
+
         this.messageID = messageID;
         this.attachment = attachment;
     }

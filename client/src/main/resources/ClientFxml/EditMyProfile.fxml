@@ -32,19 +32,14 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="801.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="801.0" prefWidth="600.0" stylesheets="@../ClientStyles/EditProfileStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
     <top>
         <VBox prefHeight="179.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <children>
@@ -59,6 +54,10 @@
                                     <font>
                                         <Font name="System Bold Italic" size="25.0" />
                                     </font>
+                           <styleClass>
+                              <String fx:value="edit-profile" />
+                              <String fx:value="header" />
+                           </styleClass>
                                 </Label>
                             </children>
                             <padding>
@@ -67,12 +66,9 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" spacing="9.0">
                             <children>
-                                <ImageView fitHeight="128.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="" />
-                                    </image>
+                                <ImageView fitHeight="128.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true" styleClass="image-view">
                                 </ImageView>
-                                <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="153.0" text="Edit Profile Picture" />
+                                <Button fx:id="editProfilePicButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="183.0" stylesheets="@../ClientStyles/Register.css" text="Edit Profile Picture" />
                             </children>
                         </VBox>
                     </children>
@@ -88,9 +84,9 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="268.0">
                             <children>
                                 <Pane prefHeight="40.0" prefWidth="71.0" />
-                                <Label prefHeight="41.0" prefWidth="597.0" text="Profile Details">
+                                <Label prefHeight="41.0" prefWidth="597.0" styleClass="section" text="Profile Details">
                                     <font>
-                                        <Font name="System Bold Italic" size="20.0" />
+                                        <Font name="System Bold Italic" size="23.0" />
                                     </font>
                                 </Label>
                             </children>
@@ -103,7 +99,7 @@
                                     </font>
                                 </Label>
                                 <Pane prefHeight="40.0" prefWidth="80.0" />
-                                <TextField prefHeight="24.0" prefWidth="225.0" />
+                                <TextField fx:id="nameTextField" prefHeight="24.0" prefWidth="225.0" styleClass="text-field2" />
                             </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="268.0">
@@ -114,7 +110,7 @@
                                     </font>
                                 </Label>
                                 <Pane prefHeight="40.0" prefWidth="80.0" />
-                                <TextField prefHeight="24.0" prefWidth="225.0" />
+                                <ComboBox fx:id="countryChooser" prefHeight="24.0" prefWidth="223.0" styleClass="text-field2" />
                             </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="268.0">
@@ -125,7 +121,7 @@
                                     </font>
                                 </Label>
                                 <Pane prefHeight="40.0" prefWidth="80.0" />
-                                <TextField prefHeight="24.0" prefWidth="225.0" />
+                                <DatePicker fx:id="dateOfBirth" prefHeight="24.0" prefWidth="224.0" />
                             </children>
                         </HBox>
                     </children>
@@ -138,7 +134,7 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="268.0">
                             <children>
                                 <Pane prefHeight="40.0" prefWidth="71.0" />
-                                <Label prefHeight="40.0" prefWidth="586.0" text="Contact Info">
+                                <Label prefHeight="40.0" prefWidth="586.0" styleClass="section" text="Contact Info">
                                     <font>
                                         <Font name="System Bold Italic" size="20.0" />
                                     </font>
@@ -153,7 +149,7 @@
                                     </font>
                                 </Label>
                                 <Pane prefHeight="40.0" prefWidth="80.0" />
-                                <TextField prefHeight="24.0" prefWidth="225.0" />
+                                <TextField fx:id="phoneTextField" prefHeight="24.0" prefWidth="225.0" styleClass="text-field2" />
                             </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="504.0">
@@ -164,7 +160,7 @@
                                     </font>
                                 </Label>
                                 <Pane prefHeight="40.0" prefWidth="80.0" />
-                                <TextField prefHeight="24.0" prefWidth="225.0" />
+                                <TextField fx:id="emailTextField" prefHeight="24.0" prefWidth="225.0" styleClass="text-field2" />
                             </children>
                         </HBox>
                     </children>
@@ -177,7 +173,7 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="268.0">
                             <children>
                                 <Pane prefHeight="40.0" prefWidth="71.0" />
-                                <Label prefHeight="40.0" prefWidth="586.0" text="Password">
+                                <Label prefHeight="40.0" prefWidth="586.0" styleClass="section" text="Password">
                                     <font>
                                         <Font name="System Bold Italic" size="20.0" />
                                     </font>
@@ -192,7 +188,7 @@
                                     </font>
                                 </Label>
                                 <Pane prefHeight="29.0" prefWidth="82.0" />
-                                <TextField prefHeight="24.0" prefWidth="227.0" />
+                                <TextField fx:id="oldPasswordTextField" prefHeight="24.0" prefWidth="227.0" styleClass="text-field2" />
                             </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="504.0">
@@ -203,7 +199,7 @@
                                     </font>
                                 </Label>
                                 <Pane prefHeight="30.0" prefWidth="83.0" />
-                                <TextField prefHeight="24.0" prefWidth="225.0" />
+                                <TextField fx:id="newPasswordTextField" prefHeight="24.0" prefWidth="225.0" styleClass="text-field2" />
                             </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="504.0">
@@ -214,7 +210,7 @@
                                     </font>
                                 </Label>
                                 <Pane prefHeight="40.0" prefWidth="71.0" />
-                                <TextField prefHeight="24.0" prefWidth="225.0" />
+                                <TextField fx:id="confirmPasswordTextField" prefHeight="24.0" prefWidth="225.0" styleClass="text-field2" />
                             </children>
                         </HBox>
                     </children>
@@ -224,7 +220,7 @@
                 </VBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="119.0" text="Save" />
+                        <Button fx:id="saveButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="129.0" text="Save" />
                     </children>
                 </HBox>
             </children>

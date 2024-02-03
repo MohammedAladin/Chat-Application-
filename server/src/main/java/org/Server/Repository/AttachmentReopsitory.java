@@ -11,8 +11,15 @@ import java.util.List;
 
 public class AttachmentReopsitory implements Repository<Attachment,Integer>{
     private final Connection connection;
-    public AttachmentReopsitory(Connection connection){
-        this.connection = connection;
+    private static AttachmentReopsitory attachmentReopsitory;
+    private AttachmentReopsitory(){
+        this.connection = DatabaseConnectionManager.getInstance().getMyConnection();
+    }
+    public static AttachmentReopsitory getInstance(){
+        if(attachmentReopsitory==null){
+            attachmentReopsitory = new AttachmentReopsitory();
+        }
+        return attachmentReopsitory;
     }
 
     @Override

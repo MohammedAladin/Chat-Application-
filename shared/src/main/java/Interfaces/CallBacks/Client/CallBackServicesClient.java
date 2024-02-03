@@ -1,9 +1,6 @@
 package Interfaces.CallBacks.Client;
 
-import Model.DTO.ChatDto;
-import Model.DTO.ContactDto;
-import Model.DTO.MessageDTO;
-import Model.DTO.NotificationDTO;
+import Model.DTO.*;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -13,6 +10,7 @@ import java.util.List;
 public interface CallBackServicesClient extends Remote {
 
     void ReceiveMessageFromServer() throws RemoteException;
+    void receiveAttachment(AttachmentDto attachment) throws RemoteException;
 
     void setClientId(Integer clientId) throws RemoteException;
 

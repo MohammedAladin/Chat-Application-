@@ -93,11 +93,12 @@ public class ChatUserController implements Initializable {
     }
 
     private void sendMessage() {
-        if (textFieldID.getText().isEmpty()) {
-            return;
-        }
-        MessageDTO message = new MessageDTO(chatID, textFieldID.getText(), 0, Model.getInstance().getClientId());
+        if (textFieldID.getText().isEmpty()) return;
+
         try {
+            System.out.println("ChatID ClientSide--> " + Model.getInstance().getClientId());
+            MessageDTO message = new MessageDTO(chatID, textFieldID.getText(), 0, Model.getInstance().getClientId());
+
             Model.getInstance().getCallBackServicesServer().sendMessage(message);
         } catch (RemoteException e) {
             throw new RuntimeException(e);

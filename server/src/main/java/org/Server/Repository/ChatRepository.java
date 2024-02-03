@@ -202,9 +202,9 @@ public class ChatRepository implements ChatRepoInterface {
 
     public Integer getChatID(int userId, Integer id) {
         String query="SELECT c.ChatID\n" +
-                "FROM chat c\n" +
-                "JOIN chatparticipants cp1 ON c.ChatID = cp1.ChatID\n" +
-                "JOIN chatparticipants cp2 ON c.ChatID = cp2.ChatID\n" +
+                "FROM Chat c\n" +
+                "JOIN ChatParticipants cp1 ON c.ChatID = cp1.ChatID\n" +
+                "JOIN ChatParticipants cp2 ON c.ChatID = cp2.ChatID\n" +
                 "WHERE cp1.ParticipantUserID = ? \n" +
                 "  AND cp2.ParticipantUserID = ? \n" +
                 "  AND c.adminid IS NULL\n" +
