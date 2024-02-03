@@ -1,5 +1,6 @@
 package org.Server.Repository;
 
+import org.Server.GUI.Controllers.ServerStatisticsController;
 import org.Server.RepoInterfaces.UserRepoInterface;
 import org.Server.ServerModels.ServerEntities.User;
 import SharedEnums.StatusEnum;
@@ -35,6 +36,7 @@ public class UserRepository implements UserRepoInterface {
             preparedStatement.setTimestamp(11, user.getLastLogin());
 
             preparedStatement.executeUpdate();
+            ServerStatisticsController.activeUsers.add(user);
         } catch (SQLException e) {
             e.printStackTrace();
         }

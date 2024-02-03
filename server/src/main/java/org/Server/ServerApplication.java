@@ -40,22 +40,3 @@ public class ServerApplication extends Application {
         stage.setMinHeight(400);
     }
 }
-
-
-//    private void sceneMaker(FXMLLoader loader) {
-//        Scene scene = null;
-//        try{
-//            scene = new Scene(loader.load());
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//        if(stage==null){
-//            stage = new Stage();
-//            stage.setMinWidth(400);
-//            stage.setMinHeight(600);
-//        }
-//        stage.setScene(scene);
-//        stage.setTitle("Chat App");
-//        stage.show();
-//        stage.setResizable(true);
-//    }

@@ -34,7 +34,6 @@ public class LoginService implements RemoteLoginService {
                 //UserSession.setCurrentUser(signedUser);
                 System.out.println("User signed in successfully: " + userLoginDTO.getPhoneNumber());
                 return true;
-
             }
         } catch (SQLException e) {
             handleSQLException(e);
