@@ -77,6 +77,8 @@ public class ChatUserController implements Initializable {
         textFieldID.setOnAction(actionEvent -> {
             send_btn.fire();
         });
+        messageListView.setItems(Model.getInstance().getPrivateChats().get(chatID));
+
 
         messageListView.setCellFactory(new Callback<ListView<MessageDTO>, ListCell<MessageDTO>>() {
             @Override
@@ -85,8 +87,9 @@ public class ChatUserController implements Initializable {
             }
         });
         send_btn.setOnAction(e -> sendMessage());
-        messageListView.setItems(Model.getInstance().getPrivateChats().get(chatID));
         messageListView.refresh();
+        messageListView.refresh();
+
     }
 
     private void sendMessage() {

@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListCell;
@@ -17,6 +18,7 @@ import org.Client.ClientEntities.Chat;
 import org.Client.Models.Model;
 
 import java.net.URL;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +29,12 @@ public class ChatAreaController implements Initializable {
     private ListView<ContactDto> chatList;
 
     //@FXML
-   // private TextField searchBar;
+    // private TextField searchBar;
 
     private Image image = new Image(getClass().getResource("/ClientImages/cat.jpg").toString());
     private Image image2 = new Image(getClass().getResource("/ClientImages/cat2.jpg").toString());
     private ObservableList<ChatDto> chats = FXCollections.observableArrayList();
+    ContactDto chat;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -52,7 +55,7 @@ public class ChatAreaController implements Initializable {
         chatList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 getChat(newValue.getChatId());
-                ContactDto chat = chatList.getSelectionModel().getSelectedItem();
+                chat = chatList.getSelectionModel().getSelectedItem();
                 System.out.println("Selected Item: " + newValue.getContactName());
                 System.out.println("Chat ID " + newValue.getChatId());
                 Model.getInstance().getViewFactory().setSelectedChat(chat);
@@ -65,18 +68,46 @@ public class ChatAreaController implements Initializable {
     }
 
     private void getChat(Integer chatId) {
-        if(Model.getInstance().getPrivateChats().containsKey(chatId)){
+        if (Model.getInstance().getPrivateChats().containsKey(chatId)) {
             System.out.println("Chat exists");
-        }else{
+        } else {
             System.out.println("Chat does not exist");
-            try {
-                Model.getInstance().getCallBackServicesServer().getPrivateChatMessages(chatId,Model.getInstance().getCallBackServicesClient());
-               // System.out.println(Model.getInstance().getPrivateChats().get(11)+"this is the chat");
-            } catch (RemoteException e) {
-                throw new RuntimeException(e);
-            }
+                getMessages(chatId);
+
+
         }
     }
 
+    private void getMessages(Integer chatId) {
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                Model.getInstance().getCallBackServicesServer().getPrivateChatMessages(chatId, Model.getInstance().getCallBackServicesClient());
+                return null;
+            }
+        };
+
+        // Handle any exceptions that occurred in the task
+        task.exceptionProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                Throwable ex = newValue;
+                System.out.println("Exception occurred in task: " + ex);
+            }
+        });
+
+        // Update the UI after the task has completed
+        task.stateProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == javafx.concurrent.Worker.State.SUCCEEDED) {
+                Platform.runLater(() -> {
+                    Model.getInstance().getViewFactory().showChatArea(chat);
+                });
+            }
+        });
+
+        // Start the task in a new thread
+        new Thread(task).start();
+    }
 }
+
+
 

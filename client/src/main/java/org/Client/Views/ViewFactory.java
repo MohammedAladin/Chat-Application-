@@ -21,6 +21,7 @@ import org.Client.Controllers.HomeController;
 import org.Client.Controllers.UserCardController;
 
 import java.io.IOException;
+import org.Client.Models.Model;
 
 public class ViewFactory {
     Stage stage;
