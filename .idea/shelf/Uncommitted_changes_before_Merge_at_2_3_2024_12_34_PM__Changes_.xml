@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Merge_at_2_3_2024_12_34_PM_[Changes]" date="1706956488596" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2_3_2024_12_34_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Merge at 2/3/2024 12:34 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="shared/target/shared-1.0-SNAPSHOT.jar" />
+    <option name="AFTER_PATH" value="shared/target/shared-1.0-SNAPSHOT.jar" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2_3_2024_12_34_PM_[Changes]/shared-1.0-SNAPSHOT.jar" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="server/target/classes/org/Server/GUI/Controllers/ServerStatisticsController.class" />
+    <option name="AFTER_PATH" value="server/target/classes/org/Server/GUI/Controllers/ServerStatisticsController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2_3_2024_12_34_PM_[Changes]/ServerStatisticsController.class" />
+  </binary>
+</changelist>

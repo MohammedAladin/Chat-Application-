@@ -1,0 +1,71 @@
+.main_menu_container{
+    -fx-background-color: #e9e9ff;
+    -fx-alignment: center;
+    -fx-background-radius: 20;
+}
+
+.left_container{
+    -fx-background-radius: 25px;
+    -fx-background-color:#6e00ff;
+    -fx-pref-width: 120;
+    -fx-effect: dropshadow(two-pass-box,#AAAAAA,5,0,0,4);
+}
+
+.title_container{
+    -fx-background-color: #6e00ff;
+    -fx-background-radius: 20 20 0 0;
+    -fx-alignment: center;
+}
+
+.title_container Text{
+    -fx-alignment:center;
+    -fx-fill: white;
+}
+
+.title_container FontAwsomeIconView{
+    -fx-alignment:center;
+    -fx-fill:white;
+}
+
+.menu_container{
+    /*-fx-padding: 10 10 10 20;*/
+    -fx-spacing: 20;
+}
+
+.menu_container Button{
+    -fx-background-color: #6e00ff;
+    -fx-text-fill: white;
+    -fx-font-size:1.1em ;
+    -fx_alignment:left;
+    -fx-text-alignment:left;
+}
+
+.menu_container Button:hover{
+    -fx-cursor:hand;
+    -fx-background-color: #6328d6; /* change this to any shade of purple you prefer */
+    -fx-border-color: transparent #f3b559 transparent transparent ;
+    -fx-border-width: 0 5 0 0; /* Set the border width for the left side */
+}
+
+.IconView{
+    -fx-fill:white;
+    -fx-text-alignment: left;
+}
+
+.contacts{
+    -fx-background-color: #7f7fde;
+    -fx-background-radius: 25px;
+    -fx-effect: dropshadow(two-pass-box,#AAAAAA,5,0,0,4);
+}
+
+.searchfield{
+    -fx-background-color: #e9e9ff;
+    -fx-background-radius: 25px;
+    -fx-pref-height: 50px;
+    -fx-pref-width:250;
+    -fx-effect: dropshadow(gaussian, rgba(170, 170, 170, 0.38), 0, 4, 5, 2);
+}
+
+
+
+
