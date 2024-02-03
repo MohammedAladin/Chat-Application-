@@ -4,6 +4,21 @@ public class MessageDTO {
     private Integer chatID;
     private String content;
     private Integer isAttachment;
+    private Integer senderID;
+
+
+
+    public void setChatID(Integer chatID) {
+        this.chatID = chatID;
+    }
+
+    public Integer getSenderID() {
+        return senderID;
+    }
+
+    public void setSenderID(Integer senderID) {
+        this.senderID = senderID;
+    }
 
     public MessageDTO(Integer chatID, String content, Integer isAttachment, Integer senderID) {
         this.chatID = chatID;
@@ -12,7 +27,6 @@ public class MessageDTO {
         this.senderID = senderID;
     }
 
-    private Integer senderID;
 
     public MessageDTO(Integer chatID, String content, Integer isAttachment) {
         this.chatID = chatID;

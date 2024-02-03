@@ -1,14 +1,25 @@
 package org.Client.Controllers;
 
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 
-public class MessageReceived
-{
-    @javafx.fxml.FXML
-    private Label messageLabelID;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    public void setLabelID(Text text){
-        messageLabelID.setText(text.getText());
+public class MessageReceived implements Initializable
+{
+    @FXML
+    private Label messageLabelID;
+    String message;
+
+    public void setMessage(String text){
+        message = text;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        messageLabelID.setText(message);
     }
 }

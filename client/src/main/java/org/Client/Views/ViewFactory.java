@@ -145,10 +145,11 @@ public class ViewFactory {
     }
 
     public void showChatArea() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/ChatUser.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/PrivateChat.fxml"));
         ChatUserController controller = new ChatUserController();
         controller.setName(selectedChat.get().getContactName());
         controller.setImage(selectedChat.get().getContactImage());
+        controller.setChatID(selectedChat.get().getChatId());
         fxmlLoader.setController(controller);
         try {
             home.setCenter(fxmlLoader.load());

@@ -1,11 +1,15 @@
 package org.Client.Controllers;
 
+import Model.DTO.ContactDto;
+import Model.DTO.MessageDTO;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -16,6 +20,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import javafx.util.Callback;
+import org.Client.Models.Model;
 import org.Client.Service.ImageServices;
 
 import java.io.IOException;
@@ -32,9 +38,23 @@ public class ChatUserController implements Initializable {
     @FXML
     private Label statusID;
     @FXML
-    private VBox chatVBoxID;
+    private ListView<MessageDTO> messageListView;
+    @FXML
+    private Button send_btn;
+    @FXML
+    private Button attachemnt_btn;
     byte[] image;
     String name;
+    private Integer chatID;
+    private ObservableList<MessageDTO> messages = FXCollections.observableArrayList();
+
+    public Integer getChatID() {
+        return chatID;
+    }
+
+    public void setChatID(Integer chatID) {
+        this.chatID = chatID;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -51,24 +71,27 @@ public class ChatUserController implements Initializable {
             circleID.setFill(new ImagePattern(new Image(getClass().getResource("/ClientImages/defaultUser.jpg").toString())));
         } else circleID.setFill(new ImagePattern(ImageServices.convertToImage(image)));
         //statusID.setText();
-        //testing gui
         textFieldID.setOnAction(actionEvent -> {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/ClientFxml/Message_sent.fxml"));
-            if (textFieldID.getText().length() > 0) {
-                Text text = new Text(textFieldID.getText());
-                try {
-                    HBox hBox = loader.load();
-//                    MessageSent messageSent = loader.getController();
-//                    messageSent.setLabelID(text);
-                    chatVBoxID.getChildren().add(hBox);
-                    chatVBoxID.setSpacing(10);
-                    textFieldID.clear();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+            send_btn.fire();
+        });
 
+
+        send_btn.setOnAction(e -> sendMessage());
+        messageListView.setItems(Model.getInstance().getPrivateChats().get(chatID));
+
+
+        messageListView.setCellFactory(new Callback<ListView<MessageDTO>, ListCell<MessageDTO>>() {
+            @Override
+            public ListCell<MessageDTO> call(ListView<MessageDTO> chatListView) {
+                return new MessageCellFactory();
             }
         });
+    }
+
+    private void sendMessage() {
+        Model.getInstance().getPrivateChats().get(chatID).add(new MessageDTO(chatID, textFieldID.getText(), 0, Model.getInstance().getClientId()));
+        System.out.println(Model.getInstance().getPrivateChats().get(chatID).get(0).getContent() + " this is the message");
+        messageListView.setItems(Model.getInstance().getPrivateChats().get(chatID));
+        textFieldID.clear();
     }
 }

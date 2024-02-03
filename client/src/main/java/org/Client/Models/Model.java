@@ -24,20 +24,20 @@ public class Model {
     private ObservableList<ChatDto> groupList = javafx.collections.FXCollections.observableArrayList();
     private ObservableList<ContactDto> contacts = javafx.collections.FXCollections.observableArrayList();
 
-    public ObservableMap<Integer, List<MessageDTO>> getPrivateChats() {
+    public ObservableMap<Integer, ObservableList<MessageDTO>> getPrivateChats() {
         return privateChats.get();
     }
 
-    public MapProperty<Integer, List<MessageDTO>> privateChatsProperty() {
+    public MapProperty<Integer, ObservableList<MessageDTO>> privateChatsProperty() {
         return privateChats;
     }
 
     public void setPrivateChats(Integer ChatID, List<MessageDTO> privateChats) {
-        this.privateChats.putIfAbsent(ChatID, privateChats);
-        System.out.println("this is the private chat" + privateChats+" "+ChatID);
+        this.privateChats.putIfAbsent(ChatID, new SimpleListProperty<>(FXCollections.observableArrayList(privateChats)));
+        System.out.println("this is the private chat" + privateChats + " " + ChatID);
     }
 
-    private MapProperty<Integer,List<MessageDTO>> privateChats = new SimpleMapProperty<>(FXCollections.observableHashMap());
+    private MapProperty<Integer, ObservableList<MessageDTO>> privateChats = new SimpleMapProperty<>(FXCollections.observableHashMap());
 
     public void setGroupList(ArrayList<ChatDto> groupList) {
         this.groupList.clear();
