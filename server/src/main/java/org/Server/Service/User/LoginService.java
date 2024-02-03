@@ -41,6 +41,18 @@ public class LoginService implements RemoteLoginService {
         }
         return false;
     }
+
+    @Override
+    public boolean phoneNumberExists(UserLoginDTO userLoginDTO) throws RemoteException {
+        try {
+            User signedUser = userRepository.findByPhoneNumber(userLoginDTO.getPhoneNumber());
+            if(signedUser != null) return true;
+            return false;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private void handleSQLException(SQLException e) {
         System.err.println("Error signing in user");
         e.printStackTrace();

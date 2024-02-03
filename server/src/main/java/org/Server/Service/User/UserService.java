@@ -48,6 +48,13 @@ public class UserService extends UnicastRemoteObject implements RemoteUserServic
     public boolean signInUser(UserLoginDTO userLoginDTO) throws RemoteException {
         return loginService.loginUser(userLoginDTO);
     }
+
+    @Override
+    public boolean existsByPhoneNumber(UserLoginDTO userLoginDTO) throws RemoteException {
+        if (loginService.phoneNumberExists(userLoginDTO)) return true;
+        return false;
+    }
+
     public User existsByPhoneNumber(String phone){
         try {
             return userRepository.findByPhoneNumber(phone);

@@ -4,23 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="the user status updates on login and on exit">
+    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="adjust POM and module-info file so MVN INSTALL command can be run.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerStatisticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerStatisticsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/ClientApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/ClientApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/EditProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/EditProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/ClientApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/ClientApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/User/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/User/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/fxml/ServerStatistics.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/fxml/ServerStatistics.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerStatisticsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerStatisticsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Contacts/ContactService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Contacts/ContactService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/shared-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/shared-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/User/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/User/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/LoginService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/RmiServices/RemoteLoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/RmiServices/RemoteLoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/RmiServices/RemoteUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/RmiServices/RemoteUserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +73,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;devs&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;new-branch&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;E:/Chat-Application-/client/src/main/resources/ClientImages&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
@@ -105,7 +102,7 @@
       <recent name="org.Client.Controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Mohammed">
+  <component name="RunManager">
     <configuration name="Amin" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.Client.ClientApplication" />
       <module name="client" />
@@ -355,7 +352,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706887314188</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="adjust POM and module-info file so MVN INSTALL command can be run.">
+      <option name="closed" value="true" />
+      <created>1706965577175</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1706965577175</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,6 +402,7 @@
     <MESSAGE value="bug fixes in the CallBackServicesImpl" />
     <MESSAGE value="group list is loaded in the homepage , as well as some changes in the notification popup" />
     <MESSAGE value="the user status updates on login and on exit" />
-    <option name="LAST_COMMIT_MESSAGE" value="the user status updates on login and on exit" />
+    <MESSAGE value="adjust POM and module-info file so MVN INSTALL command can be run." />
+    <option name="LAST_COMMIT_MESSAGE" value="adjust POM and module-info file so MVN INSTALL command can be run." />
   </component>
 </project>

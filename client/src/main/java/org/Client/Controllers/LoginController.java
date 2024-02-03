@@ -2,6 +2,7 @@ package org.Client.Controllers;
 import Interfaces.CallBacks.Client.CallBackServicesClient;
 import Interfaces.CallBacks.Server.CallBackServicesServer;
 import Model.DTO.UserLoginDTO;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.Client.Models.Model;
@@ -12,7 +13,11 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
     public Label registerLabel;
+    public Label phoneNumberLabel;
+    public Label passwordLabel;
+    public Label notAUser;
     public Button signingButton;
+    public Button proceedButton;
     public PasswordField passwordField;
     public TextField phoneField;
     private RemoteServiceHandler remoteServiceHandler;
@@ -29,11 +34,18 @@ public class LoginController implements Initializable {
         } );
         signingButton.setOnAction((e)->handleSignIn());
         registerLabel.setOnMouseClicked(e-> Model.getInstance().getViewFactory().showRegistrationWindow());
+
+        passwordLabel.setVisible(false);
+        passwordField.setVisible(false);
+        signingButton.setVisible(false);
+        notAUser.setVisible(false);
+        registerLabel.setVisible(false);
     }
 
     private void handleSignIn() {
         try {
             validateUserInputLogin();
+
 
             phoneNumber = phoneField.getText();
             String password = passwordField.getText();
@@ -50,6 +62,36 @@ public class LoginController implements Initializable {
             clearLoginFields();
         }
     }
+
+    @FXML
+    private void phoneNumberExists(){
+        phoneNumber = phoneField.getText();
+        UserLoginDTO userLogin = new UserLoginDTO(phoneNumber, "");
+        try {
+            boolean phoneNumberExists = remoteServiceHandler.getRemoteUserService().existsByPhoneNumber(userLogin);
+            if (phoneNumberExists) {
+                remoteServiceHandler.showAlert("Phone number exists. Please enter the corresponding password!" , Alert.AlertType.INFORMATION);
+                showPasswordField();
+            } else {
+                remoteServiceHandler.showAlert("Phone number does not exist. Please enter a valid phone number." , Alert.AlertType.INFORMATION);
+            }
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void showPasswordField() {
+        phoneNumberLabel.setVisible(false);
+        phoneField.setVisible(false);
+        proceedButton.setVisible(false);
+
+        passwordLabel.setVisible(true);
+        passwordField.setVisible(true);
+        signingButton.setVisible(true);
+        notAUser.setVisible(true);
+        registerLabel.setVisible(true);
+    }
+
     private void handleLoginResult(boolean loginResult) {
         if (loginResult) {
             try {
@@ -89,4 +131,5 @@ public class LoginController implements Initializable {
         phoneField.clear();
         passwordField.clear();
     }
+
 }

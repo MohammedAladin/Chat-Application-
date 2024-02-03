@@ -35,8 +35,6 @@ public class EditProfileController implements Initializable {
             userImage.setImage(ImageServices.convertToImage(Model.getInstance().getProfilePicture()));
         else userImage.setImage(profilePic);
         nameField.setText(Model.getInstance().getName());
-
-
     }
 
     private void changePic() {
