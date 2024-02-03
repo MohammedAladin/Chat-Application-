@@ -45,5 +45,4 @@ public class LoginService implements RemoteLoginService {
         System.err.println("Error signing in user");
         e.printStackTrace();
     }
-
 }

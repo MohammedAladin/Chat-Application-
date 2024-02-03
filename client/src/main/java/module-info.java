@@ -5,7 +5,6 @@ module client {
     requires de.jensd.fx.glyphs.fontawesome;
     requires shared;
     requires java.rmi;
-    requires server;
     requires java.desktop;
     requires javafx.swing;
 
