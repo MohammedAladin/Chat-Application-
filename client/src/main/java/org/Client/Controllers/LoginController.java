@@ -2,43 +2,57 @@ package org.Client.Controllers;
 import Interfaces.CallBacks.Client.CallBackServicesClient;
 import Interfaces.CallBacks.Server.CallBackServicesServer;
 import Model.DTO.UserLoginDTO;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.Client.Models.Model;
 import org.Client.Service.ClientServicesImp;
-import org.Client.UserSessionManager;
-
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
     public Label registerLabel;
+    public Label phoneNumberLabel;
+    public Label passwordLabel;
+    public Label notAUser;
     public Button signingButton;
+    public Button proceedButton;
     public PasswordField passwordField;
     public TextField phoneField;
-    private final RemoteServiceHandler remoteServiceHandler = RemoteServiceHandler.getInstance();
-    private final CallBackServicesServer callBackServicesServer = remoteServiceHandler.getCallbacks();
-
+    private RemoteServiceHandler remoteServiceHandler;
+    String phoneNumber;
+    private CallBackServicesClient callBackServicesClient;
+    private CallBackServicesServer callBackServicesServer;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        remoteServiceHandler = RemoteServiceHandler.getInstance();
+        Model.getInstance().getViewFactory().serverAnnouncementProperty().addListener((observable, newValue, oldValue)->{
+            remoteServiceHandler.showAlert(oldValue, Alert.AlertType.INFORMATION);
+        } );
         signingButton.setOnAction((e)->handleSignIn());
         registerLabel.setOnMouseClicked(e-> Model.getInstance().getViewFactory().showRegistrationWindow());
+
+        passwordLabel.setVisible(false);
+        passwordField.setVisible(false);
+        signingButton.setVisible(false);
+        notAUser.setVisible(false);
+        registerLabel.setVisible(false);
     }
 
     private void handleSignIn() {
         try {
             validateUserInputLogin();
 
-            String phoneNumber = phoneField.getText();
-            String password = passwordField.getText();
 
+            phoneNumber = phoneField.getText();
+            String password = passwordField.getText();
             UserLoginDTO userLogin = new UserLoginDTO(phoneNumber, password);
 
             boolean loginResult = remoteServiceHandler.getRemoteUserService().signInUser(userLogin);
-            handleLoginResult(loginResult, phoneNumber, password);
+            handleLoginResult(loginResult);
 
         }catch (IllegalArgumentException e) {
             remoteServiceHandler.showAlert(e.getMessage(), Alert.AlertType.ERROR);
@@ -48,16 +62,46 @@ public class LoginController implements Initializable {
             clearLoginFields();
         }
     }
-    public void handleLoginResult(boolean loginResult, String phoneNumber, String password) {
+
+    @FXML
+    private void phoneNumberExists(){
+        phoneNumber = phoneField.getText();
+        UserLoginDTO userLogin = new UserLoginDTO(phoneNumber, "");
+        try {
+            boolean phoneNumberExists = remoteServiceHandler.getRemoteUserService().existsByPhoneNumber(userLogin);
+            if (phoneNumberExists) {
+                remoteServiceHandler.showAlert("Phone number exists. Please enter the corresponding password!" , Alert.AlertType.INFORMATION);
+                showPasswordField();
+            } else {
+                remoteServiceHandler.showAlert("Phone number does not exist. Please enter a valid phone number." , Alert.AlertType.INFORMATION);
+            }
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void showPasswordField() {
+        phoneNumberLabel.setVisible(false);
+        phoneField.setVisible(false);
+        proceedButton.setVisible(false);
+
+        passwordLabel.setVisible(true);
+        passwordField.setVisible(true);
+        signingButton.setVisible(true);
+        notAUser.setVisible(true);
+        registerLabel.setVisible(true);
+    }
+
+    private void handleLoginResult(boolean loginResult) {
         if (loginResult) {
             try {
                 remoteServiceHandler.showAlert("Login Successful", Alert.AlertType.INFORMATION);
 
                 Model.getInstance().setCallBackServicesClient(new ClientServicesImp());// client representation to be sent.
+                callBackServicesServer =  remoteServiceHandler.getCallbacks();
                 Model.getInstance().setCallBackServicesServer(callBackServicesServer);
-                Model.getInstance().getViewFactory().showHomePage(signingButton);
                 callBackServicesServer.register(Model.getInstance().getCallBackServicesClient(), phoneNumber);
-                UserSessionManager.saveUserInfo(phoneNumber,password);
+                Model.getInstance().getViewFactory().showHomePage(signingButton);
 
             } catch (RemoteException e) {
                 throw new RuntimeException(e);
@@ -87,4 +131,5 @@ public class LoginController implements Initializable {
         phoneField.clear();
         passwordField.clear();
     }
+
 }

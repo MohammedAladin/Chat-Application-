@@ -1,0 +1,16 @@
+.label{
+    -fx-text-fill: black;
+    -fx-font-family: Work Sans;
+    -fx-font-size: 15px;
+    -fx-font-style: normal;
+    -fx-line-height: normal;
+    -fx-letter-spacing: -0.5px;
+}
+
+.container{
+    -fx-background-color: #e9e9ff;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(two-pass-box, #9a9d9f,5,0,0,4);
+
+}

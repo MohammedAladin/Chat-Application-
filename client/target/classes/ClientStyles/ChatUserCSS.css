@@ -1,0 +1,28 @@
+.container{
+    -fx-background-color: #e9e9ff;
+    -fx-alignment: center;
+    -fx-background-radius: 20;
+}
+.attachment{
+    -fx-background-color: #4B0082;
+}
+.message-area{
+    -fx-background-radius: 10px;
+}
+.chat-pane{
+    -fx-background-radius: 10px;
+}
+.text-sent{
+    -fx-background-color: #9370DB; /* Medium purple bubble */
+    -fx-text-fill: #FFFFFF; /* White text */
+    -fx-background-radius: 15px;
+    -fx-wrap-text: true;
+    -fx-padding: 10px;
+}
+.text-received{
+    -fx-background-color: #ad22ad; /* Medium purple bubble */
+    -fx-text-fill: #FFFFFF; /* White text */
+    -fx-background-radius: 15px;
+    -fx-wrap-text: true;
+    -fx-padding: 10px;
+}

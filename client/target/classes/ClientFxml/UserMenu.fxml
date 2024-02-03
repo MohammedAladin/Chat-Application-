@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+
+<HBox prefHeight="801.0" prefWidth="501.0" spacing="15.0" stylesheets="@../ClientStyles/UserMenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="862.0" prefWidth="130.0" styleClass="menu_container">
+         <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="828.0" prefWidth="118.0" styleClass="left_container">
+            <VBox layoutY="15.2" prefHeight="110.0" prefWidth="120.0" spacing="20.0" styleClass="title_container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+               <Circle fx:id="imageCircle" fill="WHITE" radius="30.0" stroke="#b7b7b7" strokeType="INSIDE" />
+               <Label fx:id="userName" text="Label" textFill="WHITE" />
+            </VBox>
+            <VBox layoutX="6.0" layoutY="132.0" prefHeight="502.0" prefWidth="126.0" spacing="30.0">
+               <Button fx:id="home_btn" mnemonicParsing="false" prefHeight="51.0" prefWidth="110.0" styleClass="menu_container">
+                  <graphic>
+                     <FontAwesomeIconView fill="WHITE" glyphName="HOME" size="30" strokeType="INSIDE" styleClass="IconView" />
+                  </graphic>
+               </Button>
+               <Button fx:id="noti_btn" mnemonicParsing="false" prefHeight="54.0" prefWidth="109.0" styleClass="menu_container">
+                  <graphic>
+                     <FontAwesomeIconView fill="WHITE" glyphName="BELL" size="30" text="" wrappingWidth="29.99993908405304" />
+                  </graphic>
+               </Button>
+               <Line endX="8.492881774902344" endY="0.0016578793292865157" startX="-100.0" stroke="#92ea9b" />
+               <Button fx:id="profile_btn" mnemonicParsing="false" prefHeight="51.0" prefWidth="110.0" styleClass="menu_container">
+                  <graphic>
+                     <FontAwesomeIconView fill="WHITE" glyphName="USER" size="30" text="" wrappingWidth="24.62859869003296" />
+                  </graphic>
+               </Button>
+               <Button fx:id="addContact_btn" mnemonicParsing="false" prefHeight="51.0" prefWidth="110.0" styleClass="menu_container" textFill="WHITE">
+                  <graphic>
+                     <FontAwesomeIconView fill="WHITE" glyphName="USER_PLUS" size="30" />
+                  </graphic>
+               </Button>
+               <Button fx:id="group_btn" mnemonicParsing="false" prefHeight="51.0" prefWidth="110.0" styleClass="menu_container" textFill="WHITE">
+                  <graphic>
+                     <FontAwesomeIconView fill="WHITE" glyphName="GROUP" size="30" />
+                  </graphic>
+               </Button>
+               <Button fx:id="settings_btn" mnemonicParsing="false" prefHeight="51.0" prefWidth="110.0" styleClass="menu_container" textFill="WHITE">
+                  <graphic>
+                     <FontAwesomeIconView fill="WHITE" glyphName="GEAR" size="30" />
+                  </graphic></Button>
+            </VBox>
+            <VBox layoutX="19.0" layoutY="670.0" prefHeight="48.0" prefWidth="96.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="97.0" styleClass="menu_container">
+                     <graphic>
+                        <FontAwesomeIconView fx:id="logout_btn" fill="WHITE" glyphName="SIGN_OUT" size="30" />
+                     </graphic>
+                  </Button>
+               </children></VBox>
+         </AnchorPane>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <fx:include source="chatArea.fxml" />
+         <fx:include source="Groups.fxml" />
+      </VBox>
+
+   </children>
+   <stylesheets>
+      <URL value="@../ClientStyles/UserMenu.css" />
+      <URL value="@../ClientStyles/contactStyle.css" />
+   </stylesheets>
+   <styleClass>
+      <String fx:value="main_menu_container" />
+      <String fx:value="background" />
+   </styleClass>
+
+</HBox>

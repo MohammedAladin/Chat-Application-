@@ -1,0 +1,288 @@
+Index: server/src/main/java/org/Server/Service/User/LoginService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.Server.Service.User;\r\n\r\nimport Interfaces.RmiServices.RemoteLoginService;\r\nimport org.Server.RepoInterfaces.UserRepoInterface;\r\nimport Model.DTO.UserLoginDTO;\r\nimport org.Server.ServerModels.ServerEntities.User;\r\nimport org.Server.ServerModels.Enums.StatusEnum;\r\nimport org.Server.Repository.UserRepository;\r\nimport org.Server.Service.UserSession;\r\nimport java.rmi.RemoteException;\r\nimport java.sql.SQLException;\r\nimport java.sql.Timestamp;\r\n\r\npublic class LoginService implements RemoteLoginService {\r\n    UserRepoInterface userRepository;\r\n\r\n\r\n    public LoginService(UserRepository userRepository) throws RemoteException {\r\n        super();\r\n        this.userRepository = userRepository;\r\n\r\n    }\r\n\r\n    public boolean loginUser(UserLoginDTO userLoginDTO) throws RemoteException {\r\n        try {\r\n            User signedUser = userRepository.findByPhoneNumber(userLoginDTO.getPhoneNumber());\r\n\r\n            if (signedUser != null && signedUser.getPassword().equals(userLoginDTO.getPassword())) {\r\n                System.out.println(\"user phone\" + userLoginDTO.getPhoneNumber());\r\n                userRepository.updateStatus(userLoginDTO.getPhoneNumber(), StatusEnum.ONLINE);\r\n                userRepository.updateLoginDate(userLoginDTO.getPhoneNumber(), new Timestamp(System.currentTimeMillis()));\r\n\r\n                //callback --> (list of contacts)->ObservUser(Name, id, byte [] image, status, mode, phone)\r\n                //UserSession.setCurrentUser(signedUser);\r\n                System.out.println(\"User signed in successfully: \" + userLoginDTO.getPhoneNumber());\r\n                return true;\r\n\r\n            }\r\n        } catch (SQLException e) {\r\n            handleSQLException(e);\r\n        }\r\n        return false;\r\n    }\r\n    private void handleSQLException(SQLException e) {\r\n        System.err.println(\"Error signing in user\");\r\n        e.printStackTrace();\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/server/src/main/java/org/Server/Service/User/LoginService.java b/server/src/main/java/org/Server/Service/User/LoginService.java
+--- a/server/src/main/java/org/Server/Service/User/LoginService.java	(revision 71fb160a7a8f34ad836d64c2c279655090646043)
++++ b/server/src/main/java/org/Server/Service/User/LoginService.java	(date 1706727753404)
+@@ -45,5 +45,4 @@
+         System.err.println("Error signing in user");
+         e.printStackTrace();
+     }
+-
+ }
+Index: server/src/main/java/org/Server/GUI/Controllers/ServerStatisticsController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.Server.GUI.Controllers;\r\n\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.Initializable;\r\nimport javafx.scene.chart.PieChart;\r\n\r\nimport java.net.URL;\r\nimport java.util.ResourceBundle;\r\n\r\npublic class ServerStatisticsController implements Initializable {\r\n\r\n    @FXML\r\n    private PieChart user_status;\r\n    @FXML\r\n    private PieChart user_gender;\r\n    @FXML\r\n    private PieChart user_country;\r\n    @Override\r\n    public void initialize(URL url, ResourceBundle resourceBundle) {\r\n        ObservableList<PieChart.Data> statusChart = FXCollections.observableArrayList(\r\n          new PieChart.Data(\"Online\", 30),\r\n          new PieChart.Data(\"Offline\", 50)\r\n        );\r\n\r\n        user_status.setData(statusChart);\r\n\r\n        ObservableList<PieChart.Data> genderChart = FXCollections.observableArrayList(\r\n                new PieChart.Data(\"Male\", 60),\r\n                new PieChart.Data(\"Female\", 70)\r\n        );\r\n\r\n        user_gender.setData(genderChart);\r\n\r\n\r\n        ObservableList<PieChart.Data> countryChart = FXCollections.observableArrayList(\r\n                new PieChart.Data(\"Egypt\", 30),\r\n                new PieChart.Data(\"Bangladesh\", 20)\r\n        );\r\n\r\n        user_country.setData(countryChart);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/server/src/main/java/org/Server/GUI/Controllers/ServerStatisticsController.java b/server/src/main/java/org/Server/GUI/Controllers/ServerStatisticsController.java
+--- a/server/src/main/java/org/Server/GUI/Controllers/ServerStatisticsController.java	(revision 71fb160a7a8f34ad836d64c2c279655090646043)
++++ b/server/src/main/java/org/Server/GUI/Controllers/ServerStatisticsController.java	(date 1706728125302)
+@@ -10,7 +10,6 @@
+ import java.util.ResourceBundle;
+ 
+ public class ServerStatisticsController implements Initializable {
+-
+     @FXML
+     private PieChart user_status;
+     @FXML
+Index: server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>C:\\Users\\LENOVO\\IdeaProjects\\Chat-Application-\\server\\src\\main\\java\\org\\Server\\Service\\UserSession.java\r\nC:\\Users\\LENOVO\\IdeaProjects\\Chat-Application-\\server\\src\\main\\java\\module-info.java\r\nC:\\Users\\LENOVO\\IdeaProjects\\Chat-Application-\\server\\src\\main\\java\\org\\Server\\Service\\Factories\\UserServiceFactory.java\r\nC:\\Users\\LENOVO\\IdeaProjects\\Chat-Application-\\server\\src\\main\\java\\org\\Server\\Service\\Contacts\\ContactService.java\r\nC:\\Users\\LENOVO\\IdeaProjects\\Chat-Application-\\server\\src\\main\\java\\org\\Server\\Service\\User\\UserService.java\r\nC:\\Users\\LENOVO\\IdeaProjects\\Chat-Application-\\server\\src\\main\\java\\org\\Server\\App.java\r\nC:\\Users\\LENOVO\\IdeaProjects\\Chat-Application-\\server\\src\\main\\java\\org\\Server\\Service\\User\\LoginService.java\r\nC:\\Users\\LENOVO\\IdeaProjects\\Chat-Application-\\server\\src\\main\\java\\org\\Server\\Repository\\ContactsRepository.java\r\nC:\\Users\\LENOVO\\IdeaProjects\\Chat-Application-\\server\\src\\main\\java\\org\\Server\\Repository\\UserRepository.java\r\nC:\\Users\\LENOVO\\IdeaProjects\\Chat-Application-\\server\\src\\main\\java\\org\\Server\\Service\\Contacts\\InvitationService.java\r\nC:\\Users\\LENOVO\\IdeaProjects\\Chat-Application-\\server\\src\\main\\java\\org\\Server\\Repository\\UserNotificationRepository.java\r\nC:\\Users\\LENOVO\\IdeaProjects\\Chat-Application-\\server\\src\\main\\java\\org\\Server\\Repository\\DatabaseConnectionManager.java\r\nC:\\Users\\LENOVO\\IdeaProjects\\Chat-Application-\\server\\src\\main\\java\\org\\Server\\Service\\Factories\\ServiceFactory.java\r\nC:\\Users\\LENOVO\\IdeaProjects\\Chat-Application-\\server\\src\\main\\java\\org\\Server\\Service\\User\\RegistrationService.java\r\nC:\\Users\\LENOVO\\IdeaProjects\\Chat-Application-\\server\\src\\main\\java\\org\\Server\\TestApp.java\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst b/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+--- a/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst	(revision 71fb160a7a8f34ad836d64c2c279655090646043)
++++ b/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst	(date 1706730061696)
+@@ -1,15 +1,15 @@
+-C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\Service\UserSession.java
+ C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\module-info.java
+-C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\Service\Factories\UserServiceFactory.java
+-C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\Service\Contacts\ContactService.java
+-C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\Service\User\UserService.java
+-C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\App.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\ServerModels\ServerEntities\ServerAnnouncement.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\ServerModels\ServerEntities\GroupMember.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\Service\Contacts\NotificationMapper.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\ServerModels\ServerEntities\Message.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\Repository\ChatParticipantRepository.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\Service\Messages\MessageServiceImpl.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\ServerModels\ServerEntities\User.java
+ C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\Service\User\LoginService.java
+-C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\Repository\ContactsRepository.java
+-C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\Repository\UserRepository.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\GUI\Controllers\ServerStatisticsController.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\ServerModels\ServerEntities\UserNotification.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\ServerApplication.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\ServerModels\ServerEntities\Chat.java
+ C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\Service\Contacts\InvitationService.java
+-C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\Repository\UserNotificationRepository.java
+-C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\Repository\DatabaseConnectionManager.java
+-C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\Service\Factories\ServiceFactory.java
+-C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\Service\User\RegistrationService.java
+-C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\java\org\Server\TestApp.java
++C:\Users\LENOVO\Id
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d\" name=\"Changes\" comment=\" list of contacts added to the home page, status update with callbacks implemented, searching for and adding a new contact , list of notifications added\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/client/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/client/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/client/src/main/java/module-info.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/client/src/main/java/module-info.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/AddContactController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/AddContactController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatAreaController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatAreaController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/NotificationCellFactory.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/NotificationCellFactory.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/UserCardController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/UserCardController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/client/src/main/java/org/Client/Service/ImageServices.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/client/src/main/java/org/Client/Service/ImageServices.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/client/src/main/java/org/Client/Views/ViewFactory.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/client/src/main/java/org/Client/Views/ViewFactory.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/client/target/classes/module-info.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/client/target/classes/module-info.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Enum\" />\r\n        <option value=\"Interface\" />\r\n        <option value=\"CSS File\" />\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"UPDATE_TYPE\" value=\"REBASE\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2bBrXtDZWmlI2Z9e0p1l5hxwu9m\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.Amin.executor\": \"Run\",\r\n    \"Application.App.executor\": \"Run\",\r\n    \"Application.Mohammed.executor\": \"Run\",\r\n    \"Application.Server.executor\": \"Run\",\r\n    \"Application.TestApp.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"D:/iti/Java/advanced javaFx/Chat\",\r\n    \"list.type.of.created.stylesheet\": \"CSS\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"project.structure.last.edited\": \"Project\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"E:\\try\\Chat-Application\\client\\src\\main\\resources\\ClientImages\" />\r\n      <recent name=\"E:\\try\\Chat-Application\\client\\src\\main\\resources\\ClientStyles\" />\r\n      <recent name=\"E:\\try\\Chat-Application\\client\\src\\main\\resources\\ClientFxml\" />\r\n      <recent name=\"E:\\try\\Chat-Application\\client\\src\\main\\java\\org\\Client\\Controllers\" />\r\n      <recent name=\"C:\\Users\\LENOVO\\IdeaProjects\\Chat-Application-\\server\\src\\main\\resources\" />\r\n    </key>\r\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\r\n      <recent name=\"org.Server.ServerModels.ServerEntities\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"org.Client.Controllers\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Mohammed\">\r\n    <configuration name=\"Amin\" type=\"Application\" factoryName=\"Application\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.Client.ClientApplication\" />\r\n      <module name=\"client\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Mohammed\" type=\"Application\" factoryName=\"Application\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.Client.ClientApplication\" />\r\n      <module name=\"client\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Server\" type=\"Application\" factoryName=\"Application\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.Server.ServerApplication\" />\r\n      <module name=\"server\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"TestApp\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.Client.Service.TestApp\" />\r\n      <module name=\"client\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.Client.Service.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.Server\" />\r\n      <item itemvalue=\"Application.Mohammed\" />\r\n      <item itemvalue=\"Application.Amin\" />\r\n      <item itemvalue=\"Application.TestApp\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.TestApp\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d\" name=\"Changes\" comment=\"\" />\r\n      <created>1705699356125</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1705699356125</updated>\r\n      <workItem from=\"1706338039675\" duration=\"102000\" />\r\n      <workItem from=\"1706338256715\" duration=\"1701000\" />\r\n      <workItem from=\"1706359578368\" duration=\"6976000\" />\r\n      <workItem from=\"1706528342353\" duration=\"2120000\" />\r\n      <workItem from=\"1706536373701\" duration=\"7760000\" />\r\n      <workItem from=\"1706549822455\" duration=\"28000\" />\r\n      <workItem from=\"1706549872742\" duration=\"3482000\" />\r\n      <workItem from=\"1706553893447\" duration=\"15784000\" />\r\n      <workItem from=\"1706596733323\" duration=\"1160000\" />\r\n      <workItem from=\"1706604320531\" duration=\"4158000\" />\r\n      <workItem from=\"1706667958395\" duration=\"34000\" />\r\n      <workItem from=\"1706676332581\" duration=\"558000\" />\r\n      <workItem from=\"1706678000886\" duration=\"3181000\" />\r\n      <workItem from=\"1706681769833\" duration=\"41000\" />\r\n      <workItem from=\"1706692559129\" duration=\"1302000\" />\r\n      <workItem from=\"1706695055590\" duration=\"9385000\" />\r\n      <workItem from=\"1706709227022\" duration=\"9383000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Add server gui\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1706195168543</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1706195168543</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Add server gui\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1706195181886</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1706195181886</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"add server gui side bar, home and statistics\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1706234319011</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1706234319011</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"add server gui side bar, home and statistics\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1706234351986</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1706234351986</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"add server gui side bar, home and statistics\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1706271863126</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1706271863126</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"add server gui side bar, home and statistics\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1706271900538</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1706271900538</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"connect server FXMLs together\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1706283750567</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1706283750567</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Chat participants has been added\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1706536849823</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1706536849823</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Chat participants has been added\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1706536873355</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1706536873355</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\" list of contacts added to the home page, status update with callbacks implemented, searching for and adding a new contact , list of notifications added\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1706712097471</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1706712097471</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"11\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"main\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Add server gui\" />\r\n    <MESSAGE value=\"add server gui side bar, home and statistics\" />\r\n    <MESSAGE value=\"connect server FXMLs together\" />\r\n    <MESSAGE value=\"Chat participants has been added\" />\r\n    <MESSAGE value=\" list of contacts added to the home page, status update with callbacks implemented, searching for and adding a new contact , list of notifications added\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\" list of contacts added to the home page, status update with callbacks implemented, searching for and adding a new contact , list of notifications added\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 71fb160a7a8f34ad836d64c2c279655090646043)
++++ b/.idea/workspace.xml	(date 1706885742668)
+@@ -6,19 +6,15 @@
+   <component name="ChangeListManager">
+     <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment=" list of contacts added to the home page, status update with callbacks implemented, searching for and adding a new contact , list of notifications added">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/client/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/module-info.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/AddContactController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/AddContactController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatAreaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatAreaController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/NotificationCellFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/NotificationCellFactory.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/UserCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/UserCardController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ImageServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ImageServices.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Views/ViewFactory.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/client/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/module-info.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerStatisticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerStatisticsController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/User/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/User/LoginService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/server/target/classes/fxml/ServerStatistics.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/fxml/ServerStatistics.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerStatisticsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerStatisticsController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/shared/target/shared-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/shared-1.0-SNAPSHOT.jar" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -57,31 +53,33 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Application.Amin.executor": "Run",
+-    "Application.App.executor": "Run",
+-    "Application.Mohammed.executor": "Run",
+-    "Application.Server.executor": "Run",
+-    "Application.TestApp.executor": "Run",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "git-widget-placeholder": "main",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "D:/iti/Java/advanced javaFx/Chat",
+-    "list.type.of.created.stylesheet": "CSS",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "project.structure.last.edited": "Project",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.0",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Application.Amin.executor&quot;: &quot;Run&quot;,
++    &quot;Application.App.executor&quot;: &quot;Run&quot;,
++    &quot;Application.ClientApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Application.Mohammed.executor&quot;: &quot;Run&quot;,
++    &quot;Application.Server.executor&quot;: &quot;Run&quot;,
++    &quot;Application.ServerApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Application.TestApp.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;devs&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;D:/iti/Java/advanced javaFx/Chat&quot;,
++    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="E:\try\Chat-Application\client\src\main\resources\ClientImages" />
+@@ -97,7 +95,7 @@
+       <recent name="org.Client.Controllers" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="Application.Mohammed">
++  <component name="RunManager" selected="Application.Server">
+     <configuration name="Amin" type="Application" factoryName="Application">
+       <option name="MAIN_CLASS_NAME" value="org.Client.ClientApplication" />
+       <module name="client" />
+@@ -147,7 +145,7 @@
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
++        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-f98dd351" />
+       </set>
+     </attachedChunks>
+   </component>
+@@ -274,7 +272,7 @@
+                   <entry key="branch">
+                     <value>
+                       <list>
+-                        <option value="main" />
++                        <option value="devs" />
+                       </list>
+                     </value>
+                   </entry>
+Index: shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Entities/Group.java\r\n/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Entities/Message.java\r\n/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Interfaces/RemoteRegistrationService.java\r\n/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Enums/UserField.java\r\n/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Entities/ServerAnnouncement.java\r\n/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Interfaces/RemoteLoginService.java\r\n/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/DTO/UserDto.java\r\n/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Enums/StatusEnum.java\r\n/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/module-info.java\r\n/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Entities/Notification.java\r\n/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Interfaces/ServiceFactoryI.java\r\n/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Entities/BlockedContact.java\r\n/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Entities/GroupMember.java\r\n/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Interfaces/Repository.java\r\n/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Entities/Contact.java\r\n/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Interfaces/UserServiceFactoryI.java\r\n/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/DTO/UserRegistrationDTO.java\r\n/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Entities/User.java\r\n/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/DTO/UserLoginDTO.java\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst b/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+--- a/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst	(revision 71fb160a7a8f34ad836d64c2c279655090646043)
++++ b/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst	(date 1706730059831)
+@@ -1,19 +1,17 @@
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Entities/Group.java
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Entities/Message.java
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Interfaces/RemoteRegistrationService.java
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Enums/UserField.java
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Entities/ServerAnnouncement.java
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Interfaces/RemoteLoginService.java
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/DTO/UserDto.java
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Enums/StatusEnum.java
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/module-info.java
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Entities/Notification.java
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Interfaces/ServiceFactoryI.java
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Entities/BlockedContact.java
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Entities/GroupMember.java
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Interfaces/Repository.java
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Entities/Contact.java
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Interfaces/UserServiceFactoryI.java
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/DTO/UserRegistrationDTO.java
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/Entities/User.java
+-/media/mohamed/01D3829D52880A80/ChatApplication/Chat-Application-/shared/src/main/java/Model/DTO/UserLoginDTO.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\shared\src\main\java\Interfaces\CallBacks\Server\CallBackServicesServer.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\shared\src\main\java\Model\Enums\AttachmentStatus.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\shared\src\main\java\Model\DTO\UserLoginDTO.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\shared\src\main\java\Model\DTO\ChatDto.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\shared\src\main\java\Model\DTO\GroupDTO.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\shared\src\main\java\Model\DTO\MessageDTO.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\shared\src\main\java\Model\DTO\UserRegistrationDTO.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\shared\src\main\java\Model\DTO\UserDto.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\shared\src\main\java\Interfaces\CallBacks\Client\CallBackServicesClient.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\shared\src\main\java\Model\DTO\NotificationDTO.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\shared\src\main\java\Exceptions\CustomException.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\shared\src\main\java\Interfaces\RmiServices\RemoteUserService.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\shared\src\main\java\Interfaces\RmiServices\RemoteLoginService.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\shared\src\main\java\module-info.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\shared\src\main\java\Interfaces\RmiServices\RemoteRegistrationService.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\shared\src\main\java\Model\DTO\ContactDto.java
++C:\Users\LENOVO\IdeaProjects\Chat-Application-\shared\src\main\java\Interfaces\RmiServices\ServicesFactoryInterface.java
+Index: shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>Interfaces/UserServiceFactoryI.class\r\nModel/Entities/User.class\r\nModel/Entities/Message.class\r\nModel/DTO/UserLoginDTO.class\r\nModel/Entities/Contact.class\r\nInterfaces/RemoteRegistrationService.class\r\nInterfaces/ServiceFactoryI.class\r\nInterfaces/Repository.class\r\nInterfaces/RemoteLoginService.class\r\nModel/Enums/StatusEnum.class\r\nModel/Entities/Notification.class\r\nModel/Entities/BlockedContact.class\r\nmodule-info.class\r\nModel/DTO/UserRegistrationDTO.class\r\nModel/DTO/UserDto.class\r\nModel/Enums/UserField.class\r\nModel/Entities/ServerAnnouncement.class\r\nModel/Entities/Group.class\r\nModel/Entities/GroupMember.class\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst b/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+--- a/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst	(revision 71fb160a7a8f34ad836d64c2c279655090646043)
++++ b/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst	(date 1706730060536)
+@@ -1,19 +1,15 @@
+-Interfaces/UserServiceFactoryI.class
+-Model/Entities/User.class
+-Model/Entities/Message.class
+-Model/DTO/UserLoginDTO.class
+-Model/Entities/Contact.class
+-Interfaces/RemoteRegistrationService.class
+-Interfaces/ServiceFactoryI.class
+-Interfaces/Repository.class
+-Interfaces/RemoteLoginService.class
+-Model/Enums/StatusEnum.class
+-Model/Entities/Notification.class
+-Model/Entities/BlockedContact.class
++Interfaces\RmiServices\RemoteUserService.class
++Interfaces\RmiServices\RemoteLoginService.class
++Interfaces\CallBacks\Client\CallBackServicesClient.class
++Model\DTO\ChatDto.class
++Interfaces\CallBacks\Server\CallBackServicesServer.class
++Model\DTO\GroupDTO.class
++Model\DTO\UserDto.class
++Model\DTO\UserLoginDTO.class
++Interfaces\RmiServices\RemoteRegistrationService.class
++Model\DTO\UserRegistrationDTO.class
++Model\DTO\NotificationDTO.class
+ module-info.class
+-Model/DTO/UserRegistrationDTO.class
+-Model/DTO/UserDto.class
+-Model/Enums/UserField.class
+-Model/Entities/ServerAnnouncement.class
+-Model/Entities/Group.class
+-Model/Entities/GroupMember.class
++Interfaces\RmiServices\ServicesFactoryInterface.class
++Model\Enums\AttachmentStatus.class
++Model\DTO\ContactDto.class

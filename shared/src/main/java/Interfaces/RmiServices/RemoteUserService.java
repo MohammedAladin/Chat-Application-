@@ -10,4 +10,5 @@ import java.rmi.RemoteException;
 public interface RemoteUserService extends Remote {
     public boolean registerUser(UserRegistrationDTO user) throws RemoteException;
     public boolean signInUser(UserLoginDTO userLoginDTO) throws RemoteException;
+    public boolean existsByPhoneNumber(UserLoginDTO userLoginDTO) throws RemoteException;
 }

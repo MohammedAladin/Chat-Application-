@@ -24,31 +24,46 @@
    <center>
       <VBox alignment="CENTER" prefHeight="318.0" prefWidth="413.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER">
+            <Label fx:id="phoneNumberLabel" prefHeight="18.0" prefWidth="363.0" text="Phone Number">
+               <VBox.margin>
+                  <Insets left="30.0" top="30.0" />
+               </VBox.margin>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="398.0">
                <children>
-                     <TextField fx:id="phoneField" prefHeight="30.0" prefWidth="390.0" promptText="Phone number">
+                     <TextField fx:id="phoneField" prefHeight="30.0" prefWidth="254.0">
                          <font>
                              <Font name="Segoe UI" size="13.0" />
                          </font>
                      </TextField>
+                  <Button fx:id="proceedButton" mnemonicParsing="false" onAction="#phoneNumberExists" text="Proceed">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <VBox.margin>
-                  <Insets left="20.0" right="20.0" top="20.0" />
+                  <Insets left="20.0" right="20.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER">
+            <Label fx:id="passwordLabel" prefHeight="18.0" prefWidth="363.0" text="Password">
+               <VBox.margin>
+                  <Insets left="30.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="303.0">
                <children>
-                     <PasswordField fx:id="passwordField" prefHeight="30.0" prefWidth="390.0" promptText="Password">
+                     <PasswordField fx:id="passwordField" maxWidth="335.0" prefHeight="30.0" prefWidth="335.0">
                          <font>
                              <Font size="13.0" />
                          </font>
                      </PasswordField>
                </children>
                <VBox.margin>
-                  <Insets left="20.0" right="20.0" top="10.0" />
+                  <Insets left="20.0" right="20.0" />
                </VBox.margin>
             </HBox>
             <HBox alignment="CENTER">
@@ -65,7 +80,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="20.0" prefWidth="274.0">
                <children>
-                     <Label text="Not already a user?">
+                     <Label fx:id="notAUser" text="Not already a user?">
                          <font>
                              <Font name="Verdana" size="13.0" />
                          </font>
