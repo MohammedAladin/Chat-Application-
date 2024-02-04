@@ -7,6 +7,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public interface CallBackServicesServer extends Remote {
 
@@ -32,6 +33,8 @@ public interface CallBackServicesServer extends Remote {
     public void sendAttachment(AttachmentDto attachmentMessage) throws RemoteException;
 
     void getPrivateChatMessages(Integer chatId, CallBackServicesClient client) throws RemoteException;
+    void updateProfile(Integer id, Map<String, String> updatedFields) throws  RemoteException;
+     void updateProfilePic(Integer id, byte[] img) throws RemoteException;
 
     void sendGroupMessage(MessageDTO messageDTO, List<ParticipantDto> participants) throws RemoteException;
 }

@@ -118,12 +118,12 @@ public class UserRepository implements UserRepoInterface {
             e.printStackTrace();
         }
     }
-    public void updateLoginDate(String phoneNumber, Timestamp lastLogin) throws SQLException {
+    public void updateLoginDate(String phone, Timestamp lastLogin) throws SQLException {
         String query = "UPDATE UserAccounts SET LastLogin=? WHERE PhoneNumber=?";
 
         try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
             preparedStatement.setTimestamp(1, lastLogin);
-            preparedStatement.setString(2, phoneNumber);
+            preparedStatement.setString(2, phone);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -132,12 +132,12 @@ public class UserRepository implements UserRepoInterface {
     }
 
     @Override
-    public void updateDateOfBirth(String phoneNumber, Date dof) throws SQLException {
-        String query = "UPDATE UserAccounts SET DateOfBirth=? WHERE PhoneNumber=?";
+    public void updateDateOfBirth(Integer id, Date dof) throws SQLException {
+        String query = "UPDATE UserAccounts SET DateOfBirth=? WHERE UserID=?";
 
         try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
             preparedStatement.setDate(1, new Date(dof.getTime()));
-            preparedStatement.setString(2, phoneNumber);
+            preparedStatement.setInt(2, id);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -145,12 +145,12 @@ public class UserRepository implements UserRepoInterface {
         }
     }
 
-    public void update(String phoneNumber, String fieldName, String value) throws SQLException {
-        String query = "UPDATE UserAccounts SET " + fieldName + "=? WHERE PhoneNumber=?";
+    public void update(Integer id, String fieldName, String value) throws SQLException {
+        String query = "UPDATE UserAccounts SET " + fieldName + "=? WHERE UserID=?";
 
         try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
             preparedStatement.setString(1, value);
-            preparedStatement.setString(2, phoneNumber);
+            preparedStatement.setInt(2, id);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

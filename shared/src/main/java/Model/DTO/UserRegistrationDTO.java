@@ -12,6 +12,7 @@ public class UserRegistrationDTO implements Serializable {
     private String gender;
     private String country;
     private Date dateOfBirth;
+    private byte[] profilePic;
 
     public UserRegistrationDTO(String phoneNumber, String displayName, String emailAddress, String passwordHash, String gender, String country, Date dateOfBirth) {
         this.phoneNumber = phoneNumber;
@@ -21,6 +22,24 @@ public class UserRegistrationDTO implements Serializable {
         this.gender = gender;
         this.country = country;
         this.dateOfBirth = dateOfBirth;
+    }
+    public UserRegistrationDTO(String phoneNumber, String displayName, String emailAddress, String passwordHash, String gender, String country, Date dateOfBirth, byte[] profilePic) {
+        this.phoneNumber = phoneNumber;
+        this.displayName = displayName;
+        this.emailAddress = emailAddress;
+        this.passwordHash = passwordHash;
+        this.gender = gender;
+        this.country = country;
+        this.dateOfBirth = dateOfBirth;
+        this.profilePic = profilePic;
+    }
+
+    public byte[] getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(byte[] profilePic) {
+        this.profilePic = profilePic;
     }
 
     public String getPhoneNumber() {

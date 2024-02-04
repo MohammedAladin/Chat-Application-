@@ -52,7 +52,7 @@ public class MessageRepository implements MessageRepoInterface {
 
     @Override
     public Message findById(Integer id) {
-        String query = "select * from messages where MessageID = ?";
+        String query = "select * from Messages where MessageID = ?";
         Message message = new Message();
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
@@ -84,7 +84,7 @@ public class MessageRepository implements MessageRepoInterface {
     @Override
     public List<Message> findAll() {
         List<Message> messagesList = new ArrayList<>();
-        String query = "select * from messages";
+        String query = "select * from Messages";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -121,7 +121,7 @@ public class MessageRepository implements MessageRepoInterface {
 
     public List<Message> getPrivateChatMessages(Integer chatID) {
         List<Message> messagesList = new ArrayList<>();
-        String query = "select * from messages where ReceiverID=?";
+        String query = "select * from Messages where ReceiverID=?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             preparedStatement.setInt(1, chatID);

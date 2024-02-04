@@ -15,6 +15,7 @@ import org.Server.Service.Contacts.ContactService;
 import org.Server.Service.Contacts.InvitationService;
 import org.Server.Service.Contacts.NotificationMapper;
 import org.Server.Service.Messages.MessageServiceImpl;
+import org.Server.Service.User.UserService;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -28,40 +29,33 @@ import java.util.stream.Collectors;
 public class CallBackServicesImpl extends UnicastRemoteObject implements CallBackServicesServer {
     MessageServiceImpl messageService;
     ChatServices chatServices;
+    UserService userService = UserService.getInstance();
+    ContactService contactService = new ContactService();
 
     Map<Integer, CallBackServicesClient> clients = new HashMap<>();
 
 
     public void register(CallBackServicesClient client, String clientphone) throws RemoteException {
-        UserRepository userRepository = new UserRepository();
-        Integer clientId = null;
-        User user = null;
-        String username = null;
-        byte[] profilePicture = null;
-        try {
-            user = userRepository.findByPhoneNumber(clientphone);
-            clientId = user.getUserID();
-            username = user.getDisplayName();
-            profilePicture = user.getProfilePicture();
+        User user =  userService.existsByPhoneNumber(clientphone);
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        ArrayList<NotificationDTO> notificationDTOS = getNotificationList(clientId);
-        clients.put(clientId, client);
-        client.setClientId(clientId);
-        System.out.println("Client registered :id = " + clientId);
-        client.setData(clientphone, username, profilePicture);
+        ArrayList<NotificationDTO> notificationDTOS = getNotificationList(user.getUserID());
+        clients.put(user.getUserID(), client);
+        client.setClientId(user.getUserID());
+
+        System.out.println("Client registered : id = " + user.getUserID());
+        UserRegistrationDTO userDTO = userService.toUserDto(user);
+        client.setData(userDTO);
+
         try {
             client.setNotificationList(notificationDTOS);
-            client.setContactList(new ContactService().getContacts(clientId));
-            client.setGroupList(ChatServices.getInstance().getGroupChats(clientId));
-            changeStatus(clientId, "Online");
+            client.setContactList(new ContactService().getContacts(user.getUserID()));
+            client.setGroupList(ChatServices.getInstance().getGroupChats(user.getUserID()));
+            changeStatus(user.getUserID(), "Online");
         } catch (RemoteException e) {
             e.printStackTrace();
         }
 
-        System.out.println("Client registered :id = " + clientId);
+        System.out.println("Client registered :id = " + user.getUserID());
     }
 
     private ArrayList<NotificationDTO> getNotificationList(Integer clientId) {
@@ -115,6 +109,36 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
                 client.receiveAttachment(attachmentMessage);
             }
 
+    }
+    @Override
+    public void updateProfile(Integer id, Map<String, String> updatedFields){
+        userService.updateUserInfo(id, updatedFields);
+
+        updateContactList(id);
+    }
+    @Override
+    public void updateProfilePic(Integer id, byte[] img){
+        userService.profilePic(id, img);
+
+        updateContactList(id);
+    }
+
+    private void updateContactList(Integer id) {
+        List<ContactDto> contactList = contactService.getContacts(id);
+        List<Integer> contactsId =  contactList.stream()
+                .map(ContactDto::getContactID)
+                .toList();
+
+        clients.forEach((k,v)->{
+            if(contactsId.contains(k)){
+                try {
+                    v.setContactList(contactService.getContacts(k));
+                } catch (RemoteException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+        });
     }
 
     public void sendAnnouncement(String announcement) throws RemoteException {

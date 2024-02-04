@@ -24,8 +24,7 @@ public interface CallBackServicesClient extends Remote {
 
     void changeStatus(Integer id, String status) throws RemoteException;
 
-
-    void setData(String clientphone,String name,byte[] pic) throws RemoteException;
+     void setData(UserRegistrationDTO userInfo) throws RemoteException;
 
     String getPhone() throws RemoteException;
 

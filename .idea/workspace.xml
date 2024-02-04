@@ -4,13 +4,101 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="bug fix">
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/MessageReceivedGroupController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/Message_received_group.fxml" afterDir="false" />
+    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="EditProfile page has been uploaded and user-info file">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/MessageCellFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/MessageCellFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Chat/ChatServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Chat/ChatServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/DTO/ParticipantDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Model/DTO/ParticipantDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/EditProfileController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ProfileEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ProfileEditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Models/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/EditMyProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/EditMyProfile.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/ClientApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/ClientApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/ClientEntities/Chat.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/ClientEntities/Chat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/AddContactController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/AddContactController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/AddGroupController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/AddGroupController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/AddGroupController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/AddGroupController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/AddGroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/AddGroupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatAreaController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatAreaController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatAreaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatAreaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatCellFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatCellFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatHomeIconController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatHomeIconController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatUserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/EditProfileController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/FriendRequestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/FriendRequestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/GroupCardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/GroupCardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/GroupCellFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/GroupCellFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/GroupsController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/GroupsController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/GroupsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/GroupsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/MessageReceived.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/MessageReceived.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/MessageSent.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/MessageSent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/NotificationCellFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/NotificationCellFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/NotificationListController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/NotificationListController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/NotificationListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/NotificationListController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/RegisterController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/RemoteServiceHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/RemoteServiceHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/StatusPopUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/StatusPopUpController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/UserCardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/UserCardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/UserMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/UserMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Models/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Models/Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Service/ClientServicesImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Service/ClientServicesImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Service/ImageServices.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Service/ImageServices.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Service/NotificationServices.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Service/NotificationServices.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dp.properties" beforeDir="false" afterPath="$PROJECT_DIR$/dp.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/RepoInterfaces/UserRepoInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/RepoInterfaces/UserRepoInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/User/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/User/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerHomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerHomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerSideBarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerSideBarController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerStatisticsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerStatisticsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/RepoInterfaces/ChatRepoInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/RepoInterfaces/ChatRepoInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/RepoInterfaces/Repository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/RepoInterfaces/Repository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/RepoInterfaces/UserRepoInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/RepoInterfaces/UserRepoInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/AttachmentReopsitory.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/AttachmentReopsitory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ChatParticipantRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ChatParticipantRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ChatRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ChatRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ContactsRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/ContactsRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/DatabaseConnectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/DatabaseConnectionManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/MessageRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/MessageRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/UserNotificationRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/UserNotificationRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/ServerApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/ServerApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/Attachment.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/Attachment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/BlockedContact.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/BlockedContact.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/Chat.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/Chat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/ChatParticipants.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/ChatParticipants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/Contact.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/Contact.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/Group.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/Group.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/GroupMember.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/GroupMember.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/Message.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/Notification.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/Notification.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/ServerAnnouncement.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/ServerAnnouncement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/UserNotification.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/ServerModels/ServerEntities/UserNotification.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Chat/ChatServices.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Chat/ChatServices.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/ChatParticipants/ChatParticipantServices.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/ChatParticipants/ChatParticipantServices.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Contacts/ContactService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Contacts/ContactService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Contacts/InvitationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Contacts/InvitationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Contacts/NotificationMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Contacts/NotificationMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Factories/ServicesFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Factories/ServicesFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Messages/MessageServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Messages/MessageServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/ServerCallBacks/CallBackServicesImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/ServerCallBacks/CallBackServicesImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/LoginService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/RegistrationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/RegistrationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/UserSession.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/UserSession.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/TestApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/TestApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Client/CallBackServicesClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Client/CallBackServicesClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Server/CallBackServicesServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Server/CallBackServicesServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/DTO/UserRegistrationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Model/DTO/UserRegistrationDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Client/CallBackServicesClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Client/CallBackServicesClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Server/CallBackServicesServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Server/CallBackServicesServer.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,10 +109,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="FxmlFile" />
+        <option value="Class" />
         <option value="Interface" />
         <option value="CSS File" />
-        <option value="Class" />
-        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -35,6 +123,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -46,40 +135,42 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2bBrXtDZWmlI2Z9e0p1l5hxwu9m" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Amin.executor&quot;: &quot;Run&quot;,
-    &quot;Application.App.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ClientApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Mohammed.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Nada.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Server.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ServerApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TestApp.executor&quot;: &quot;Run&quot;,
-    &quot;Application.org.Server.TestApp.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/try/Lab1Html&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Amin.executor": "Run",
+    "Application.App.executor": "Run",
+    "Application.ClientApplication.executor": "Run",
+    "Application.Mohammed.executor": "Run",
+    "Application.Server.executor": "Run",
+    "Application.ServerApplication.executor": "Run",
+    "Application.TestApp.executor": "Run",
+    "Application.org.Server.TestApp.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/Chat-Application-/client/src/main/resources/ClientImages",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Chat-Application-\client\src\main\resources\ClientImages" />
@@ -104,13 +195,6 @@
       </method>
     </configuration>
     <configuration name="Mohammed" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="org.Client.ClientApplication" />
-      <module name="client" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Nada" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.Client.ClientApplication" />
       <module name="client" />
       <method v="2">
@@ -154,7 +238,6 @@
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.Mohammed" />
       <item itemvalue="Application.Amin" />
-      <item itemvalue="Application.Nada" />
       <item itemvalue="Application.org.Server.TestApp" />
       <item itemvalue="Application.TestApp" />
     </list>
@@ -209,6 +292,10 @@
       <workItem from="1706892409239" duration="1593000" />
       <workItem from="1706894723157" duration="3345000" />
       <workItem from="1706898714232" duration="1115000" />
+      <workItem from="1706987746512" duration="712000" />
+      <workItem from="1706990837048" duration="8614000" />
+      <workItem from="1707039562899" duration="41000" />
+      <workItem from="1707055381259" duration="6222000" />
     </task>
     <task id="LOCAL-00001" summary="Add server gui">
       <option name="closed" value="true" />
@@ -346,47 +433,23 @@
       <option name="project" value="LOCAL" />
       <updated>1706887314188</updated>
     </task>
-    <task id="LOCAL-00018" summary="adjust POM and module-info file so MVN INSTALL command can be run.">
+    <task id="LOCAL-00018" summary="EditProfile page has been uploaded and user-info file">
       <option name="closed" value="true" />
-      <created>1706965577175</created>
+      <created>1706990781005</created>
       <option name="number" value="00018" />
       <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
-      <updated>1706965577175</updated>
+      <updated>1706990781005</updated>
     </task>
-    <task id="LOCAL-00019" summary="implemented group chats">
+    <task id="LOCAL-00019" summary="EditProfile page has been uploaded and user-info file">
       <option name="closed" value="true" />
-      <created>1707008584979</created>
+      <created>1706999417021</created>
       <option name="number" value="00019" />
       <option name="presentableId" value="LOCAL-00019" />
       <option name="project" value="LOCAL" />
-      <updated>1707008584979</updated>
+      <updated>1706999417021</updated>
     </task>
-    <task id="LOCAL-00020" summary="small changes in the gui, changes in the javafx version">
-      <option name="closed" value="true" />
-      <created>1707016101720</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1707016101720</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Added timeStamp in the messages">
-      <option name="closed" value="true" />
-      <created>1707032953868</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1707032953869</updated>
-    </task>
-    <task id="LOCAL-00022" summary="bug fix">
-      <option name="closed" value="true" />
-      <created>1707037011366</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1707037011366</updated>
-    </task>
-    <option name="localTasksCounter" value="23" />
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,11 +491,7 @@
     <MESSAGE value="bug fixes in the CallBackServicesImpl" />
     <MESSAGE value="group list is loaded in the homepage , as well as some changes in the notification popup" />
     <MESSAGE value="the user status updates on login and on exit" />
-    <MESSAGE value="adjust POM and module-info file so MVN INSTALL command can be run." />
-    <MESSAGE value="implemented group chats" />
-    <MESSAGE value="small changes in the gui, changes in the javafx version" />
-    <MESSAGE value="Added timeStamp in the messages" />
-    <MESSAGE value="bug fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fix" />
+    <MESSAGE value="EditProfile page has been uploaded and user-info file" />
+    <option name="LAST_COMMIT_MESSAGE" value="EditProfile page has been uploaded and user-info file" />
   </component>
 </project>

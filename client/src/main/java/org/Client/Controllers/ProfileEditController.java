@@ -9,12 +9,18 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javafx.scene.image.ImageView;
+import org.Client.Models.Model;
+import org.Client.Service.ImageServices;
 import org.Client.UserSessionManager;
 
+import javax.imageio.ImageIO;
+import java.io.IOException;
+import java.rmi.RemoteException;
 import java.sql.Date;
 
 import java.io.File;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.*;
 
 public class ProfileEditController implements Initializable {
@@ -50,16 +56,32 @@ public class ProfileEditController implements Initializable {
 
     @FXML
     private TextField confirmPasswordTextField;
+
+    private byte [] img;
     Image profilePic = new Image(getClass().getResource("/ClientImages/defaultUser.jpg").toExternalForm());
+    private Model model = Model.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Circle clip = new Circle(50, 50, 50);
-        profileImageView.setClip(clip);
+
+        setDefaultInfo();
 
         editProfilePicButton.setOnAction((e)->handleEditProfilePicButton());
         saveButton.setOnAction((e)->handleSaveButtonAction());
 
+    }
+    private void setDefaultInfo(){
+        emailTextField.setText(model.getEmail());
+        nameTextField.setText(model.getName());
+        phoneTextField.setText(model.getPhoneNumber());
+        dateOfBirth.setValue(model.getBirthDate().toLocalDate());
+        emailTextField.setText(model.getEmail());
+        if(model.getProfilePicture()==null){
+            profileImageView.setImage(ImageServices.getDefaultImage());
+        }
+        else{
+            profileImageView.setImage(ImageServices.convertToImage(model.getProfilePicture()));
+        }
     }
     private void handleSaveButtonAction() {
         String name = nameTextField.getText();
@@ -70,9 +92,8 @@ public class ProfileEditController implements Initializable {
         String oldPassword = oldPasswordTextField.getText();
         String newPassword = newPasswordTextField.getText();
         String confirmPassword = confirmPasswordTextField.getText();
-        String []info = UserSessionManager.loadUserInfo();
 
-        if(info[1].equals(oldPassword) && isValidPassword(confirmPassword,newPassword)) {
+        if( isValidPassword(confirmPassword,newPassword)) {
             Map<String, String> updatedFields = new HashMap<>();
             updatedFields.put(UserField.PASSWORD.getFieldName(), newPassword);
             if (name != null && !name.isEmpty()) {
@@ -91,6 +112,18 @@ public class ProfileEditController implements Initializable {
                 updatedFields.put(UserField.EMAIL.getFieldName(), email);
             }
 
+            try {
+                model.getCallBackServicesServer().updateProfile(model.getClientId(), updatedFields);
+            } catch (RemoteException e) {
+                throw new RuntimeException(e);
+            }
+            if(img!=null){
+                try {
+                    model.getCallBackServicesServer().updateProfilePic(model.getClientId(), img);
+                } catch (RemoteException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
     }
     private boolean isValidPassword(String newPassword, String confirmPassword) {
@@ -109,9 +142,16 @@ public class ProfileEditController implements Initializable {
 
         File selectedFile = fileChooser.showOpenDialog(new Stage());
 
-        if (selectedFile != null) {
-            Image image = new Image(selectedFile.toURI().toString());
-            profileImageView.setImage(image);
+        try {
+            img = ImageServices.convertToByte(ImageIO.read(selectedFile));
+            if (selectedFile != null) {
+                Image image = new Image(selectedFile.toURI().toString());
+                profileImageView.setImage(image);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+
+
     }
 }

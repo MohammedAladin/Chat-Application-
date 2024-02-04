@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import org.Client.Views.ViewFactory;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,43 @@ public class Model {
     private boolean contactExists;
     private Integer clientId;
     private String phoneNumber;
+    private Date birthDate;
+    private String country;
+    private String email;
+    private String gender;
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     private ObservableList<ChatDto> groupList = javafx.collections.FXCollections.observableArrayList();
     private ObservableList<ContactDto> contacts = javafx.collections.FXCollections.observableArrayList();
 

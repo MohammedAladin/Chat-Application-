@@ -149,7 +149,7 @@
                                     </font>
                                 </Label>
                                 <Pane prefHeight="40.0" prefWidth="80.0" />
-                                <TextField fx:id="phoneTextField" prefHeight="24.0" prefWidth="225.0" styleClass="text-field2" />
+                                <TextField fx:id="phoneTextField" editable="false" prefHeight="24.0" prefWidth="225.0" styleClass="text-field2" />
                             </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="504.0">
