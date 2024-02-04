@@ -12,11 +12,9 @@ import java.sql.Connection;
 
 public class MessageRepository implements MessageRepoInterface {
     private final Connection connection;
-
     public MessageRepository() {
         this.connection = DatabaseConnectionManager.getInstance().getMyConnection();
     }
-
     @Override
     public void save(Message message) {
         String query = "INSERT INTO Messages (SenderID, ReceiverID, MessageContent, IsAttachement) " +
