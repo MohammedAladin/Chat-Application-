@@ -80,12 +80,14 @@ public class UserService extends UnicastRemoteObject implements RemoteUserServic
             }
             else{
                 try {
+                    System.out.println("Updating Name.. ");
                     userRepository.update(id,key,value);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
             }
         });
+        System.out.println("After Updating... ");
     }
     public void profilePic(Integer id, byte[] img){
         try {

@@ -1,7 +1,5 @@
 package org.Server.Repository;
-
 import org.Server.RepoInterfaces.MessageRepoInterface;
-import org.Server.RepoInterfaces.Repository;
 import org.Server.ServerModels.ServerEntities.Message;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,6 +17,7 @@ public class MessageRepository implements MessageRepoInterface {
     public void save(Message message) {
         String query = "INSERT INTO Messages (SenderID, ReceiverID, MessageContent, IsAttachement) " +
                 "VALUES (?, ?, ?, ?)";
+
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             preparedStatement.setInt(1, message.getSenderID());

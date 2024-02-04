@@ -112,6 +112,9 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     }
     @Override
     public void updateProfile(Integer id, Map<String, String> updatedFields){
+        updatedFields.forEach((k,v)->{
+            System.out.println("key = " + k + " Value = " + v);
+        });
         userService.updateUserInfo(id, updatedFields);
 
         updateContactList(id);

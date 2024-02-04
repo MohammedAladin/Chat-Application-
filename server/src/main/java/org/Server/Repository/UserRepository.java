@@ -152,7 +152,9 @@ public class UserRepository implements UserRepoInterface {
             preparedStatement.setString(1, value);
             preparedStatement.setInt(2, id);
 
+
             preparedStatement.executeUpdate();
+            System.out.println("Updated... ");
         } catch (SQLException e) {
             e.printStackTrace();
         }

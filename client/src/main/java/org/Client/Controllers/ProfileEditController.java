@@ -93,30 +93,36 @@ public class ProfileEditController implements Initializable {
         String newPassword = newPasswordTextField.getText();
         String confirmPassword = confirmPasswordTextField.getText();
 
-        if( isValidPassword(confirmPassword,newPassword)) {
+
             Map<String, String> updatedFields = new HashMap<>();
-            updatedFields.put(UserField.PASSWORD.getFieldName(), newPassword);
-            if (name != null && !name.isEmpty()) {
+
+            if (!name.equals(model.getName())) {
                 updatedFields.put(UserField.NAME.getFieldName(), name);
             }
-            if (country != null) {
+            if (country !=null) {
                 updatedFields.put(UserField.COUNTRY.getFieldName(), country);
             }
-            if (!dob.isEmpty()) {
+            if (!dob.equals(model.getBirthDate().toString())) {
                 updatedFields.put(UserField.DATE_OF_BIRTH.getFieldName(), dob);
             }
-            if (phone != null && !phone.isEmpty()) {
+            if (!phone.equals(model.getPhoneNumber())) {
                 updatedFields.put(UserField.PHONE_NUMBER.getFieldName(), phone);
             }
-            if (email != null && !email.isEmpty()) {
+            if (!email.equals(model.getEmail())) {
                 updatedFields.put(UserField.EMAIL.getFieldName(), email);
             }
+
+//            String []userInfo = UserSessionManager.loadUserInfo();
+//            if(userInfo[1].equals(oldPassword) && isValidPassword(newPassword, oldPassword)){
+//                updatedFields.put(UserField.PASSWORD.getFieldName(), newPassword);
+//            }
 
             try {
                 model.getCallBackServicesServer().updateProfile(model.getClientId(), updatedFields);
             } catch (RemoteException e) {
                 throw new RuntimeException(e);
             }
+
             if(img!=null){
                 try {
                     model.getCallBackServicesServer().updateProfilePic(model.getClientId(), img);
@@ -124,7 +130,6 @@ public class ProfileEditController implements Initializable {
                     throw new RuntimeException(e);
                 }
             }
-        }
     }
     private boolean isValidPassword(String newPassword, String confirmPassword) {
         return newPassword != null && !newPassword.isEmpty() &&
