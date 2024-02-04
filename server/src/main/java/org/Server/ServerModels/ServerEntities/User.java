@@ -3,7 +3,7 @@ package org.Server.ServerModels.ServerEntities;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
-public class User implements Serializable {
+public class User implements Serializable{
     private int userID;
     private String phoneNumber;
     private String displayName;
@@ -136,5 +136,9 @@ public class User implements Serializable {
 
     public void setLastLogin(Timestamp lastLogin) {
         this.lastLogin = lastLogin;
+    }
+
+    public boolean isOnline() {
+        return this.userStatus.equalsIgnoreCase("Online");
     }
 }

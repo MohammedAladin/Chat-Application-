@@ -38,16 +38,13 @@ public class LoginController implements Initializable {
         passwordLabel.setVisible(false);
         passwordField.setVisible(false);
         signingButton.setVisible(false);
-        notAUser.setVisible(true);
-        registerLabel.setVisible(true);
+
     }
 
     private void handleSignIn() {
         try {
-            validateUserInputLogin();
+//            validateUserInputLogin();
 
-
-            phoneNumber = phoneField.getText();
             String password = passwordField.getText();
             UserLoginDTO userLogin = new UserLoginDTO(phoneNumber, password);
 
@@ -88,8 +85,6 @@ public class LoginController implements Initializable {
         passwordLabel.setVisible(true);
         passwordField.setVisible(true);
         signingButton.setVisible(true);
-        notAUser.setVisible(false);
-        registerLabel.setVisible(false);
     }
 
     private void handleLoginResult(boolean loginResult) {
@@ -116,10 +111,10 @@ public class LoginController implements Initializable {
         remoteServiceHandler.showAlert("Error during login" + ": " + exception.getMessage(), Alert.AlertType.ERROR);
     }
     private void validateUserInputLogin() {
-        if (phoneField.getText().isEmpty() || passwordField.getText().isEmpty()) {
-            throw new IllegalArgumentException("Please enter both phone number and password");
+        if (passwordField.getText().isEmpty()) {
+            throw new IllegalArgumentException("Please enter a password");
         }
-        if (!isPhoneNumberValid(phoneField.getText())) {
+        if (!isPhoneNumberValid(phoneNumber)) {
             throw new IllegalArgumentException("Please enter a valid phone number");
         }
     }
