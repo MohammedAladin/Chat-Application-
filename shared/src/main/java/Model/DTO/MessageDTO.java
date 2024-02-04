@@ -1,12 +1,30 @@
 package Model.DTO;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 public class MessageDTO implements Serializable {
     private Integer chatID;
     private String content;
     private Integer isAttachment;
     private Integer senderID;
+
+    public MessageDTO(Integer chatID, String content, Integer isAttachment, Integer senderID) {
+        this.chatID = chatID;
+        this.content = content;
+        this.isAttachment = isAttachment;
+        this.senderID = senderID;
+    }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    private Timestamp timestamp;
 
 
 
@@ -22,11 +40,12 @@ public class MessageDTO implements Serializable {
         this.senderID = senderID;
     }
 
-    public MessageDTO(Integer chatID, String content, Integer isAttachment, Integer senderID) {
+    public MessageDTO(Integer chatID, String content, Integer isAttachment, Integer senderID, Timestamp timestamp) {
         this.chatID = chatID;
         this.content = content;
         this.isAttachment = isAttachment;
         this.senderID = senderID;
+        this.timestamp = timestamp;
     }
 
 

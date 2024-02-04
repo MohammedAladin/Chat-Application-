@@ -100,7 +100,8 @@ public class MessageServiceImpl {
                 message.getReceiverID(),
                 message.getMessageContent(),
                 message.isAttachment() ? 1 : 0,
-                message.getSenderID()
+                message.getSenderID(),
+                message.getMessageTimestamp()
         );
     }
 

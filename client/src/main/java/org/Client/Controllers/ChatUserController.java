@@ -29,6 +29,7 @@ import org.Client.Service.ImageServices;
 import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
+import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
 public class ChatUserController implements Initializable {
@@ -108,7 +109,7 @@ public class ChatUserController implements Initializable {
 
         try {
             System.out.println("ChatID ClientSide--> " + Model.getInstance().getClientId());
-            MessageDTO message = new MessageDTO(chatID, textFieldID.getText(), 0, Model.getInstance().getClientId());
+            MessageDTO message = new MessageDTO(chatID, textFieldID.getText(), 0, Model.getInstance().getClientId(), Timestamp.valueOf(java.time.LocalDateTime.now()));
 
             Model.getInstance().getCallBackServicesServer().sendMessage(message);
         } catch (RemoteException e) {

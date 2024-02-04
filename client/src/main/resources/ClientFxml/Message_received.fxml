@@ -3,17 +3,34 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox stylesheets="@../ClientStyles/ChatUserCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="messageLabelID" styleClass="text-received">
-         <font>
-            <Font size="14.0" />
-         </font>
+      <HBox stylesheets="@../ClientStyles/ChatUserCSS.css">
+         <children>
+            <Label fx:id="messageLabelID" styleClass="text-received">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <Label fx:id="time" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="label" textAlignment="RIGHT">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
       </Label>
    </children>
    <padding>
-      <Insets bottom="5.0" left="20.0" right="10.0" top="5.0" />
+      <Insets left="20.0" />
    </padding>
-</HBox>
+</VBox>

@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
 public class MessageSent implements Initializable
@@ -14,6 +15,9 @@ public class MessageSent implements Initializable
 
     @FXML
     private Label messageLabelID;
+    private Timestamp timestamp;
+    @FXML
+    private Label time;
 
     public String getMessage() {
         return message;
@@ -29,5 +33,11 @@ public class MessageSent implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         messageLabelID.setText(message);
+        time.setText(timestamp.toString());
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+
     }
 }
