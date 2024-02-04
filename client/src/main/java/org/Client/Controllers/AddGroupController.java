@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Popup;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import org.Client.Models.Model;
@@ -45,65 +46,43 @@ public class AddGroupController implements Initializable
     private Button createBtn;
 
     ArrayList<Integer> selected = new ArrayList<>();
-@Override
-public void initialize(URL url, ResourceBundle resourceBundle) {
-    contactsLV.getItems().addAll(Model.getInstance().getContacts());
+    public void addToSelected(int id){
+        selected.add(id);
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        contactsLV.getItems().addAll(Model.getInstance().getContacts());
 
-    contactsLV.setCellFactory(CheckBoxListCell.forListView(new Callback<ContactDto, ObservableValue<Boolean>>() {
-        @Override
-        public ObservableValue<Boolean> call(ContactDto contact) {
-            BooleanProperty observable = new SimpleBooleanProperty();
-            observable.addListener((obs, wasSelected, isNowSelected) -> {
-                if (isNowSelected) {
-                    System.out.println("Check box for "+contact.getContactName()+" changed from "+wasSelected+" to "+isNowSelected);
-                    selected.add(contact.getContactID());
-                    System.out.println(selected.size());
-                }
-                if (wasSelected){
-                    System.out.println("Check box for "+contact.getContactName()+" changed from "+wasSelected+" to "+isNowSelected);
-                    selected.remove(contact);
-                    System.out.println(selected.size());
-                }
-            });
-            return observable;
-        }
-    }, new StringConverter<ContactDto>() {
-        @Override
-        public String toString(ContactDto object) {
-            return object.getContactName();
-        }
+        contactsLV.setCellFactory(param -> new AddGroupCellFactory(selected));
 
-        @Override
-        public ContactDto fromString(String string) {
-            return null; // not used
-        }
-    }));
-    createBtn.setOnAction(event -> {
-        System.out.println(textFieldID.getText() + " " +selected.size());
-        int adminID = Model.getInstance().getClientId();
-        String grpName = textFieldID.getText();
-        selected.add(adminID);
-        try {
-            Model.getInstance().getCallBackServicesServer().createGroupChat(adminID,grpName , selected , grpImage);
-        } catch (RemoteException e) {
-            throw new RuntimeException(e);
-        }
-        ((Popup)createBtn.getScene().getWindow()).hide();
+        createBtn.setOnAction(event -> {
 
-    });
-    imageViewID.setOnMouseClicked(mouseEvent -> {
-        changePic();
-    });
-}
+            System.out.println(textFieldID.getText() + " " +selected.size());
+            int adminID = Model.getInstance().getClientId();
+            String grpName = textFieldID.getText();
+            selected.add(adminID);
+            try {
+                Model.getInstance().getCallBackServicesServer().createGroupChat(adminID,grpName , selected , grpImage);
+            } catch (RemoteException e) {
+                throw new RuntimeException(e);
+            }
+            ((Popup)createBtn.getScene().getWindow()).hide();
+
+        });
+        imageViewID.setOnMouseClicked(mouseEvent -> {
+            changePic();
+        });
+        System.out.println("gowa el init");
+    }
     private void changePic() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose a profile picture");
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
         );
-
-        File image = fileChooser.showOpenDialog(imageViewID.getParent().getParent().getScene().getWindow());
+        File image = fileChooser.showOpenDialog(null);
         try {
+            System.out.println("ay 5ara");
             grpImage = ImageServices.convertToByte(ImageIO.read(image));
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -111,4 +90,5 @@ public void initialize(URL url, ResourceBundle resourceBundle) {
         userImage.setImage(ImageServices.convertToImage(grpImage));
 
     }
+
 }
