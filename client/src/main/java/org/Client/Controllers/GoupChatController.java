@@ -28,6 +28,11 @@ public class GoupChatController implements Initializable {
     private Label nameID;
     @FXML
     private Label bio;
+
+    public ListView<MessageDTO> getMessageListView() {
+        return messageListView;
+    }
+
     @FXML
     private ListView<MessageDTO> messageListView;
     @FXML

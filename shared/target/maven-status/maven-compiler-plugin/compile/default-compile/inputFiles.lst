@@ -1,6 +1,8 @@
+E:\Chat-Application-\shared\src\main\java\Model\DTO\ParticipantDto.java
 E:\Chat-Application-\shared\src\main\java\Model\DTO\UserDto.java
 E:\Chat-Application-\shared\src\main\java\Interfaces\CallBacks\Server\CallBackServicesServer.java
 E:\Chat-Application-\shared\src\main\java\Interfaces\RmiServices\ServicesFactoryInterface.java
+E:\Chat-Application-\shared\src\main\java\Model\DTO\AttachmentDto.java
 E:\Chat-Application-\shared\src\main\java\Exceptions\CustomException.java
 E:\Chat-Application-\shared\src\main\java\Model\DTO\UserLoginDTO.java
 E:\Chat-Application-\shared\src\main\java\Model\DTO\GroupDTO.java

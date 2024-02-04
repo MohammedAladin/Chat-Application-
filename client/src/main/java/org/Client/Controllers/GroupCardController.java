@@ -50,7 +50,7 @@ public class GroupCardController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if(chatImage == null || chatImage.length == 0){
 
-            imageCircle.setFill(new ImagePattern(new Image(getClass().getResource("/ClientImages/groupgray.png").toString())));
+            imageCircle.setFill(new ImagePattern(ImageServices.getDefaultGroupImage()));
             System.out.println("Image set to default");
         }
         else {

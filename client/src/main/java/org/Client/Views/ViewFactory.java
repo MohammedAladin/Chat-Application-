@@ -17,10 +17,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
-import org.Client.Controllers.ChatUserController;
-import org.Client.Controllers.GoupChatController;
-import org.Client.Controllers.HomeController;
-import org.Client.Controllers.UserCardController;
+import org.Client.Controllers.*;
 
 import java.io.IOException;
 import org.Client.Models.Model;
@@ -39,6 +36,8 @@ public class ViewFactory {
     private Node homeIcon;
     Popup addContactPopup;
     Popup notificationPopup;
+
+
 
     private ObjectProperty<ContactDto> selectedChat = new SimpleObjectProperty<>();
     private String phoneNumber;
@@ -151,11 +150,12 @@ public class ViewFactory {
 
     public void showChatArea(ContactDto selectedChat) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/PrivateChat.fxml"));
-        ChatUserController controller = new ChatUserController();
-        controller.setName(selectedChat.getContactName());
-        controller.setImage(selectedChat.getContactImage());
-        controller.setChatID(selectedChat.getChatId());
-        fxmlLoader.setController(controller);
+        ChatUserController chatUserController = new ChatUserController();
+        chatUserController.setName(selectedChat.getContactName());
+        chatUserController.setImage(selectedChat.getContactImage());
+        chatUserController.setChatID(selectedChat.getChatId());
+        chatUserController.setBioString(selectedChat.getBio());
+        fxmlLoader.setController(chatUserController);
         try {
             home.setCenter(fxmlLoader.load());
             System.out.println("function implemeneted");
@@ -337,12 +337,12 @@ public class ViewFactory {
 
     public void showGroupChatArea(ChatDto chat) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/PrivateChat.fxml"));
-        GoupChatController controller = new GoupChatController();
-        controller.setName(chat.getChatName());
-        controller.setImage(chat.getChatImage());
-        controller.setChatID(chat.getChatID());
-        controller.setParticipants(chat.getParticipants());
-        fxmlLoader.setController(controller);
+        GoupChatController goupChatController = new GoupChatController();
+        goupChatController.setName(chat.getChatName());
+        goupChatController.setImage(chat.getChatImage());
+        goupChatController.setChatID(chat.getChatID());
+        goupChatController.setParticipants(chat.getParticipants());
+        fxmlLoader.setController(goupChatController);
         try {
             home.setCenter(fxmlLoader.load());
             System.out.println("function implemeneted");
@@ -350,4 +350,6 @@ public class ViewFactory {
             e.printStackTrace();
         }
     }
+
+
 }

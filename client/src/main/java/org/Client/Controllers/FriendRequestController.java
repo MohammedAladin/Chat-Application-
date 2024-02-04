@@ -17,17 +17,27 @@ public class FriendRequestController implements Initializable {
     Button reject_btn;
     @FXML
     Label username;
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    int userID;
     private Integer noticationID;
 
-    public int getUsername() {
+    public String getUsername() {
         return Username;
     }
 
-    public void setUsername(int username) {
+    public void setUsername(String username) {
         Username = username;
     }
 
-    int Username;
+    String Username;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         username.setText(Username+"");
@@ -41,14 +51,14 @@ public class FriendRequestController implements Initializable {
     }
     public void accept(){
         try {
-            Model.getInstance().getCallBackServicesServer().acceptInvitation(Model.getInstance().getClientId(), Username);
+            Model.getInstance().getCallBackServicesServer().acceptInvitation(Model.getInstance().getClientId(), userID);
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
     }
     public void reject(){
         try {
-            Model.getInstance().getCallBackServicesServer().rejectInvitation(Username,Model.getInstance().getClientId() );
+            Model.getInstance().getCallBackServicesServer().rejectInvitation(userID,Model.getInstance().getClientId() );
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }

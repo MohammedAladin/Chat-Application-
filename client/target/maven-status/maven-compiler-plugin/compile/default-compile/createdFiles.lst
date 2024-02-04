@@ -2,7 +2,9 @@ org\Client\Controllers\GroupsController.class
 org\Client\Controllers\LoginController.class
 org\Client\ClientEntities\Chat.class
 org\Client\Controllers\GroupCellFactory.class
+org\Client\Controllers\GoupChatController.class
 org\Client\Controllers\NotificationCellFactory.class
+org\Client\Controllers\GroupsController$2.class
 org\Client\Controllers\HomeController.class
 org\Client\Controllers\ChatAreaController.class
 org\Client\Controllers\StatusPopUpController.class
@@ -26,9 +28,11 @@ org\Client\Controllers\ProfileEditController.class
 org\Client\Controllers\AddGroupController$1.class
 org\Client\Controllers\ChatAreaController$2.class
 module-info.class
+org\Client\Controllers\AttachementController.class
 org\Client\Service\ImageServices.class
 org\Client\Controllers\AddGroupController.class
 org\Client\Models\Model.class
+org\Client\Controllers\GoupChatController$1.class
 org\Client\Controllers\ChatUserController.class
 org\Client\Controllers\UserCardController.class
 org\Client\Views\ViewFactory.class

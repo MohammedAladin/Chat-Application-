@@ -56,7 +56,7 @@ public class ChatController implements Initializable {
     private StringProperty status = new SimpleStringProperty();
     private String message;
     private byte[] image;
-    Image defaultImage = new Image(getClass().getResource("/ClientImages/defaultUser.jpg").toString());
+
 
 
     @Override
@@ -65,7 +65,7 @@ public class ChatController implements Initializable {
         //contactImage.setClip(clip);
         contactName.setText(name);
         if(image == null)
-            contactImage.setImage(defaultImage);
+            contactImage.setImage(ImageServices.getDefaultImage());
         else contactImage.setImage(ImageServices.convertToImage(image));
         lastText.setText(message);
         if (status.get().equals("Online")) {

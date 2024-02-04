@@ -26,6 +26,7 @@ E:\Chat-Application-\server\src\main\java\org\Server\Repository\UserRepository.j
 E:\Chat-Application-\server\src\main\java\org\Server\ServerModels\ServerEntities\Group.java
 E:\Chat-Application-\server\src\main\java\org\Server\ServerModels\ServerEntities\UserNotification.java
 E:\Chat-Application-\server\src\main\java\org\Server\ServerModels\ServerEntities\Notification.java
+E:\Chat-Application-\server\src\main\java\org\Server\RepoInterfaces\MessageRepoInterface.java
 E:\Chat-Application-\server\src\main\java\org\Server\ServerModels\ServerEntities\User.java
 E:\Chat-Application-\server\src\main\java\org\Server\Service\ChatParticipants\ChatParticipantServices.java
 E:\Chat-Application-\server\src\main\java\org\Server\GUI\Controllers\ServerStatisticsController.java

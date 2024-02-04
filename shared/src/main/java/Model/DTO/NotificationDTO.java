@@ -9,15 +9,26 @@ public class NotificationDTO implements Serializable {
     private Integer senderID;
     private String notificationContent;
 
+    public String getSenderName() {
+        return senderName;
+    }
+
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
+    }
+
+    private String senderName;
+
 
 
     // Constructors
     public NotificationDTO() {}
 
-    public NotificationDTO(int userID, String notificationType, int senderID, String notificationContent) {
+    public NotificationDTO(int userID, String notificationType, int senderID, String notificationContent,String senderName) {
         this.userID = userID;
         this.senderID = senderID;
         this.notificationContent = notificationContent;
+        this.senderName = senderName;
 
     }
 

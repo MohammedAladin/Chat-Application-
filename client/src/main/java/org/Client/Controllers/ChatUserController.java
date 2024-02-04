@@ -39,7 +39,7 @@ public class ChatUserController implements Initializable {
     @FXML
     private Label nameID;
     @FXML
-    private Label statusID;
+    private Label bio;
     @FXML
     private ListView<MessageDTO> messageListView;
     @FXML
@@ -48,6 +48,16 @@ public class ChatUserController implements Initializable {
     private Button attachemnt_btn;
     byte[] image;
     String name;
+
+    public String getBioString() {
+        return bioString;
+    }
+
+    public void setBioString(String bioString) {
+        this.bioString = bioString;
+    }
+
+    String bioString;
     private Integer chatID;
     private ObservableList<MessageDTO> messages = FXCollections.observableArrayList();
 
@@ -70,8 +80,9 @@ public class ChatUserController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         nameID.setText(name);
+        bio.setText(bioString);
         if (image == null) {
-            circleID.setFill(new ImagePattern(new Image(getClass().getResource("/ClientImages/defaultUser.jpg").toString())));
+            circleID.setFill(new ImagePattern(ImageServices.getDefaultImage()));
         } else circleID.setFill(new ImagePattern(ImageServices.convertToImage(image)));
         //statusID.setText();
         textFieldID.setOnAction(actionEvent -> {

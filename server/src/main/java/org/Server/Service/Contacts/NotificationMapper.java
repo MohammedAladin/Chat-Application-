@@ -1,9 +1,11 @@
 package org.Server.Service.Contacts;
 
 import Model.DTO.NotificationDTO;
+import org.Server.Repository.UserRepository;
 import org.Server.ServerModels.ServerEntities.Notification;
 import org.Server.ServerModels.ServerEntities.UserNotification;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +28,11 @@ public class NotificationMapper {
         notificationDTO.setUserID(notification.getReceiverID());
         notificationDTO.setSenderID(notification.getSenderID());
         notificationDTO.setNotificationContent(notification.getNotificationMessage());
+        try {
+            notificationDTO.setSenderName(new UserRepository().findById(notification.getSenderID()).getDisplayName());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         // You can map other fields as needed
         // Example: notificationDTO.setTimestamp(notification.getTimestamp());

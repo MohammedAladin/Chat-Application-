@@ -19,6 +19,7 @@ org\Server\Service\Chat\ChatServices.class
 org\Server\RepoInterfaces\Repository.class
 org\Server\Service\Contacts\ContactService.class
 org\Server\Service\UserSession.class
+org\Server\RepoInterfaces\MessageRepoInterface.class
 org\Server\ServerModels\ServerEntities\Chat.class
 org\Server\Repository\ChatParticipantRepository.class
 org\Server\Repository\ContactsRepository.class

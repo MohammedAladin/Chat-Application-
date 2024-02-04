@@ -1,8 +1,10 @@
 Interfaces\RmiServices\RemoteUserService.class
 Interfaces\RmiServices\RemoteLoginService.class
+Model\DTO\AttachmentDto.class
 Model\DTO\MessageDTO.class
 Interfaces\CallBacks\Client\CallBackServicesClient.class
 Model\DTO\ChatDto.class
+Model\DTO\ParticipantDto.class
 Interfaces\CallBacks\Server\CallBackServicesServer.class
 Model\DTO\GroupDTO.class
 Model\DTO\UserDto.class

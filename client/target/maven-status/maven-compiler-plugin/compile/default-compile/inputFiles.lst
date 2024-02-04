@@ -16,6 +16,7 @@ E:\Chat-Application-\client\src\main\java\org\Client\UserSessionManager.java
 E:\Chat-Application-\client\src\main\java\org\Client\Controllers\AddContactController.java
 E:\Chat-Application-\client\src\main\java\org\Client\Controllers\HomeController.java
 E:\Chat-Application-\client\src\main\java\org\Client\Controllers\UserCardController.java
+E:\Chat-Application-\client\src\main\java\org\Client\Controllers\AttachementController.java
 E:\Chat-Application-\client\src\main\java\org\Client\Controllers\ChatUserController.java
 E:\Chat-Application-\client\src\main\java\org\Client\Controllers\GroupsController.java
 E:\Chat-Application-\client\src\main\java\org\Client\Controllers\MessageSent.java
@@ -23,6 +24,7 @@ E:\Chat-Application-\client\src\main\java\org\Client\ClientApplication.java
 E:\Chat-Application-\client\src\main\java\org\Client\Service\ClientServicesImp.java
 E:\Chat-Application-\client\src\main\java\org\Client\Controllers\NotificationCellFactory.java
 E:\Chat-Application-\client\src\main\java\org\Client\Controllers\AddGroupController.java
+E:\Chat-Application-\client\src\main\java\org\Client\Controllers\GoupChatController.java
 E:\Chat-Application-\client\src\main\java\org\Client\Controllers\ChatHomeIconController.java
 E:\Chat-Application-\client\src\main\java\org\Client\Service\ImageServices.java
 E:\Chat-Application-\client\src\main\java\org\Client\Controllers\ChatCellFactory.java

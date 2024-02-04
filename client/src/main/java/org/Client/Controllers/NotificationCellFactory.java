@@ -15,7 +15,9 @@ public class NotificationCellFactory extends ListCell<NotificationDTO> {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/friendRequest.fxml"));
             FriendRequestController controller = new FriendRequestController();
             fxmlLoader.setController(controller);
-            controller.setUsername(notification.getSenderID());
+            controller.setUsername(notification.getSenderName());
+            controller.setUserID(notification.getSenderID());
+
             controller.setNotificationId(notification.getNotificationID());
 
 
