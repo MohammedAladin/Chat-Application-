@@ -1,6 +1,7 @@
 package org.Server.Service.User;
 
 import Interfaces.RmiServices.RemoteLoginService;
+import org.Server.GUI.Controllers.ServerStatisticsController;
 import org.Server.RepoInterfaces.UserRepoInterface;
 import Model.DTO.UserLoginDTO;
 import org.Server.ServerModels.ServerEntities.User;
@@ -32,6 +33,10 @@ public class LoginService implements RemoteLoginService {
 
                 //callback --> (list of contacts)->ObservUser(Name, id, byte [] image, status, mode, phone)
                 //UserSession.setCurrentUser(signedUser);
+//                User user1 = ServerStatisticsController.activeUsers.stream().
+//                        filter(user -> user.getPhoneNumber().equals(userLoginDTO.getPhoneNumber())).findFirst().orElse(null);
+//                assert user1 != null;
+//                user1.setUserStatus("ONLINE");
                 System.out.println("User signed in successfully: " + userLoginDTO.getPhoneNumber());
                 return true;
             }

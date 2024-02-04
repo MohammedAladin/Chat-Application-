@@ -1,5 +1,6 @@
 package org.Server.GUI.Controllers;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,9 +11,7 @@ import org.Server.ServerModels.ServerEntities.User;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ServerStatisticsController implements Initializable {
     @FXML
@@ -21,37 +20,40 @@ public class ServerStatisticsController implements Initializable {
     private PieChart user_gender;
     @FXML
     private PieChart user_country;
+    UserRepository userRepository = new UserRepository();
 
-    public static ObservableList<User> activeUsers;
-
-    static {
-        try {
-            activeUsers = FXCollections.observableArrayList(new UserRepository().findAll());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        user_status.setData(FXCollections.observableArrayList(
-                new PieChart.Data("Online", activeUsers.stream().filter(User::isOnline).count()),
-                new PieChart.Data("Offline", activeUsers.stream().filter(user -> !user.isOnline()).count())
-        ));
+        new Thread(() -> {
+            while (true) {
+                try {
+                    Thread.sleep(2000);
 
-        ObservableList<PieChart.Data> genderChart = FXCollections.observableArrayList(
-                new PieChart.Data("Male", 60),
-                new PieChart.Data("Female", 70)
-        );
+                    ObservableList<PieChart.Data> userStatusData = FXCollections.observableArrayList();
+                    userRepository.getAllUsersStatus().forEach((userStatus, count) -> {
+                        userStatusData.add(new PieChart.Data(userStatus, count));
+                    });
 
-        user_gender.setData(genderChart);
+                    ObservableList<PieChart.Data> userGenderData = FXCollections.observableArrayList();
+                    userRepository.getAllUsersGenders().forEach((gender, count) -> {
+                        userGenderData.add(new PieChart.Data(gender, count));
+                    });
 
+                    ObservableList<PieChart.Data> userCountryData = FXCollections.observableArrayList();
+                    userRepository.getAllUsersCountryCount().forEach((country, count) -> {
+                        userCountryData.add(new PieChart.Data(country, count));
+                    });
 
-        ObservableList<PieChart.Data> countryChart = FXCollections.observableArrayList(
-                new PieChart.Data("Egypt", 30),
-                new PieChart.Data("Bangladesh", 20)
-        );
-
-        user_country.setData(countryChart);
+                    Platform.runLater(() -> {
+                        user_status.setData(userStatusData);
+                        user_gender.setData(userGenderData);
+                        user_country.setData(userCountryData);
+                    });
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }).start();
     }
 }
