@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="Added timeStamp in the messages">
+    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="bug fix">
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/MessageReceivedGroupController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/Message_received_group.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/GoupChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/GoupChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/ClientFxml/Message_received.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/ClientFxml/Message_received.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/ClientFxml/Message_sent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/ClientFxml/Message_sent.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/MessageReceived.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/MessageReceived.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/MessageSent.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/MessageSent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Messages/MessageServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Messages/MessageServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Model/DTO/MessageDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/Model/DTO/MessageDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/MessageCellFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/MessageCellFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Chat/ChatServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Chat/ChatServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/DTO/ParticipantDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Model/DTO/ParticipantDto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +23,8 @@
         <option value="Enum" />
         <option value="Interface" />
         <option value="CSS File" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -71,7 +68,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Chat-Application-/client/src/main/resources/ClientImages&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/try/Lab1Html&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -98,7 +95,7 @@
       <recent name="org.Client.Controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Amin">
+  <component name="RunManager" selected="Application.Mohammed">
     <configuration name="Amin" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.Client.ClientApplication" />
       <module name="client" />
@@ -381,7 +378,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707032953869</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="bug fix">
+      <option name="closed" value="true" />
+      <created>1707037011366</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1707037011366</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,6 +432,7 @@
     <MESSAGE value="implemented group chats" />
     <MESSAGE value="small changes in the gui, changes in the javafx version" />
     <MESSAGE value="Added timeStamp in the messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added timeStamp in the messages" />
+    <MESSAGE value="bug fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fix" />
   </component>
 </project>

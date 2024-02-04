@@ -6,12 +6,23 @@ public class ParticipantDto implements Serializable {
     private Integer participantID;
     private String participantName;
 
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    private byte[] image;
+
     public ParticipantDto() {
     }
 
-    public ParticipantDto(Integer participantID, String participantName) {
+    public ParticipantDto(Integer participantID, String participantName, byte[] image) {
         this.participantID = participantID;
         this.participantName = participantName;
+        this.image = image;
     }
 
     public Integer getParticipantID() {

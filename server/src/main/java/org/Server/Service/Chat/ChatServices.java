@@ -3,6 +3,7 @@ import Model.DTO.ChatDto;
 import Model.DTO.ParticipantDto;
 import org.Server.Repository.ChatRepository;
 import org.Server.Repository.UserRepository;
+import org.Server.ServerModels.ServerEntities.User;
 import org.Server.Service.ChatParticipants.ChatParticipantServices;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -114,12 +115,14 @@ public class ChatServices {
         List<ParticipantDto> participantDtos = new ArrayList<>();
         for (Integer id:allParticipants){
             String name;
-            try {
-                 name=new UserRepository().findById(id).getDisplayName();
+            byte [] image;
+            try { User user = new UserRepository().findById(id);
+                 name=user.getDisplayName();
+                 image=user.getProfilePicture();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-            participantDtos.add(new ParticipantDto(id,name));
+            participantDtos.add(new ParticipantDto(id,name,image));
         }
         return participantDtos;
 

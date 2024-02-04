@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="senderName" text="Label" textFill="#8c8b8b">
+         <VBox.margin>
+            <Insets left="15.0" top="20.0" />
+         </VBox.margin>
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+      <HBox>
+         <children>
+            <Circle fx:id="imageCircle" fill="WHITE" radius="21.0" stroke="#c4c4c4" strokeType="INSIDE" />
+            <Label fx:id="messageLabel" styleClass="text-received" stylesheets="@../ClientStyles/ChatUserCSS.css" text="Label">
+               <HBox.margin>
+                  <Insets left="5.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="10.0" />
+         </VBox.margin>
+      </HBox>
+      <Label fx:id="time" text="Label">
+         <VBox.margin>
+            <Insets left="40.0" top="5.0" />
+         </VBox.margin>
+      </Label>
+   </children>
+</VBox>
