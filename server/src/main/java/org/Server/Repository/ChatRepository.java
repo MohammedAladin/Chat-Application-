@@ -70,10 +70,10 @@ public class ChatRepository implements ChatRepoInterface {
     public Chat findByName(String chatName) throws SQLException {
         String query ="select * from Chat where ChatName = ?";
         Chat chat= new Chat();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)) {
             preparedStatement.setString(1, chatName);
             try(ResultSet resultSet =preparedStatement.executeQuery()) {
-                if (resultSet.next()) {
+                if (resultSet.last()) {
                     chat.setChatID(resultSet.getInt("ChatId"));
                     chat.setChatName(resultSet.getString("ChatName"));
                     chat.setChatImage(resultSet.getBytes("ChatImage"));
