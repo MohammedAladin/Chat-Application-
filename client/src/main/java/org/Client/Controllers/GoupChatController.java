@@ -15,6 +15,7 @@ import org.Client.Service.ImageServices;
 
 import java.net.URL;
 import java.rmi.RemoteException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -111,7 +112,7 @@ public class GoupChatController implements Initializable {
         String message = textFieldID.getText();
         if (!message.isEmpty()) {
             textFieldID.clear();
-            MessageDTO messageDTO = new MessageDTO(chatID, message, 0, Model.getInstance().getClientId());
+            MessageDTO messageDTO = new MessageDTO(chatID, message, 0, Model.getInstance().getClientId(), Timestamp.valueOf(java.time.LocalDateTime.now()));
             try {
                 Model.getInstance().getCallBackServicesServer().sendGroupMessage(messageDTO, participants);
             } catch (RemoteException e) {
