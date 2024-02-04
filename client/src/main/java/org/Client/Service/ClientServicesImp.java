@@ -101,4 +101,7 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
         Platform.runLater(()->Model.getInstance().addMessage(messageDTO));
     }
 
+
+
+
 }

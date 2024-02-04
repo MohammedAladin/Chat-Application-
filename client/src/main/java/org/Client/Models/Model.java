@@ -38,6 +38,7 @@ public class Model {
     }
 
     private MapProperty<Integer, ObservableList<MessageDTO>> privateChats = new SimpleMapProperty<>(FXCollections.observableHashMap());
+    private MapProperty<Integer, ObservableList<MessageDTO>> groupChats = new SimpleMapProperty<>(FXCollections.observableHashMap());
 
     public void setGroupList(ArrayList<ChatDto> groupList) {
         this.groupList.clear();
@@ -180,6 +181,11 @@ public class Model {
 
     public void addMessage(MessageDTO messageDTO) {
         privateChats.get(messageDTO.getChatID()).add(messageDTO);
+        System.out.println("this is the message" + messageDTO.getContent());
+    }
+
+    public void addGroupMessage(MessageDTO messageDTO) {
+        groupChats.get(messageDTO.getChatID()).add(messageDTO);
         System.out.println("this is the message" + messageDTO.getContent());
     }
 }

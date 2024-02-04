@@ -2,6 +2,7 @@ package Model.DTO;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 public class ChatDto implements Serializable {
     private String chatName;
@@ -10,13 +11,24 @@ public class ChatDto implements Serializable {
     private Timestamp creationDate;
     private Timestamp lastModified;
 
-    public ChatDto(String chatName, byte[] chatImage, Integer adminID, Timestamp creationDate, Timestamp lastModified, Integer chatID) {
+    public ArrayList<ParticipantDto> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(ArrayList<ParticipantDto> participants) {
+        this.participants = participants;
+    }
+
+    private ArrayList<ParticipantDto> participants;
+
+    public ChatDto(String chatName, byte[] chatImage, Integer adminID, Timestamp creationDate, Timestamp lastModified, Integer chatID, ArrayList<ParticipantDto> participants) {
         this.chatName = chatName;
         this.chatImage = chatImage;
         this.adminID = adminID;
         this.creationDate = creationDate;
         this.lastModified = lastModified;
         this.chatID = chatID;
+        this.participants = participants;
     }
 
     public Integer getChatID() {

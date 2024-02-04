@@ -1,6 +1,8 @@
 package org.Server.Service.Chat;
 import Model.DTO.ChatDto;
+import Model.DTO.ParticipantDto;
 import org.Server.Repository.ChatRepository;
+import org.Server.Repository.UserRepository;
 import org.Server.Service.ChatParticipants.ChatParticipantServices;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -103,8 +105,24 @@ public class ChatServices {
                 chat.getAdminID(),
                 chat.getCreationDate(),
                 chat.getLastModified(),
-                chat.getChatID()
+                chat.getChatID(),
+                new ArrayList<>(mapToParticipantDTO(chatRepository.getAllParticipants(chat.getChatID())))
         );
+    }
+
+    private List<ParticipantDto> mapToParticipantDTO(List<Integer> allParticipants) {
+        List<ParticipantDto> participantDtos = new ArrayList<>();
+        for (Integer id:allParticipants){
+            String name;
+            try {
+                 name=new UserRepository().findById(id).getDisplayName();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            participantDtos.add(new ParticipantDto(id,name));
+        }
+        return participantDtos;
+
     }
 
 

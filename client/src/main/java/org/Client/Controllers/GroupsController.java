@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -33,6 +34,7 @@ public class GroupsController implements Initializable {
     }
 
     ObservableList<ChatDto> groupList = Model.getInstance().getGroupList();
+    ChatDto chat;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -57,11 +59,41 @@ public class GroupsController implements Initializable {
 
         groupsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                ChatDto chat = groupsListView.getSelectionModel().getSelectedItem();
-                System.out.println("Selected Item: " + newValue.getChatName());
+                chat = groupsListView.getSelectionModel().getSelectedItem();
+                getMessages(chat.getChatID());
             }
         });
 
 
+    }
+
+    private void getMessages(Integer chatId) {
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                Model.getInstance().getCallBackServicesServer().getPrivateChatMessages(chatId, Model.getInstance().getCallBackServicesClient());
+                return null;
+            }
+        };
+
+        // Handle any exceptions that occurred in the task
+        task.exceptionProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                Throwable ex = newValue;
+                System.out.println("Exception occurred in task: " + ex);
+            }
+        });
+
+        // Update the UI after the task has completed
+        task.stateProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == javafx.concurrent.Worker.State.SUCCEEDED) {
+                Platform.runLater(() -> {
+                    Model.getInstance().getViewFactory().showGroupChatArea(chat);
+                });
+            }
+        });
+
+        // Start the task in a new thread
+        new Thread(task).start();
     }
 }

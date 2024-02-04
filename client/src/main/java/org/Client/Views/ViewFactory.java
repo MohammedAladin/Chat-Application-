@@ -1,5 +1,6 @@
 package org.Client.Views;
 
+import Model.DTO.ChatDto;
 import Model.DTO.ContactDto;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -17,6 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import org.Client.Controllers.ChatUserController;
+import org.Client.Controllers.GoupChatController;
 import org.Client.Controllers.HomeController;
 import org.Client.Controllers.UserCardController;
 
@@ -127,7 +129,7 @@ public class ViewFactory {
 
             home = fxmlLoader.load();
             Scene scene = new Scene(home);
-            if(button != null) {
+            if (button != null) {
                 Stage loginStage = (Stage) button.getScene().getWindow();
                 loginStage.close();
             }
@@ -331,5 +333,21 @@ public class ViewFactory {
     }
 
     public void showLogoutPopup(Button logoutBtn) {
+    }
+
+    public void showGroupChatArea(ChatDto chat) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/PrivateChat.fxml"));
+        GoupChatController controller = new GoupChatController();
+        controller.setName(chat.getChatName());
+        controller.setImage(chat.getChatImage());
+        controller.setChatID(chat.getChatID());
+        controller.setParticipants(chat.getParticipants());
+        fxmlLoader.setController(controller);
+        try {
+            home.setCenter(fxmlLoader.load());
+            System.out.println("function implemeneted");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

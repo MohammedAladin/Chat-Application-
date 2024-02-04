@@ -35,4 +35,13 @@ public static Image convertToImage(byte[] imageData) {
     return SwingFXUtils.toFXImage(bufferedImage,null);
 }
 
+    public static Image getDefaultImage() {
+        Image image = new Image(ImageServices.class.getResource("/ClientImages/defaultUser.jpg").toString());
+        return image;
+    }
+
+    public static Image getDefaultGroupImage() {
+        Image image = new Image(ImageServices.class.getResource("/ClientImages/groupgray.png").toString());
+        return image;
+    }
 }

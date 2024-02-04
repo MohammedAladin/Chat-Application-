@@ -1,14 +1,12 @@
 package Interfaces.CallBacks.Server;
 
 import Interfaces.CallBacks.Client.CallBackServicesClient;
-import Model.DTO.AttachmentDto;
-import Model.DTO.ChatDto;
-import Model.DTO.ContactDto;
-import Model.DTO.MessageDTO;
+import Model.DTO.*;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 public interface CallBackServicesServer extends Remote {
 
@@ -34,4 +32,6 @@ public interface CallBackServicesServer extends Remote {
     public void sendAttachment(AttachmentDto attachmentMessage) throws RemoteException;
 
     void getPrivateChatMessages(Integer chatId, CallBackServicesClient client) throws RemoteException;
+
+    void sendGroupMessage(MessageDTO messageDTO, List<ParticipantDto> participants) throws RemoteException;
 }

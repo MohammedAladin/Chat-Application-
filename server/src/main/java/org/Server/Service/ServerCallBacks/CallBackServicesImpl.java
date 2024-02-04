@@ -227,4 +227,21 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         client.setPrivateMessages(messages,chatId);
     }
 
+    @Override
+    public void sendGroupMessage(MessageDTO messageDTO, List<ParticipantDto> participants) throws RemoteException {
+        messageService.sendMessage(messageDTO);
+        for(ParticipantDto partcipant : participants){
+            if(clients.containsKey(partcipant.getParticipantID())){
+                CallBackServicesClient client = clients.get(partcipant.getParticipantID());
+                Platform.runLater(() -> {
+                    try {
+                        client.receiveMessage(messageDTO);
+                    } catch (RemoteException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            }
+        }
+    }
+
 }

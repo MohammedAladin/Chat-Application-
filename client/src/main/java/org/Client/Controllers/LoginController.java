@@ -38,8 +38,8 @@ public class LoginController implements Initializable {
         passwordLabel.setVisible(false);
         passwordField.setVisible(false);
         signingButton.setVisible(false);
-        notAUser.setVisible(false);
-        registerLabel.setVisible(false);
+        notAUser.setVisible(true);
+        registerLabel.setVisible(true);
     }
 
     private void handleSignIn() {
@@ -88,8 +88,8 @@ public class LoginController implements Initializable {
         passwordLabel.setVisible(true);
         passwordField.setVisible(true);
         signingButton.setVisible(true);
-        notAUser.setVisible(true);
-        registerLabel.setVisible(true);
+        notAUser.setVisible(false);
+        registerLabel.setVisible(false);
     }
 
     private void handleLoginResult(boolean loginResult) {

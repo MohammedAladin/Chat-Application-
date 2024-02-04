@@ -35,4 +35,5 @@ public interface CallBackServicesClient extends Remote {
     void setPrivateMessages(ArrayList<MessageDTO> messages,Integer chatID) throws RemoteException;
 
     void receiveMessage(MessageDTO messageDTO) throws RemoteException;
+
 }

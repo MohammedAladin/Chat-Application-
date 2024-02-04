@@ -10,6 +10,8 @@ org\Client\Controllers\MessageSent.class
 org\Client\Controllers\ChatController.class
 org\Client\Controllers\ChatCellFactory.class
 org\Client\Controllers\EditProfileController.class
+org\Client\UserSessionManager.class
+org\Client\Controllers\ChatUserController$1.class
 org\Client\Controllers\GroupsController$1.class
 org\Client\Controllers\NotificationListController.class
 org\Client\Controllers\ChatHomeIconController.class
@@ -20,7 +22,9 @@ org\Client\Service\ClientServicesImp.class
 org\Client\Controllers\NotificationListController$1.class
 org\Client\Controllers\UserMenuController.class
 org\Client\Controllers\AddContactController.class
+org\Client\Controllers\ProfileEditController.class
 org\Client\Controllers\AddGroupController$1.class
+org\Client\Controllers\ChatAreaController$2.class
 module-info.class
 org\Client\Service\ImageServices.class
 org\Client\Controllers\AddGroupController.class
@@ -30,6 +34,7 @@ org\Client\Controllers\UserCardController.class
 org\Client\Views\ViewFactory.class
 org\Client\Controllers\FriendRequestController.class
 org\Client\ClientApplication.class
+org\Client\Controllers\MessageCellFactory.class
 org\Client\Controllers\RemoteServiceHandler.class
 org\Client\Controllers\GroupCardController.class
 org\Client\Controllers\MessageReceived.class
