@@ -47,6 +47,8 @@ public class ChatUserController implements Initializable {
     private Button send_btn;
     @FXML
     private Button attachemnt_btn;
+    @FXML
+    private Button styleBtn;
     byte[] image;
     String name;
 
@@ -101,7 +103,9 @@ public class ChatUserController implements Initializable {
         send_btn.setOnAction(e -> sendMessage());
         messageListView.refresh();
         messageListView.refresh();
-
+        styleBtn.setOnAction(actionEvent -> {
+            Model.getInstance().getViewFactory().showStylePopup(styleBtn);
+        });
     }
 
     private void sendMessage() {

@@ -48,6 +48,7 @@ public class ViewFactory {
 
     Button notiButton;
 
+    Popup stylePopup;
 
     private ObjectProperty<ContactDto> selectedChat = new SimpleObjectProperty<>();
     private String phoneNumber;
@@ -359,6 +360,8 @@ public class ViewFactory {
         }
 
         addGroupPopup.show(groupBtn.getParent(), popupX, popupY);
+        addGroupPopup.setAutoHide(true);
+
     }
 
     public void showLogoutPopup(Button logoutBtn) {
@@ -427,4 +430,27 @@ public class ViewFactory {
 
     }
 
+    public void showStylePopup(Button styleBtn) {
+        Bounds buttonBounds = styleBtn.localToScreen(styleBtn.getBoundsInLocal());
+        double popupX = buttonBounds.getMaxX() - 30;
+        double popupY = buttonBounds.getMinY();
+        if (stylePopup == null) {
+            stylePopup = new Popup();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/StylePopup.fxml"));
+
+
+            // Set the position of the popup next to the button
+
+            try {
+                VBox root = fxmlLoader.load();
+                stylePopup.getContent().add(root);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        stylePopup.show(styleBtn.getParent(), popupX, popupY);
+        stylePopup.setAutoHide(true);
+    }
 }
