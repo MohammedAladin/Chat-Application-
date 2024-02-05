@@ -26,15 +26,6 @@ public class ServerStatisticsController implements Initializable {
     private PieChart user_country;
     UserRepository userRepository = new UserRepository();
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-    public static final List<String> NICE_COLORS = Arrays.asList(
-            "#3498db", "#2ecc71", "#e74c3c", "#f39c12", "#9b59b6",
-            "#34495e", "#1abc9c", "#d35400", "#c0392b", "#7f8c8d",
-            "#16a085", "#27ae60", "#e67e22", "#8e44ad", "#2c3e50",
-            "#2980b9", "#2c3e50", "#95a5a6", "#e74c3c", "#f39c12",
-            "#d35400", "#1abc9c", "#3498db", "#9b59b6", "#27ae60",
-            "#8e44ad", "#16a085", "#34495e", "#f1c40f", "#e74c3c"
-    );
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
