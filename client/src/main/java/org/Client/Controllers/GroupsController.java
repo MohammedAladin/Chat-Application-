@@ -56,9 +56,10 @@ public class GroupsController implements Initializable {
         });
 
 
-        groupsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                chat = groupsListView.getSelectionModel().getSelectedItem();
+        groupsListView.setOnMouseClicked(event -> {
+            ChatDto selectedChat = groupsListView.getSelectionModel().getSelectedItem();
+            if (selectedChat != null) {
+                chat = selectedChat;
                 getChat(chat);
             }
         });
