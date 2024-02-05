@@ -9,6 +9,7 @@ import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -253,9 +254,13 @@ public class ViewFactory {
     }
 
     public Node showProfile() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/editProfile.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/EditProfilenew.fxml"));
         try {
-            return fxmlLoader.load();
+           Node root = fxmlLoader.load();
+            //root.getStylesheets().add(getClass().getResource("/ClientStyles/profile.css").toExternalForm());
+
+
+            return root;
         } catch (IOException e) {
             e.printStackTrace();
         }

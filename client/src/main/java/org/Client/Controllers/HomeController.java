@@ -38,6 +38,7 @@ public class HomeController implements Initializable {
                 parentPane.setCenter(Model.getInstance().getViewFactory().showHomeIcon());
             } else if (newValue.equals("profile")) {
                 parentPane.setCenter(Model.getInstance().getViewFactory().showProfile());
+
             }
         });
 

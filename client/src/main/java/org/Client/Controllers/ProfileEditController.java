@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -27,7 +28,7 @@ import java.util.*;
 public class ProfileEditController implements Initializable {
 
     @FXML
-    private Button editProfilePicButton;
+    private Label editProfilePicButton;
 
     @FXML
     private Button saveButton;
@@ -41,7 +42,7 @@ public class ProfileEditController implements Initializable {
     private DatePicker dateOfBirth;
 
     @FXML
-    private ImageView profileImageView;
+    private Circle profileImageView;
 
     @FXML
     private TextField phoneTextField;
@@ -67,7 +68,7 @@ public class ProfileEditController implements Initializable {
 
         setDefaultInfo();
 
-        editProfilePicButton.setOnAction((e)->handleEditProfilePicButton());
+        editProfilePicButton.setOnMouseClicked((e)->handleEditProfilePicButton());
         saveButton.setOnAction((e)->handleSaveButtonAction());
 
     }
@@ -78,10 +79,10 @@ public class ProfileEditController implements Initializable {
         dateOfBirth.setValue(model.getBirthDate().toLocalDate());
         emailTextField.setText(model.getEmail());
         if(model.getProfilePicture()==null||model.getProfilePicture().length==0){
-            profileImageView.setImage(ImageServices.getDefaultImage());
+            profileImageView.setFill(new ImagePattern(ImageServices.getDefaultImage()));
         }
         else{
-            profileImageView.setImage(ImageServices.convertToImage(model.getProfilePicture()));
+            profileImageView.setFill(new ImagePattern(ImageServices.convertToImage(model.getProfilePicture())));
         }
     }
     private void handleSaveButtonAction() {
@@ -156,7 +157,7 @@ public class ProfileEditController implements Initializable {
                 System.out.println("buffered Image "+bufferedImage.getWidth() + bufferedImage.getHeight());
                 img = ImageServices.convertToByte(bufferedImage);
                 Image image = new Image(selectedFile.toURI().toString());
-                profileImageView.setImage(image);
+                profileImageView.setFill(new ImagePattern(image));
                 Model.getInstance().setProfilePicture(img);
             }
         } catch (IOException e) {
