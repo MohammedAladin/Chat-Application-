@@ -26,7 +26,7 @@ public class AttachmentReopsitory implements AttachmentRepoInterface {
 
     @Override
     public Integer save(Attachment attachment) {
-        String query = "INSERT INTO attachment (MessageID, Attachment) VALUES (?, ?)";
+        String query = "INSERT INTO Attachment (MessageID, Attachment) VALUES (?, ?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setInt(1, attachment.getMessageID());
@@ -39,7 +39,7 @@ public class AttachmentReopsitory implements AttachmentRepoInterface {
 
             try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    return generatedKeys.getInt(1); // Assuming AttachmentID is an INT
+                    return generatedKeys.getInt(1);
                 } else {
                     throw new SQLException("Creating attachment failed, no ID obtained.");
                 }

@@ -116,16 +116,19 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     }
     @Override
     public void sendAttachment(AttachmentDto attachmentMessage) throws RemoteException {
-        attachmentService.sendAttachment(attachmentMessage);
+        Integer aId = attachmentService.sendAttachment(attachmentMessage);
         List<Integer> chatParticipantsIds = chatServices.getAllParticipants(attachmentMessage.getChatID());
 
         List<CallBackServicesClient> selectedClients = clients.entrySet().stream()
                 .filter(entry -> chatParticipantsIds.contains(entry.getKey()))
                 .map(Map.Entry::getValue)
-                .collect(Collectors.toList());
+                .toList();
+
+        MessageDTO messageDTO = new MessageDTO(attachmentMessage.getChatID(), attachmentMessage.getContent(), 1, attachmentMessage.getSenderId());
+        messageDTO.setAttachmentID(aId);
 
         for (CallBackServicesClient client : selectedClients) {
-                client.receiveAttachment(attachmentMessage);
+                client.receiveMessage(messageDTO);
             }
 
     }

@@ -25,7 +25,7 @@ public class AttachmentService {
         return attachmentService;
     }
 
-    public void sendAttachment(AttachmentDto fileDto) {
+    public Integer sendAttachment(AttachmentDto fileDto) {
         try {
             Message message = new Message(
                     fileDto.getSenderId(),
@@ -34,11 +34,11 @@ public class AttachmentService {
                     new Timestamp(System.currentTimeMillis()),
                     true);
 
-            Integer messageId = messageService.getLastId();
+            Integer messageId = messageService.sendMessage(messageService.mapToMessageDTO(message));
 
             byte[] fileBytes = readFileToBytes(fileDto.getFile());
             Attachment attachment = new Attachment(messageId, fileBytes);
-            attachmentReopsitory.save(attachment);
+            return attachmentReopsitory.save(attachment);
 
         } catch (Exception e) {
             throw new RuntimeException(e);

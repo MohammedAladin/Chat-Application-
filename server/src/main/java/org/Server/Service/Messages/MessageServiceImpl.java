@@ -43,15 +43,15 @@ public class MessageServiceImpl {
         }
         return messageServiceImpl;
     }
-    public void sendMessage(MessageDTO messageDTO) {
+    public Integer sendMessage(MessageDTO messageDTO) {
         Message message = messageDTOToMessage(messageDTO);
-        messageRepository.save(message);
+        return messageRepository.save(message);
     }
 
     public Integer getLastId() throws SQLException {
         return messageRepository.getLastInsertedId();
     }
-    private Message messageDTOToMessage (MessageDTO messageDTO){
+    public Message messageDTOToMessage (MessageDTO messageDTO){
         return new Message (
                 messageDTO.getSenderID(),
                 messageDTO.getChatID(),
@@ -70,7 +70,7 @@ public class MessageServiceImpl {
         return messageDTOS;
     }
 
-    private MessageDTO mapToMessageDTO(Message message) {
+    public MessageDTO mapToMessageDTO(Message message) {
         return new MessageDTO(
                 message.getReceiverID(),
                 message.getMessageContent(),

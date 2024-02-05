@@ -8,12 +8,21 @@ public class MessageDTO implements Serializable {
     private String content;
     private Integer isAttachment;
     private Integer senderID;
+    private Integer attachmentID;
 
     public MessageDTO(Integer chatID, String content, Integer isAttachment, Integer senderID) {
         this.chatID = chatID;
         this.content = content;
         this.isAttachment = isAttachment;
         this.senderID = senderID;
+    }
+
+    public Integer getAttachmentID() {
+        return attachmentID;
+    }
+
+    public void setAttachmentID(Integer attachmentID) {
+        this.attachmentID = attachmentID;
     }
 
     public Timestamp getTimestamp() {

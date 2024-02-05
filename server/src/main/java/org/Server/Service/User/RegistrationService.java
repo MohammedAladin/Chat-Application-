@@ -23,7 +23,10 @@ public class RegistrationService implements RemoteRegistrationService {
         if (userRepository.findByPhoneNumber(user.getPhoneNumber()) != null) {
             return false;
         }
-        else userRepository.save(toUser(user));
+        else {
+            Integer id = userRepository.save(toUser(user));
+            System.out.println("Registered Id: " + id);
+        }
         return true;
     }
     public User toUser(UserRegistrationDTO userD) {

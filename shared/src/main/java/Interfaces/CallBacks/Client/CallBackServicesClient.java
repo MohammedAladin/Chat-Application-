@@ -10,7 +10,6 @@ import java.util.List;
 public interface CallBackServicesClient extends Remote {
 
     void ReceiveMessageFromServer() throws RemoteException;
-    void receiveAttachment(AttachmentDto attachment) throws RemoteException;
 
     void setClientId(Integer clientId) throws RemoteException;
 

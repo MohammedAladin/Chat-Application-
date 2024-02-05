@@ -23,21 +23,29 @@ public class UserRepository implements UserRepoInterface {
         String query = "INSERT INTO UserAccounts (PhoneNumber, DisplayName, EmailAddress, PasswordHash, Gender, Country, DateOfBirth, Bio, UserStatus, UserMode, LastLogin) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
+        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, user.getPhoneNumber());
             preparedStatement.setString(2, user.getDisplayName());
             preparedStatement.setString(3, user.getEmailAddress());
 
-            preparedStatement.setString(4, user.getPassword()); // Use getPasswordHash instead of getPassword
+            preparedStatement.setString(4, user.getPassword());
             preparedStatement.setString(5, user.getGender());
             preparedStatement.setString(6, user.getCountry());
-            preparedStatement.setDate(7, new Date(user.getDateOfBirth().getTime())); // Convert Date to java.sql.Date
+            preparedStatement.setDate(7, new Date(user.getDateOfBirth().getTime()));
             preparedStatement.setString(8, user.getBio());
             preparedStatement.setString(9, user.getUserStatus());
             preparedStatement.setString(10, user.getUserMode());
             preparedStatement.setTimestamp(11, user.getLastLogin());
 
             preparedStatement.executeUpdate();
+
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1); // Assuming AttachmentID is an INT
+                } else {
+                    throw new SQLException("Creating attachment failed, no ID obtained.");
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
