@@ -24,10 +24,7 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
 
     }
 
-    @Override
-    public void receiveAttachment(AttachmentDto attachment) throws RemoteException {
 
-    }
 
     @Override
     public void setClientId(Integer clientId) throws RemoteException {

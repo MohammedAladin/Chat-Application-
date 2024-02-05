@@ -3,6 +3,7 @@ org\Server\Repository\AttachmentReopsitory.class
 org\Server\Service\Messages\MessageServiceImpl.class
 org\Server\ServerModels\ServerEntities\GroupMember.class
 org\Server\Service\Contacts\InvitationService.class
+org\Server\Main.class
 org\Server\ServerModels\ServerEntities\UserNotification.class
 org\Server\ServerModels\ServerEntities\ChatParticipants.class
 org\Server\ServerModels\ServerEntities\User.class
@@ -28,8 +29,10 @@ org\Server\Service\User\UserService.class
 org\Server\ServerModels\ServerEntities\BlockedContact.class
 org\Server\TestApp.class
 org\Server\Service\Factories\ServicesFactory.class
+org\Server\Service\Messages\AttachmentService.class
 org\Server\Repository\DatabaseConnectionManager.class
 org\Server\GUI\Controllers\ServerStatisticsController.class
+org\Server\RepoInterfaces\AttachmentRepoInterface.class
 org\Server\ServerModels\ServerEntities\Contact.class
 org\Server\Service\User\RegistrationService.class
 org\Server\Repository\ChatRepository.class
