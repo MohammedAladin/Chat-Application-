@@ -1,0 +1,29 @@
+.container{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-effect:  dropshadow(two-pass-box, #cbc9cb,5,0,0,4);
+
+}
+.toggle-button{
+    -fx-background-color: #7e787e ;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2;
+    -fx-text-fill: white;
+}
+.toggle-button:selected{
+    -fx-background-color:#8155c9;
+}
+.color-picker{
+    -fx-background-color: #8155c9 ;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2;
+}
+.combo-box{
+    -fx-background-color: #8155c9 ;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2;
+}

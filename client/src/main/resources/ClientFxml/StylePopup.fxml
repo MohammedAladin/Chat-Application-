@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="214.0" prefWidth="240.0" spacing="30.0" styleClass="container" stylesheets="@../ClientStyles/stylePopup.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="32.0" prefWidth="220.0" spacing="10.0">
+         <children>
+            <ToggleButton mnemonicParsing="false" text="Italic" />
+            <ToggleButton mnemonicParsing="false" text="Bold" />
+            <ToggleButton mnemonicParsing="false" text="Underline" />
+         </children>
+         <VBox.margin>
+            <Insets left="10.0" top="10.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox spacing="10.0">
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin>
+         <children>
+            <Label text="Font color" />
+            <ColorPicker>
+               <HBox.margin>
+                  <Insets left="38.0" />
+               </HBox.margin>
+            </ColorPicker>
+         </children>
+      </HBox>
+      <HBox spacing="10.0">
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin>
+         <children>
+            <Label text="Background" />
+            <ColorPicker>
+               <HBox.margin>
+                  <Insets left="29.0" />
+               </HBox.margin>
+            </ColorPicker>
+         </children>
+      </HBox>
+      <HBox>
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin>
+         <children>
+            <Label text="Font size" />
+            <ComboBox prefHeight="25.0" prefWidth="68.0" promptText="size">
+               <HBox.margin>
+                  <Insets left="55.0" />
+               </HBox.margin>
+            </ComboBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

@@ -262,7 +262,10 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         ContactService contactService = new ContactService();
         System.out.println("callback imp : " + clientId);
         ChatDto newGrp =  contactService.createNewGroup(clientId, selected, text, grpImage);
-        clients.get(clientId).updateGroupList(newGrp);
+        for (int i = 0; i < selected.size(); i++) {
+            if (clients.containsKey(selected.get(i)))
+                clients.get(selected.get(i)).updateGroupList(newGrp);
+        }
     }
 
     @Override
