@@ -2,6 +2,8 @@ package org.Client.Controllers;
 import Interfaces.CallBacks.Client.CallBackServicesClient;
 import Interfaces.CallBacks.Server.CallBackServicesServer;
 import Model.DTO.UserLoginDTO;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -95,8 +97,7 @@ public class LoginController implements Initializable {
                 Model.getInstance().setCallBackServicesClient(new ClientServicesImp());// client representation to be sent.
                 callBackServicesServer =  remoteServiceHandler.getCallbacks();
                 Model.getInstance().setCallBackServicesServer(callBackServicesServer);
-                callBackServicesServer.register(Model.getInstance().getCallBackServicesClient(), phoneNumber);
-                Model.getInstance().getViewFactory().showHomePage(signingButton);
+                setData();
 
             } catch (RemoteException e) {
                 throw new RuntimeException(e);
@@ -107,6 +108,39 @@ public class LoginController implements Initializable {
             remoteServiceHandler.showAlert("Invalid Phone Number or Password", Alert.AlertType.WARNING);
         }
     }
+
+    private void setData() {
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                callBackServicesServer.register(Model.getInstance().getCallBackServicesClient(), phoneNumber);
+                return null;
+            }
+        };
+
+        // Handle any exceptions that occurred in the task
+        task.exceptionProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                Throwable ex = newValue;
+                System.out.println("Exception occurred in task: " + ex);
+            }
+        });
+
+        // Update the UI after the task has completed
+        task.stateProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == javafx.concurrent.Worker.State.SUCCEEDED) {
+                Platform.runLater(() -> {
+                    Model.getInstance().getViewFactory().showHomePage(signingButton);
+                });
+            }
+        });
+
+        // Start the task in a new thread
+        new Thread(task).start();
+    }
+
+
+
     private void handleException(Exception exception) {
         remoteServiceHandler.showAlert("Error during login" + ": " + exception.getMessage(), Alert.AlertType.ERROR);
     }

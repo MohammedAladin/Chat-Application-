@@ -4,13 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="Server Statistics updated dynamically.">
+    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="Group chats messages show the sender image and name">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerStatisticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerStatisticsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/fxml/ServerSideBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/fxml/ServerSideBar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerStatisticsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerStatisticsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/ServerApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/ServerApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/UserMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/UserMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/attachemnt.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/attachemnt.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/UserMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/UserMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dp.properties" beforeDir="false" afterPath="$PROJECT_DIR$/dp.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/fxml/ServerSideBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/fxml/ServerSideBar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/UserRepository.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,10 +27,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="FxmlFile" />
-        <option value="Class" />
         <option value="Interface" />
         <option value="CSS File" />
+        <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -46,9 +52,7 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2bBrXtDZWmlI2Z9e0p1l5hxwu9m" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -59,6 +63,7 @@
     &quot;Application.App.executor&quot;: &quot;Run&quot;,
     &quot;Application.ClientApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.Mohammed.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Nada.executor&quot;: &quot;Run&quot;,
     &quot;Application.Server.executor&quot;: &quot;Run&quot;,
     &quot;Application.ServerApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.TestApp.executor&quot;: &quot;Run&quot;,
@@ -67,10 +72,9 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Chat-Application-/client/src/main/resources/ClientImages&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/try/Lab1Html&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -97,7 +101,7 @@
       <recent name="org.Client.Controllers" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Amin">
     <configuration name="Amin" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.Client.ClientApplication" />
       <module name="client" />
@@ -106,6 +110,13 @@
       </method>
     </configuration>
     <configuration name="Mohammed" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.Client.ClientApplication" />
+      <module name="client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Nada" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.Client.ClientApplication" />
       <module name="client" />
       <method v="2">
@@ -149,6 +160,7 @@
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.Mohammed" />
       <item itemvalue="Application.Amin" />
+      <item itemvalue="Application.Nada" />
       <item itemvalue="Application.org.Server.TestApp" />
       <item itemvalue="Application.TestApp" />
     </list>
@@ -203,10 +215,6 @@
       <workItem from="1706892409239" duration="1593000" />
       <workItem from="1706894723157" duration="3345000" />
       <workItem from="1706898714232" duration="1115000" />
-      <workItem from="1706987746512" duration="712000" />
-      <workItem from="1706990837048" duration="8614000" />
-      <workItem from="1707039562899" duration="41000" />
-      <workItem from="1707055381259" duration="8791000" />
     </task>
     <task id="LOCAL-00001" summary="Add server gui">
       <option name="closed" value="true" />
@@ -344,47 +352,55 @@
       <option name="project" value="LOCAL" />
       <updated>1706887314188</updated>
     </task>
-    <task id="LOCAL-00018" summary="EditProfile page has been uploaded and user-info file">
+    <task id="LOCAL-00018" summary="adjust POM and module-info file so MVN INSTALL command can be run.">
       <option name="closed" value="true" />
-      <created>1706990781005</created>
+      <created>1706965577175</created>
       <option name="number" value="00018" />
       <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
-      <updated>1706990781005</updated>
+      <updated>1706965577175</updated>
     </task>
-    <task id="LOCAL-00019" summary="EditProfile page has been uploaded and user-info file">
+    <task id="LOCAL-00019" summary="implemented group chats">
       <option name="closed" value="true" />
-      <created>1706999417021</created>
+      <created>1707008584979</created>
       <option name="number" value="00019" />
       <option name="presentableId" value="LOCAL-00019" />
       <option name="project" value="LOCAL" />
-      <updated>1706999417021</updated>
+      <updated>1707008584979</updated>
     </task>
-    <task id="LOCAL-00020" summary="EditProfile page has been uploaded and user-info file">
+    <task id="LOCAL-00020" summary="small changes in the gui, changes in the javafx version">
       <option name="closed" value="true" />
-      <created>1707061709271</created>
+      <created>1707016101720</created>
       <option name="number" value="00020" />
       <option name="presentableId" value="LOCAL-00020" />
       <option name="project" value="LOCAL" />
-      <updated>1707061709271</updated>
+      <updated>1707016101720</updated>
     </task>
-    <task id="LOCAL-00021" summary="EditProfile page has been uploaded and user-info file">
+    <task id="LOCAL-00021" summary="Added timeStamp in the messages">
       <option name="closed" value="true" />
-      <created>1707061800379</created>
+      <created>1707032953868</created>
       <option name="number" value="00021" />
       <option name="presentableId" value="LOCAL-00021" />
       <option name="project" value="LOCAL" />
-      <updated>1707061800379</updated>
+      <updated>1707032953869</updated>
     </task>
-    <task id="LOCAL-00022" summary="Server Statistics updated dynamically.">
+    <task id="LOCAL-00022" summary="bug fix">
       <option name="closed" value="true" />
-      <created>1707075842162</created>
+      <created>1707037011366</created>
       <option name="number" value="00022" />
       <option name="presentableId" value="LOCAL-00022" />
       <option name="project" value="LOCAL" />
-      <updated>1707075842162</updated>
+      <updated>1707037011366</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Group chats messages show the sender image and name">
+      <option name="closed" value="true" />
+      <created>1707052532718</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1707052532718</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -426,8 +442,12 @@
     <MESSAGE value="bug fixes in the CallBackServicesImpl" />
     <MESSAGE value="group list is loaded in the homepage , as well as some changes in the notification popup" />
     <MESSAGE value="the user status updates on login and on exit" />
-    <MESSAGE value="EditProfile page has been uploaded and user-info file" />
-    <MESSAGE value="Server Statistics updated dynamically." />
-    <option name="LAST_COMMIT_MESSAGE" value="Server Statistics updated dynamically." />
+    <MESSAGE value="adjust POM and module-info file so MVN INSTALL command can be run." />
+    <MESSAGE value="implemented group chats" />
+    <MESSAGE value="small changes in the gui, changes in the javafx version" />
+    <MESSAGE value="Added timeStamp in the messages" />
+    <MESSAGE value="bug fix" />
+    <MESSAGE value="Group chats messages show the sender image and name" />
+    <option name="LAST_COMMIT_MESSAGE" value="Group chats messages show the sender image and name" />
   </component>
 </project>

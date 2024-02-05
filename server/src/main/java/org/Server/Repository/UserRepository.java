@@ -147,7 +147,7 @@ public class UserRepository implements UserRepoInterface {
     }
 
     public void update(Integer id, String fieldName, String value) throws SQLException {
-        String query = "UPDATE UserAccounts SET " + fieldName + "=? WHERE UserID=?";
+        String query = "UPDATE UserAccounts SET "+fieldName+" = ? WHERE UserID= ?";
 
         try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
             preparedStatement.setString(1, value);
