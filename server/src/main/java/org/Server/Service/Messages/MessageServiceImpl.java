@@ -14,6 +14,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,35 +47,9 @@ public class MessageServiceImpl {
         Message message = messageDTOToMessage(messageDTO);
         messageRepository.save(message);
     }
-    public void sendAttachment(AttachmentDto fileDto){
-        try {
-            Message message = new Message(
-                    fileDto.getSenderId(),
-                    fileDto.getChatID(),
-                    fileDto.getContent(),
-                    new Timestamp(System.currentTimeMillis()),
-                    true);
-            messageRepository.save(message);
 
-            Integer messageId = messageRepository.getLastInsertedId();
-
-            byte[] fileBytes = readFileToBytes(fileDto.getFile());
-            Attachment attachment = new Attachment(messageId,fileBytes);
-            attachmentReopsitory.save(attachment);
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-    private byte[] readFileToBytes(File file) throws Exception {
-        try (InputStream inputStream = new FileInputStream(file)) {
-            byte[] buffer = new byte[(int) file.length()];
-            int bytesRead = inputStream.read(buffer);
-            if (bytesRead != file.length()) {
-                throw new Exception("Error reading file into byte array");
-            }
-            return buffer;
-        }
+    public Integer getLastId() throws SQLException {
+        return messageRepository.getLastInsertedId();
     }
     private Message messageDTOToMessage (MessageDTO messageDTO){
         return new Message (

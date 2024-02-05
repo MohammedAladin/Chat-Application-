@@ -14,6 +14,7 @@ import org.Server.Service.Chat.ChatServices;
 import org.Server.Service.Contacts.ContactService;
 import org.Server.Service.Contacts.InvitationService;
 import org.Server.Service.Contacts.NotificationMapper;
+import org.Server.Service.Messages.AttachmentService;
 import org.Server.Service.Messages.MessageServiceImpl;
 import org.Server.Service.User.UserService;
 
@@ -30,8 +31,8 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     MessageServiceImpl messageService;
     ChatServices chatServices;
     UserService userService = UserService.getInstance();
+    AttachmentService attachmentService = AttachmentService.getInstance();
     ContactService contactService = new ContactService();
-
     Map<Integer, CallBackServicesClient> clients = new HashMap<>();
 
 
@@ -97,7 +98,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     }
     @Override
     public void sendAttachment(AttachmentDto attachmentMessage) throws RemoteException {
-        messageService.sendAttachment(attachmentMessage);
+        attachmentService.sendAttachment(attachmentMessage);
         List<Integer> chatParticipantsIds = chatServices.getAllParticipants(attachmentMessage.getChatID());
 
         List<CallBackServicesClient> selectedClients = clients.entrySet().stream()
@@ -112,17 +113,12 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     }
     @Override
     public void updateProfile(Integer id, Map<String, String> updatedFields){
-        updatedFields.forEach((k,v)->{
-            System.out.println("key = " + k + " Value = " + v);
-        });
         userService.updateUserInfo(id, updatedFields);
-
         updateContactList(id);
     }
     @Override
     public void updateProfilePic(Integer id, byte[] img){
         userService.profilePic(id, img);
-
         updateContactList(id);
     }
 

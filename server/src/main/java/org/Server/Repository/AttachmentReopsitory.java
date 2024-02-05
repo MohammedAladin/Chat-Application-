@@ -56,6 +56,26 @@ public class AttachmentReopsitory implements Repository<Attachment,Integer>{
 
         return attachment;
     }
+    public Attachment findByMessageId(Integer messageId) {
+        String query = "SELECT * FROM Attachment WHERE MessageID = ? ;";
+
+        Attachment attachment = new Attachment();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, messageId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    attachment.setAttachmentID(messageId);
+                    attachment.setMessageID(resultSet.getInt("MessageID"));
+                    attachment.setAttachment(resultSet.getBytes("Attachment"));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return attachment;
+    }
 
     @Override
     public List<Attachment> findAll() {
