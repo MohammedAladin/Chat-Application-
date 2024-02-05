@@ -14,6 +14,7 @@ import org.Client.Service.ImageServices;
 import org.Client.UserSessionManager;
 
 import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.Date;
@@ -76,7 +77,7 @@ public class ProfileEditController implements Initializable {
         phoneTextField.setText(model.getPhoneNumber());
         dateOfBirth.setValue(model.getBirthDate().toLocalDate());
         emailTextField.setText(model.getEmail());
-        if(model.getProfilePicture()==null){
+        if(model.getProfilePicture()==null||model.getProfilePicture().length==0){
             profileImageView.setImage(ImageServices.getDefaultImage());
         }
         else{
@@ -123,13 +124,14 @@ public class ProfileEditController implements Initializable {
                 throw new RuntimeException(e);
             }
 
-            if(img!=null){
+            if(img!=null&&img.length>0){
                 try {
                     model.getCallBackServicesServer().updateProfilePic(model.getClientId(), img);
                 } catch (RemoteException e) {
                     throw new RuntimeException(e);
                 }
             }
+            else System.out.println("no image to update");
     }
     private boolean isValidPassword(String newPassword, String confirmPassword) {
         return newPassword != null && !newPassword.isEmpty() &&
@@ -148,10 +150,14 @@ public class ProfileEditController implements Initializable {
         File selectedFile = fileChooser.showOpenDialog(new Stage());
 
         try {
-            img = ImageServices.convertToByte(ImageIO.read(selectedFile));
+
             if (selectedFile != null) {
+                BufferedImage bufferedImage = ImageIO.read(selectedFile);
+                System.out.println("buffered Image "+bufferedImage.getWidth() + bufferedImage.getHeight());
+                img = ImageServices.convertToByte(bufferedImage);
                 Image image = new Image(selectedFile.toURI().toString());
                 profileImageView.setImage(image);
+                Model.getInstance().setProfilePicture(img);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

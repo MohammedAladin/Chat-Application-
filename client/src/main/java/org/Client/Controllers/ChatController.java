@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import org.Client.Service.ImageServices;
 
@@ -18,7 +19,7 @@ public class ChatController implements Initializable {
     @FXML
     private Label contactName;
     @FXML
-    private ImageView contactImage;
+    private Circle contactImage;
 
     @FXML
     private Circle contactStatus;
@@ -64,9 +65,9 @@ public class ChatController implements Initializable {
         //Circle clip = new Circle(75, 75, 75);
         //contactImage.setClip(clip);
         contactName.setText(name);
-        if(image == null)
-            contactImage.setImage(ImageServices.getDefaultImage());
-        else contactImage.setImage(ImageServices.convertToImage(image));
+        if(image == null||image.length == 0)
+            contactImage.setFill(new ImagePattern(ImageServices.getDefaultImage()));
+        else contactImage.setFill(new ImagePattern(ImageServices.convertToImage(image)));
         lastText.setText(message);
         if (status.get().equals("Online")) {
             contactStatus.setStyle("-fx-fill: green");

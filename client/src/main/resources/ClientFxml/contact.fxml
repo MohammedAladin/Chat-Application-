@@ -2,15 +2,17 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="340.0" styleClass="contact" stylesheets="@../ClientStyles/contactStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="contactImage" fitHeight="70.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true" />
+      <Circle fx:id="contactImage" fill="WHITE" radius="30.0" stroke="#d1cfcf" strokeType="INSIDE">
+         <HBox.margin>
+            <Insets left="10.0" right="5.0" top="5.0" />
+         </HBox.margin>
+      </Circle>
       <VBox prefHeight="59.0" prefWidth="337.0" spacing="10.0">
          <children>
             <Label fx:id="contactName" styleClass="contactName" stylesheets="@../ClientStyles/contactStyle.css" text="Nada Mahmoud">

@@ -67,18 +67,29 @@ public class UserMenuController implements Initializable {
     ObjectProperty<byte[]> imagebytes = new SimpleObjectProperty<>();
     String name;
 
+
+    StringProperty imageProperty = new SimpleStringProperty();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
-        if (Model.getInstance().getProfilePicture() != null) {
+        if (Model.getInstance().getProfilePicture() != null&& Model.getInstance().getProfilePicture().length>0) {
             imageCircle.setFill(new ImagePattern(ImageServices.convertToImage(Model.getInstance().getProfilePicture())));
         } else imageCircle.setFill(new ImagePattern(ImageServices.getDefaultImage()));
+
+        Model.getInstance().profilePictureProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                imageCircle.setFill(new ImagePattern(ImageServices.convertToImage(newValue)));
+            }
+        });
 
         userName.setText("Welcome, " + Model.getInstance().getName());
         settings_btn.setOnAction(e -> {
             Model.getInstance().getViewFactory().showPopup(settings_btn);
         });
+
+
 
         addContact_btn.setOnAction(e -> {
             Model.getInstance().getViewFactory().showAddContacts(addContact_btn);
@@ -115,5 +126,18 @@ public class UserMenuController implements Initializable {
                 throw new RuntimeException(ex);
             }
         });
+    }
+
+
+    public String getImageProperty() {
+        return imageProperty.get();
+    }
+
+    public StringProperty imagePropertyProperty() {
+        return imageProperty;
+    }
+
+    public void setImageProperty(String imageProperty) {
+        this.imageProperty.set(imageProperty);
     }
 }

@@ -42,6 +42,21 @@ public class ViewFactory {
     private ObjectProperty<ContactDto> selectedChat = new SimpleObjectProperty<>();
     private String phoneNumber;
 
+    public String getImageChange() {
+        return imageChange.get();
+    }
+
+    public StringProperty imageChangeProperty() {
+        return imageChange;
+    }
+
+    public void setImageChange(String imageChange) {
+        this.imageChange.set(imageChange);
+    }
+
+    private StringProperty imageChange = new SimpleStringProperty();
+
+
     public String getStatus() {
         return Status.get();
     }
