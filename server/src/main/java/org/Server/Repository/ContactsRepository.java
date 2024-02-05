@@ -27,7 +27,7 @@ public class ContactsRepository implements Repository<Contact, Integer> {
     }
 
     @Override
-    public void save(Contact contact) throws SQLException {
+    public Integer save(Contact contact) throws SQLException {
         String query = "INSERT INTO UserContacts (UserID, FriendID, CreationDate) VALUES (?, ?, ?)";
 
         try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
@@ -36,6 +36,7 @@ public class ContactsRepository implements Repository<Contact, Integer> {
             preparedStatement.setTimestamp(3, contact.getCreationDate());
             preparedStatement.executeUpdate();
         }
+        return 0;
     }
 
     @Override

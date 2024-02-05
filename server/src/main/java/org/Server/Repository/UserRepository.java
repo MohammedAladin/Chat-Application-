@@ -19,7 +19,7 @@ public class UserRepository implements UserRepoInterface {
     }
 
     @Override
-    public void save(User user) throws SQLException {
+    public Integer save(User user) throws SQLException {
         String query = "INSERT INTO UserAccounts (PhoneNumber, DisplayName, EmailAddress, PasswordHash, Gender, Country, DateOfBirth, Bio, UserStatus, UserMode, LastLogin) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -41,6 +41,8 @@ public class UserRepository implements UserRepoInterface {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return 0;
     }
 
 

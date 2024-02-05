@@ -1,15 +1,17 @@
 package org.Server.Repository;
 
+import org.Server.RepoInterfaces.AttachmentRepoInterface;
 import org.Server.RepoInterfaces.Repository;
 import org.Server.ServerModels.ServerEntities.Attachment;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AttachmentReopsitory implements Repository<Attachment,Integer>{
+public class AttachmentReopsitory implements AttachmentRepoInterface {
     private final Connection connection;
     private static AttachmentReopsitory attachmentReopsitory;
     private AttachmentReopsitory(){
@@ -23,17 +25,29 @@ public class AttachmentReopsitory implements Repository<Attachment,Integer>{
     }
 
     @Override
-    public void save(Attachment attachment){
-        String query = "INSERT INTO attachment (AttachmentID,MessageID,Attachment) VALUES (?, ?,?)";
+    public Integer save(Attachment attachment) {
+        String query = "INSERT INTO attachment (MessageID, Attachment) VALUES (?, ?)";
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, attachment.getAttachmentID());
-            preparedStatement.setInt(2, attachment.getMessageID());
-            preparedStatement.setBytes(3, attachment.getAttachment());
-            preparedStatement.executeUpdate();
-        } catch (Exception e) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setInt(1, attachment.getMessageID());
+            preparedStatement.setBytes(2, attachment.getAttachment());
+
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Creating attachment failed, no rows affected.");
+            }
+
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1); // Assuming AttachmentID is an INT
+                } else {
+                    throw new SQLException("Creating attachment failed, no ID obtained.");
+                }
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
+        return -1;
     }
 
     @Override

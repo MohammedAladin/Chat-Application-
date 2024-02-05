@@ -14,7 +14,7 @@ public class MessageRepository implements MessageRepoInterface {
         this.connection = DatabaseConnectionManager.getInstance().getMyConnection();
     }
     @Override
-    public void save(Message message) {
+    public Integer save(Message message) {
         String query = "INSERT INTO Messages (SenderID, ReceiverID, MessageContent, IsAttachement) " +
                 "VALUES (?, ?, ?, ?)";
 
@@ -30,6 +30,7 @@ public class MessageRepository implements MessageRepoInterface {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return 0;
     }
 
     @Override

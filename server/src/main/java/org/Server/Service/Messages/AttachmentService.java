@@ -1,6 +1,7 @@
 package org.Server.Service.Messages;
 
 import Model.DTO.AttachmentDto;
+import org.Server.RepoInterfaces.AttachmentRepoInterface;
 import org.Server.Repository.AttachmentReopsitory;
 import org.Server.ServerModels.ServerEntities.Attachment;
 import org.Server.ServerModels.ServerEntities.Message;
@@ -9,7 +10,7 @@ import java.io.*;
 import java.sql.Timestamp;
 
 public class AttachmentService {
-    private final AttachmentReopsitory attachmentReopsitory;
+    private final AttachmentRepoInterface attachmentReopsitory;
     private final MessageServiceImpl messageService = MessageServiceImpl.getInstance();
     private static AttachmentService attachmentService;
 

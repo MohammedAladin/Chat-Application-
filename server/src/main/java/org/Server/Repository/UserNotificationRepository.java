@@ -22,7 +22,7 @@ public class UserNotificationRepository implements Repository<UserNotification,I
         return userNotificationRepository;
     }
     @Override
-    public void save(UserNotification entity) throws SQLException {
+    public Integer save(UserNotification entity) throws SQLException {
         String query = "INSERT INTO UserNotifications (ReceiverID, SenderID, NotificationMessage, NotificationSentDate) " +
                 "VALUES (?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
@@ -33,6 +33,7 @@ public class UserNotificationRepository implements Repository<UserNotification,I
 
             preparedStatement.executeUpdate();
         }
+        return 0;
     }
 
     @Override

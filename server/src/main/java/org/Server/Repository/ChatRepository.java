@@ -20,7 +20,7 @@ public class ChatRepository implements ChatRepoInterface {
     }
 
     @Override
-    public void save(Chat entity)  {
+    public Integer save(Chat entity)  {
         String query = "INSERT INTO Chat (ChatName) VALUES (?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -29,6 +29,7 @@ public class ChatRepository implements ChatRepoInterface {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return 0;
     }
 
     public void saveGroup(Chat entity)  {

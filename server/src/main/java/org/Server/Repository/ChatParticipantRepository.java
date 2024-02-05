@@ -17,7 +17,7 @@ public class ChatParticipantRepository implements Repository<ChatParticipants,In
         this.connection = DatabaseConnectionManager.getInstance().getMyConnection();
     }
     @Override
-    public void save(ChatParticipants participant) throws SQLException {
+    public Integer save(ChatParticipants participant) throws SQLException {
         String query = "INSERT INTO ChatParticipants (ChatID,ParticipantUserID) VALUES (?, ?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -25,6 +25,7 @@ public class ChatParticipantRepository implements Repository<ChatParticipants,In
             preparedStatement.setInt(2, participant.getParticipantUserID());
             preparedStatement.executeUpdate();
         }
+        return 0;
 
     }
 

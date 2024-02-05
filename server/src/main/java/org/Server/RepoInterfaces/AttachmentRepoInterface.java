@@ -1,5 +1,8 @@
 package org.Server.RepoInterfaces;
 
-public interface AttachmentRepoInterface {
+import org.Server.ServerModels.ServerEntities.Attachment;
+
+public interface AttachmentRepoInterface extends Repository<Attachment, Integer> {
+    Attachment findByMessageId(Integer messageId) ;
 
 }
