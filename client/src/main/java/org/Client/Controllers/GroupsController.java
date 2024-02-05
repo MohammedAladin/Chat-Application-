@@ -54,24 +54,23 @@ public class GroupsController implements Initializable {
             System.out.println("Group list changed");
             groupsListView.refresh();
         });
-        groupListProperty().bind(Model.getInstance().groupListProperty());
 
 
         groupsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 chat = groupsListView.getSelectionModel().getSelectedItem();
-                getMessages(chat.getChatID());
+                getChat(chat);
             }
         });
 
 
     }
 
-    private void getMessages(Integer chatId) {
+    private void getMessages(ChatDto chat) {
         Task<Void> task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                Model.getInstance().getCallBackServicesServer().getPrivateChatMessages(chatId, Model.getInstance().getCallBackServicesClient());
+                Model.getInstance().getCallBackServicesServer().getPrivateChatMessages(chat.getChatID(), Model.getInstance().getCallBackServicesClient());
                 return null;
             }
         };
@@ -95,5 +94,17 @@ public class GroupsController implements Initializable {
 
         // Start the task in a new thread
         new Thread(task).start();
+    }
+
+    private void getChat(ChatDto chat) {
+        if (Model.getInstance().getPrivateChats().containsKey(chat.getChatID())) {
+            System.out.println("Chat exists");
+            Model.getInstance().getViewFactory().showGroupChatArea(chat);
+        } else {
+            System.out.println("Chat does not exist");
+            getMessages(chat);
+
+
+        }
     }
 }

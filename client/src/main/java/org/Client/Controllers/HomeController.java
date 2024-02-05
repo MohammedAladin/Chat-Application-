@@ -25,7 +25,6 @@ public class HomeController implements Initializable {
         FXMLLoader includedLoader = new FXMLLoader(getClass().getResource("/ClientFxml/UserMenu.fxml"));
         UserMenuController userMenuController = new UserMenuController();
         System.out.println("the Model got the name" + Model.getInstance().getName());
-        userMenuController.setName(Model.getInstance().getName());
         userMenuController.setImagebytes(Model.getInstance().getProfilePicture());
         includedLoader.setController(userMenuController);
         try {

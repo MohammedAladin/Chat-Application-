@@ -52,14 +52,13 @@ public class ChatAreaController implements Initializable {
 
         chatList.setItems(Model.getInstance().getContacts());
 
-        chatList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                getChat(newValue.getChatId());
-                chat = chatList.getSelectionModel().getSelectedItem();
-                System.out.println("Selected Item: " + newValue.getContactName());
-                System.out.println("Chat ID " + newValue.getChatId());
+        chatList.setOnMouseClicked(event -> {
+            chat = chatList.getSelectionModel().getSelectedItem();
+            if (chat != null) {
+                getChat(chat);
+                System.out.println("Selected Item: " + chat.getContactName());
+                System.out.println("Chat ID " + chat.getChatId());
                 Model.getInstance().getViewFactory().setSelectedChat(chat);
-                Model.getInstance().getViewFactory().showChatArea(newValue);
                 System.out.println("function called ");
             }
         });
@@ -67,12 +66,13 @@ public class ChatAreaController implements Initializable {
 
     }
 
-    private void getChat(Integer chatId) {
-        if (Model.getInstance().getPrivateChats().containsKey(chatId)) {
+    private void getChat(ContactDto chat) {
+        if (Model.getInstance().getPrivateChats().containsKey(chat.getChatId())) {
             System.out.println("Chat exists");
+            Model.getInstance().getViewFactory().showChatArea(chat);
         } else {
             System.out.println("Chat does not exist");
-                getMessages(chatId);
+                getMessages(chat.getChatId());
 
 
         }
