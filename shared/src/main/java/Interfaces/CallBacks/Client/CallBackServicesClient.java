@@ -35,4 +35,5 @@ public interface CallBackServicesClient extends Remote {
 
     void receiveMessage(MessageDTO messageDTO) throws RemoteException;
 
+    void notifyClient(String message) throws RemoteException;
 }

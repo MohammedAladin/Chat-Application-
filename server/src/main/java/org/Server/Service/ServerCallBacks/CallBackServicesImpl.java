@@ -4,6 +4,7 @@ import Interfaces.CallBacks.Client.CallBackServicesClient;
 import Interfaces.CallBacks.Server.CallBackServicesServer;
 import Model.DTO.*;
 import SharedEnums.StatusEnum;
+import com.mysql.cj.xdevapi.Client;
 import javafx.application.Platform;
 import org.Server.Repository.ContactsRepository;
 import org.Server.Repository.UserRepository;
@@ -51,12 +52,29 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
             client.setNotificationList(notificationDTOS);
             client.setContactList(new ContactService().getContacts(user.getUserID()));
             client.setGroupList(ChatServices.getInstance().getGroupChats(user.getUserID()));
+            noyifyContacts(user.getUserID(),user.getDisplayName());
             changeStatus(user.getUserID(), "Online");
         } catch (RemoteException e) {
             e.printStackTrace();
         }
 
         System.out.println("Client registered :id = " + user.getUserID());
+    }
+
+    private void noyifyContacts(int userID,String name) {
+        List<Integer> contacts = ContactsRepository.getInstance().getContacts(userID);
+        for (Integer contact : contacts) {
+            if (!clients.containsKey(contact))
+                continue;
+            CallBackServicesClient contactClient = clients.get(contact);
+            Platform.runLater(() -> {
+                try {
+                    contactClient.notifyClient(name+" is now online");
+                } catch (RemoteException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        }
     }
 
     private ArrayList<NotificationDTO> getNotificationList(Integer clientId) {
@@ -157,8 +175,11 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         Platform.runLater(() -> {
             try {
                 client.contactExists(exists);
-                if (clients.containsKey(user.getUserID()))
-                    clients.get(user.getUserID()).setNotificationList(getNotificationList(user.getUserID()));
+                if (clients.containsKey(user.getUserID())) {
+                    CallBackServicesClient addedContact = clients.get(user.getUserID());
+                    addedContact.setNotificationList(getNotificationList(user.getUserID()));
+                    addedContact.notifyClient("You have a new friend request");
+                }
             } catch (RemoteException e) {
                 throw new RuntimeException(e);
             }
@@ -264,6 +285,19 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
                     }
                 });
             }
+        }
+    }
+
+    public void notify(Integer clientID,String message){
+        if(clients.containsKey(clientID)){
+            CallBackServicesClient client = clients.get(clientID);
+            Platform.runLater(() -> {
+                try {
+                    client.notifyClient(message);
+                } catch (RemoteException e) {
+                    throw new RuntimeException(e);
+                }
+            });
         }
     }
 

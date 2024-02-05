@@ -73,3 +73,11 @@
 .bigbackground{
     -fx-background-color: #eff6fc;
 }
+
+.notification{
+    -fx-background-color: #cebce8;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-font-size: 1.2em;
+}

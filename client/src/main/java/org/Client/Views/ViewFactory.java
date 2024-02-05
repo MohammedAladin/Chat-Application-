@@ -2,6 +2,7 @@ package org.Client.Views;
 
 import Model.DTO.ChatDto;
 import Model.DTO.ContactDto;
+import javafx.animation.FadeTransition;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -9,7 +10,6 @@ import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -18,10 +18,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 import org.Client.Controllers.*;
 
+import java.io.File;
 import java.io.IOException;
+
 import org.Client.Models.Model;
+
 
 public class ViewFactory {
     Stage stage;
@@ -38,6 +44,9 @@ public class ViewFactory {
     Popup addContactPopup;
     Popup notificationPopup;
 
+
+
+    Button notiButton;
 
 
     private ObjectProperty<ContactDto> selectedChat = new SimpleObjectProperty<>();
@@ -256,7 +265,7 @@ public class ViewFactory {
     public Node showProfile() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/EditProfilenew.fxml"));
         try {
-           Node root = fxmlLoader.load();
+            Node root = fxmlLoader.load();
             //root.getStylesheets().add(getClass().getResource("/ClientStyles/profile.css").toExternalForm());
 
 
@@ -371,5 +380,51 @@ public class ViewFactory {
         }
     }
 
+    public void notify(String message) {
+        playNotificationSound();
+        showNoti(message);
+
+    }
+
+    private void playNotificationSound() {
+        String audioFilePath = getClass().getResource("/Audio/ding.mp3").toExternalForm();
+        Media audio = new Media(audioFilePath);
+        MediaPlayer mediaPlayer = new MediaPlayer(audio);
+        mediaPlayer.play();
+    }
+
+    public Button getNotiButton() {
+        return notiButton;
+    }
+
+    public void setNotiButton(Button notiButton) {
+        this.notiButton = notiButton;
+    }
+
+    public void showNoti(String message){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/NotificationPop.fxml"));
+        NotificationPopController controller = new NotificationPopController();
+        controller.setMsg(message);
+        fxmlLoader.setController(controller);
+        Bounds buttonBounds = notiButton.localToScreen(notiButton.getBoundsInLocal());
+        Popup popupe = new Popup();
+        double popupX = buttonBounds.getMaxX() - 30;
+        double popupY = buttonBounds.getMinY();
+        try {
+            VBox root = fxmlLoader.load();
+            popupe = new Popup();
+            popupe.getContent().add(root);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        popupe.show(home.getScene().getWindow(), popupX, popupY);
+        FadeTransition ft = new FadeTransition(Duration.millis(3000), popupe.getScene().getRoot());
+        ft.setFromValue(1.0);
+        ft.setToValue(0.0);
+        //Play the FadeTransition
+        ft.play();
+
+    }
 
 }

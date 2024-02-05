@@ -31,11 +31,7 @@
 
 }
 
-.label{
-    -fx-font-size: 1.2em;
-    -fx-text-fill: #5000c5;
-    -fx-font-weight: 700;
-}
+
 .imagePicker:hover{
     -fx-cursor: hand;
     -fx-fill : #ffffff;
@@ -72,4 +68,16 @@
 .date-picker-popup-button .arrow {
     -fx-background-color: #5000c5; /* Set the desired color */
     -fx-shape: "M 0 0 L 10 0 L 5 10 Z"; /* Optional: Customize the shape of the icon */
+}
+
+.bigbackground{
+    -fx-background-color: #eff6fc;
+}
+
+.notification{
+    -fx-background-color: #cebce8;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-font-size: 1.2em;
 }

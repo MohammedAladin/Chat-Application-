@@ -7,6 +7,7 @@ module client {
     requires java.rmi;
     requires java.desktop;
     requires javafx.swing;
+    requires javafx.media;
 
     opens org.Client to javafx.fxml;
     opens org.Client.Controllers to javafx.fxml;

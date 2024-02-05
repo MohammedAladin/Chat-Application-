@@ -73,7 +73,7 @@ public class UserMenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
+        Model.getInstance().getViewFactory().setNotiButton(noti_btn);
         if (Model.getInstance().getProfilePicture() != null&& Model.getInstance().getProfilePicture().length>0) {
             imageCircle.setFill(new ImagePattern(ImageServices.convertToImage(Model.getInstance().getProfilePicture())));
         } else imageCircle.setFill(new ImagePattern(ImageServices.getDefaultImage()));

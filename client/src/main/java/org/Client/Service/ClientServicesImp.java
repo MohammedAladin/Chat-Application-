@@ -102,10 +102,19 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
 
     @Override
     public void receiveMessage(MessageDTO messageDTO) throws RemoteException {
-        Platform.runLater(()->Model.getInstance().addMessage(messageDTO));
+        Platform.runLater(()->{
+            Model.getInstance().addMessage(messageDTO);
+            String senderName = Model.getInstance().getContacts().stream().filter(contactDto -> contactDto.getContactID().equals(messageDTO.getSenderID())).findFirst().get().getContactName();
+            if (senderName == null)
+                senderName = Model.getInstance().getGroupList().stream().filter(chatDto -> chatDto.getChatID().equals(messageDTO.getChatID())).findFirst().get().getChatName();
+            Model.getInstance().getViewFactory().notify("New message from "+ senderName);
+        });
     }
 
-
+    @Override
+    public void notifyClient(String Message) throws RemoteException {
+       Platform.runLater(()-> Model.getInstance().getViewFactory().notify(Message));
+    }
 
 
 }
