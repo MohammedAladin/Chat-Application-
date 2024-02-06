@@ -1,6 +1,8 @@
 package org.Server;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -8,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class ServerApplication extends Application {
     public static BorderPane sideBar;
@@ -39,5 +42,15 @@ public class ServerApplication extends Application {
         stage.show();
         stage.setMinWidth(750);
         stage.setMinHeight(400);
+
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                System.out.println("Closing application...");
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+
     }
 }
