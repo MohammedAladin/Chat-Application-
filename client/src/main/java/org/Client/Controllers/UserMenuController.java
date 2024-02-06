@@ -83,6 +83,11 @@ public class UserMenuController implements Initializable {
                 imageCircle.setFill(new ImagePattern(ImageServices.convertToImage(newValue)));
             }
         });
+        Model.getInstance().nameProperty().addListener(((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                userName.setText(newValue);
+            }
+        }));
 
         userName.setText("Welcome, " + Model.getInstance().getName());
         settings_btn.setOnAction(e -> {
@@ -123,7 +128,9 @@ public class UserMenuController implements Initializable {
                 UserSessionManager.deleteUserInfo();
                 Model.getInstance().getViewFactory().showLoginWindow();
             } catch (RemoteException ex) {
-                throw new RuntimeException(ex);
+                ((Stage) logout_btn.getParent().getScene().getWindow()).close();
+                UserSessionManager.deleteUserInfo();
+                Model.getInstance().getViewFactory().showLoginWindow();
             }
         });
     }

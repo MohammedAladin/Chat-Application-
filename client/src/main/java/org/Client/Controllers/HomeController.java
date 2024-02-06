@@ -49,7 +49,8 @@ public class HomeController implements Initializable {
                     Platform.exit();
                     System.exit(0);
                 } catch (RemoteException ex) {
-                    throw new RuntimeException(ex);
+                    Platform.exit();
+                    System.exit(0);
                 }
             });
         });

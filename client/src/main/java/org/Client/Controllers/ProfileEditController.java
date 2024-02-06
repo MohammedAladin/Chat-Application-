@@ -121,15 +121,26 @@ public class ProfileEditController implements Initializable {
 
             try {
                 model.getCallBackServicesServer().updateProfile(model.getClientId(), updatedFields);
+                Model.getInstance().setDisplayName(name);
             } catch (RemoteException e) {
-                throw new RuntimeException(e);
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Connection Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Could not save your changes due to connection issues. Please try again later.");
+                alert.showAndWait();
             }
 
             if(img!=null&&img.length>0){
                 try {
                     model.getCallBackServicesServer().updateProfilePic(model.getClientId(), img);
+                    Model.getInstance().setProfilePicture(img);
                 } catch (RemoteException e) {
-                    throw new RuntimeException(e);
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Connection Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Could not update profile picture. Please try again later.");
+
+                    alert.showAndWait();
                 }
             }
             else System.out.println("no image to update");
@@ -158,7 +169,7 @@ public class ProfileEditController implements Initializable {
                 img = ImageServices.convertToByte(bufferedImage);
                 Image image = new Image(selectedFile.toURI().toString());
                 profileImageView.setFill(new ImagePattern(image));
-                Model.getInstance().setProfilePicture(img);
+
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
