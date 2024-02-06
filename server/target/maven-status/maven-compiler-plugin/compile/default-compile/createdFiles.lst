@@ -23,6 +23,7 @@ org\Server\Service\UserSession.class
 org\Server\RepoInterfaces\MessageRepoInterface.class
 org\Server\ServerModels\ServerEntities\Chat.class
 org\Server\Repository\ChatParticipantRepository.class
+org\Server\ServerApplication$1.class
 org\Server\Repository\ContactsRepository.class
 module-info.class
 org\Server\Service\User\UserService.class

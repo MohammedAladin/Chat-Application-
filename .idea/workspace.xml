@@ -4,39 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="Edit Profile Image callback and edit profile info functionality has been added">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_29_2024_10_14_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_29_2024_10_14_PM__Changes_.xml" beforeDir="false" />
+    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="Fixed stopping Server Thread upon closing the program.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/AttachementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/AttachementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatAreaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatAreaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/MessageCellFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/MessageCellFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/attachemnt.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/attachemnt.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatAreaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatAreaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Service/ClientServicesImp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dp.properties" beforeDir="false" afterPath="$PROJECT_DIR$/dp.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerHomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/AttachmentReopsitory.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/AttachmentReopsitory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/MessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/MessageRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Messages/AttachmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Messages/AttachmentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Messages/MessageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Messages/MessageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/AttachmentReopsitory.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/AttachmentReopsitory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/MessageRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/MessageRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Messages/MessageServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/Messages/MessageServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/ServerCallBacks/CallBackServicesImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/ServerCallBacks/CallBackServicesImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Client/CallBackServicesClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Client/CallBackServicesClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Server/CallBackServicesServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Server/CallBackServicesServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Model/DTO/MessageDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Model/DTO/MessageDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Client/CallBackServicesClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Client/CallBackServicesClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Server/CallBackServicesServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Server/CallBackServicesServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Model/DTO/MessageDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/Model/DTO/MessageDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerStatisticsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerStatisticsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/ServerApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/ServerApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +96,7 @@
       <recent name="org.Client.Controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Mohammed">
+  <component name="RunManager">
     <configuration name="Amin" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.Client.ClientApplication" />
       <module name="client" />
@@ -170,6 +142,13 @@
         <item itemvalue="Application.org.Server.TestApp" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-f98dd351" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -400,7 +379,23 @@
       <option name="project" value="LOCAL" />
       <updated>1707065895941</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Ability to package to an uber jar added.">
+      <option name="closed" value="true" />
+      <created>1707166516458</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1707166516458</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Fixed stopping Server Thread upon closing the program.">
+      <option name="closed" value="true" />
+      <created>1707171881977</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1707171881977</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -444,6 +439,8 @@
     <MESSAGE value="the user status updates on login and on exit" />
     <MESSAGE value="EditProfile page has been uploaded and user-info file" />
     <MESSAGE value="Edit Profile Image callback and edit profile info functionality has been added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edit Profile Image callback and edit profile info functionality has been added" />
+    <MESSAGE value="Ability to package to an uber jar added." />
+    <MESSAGE value="Fixed stopping Server Thread upon closing the program." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed stopping Server Thread upon closing the program." />
   </component>
 </project>
