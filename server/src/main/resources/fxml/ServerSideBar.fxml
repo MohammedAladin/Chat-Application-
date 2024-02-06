@@ -26,6 +26,14 @@
                   <Insets top="12.0" />
                </VBox.margin>
             </ImageView>
+            <ImageView fx:id="database_icon" fitHeight="19.0" fitWidth="20.0" onMouseClicked="#showDatabase" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/database.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+            </ImageView>
          </children>
       </VBox>
    </left>

@@ -141,4 +141,8 @@ public class User implements Serializable{
     public boolean isOnline() {
         return this.userStatus.equalsIgnoreCase("Online");
     }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
 }

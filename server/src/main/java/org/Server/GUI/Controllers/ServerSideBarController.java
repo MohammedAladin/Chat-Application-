@@ -12,8 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static org.Server.ServerApplication.home;
-import static org.Server.ServerApplication.statistics;
+import static org.Server.ServerApplication.*;
 
 public class ServerSideBarController implements Initializable {
     @Override
@@ -29,5 +28,10 @@ public class ServerSideBarController implements Initializable {
     @FXML
     private void showHome () {
         ServerApplication.sideBar.setCenter(home);
+    }
+
+    @FXML
+    private void showDatabase() {
+        ServerApplication.sideBar.setCenter(database);
     }
 }

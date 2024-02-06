@@ -3,6 +3,7 @@ module server {
     exports org.Server;
     exports org.Server.GUI.Controllers;
     opens org.Server.GUI.Controllers;
+    opens org.Server.ServerModels.ServerEntities to javafx.base;
 
     requires java.rmi;
     requires java.sql;

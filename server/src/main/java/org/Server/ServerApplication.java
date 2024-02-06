@@ -16,6 +16,7 @@ public class ServerApplication extends Application {
     public static BorderPane sideBar;
     public static Node home;
     public static Node statistics;
+    public static Node database;
     public static void main(String[] args) {
         launch(ServerApplication.class, args);
     }
@@ -29,6 +30,9 @@ public class ServerApplication extends Application {
         FXMLLoader loader2 = new FXMLLoader (getClass().getResource("/fxml/ServerHome.fxml"));
         home = loader2.load();
 
+        // Database
+        FXMLLoader loader4 = new FXMLLoader (getClass().getResource("/fxml/ServerDatabase.fxml"));
+        database = loader4.load();
 
         // sideBar
         FXMLLoader loader = new FXMLLoader (getClass().getResource("/fxml/ServerSideBar.fxml"));

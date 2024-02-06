@@ -252,4 +252,34 @@ public class UserRepository implements UserRepoInterface {
         }
         return countryCountMap;
     }
+    public void updateUser(User user) throws SQLException {
+        String query = "UPDATE useraccounts SET "
+                + "PhoneNumber = ?, "
+                + "DisplayName = ?, "
+                + "EmailAddress = ?, "
+                + "PasswordHash = ?, "
+                + "Gender = ?, "
+                + "Country = ?, "
+                + "DateOfBirth = ?, "
+                + "Bio = ?, "
+                + "userstatus = ?, "
+                + "LastLogin = ? "
+                + "WHERE UserID = ?";
+
+        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
+            preparedStatement.setString(1, user.getPhoneNumber());
+            preparedStatement.setString(2, user.getDisplayName());
+            preparedStatement.setString(3, user.getEmailAddress());
+            preparedStatement.setString(4, user.getPasswordHash());
+            preparedStatement.setString(5, user.getGender());
+            preparedStatement.setString(6, user.getCountry());
+            preparedStatement.setDate(7, new java.sql.Date(user.getDateOfBirth().getTime()));
+            preparedStatement.setString(8, user.getBio());
+            preparedStatement.setString(9, user.getUserStatus());
+            preparedStatement.setTimestamp(10, user.getLastLogin());
+            preparedStatement.setInt(11, user.getUserID());
+
+            preparedStatement.executeUpdate();
+        }
+    }
 }
