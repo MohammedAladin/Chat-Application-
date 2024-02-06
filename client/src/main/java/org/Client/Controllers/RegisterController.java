@@ -8,6 +8,8 @@ import java.net.URL;
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class RegisterController implements Initializable {
@@ -30,14 +32,23 @@ public class RegisterController implements Initializable {
     @FXML
     public Button registerButton;
 
-
+    private Map<String, String> countryPhoneRules = new HashMap<>();
     public RemoteServiceHandler remoteServiceHandler;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        countryPhoneRulesInitialization();
+
         remoteServiceHandler = RemoteServiceHandler.getInstance();
         registerButton.setOnAction(e -> handleRegistration());
+
+
+    }
+    private void countryPhoneRulesInitialization(){
+        countryPhoneRules.put("United States", "^\\d{10}$");
+        countryPhoneRules.put("Canada", "^\\(?[\\d]{3}\\)?[\\s-]?[\\d]{3}[\\s-]?[\\d]{4}$");
+        countryPhoneRules.put("Egypt", "^01[0125][0-9]{8}$");
     }
 
     private void handleRegistration() {
@@ -89,7 +100,22 @@ public class RegisterController implements Initializable {
         }
     }
     private boolean isPhoneNumberValid(String phoneNumber) {
-        return phoneNumber.matches("[0-9]+");
+        if (phoneNumber == null || phoneNumber.isEmpty()) {
+            return false;
+        }
+
+        String selectedCountry = countryComboBox.getValue();
+        if (selectedCountry == null || selectedCountry.isEmpty()) {
+            return false;
+        }
+
+        String phoneNumberRegex = countryPhoneRules.get(selectedCountry);
+        if (phoneNumberRegex == null) {
+            return false;
+        }
+
+
+        return phoneNumber.matches(phoneNumberRegex);
     }
     private void clearRegistrationFields() {
         nameField.clear();
