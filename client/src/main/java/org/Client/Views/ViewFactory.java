@@ -25,6 +25,7 @@ import org.Client.Controllers.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 import org.Client.Models.Model;
 
@@ -390,7 +391,7 @@ public class ViewFactory {
     }
 
     private void playNotificationSound() {
-        String audioFilePath = getClass().getResource("/Audio/ding.mp3").toExternalForm();
+        String audioFilePath = Objects.requireNonNull(getClass().getResource("/Audio/ding.mp3")).toExternalForm();
         Media audio = new Media(audioFilePath);
         MediaPlayer mediaPlayer = new MediaPlayer(audio);
         mediaPlayer.play();
