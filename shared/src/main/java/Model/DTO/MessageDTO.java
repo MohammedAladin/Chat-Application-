@@ -84,4 +84,13 @@ public class MessageDTO implements Serializable {
     public void setIsAttachment(Integer isAttachment) {
         this.isAttachment = isAttachment;
     }
+
+    public MessageDTO(Integer chatID, String content, Integer isAttachment, Integer senderID, Integer attachmentID, Timestamp timestamp) {
+        this.chatID = chatID;
+        this.content = content;
+        this.isAttachment = isAttachment;
+        this.senderID = senderID;
+        this.attachmentID = attachmentID;
+        this.timestamp = timestamp;
+    }
 }

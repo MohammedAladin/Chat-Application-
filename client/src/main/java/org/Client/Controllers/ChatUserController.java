@@ -1,5 +1,6 @@
 package org.Client.Controllers;
 
+import Model.DTO.AttachmentDto;
 import Model.DTO.ContactDto;
 import Model.DTO.MessageDTO;
 import javafx.animation.PauseTransition;
@@ -21,11 +22,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import org.Client.Models.Model;
 import org.Client.Service.ImageServices;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
@@ -106,13 +109,32 @@ public class ChatUserController implements Initializable {
         styleBtn.setOnAction(actionEvent -> {
             Model.getInstance().getViewFactory().showStylePopup(styleBtn);
         });
+        attachemnt_btn.setOnAction(e->handleFileAttachement());
+    }
+
+    private void handleFileAttachement() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose a file to send");
+        File file = fileChooser.showOpenDialog(null);
+        if (file != null) {
+                AttachmentDto message = new AttachmentDto(chatID, Model.getInstance().getClientId(), file, file.getName());
+               new Thread(()->{
+                   try {
+                       Model.getInstance().getCallBackServicesServer().sendAttachment(message);
+                   } catch (RemoteException e) {
+                       throw new RuntimeException(e);
+                   }
+               }).start();
+                messageListView.setItems(Model.getInstance().getPrivateChats().get(chatID));
+
+        }
     }
 
     private void sendMessage() {
         if (textFieldID.getText().isEmpty()) return;
 
         try {
-            System.out.println("ChatID ClientSide--> " + Model.getInstance().getClientId());
+
             MessageDTO message = new MessageDTO(chatID, textFieldID.getText(), 0, Model.getInstance().getClientId(), Timestamp.valueOf(java.time.LocalDateTime.now()));
 
             Model.getInstance().getCallBackServicesServer().sendMessage(message);

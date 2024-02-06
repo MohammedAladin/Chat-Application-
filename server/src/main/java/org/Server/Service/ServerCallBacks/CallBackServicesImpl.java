@@ -4,11 +4,9 @@ import Interfaces.CallBacks.Client.CallBackServicesClient;
 import Interfaces.CallBacks.Server.CallBackServicesServer;
 import Model.DTO.*;
 import SharedEnums.StatusEnum;
-import com.mysql.cj.xdevapi.Client;
 import javafx.application.Platform;
 import org.Server.Repository.ContactsRepository;
 import org.Server.Repository.UserRepository;
-import org.Server.ServerModels.ServerEntities.Attachment;
 import org.Server.ServerModels.ServerEntities.User;
 import org.Server.ServerModels.ServerEntities.UserNotification;
 import org.Server.Service.Chat.ChatServices;
@@ -26,7 +24,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class CallBackServicesImpl extends UnicastRemoteObject implements CallBackServicesServer {
     MessageServiceImpl messageService;
@@ -38,7 +35,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
 
 
     public void register(CallBackServicesClient client, String clientphone) throws RemoteException {
-        User user =  userService.existsByPhoneNumber(clientphone);
+        User user = userService.existsByPhoneNumber(clientphone);
 
         ArrayList<NotificationDTO> notificationDTOS = getNotificationList(user.getUserID());
         clients.put(user.getUserID(), client);
@@ -52,7 +49,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
             client.setNotificationList(notificationDTOS);
             client.setContactList(new ContactService().getContacts(user.getUserID()));
             client.setGroupList(ChatServices.getInstance().getGroupChats(user.getUserID()));
-            noyifyContacts(user.getUserID(),user.getDisplayName());
+            noyifyContacts(user.getUserID(), user.getDisplayName());
             changeStatus(user.getUserID(), "Online");
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -61,15 +58,14 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         System.out.println("Client registered :id = " + user.getUserID());
     }
 
-    private void noyifyContacts(int userID,String name) {
+    private void noyifyContacts(int userID, String name) {
         List<Integer> contacts = ContactsRepository.getInstance().getContacts(userID);
         for (Integer contact : contacts) {
-            if (!clients.containsKey(contact))
-                continue;
+            if (!clients.containsKey(contact)) continue;
             CallBackServicesClient contactClient = clients.get(contact);
             Platform.runLater(() -> {
                 try {
-                    contactClient.notifyClient(name+" is now online");
+                    contactClient.notifyClient(name + " is now online");
                 } catch (RemoteException e) {
                     throw new RuntimeException(e);
                 }
@@ -83,7 +79,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         return notificationMapper.mapToDTOList(notifications);
     }
 
-    public void unRegister(Integer clientId , String phoneNumber) throws RemoteException {
+    public void unRegister(Integer clientId, String phoneNumber) throws RemoteException {
         changeStatus(clientId, "Offline");
         clients.remove(clientId);
 
@@ -101,8 +97,8 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         messageService.sendMessage(messageDTO);
         System.out.println("ChatId serverSide----> " + messageDTO.getChatID());
         List<Integer> chatParticipantsIds = chatServices.getAllParticipants(messageDTO.getChatID());
-        for(Integer id : chatParticipantsIds){
-            if(clients.containsKey(id)){
+        for (Integer id : chatParticipantsIds) {
+            if (clients.containsKey(id)) {
                 CallBackServicesClient client = clients.get(id);
                 Platform.runLater(() -> {
                     try {
@@ -114,43 +110,41 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
             }
         }
     }
+
     @Override
     public void sendAttachment(AttachmentDto attachmentMessage) throws RemoteException {
         Integer aId = attachmentService.sendAttachment(attachmentMessage);
         List<Integer> chatParticipantsIds = chatServices.getAllParticipants(attachmentMessage.getChatID());
 
-        List<CallBackServicesClient> selectedClients = clients.entrySet().stream()
-                .filter(entry -> chatParticipantsIds.contains(entry.getKey()))
-                .map(Map.Entry::getValue)
-                .toList();
+        List<CallBackServicesClient> selectedClients = clients.entrySet().stream().filter(entry -> chatParticipantsIds.contains(entry.getKey())).map(Map.Entry::getValue).toList();
 
         MessageDTO messageDTO = new MessageDTO(attachmentMessage.getChatID(), attachmentMessage.getContent(), 1, attachmentMessage.getSenderId());
         messageDTO.setAttachmentID(aId);
 
         for (CallBackServicesClient client : selectedClients) {
-                client.receiveMessage(messageDTO);
-            }
+            client.receiveMessage(messageDTO);
+        }
 
     }
+
     @Override
-    public void updateProfile(Integer id, Map<String, String> updatedFields){
+    public void updateProfile(Integer id, Map<String, String> updatedFields) {
         userService.updateUserInfo(id, updatedFields);
         updateContactList(id);
     }
+
     @Override
-    public void updateProfilePic(Integer id, byte[] img){
+    public void updateProfilePic(Integer id, byte[] img) {
         userService.profilePic(id, img);
         updateContactList(id);
     }
 
     private void updateContactList(Integer id) {
         List<ContactDto> contactList = contactService.getContacts(id);
-        List<Integer> contactsId =  contactList.stream()
-                .map(ContactDto::getContactID)
-                .toList();
+        List<Integer> contactsId = contactList.stream().map(ContactDto::getContactID).toList();
 
-        clients.forEach((k,v)->{
-            if(contactsId.contains(k)){
+        clients.forEach((k, v) -> {
+            if (contactsId.contains(k)) {
                 try {
                     v.setContactList(contactService.getContacts(k));
                 } catch (RemoteException e) {
@@ -232,8 +226,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         }
         List<Integer> contacts = ContactsRepository.getInstance().getContacts(ID);
         for (Integer contact : contacts) {
-            if (!clients.containsKey(contact))
-                continue;
+            if (!clients.containsKey(contact)) continue;
             CallBackServicesClient client = clients.get(contact);
             Platform.runLater(() -> {
                 try {
@@ -251,9 +244,8 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     public ContactDto searchForContact(String phoneNumber) throws RemoteException {
         try {
             User user = new UserRepository().findByPhoneNumber(phoneNumber);
-            if (user == null)
-                return null;
-            else return new ContactService().mapUserToContactDto(user,null);
+            if (user == null) return null;
+            else return new ContactService().mapUserToContactDto(user, null);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -261,27 +253,26 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     }
 
     @Override
-    public void createGroupChat(Integer clientId, String text, ArrayList<Integer> selected , byte[] grpImage) throws RemoteException {
+    public void createGroupChat(Integer clientId, String text, ArrayList<Integer> selected, byte[] grpImage) throws RemoteException {
         ContactService contactService = new ContactService();
         System.out.println("callback imp : " + clientId);
-        ChatDto newGrp =  contactService.createNewGroup(clientId, selected, text, grpImage);
+        ChatDto newGrp = contactService.createNewGroup(clientId, selected, text, grpImage);
         for (int i = 0; i < selected.size(); i++) {
-            if (clients.containsKey(selected.get(i)))
-                clients.get(selected.get(i)).updateGroupList(newGrp);
+            if (clients.containsKey(selected.get(i))) clients.get(selected.get(i)).updateGroupList(newGrp);
         }
     }
 
     @Override
     public void getPrivateChatMessages(Integer chatId, CallBackServicesClient client) throws RemoteException {
         ArrayList<MessageDTO> messages = new ArrayList<>(MessageServiceImpl.getInstance().getPrivateChatMessages(chatId));
-        client.setPrivateMessages(messages,chatId);
+        client.setPrivateMessages(messages, chatId);
     }
 
     @Override
     public void sendGroupMessage(MessageDTO messageDTO, List<ParticipantDto> participants) throws RemoteException {
         messageService.sendMessage(messageDTO);
-        for(ParticipantDto partcipant : participants){
-            if(clients.containsKey(partcipant.getParticipantID())){
+        for (ParticipantDto partcipant : participants) {
+            if (clients.containsKey(partcipant.getParticipantID())) {
                 CallBackServicesClient client = clients.get(partcipant.getParticipantID());
                 Platform.runLater(() -> {
                     try {
@@ -294,8 +285,8 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         }
     }
 
-    public void notify(Integer clientID,String message){
-        if(clients.containsKey(clientID)){
+    public void notify(Integer clientID, String message) {
+        if (clients.containsKey(clientID)) {
             CallBackServicesClient client = clients.get(clientID);
             Platform.runLater(() -> {
                 try {
@@ -305,6 +296,19 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
                 }
             });
         }
+    }
+
+    public void downloadAttachment(Integer clientid, Integer attachmentID, String message) throws RemoteException {
+        new Thread(() -> {
+            byte[] data = AttachmentService.getInstance().downloadAttachment(attachmentID);
+            synchronized (this) {
+                try {
+                    clients.get(clientid).downloadAttachment(data, message);
+                } catch (RemoteException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }).start();
     }
 
 }

@@ -26,6 +26,7 @@ public class MessageServiceImpl {
 
 
     private final ChatServices chatServices;
+
     private MessageServiceImpl() throws RemoteException {
         super();
         messageRepository = new MessageRepository();
@@ -33,7 +34,7 @@ public class MessageServiceImpl {
         attachmentReopsitory = AttachmentReopsitory.getInstance();
     }
 
-    public static MessageServiceImpl getInstance (){
+    public static MessageServiceImpl getInstance() {
         if (messageServiceImpl == null) {
             try {
                 messageServiceImpl = new MessageServiceImpl();
@@ -43,6 +44,7 @@ public class MessageServiceImpl {
         }
         return messageServiceImpl;
     }
+
     public Integer sendMessage(MessageDTO messageDTO) {
         Message message = messageDTOToMessage(messageDTO);
         return messageRepository.save(message);
@@ -51,8 +53,9 @@ public class MessageServiceImpl {
     public Integer getLastId() throws SQLException {
         return messageRepository.getLastInsertedId();
     }
-    public Message messageDTOToMessage (MessageDTO messageDTO){
-        return new Message (
+
+    public Message messageDTOToMessage(MessageDTO messageDTO) {
+        return new Message(
                 messageDTO.getSenderID(),
                 messageDTO.getChatID(),
                 messageDTO.getContent(),
@@ -61,9 +64,9 @@ public class MessageServiceImpl {
         );
     }
 
-    public List<MessageDTO> getPrivateChatMessages(Integer chatID){
-        List<Message> list =new MessageRepository().getPrivateChatMessages(chatID);
-        ArrayList<MessageDTO> messageDTOS=new ArrayList<>();
+    public List<MessageDTO> getPrivateChatMessages(Integer chatID) {
+        List<Message> list = new MessageRepository().getPrivateChatMessages(chatID);
+        ArrayList<MessageDTO> messageDTOS = new ArrayList<>();
         for (Message message : list) {
             messageDTOS.add(mapToMessageDTO(message));
         }
@@ -71,6 +74,18 @@ public class MessageServiceImpl {
     }
 
     public MessageDTO mapToMessageDTO(Message message) {
+        attachmentReopsitory = AttachmentReopsitory.getInstance();
+        Attachment attachment = attachmentReopsitory.findByMessageId(message.getMessageID());
+        if (message.isAttachment()) {
+            return new MessageDTO(
+                    message.getReceiverID(),
+                    message.getMessageContent(),
+                    message.isAttachment() ? 1 : 0,
+                    message.getSenderID(),
+                    attachment.getAttachmentID(),
+                    message.getMessageTimestamp()
+            );
+        }
         return new MessageDTO(
                 message.getReceiverID(),
                 message.getMessageContent(),

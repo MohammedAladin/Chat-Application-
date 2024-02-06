@@ -54,13 +54,12 @@ public class ChatAreaController implements Initializable {
 
         chatList.setOnMouseClicked(event -> {
             chat = chatList.getSelectionModel().getSelectedItem();
-            if (chat != null) {
                 getChat(chat);
                 System.out.println("Selected Item: " + chat.getContactName());
                 System.out.println("Chat ID " + chat.getChatId());
                 Model.getInstance().getViewFactory().setSelectedChat(chat);
                 System.out.println("function called ");
-            }
+
         });
 
 
@@ -92,6 +91,7 @@ public class ChatAreaController implements Initializable {
             if (newValue != null) {
                 Throwable ex = newValue;
                 System.out.println("Exception occurred in task: " + ex);
+                ex.printStackTrace();
             }
         });
 

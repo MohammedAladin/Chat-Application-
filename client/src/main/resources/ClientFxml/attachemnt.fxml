@@ -4,16 +4,57 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 
-<HBox prefHeight="68.0" prefWidth="121.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="installLabel">
-         <graphic>
-            <FontAwesomeIconView glyphName="DOWNLOAD" size="30" />
-         </graphic>
-         <HBox.margin>
-            <Insets left="45.0" top="20.0" />
-         </HBox.margin>
-      </Label>
+      <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity">
+         <children>
+            <VBox>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+               <children>
+                  <Label fx:id="name" text="Label" textFill="#767474">
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Circle fx:id="imgcircle" fill="WHITE" radius="24.0" stroke="#c7c3c3" strokeType="INSIDE" />
+               </children>
+            </VBox>
+            <VBox fx:id="labelContainer">
+               <children>
+                  <HBox>
+                     <children>
+                        <Label fx:id="installLabel">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="DOWNLOAD" size="30" />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets right="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Label fx:id="msg" alignment="CENTER_RIGHT" text="Label">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
    </children>
-</HBox>
+   <padding>
+      <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+   </padding>
+</VBox>

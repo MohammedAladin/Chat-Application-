@@ -38,4 +38,5 @@ public interface CallBackServicesServer extends Remote {
 
     void sendGroupMessage(MessageDTO messageDTO, List<ParticipantDto> participants) throws RemoteException;
     void notify(Integer clientID,String message) throws RemoteException;
+   void downloadAttachment(Integer clientid, Integer attachmentID, String message) throws RemoteException;
 }

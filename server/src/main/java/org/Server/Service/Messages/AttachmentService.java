@@ -1,6 +1,7 @@
 package org.Server.Service.Messages;
 
 import Model.DTO.AttachmentDto;
+import Model.DTO.MessageDTO;
 import org.Server.RepoInterfaces.AttachmentRepoInterface;
 import org.Server.Repository.AttachmentReopsitory;
 import org.Server.ServerModels.ServerEntities.Attachment;
@@ -34,23 +35,27 @@ public class AttachmentService {
                     new Timestamp(System.currentTimeMillis()),
                     true);
 
-            Integer messageId = messageService.sendMessage(messageService.mapToMessageDTO(message));
 
+            Integer messageId = messageService.sendMessage(new MessageDTO(fileDto.getChatID(), fileDto.getContent(), 1, fileDto.getSenderId()));
             byte[] fileBytes = readFileToBytes(fileDto.getFile());
             Attachment attachment = new Attachment(messageId, fileBytes);
             return attachmentReopsitory.save(attachment);
 
         } catch (Exception e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }
 
-    public byte[] downloadAttachment(Integer messageID) {
+    public byte[] downloadAttachment(Integer attachmentID) {
         try {
-            Attachment attachment = attachmentReopsitory.findByMessageId(messageID);
+            Attachment attachment = attachmentReopsitory.findById(attachmentID);
+            System.out.println("the attachment size is " + attachment.getAttachment().length);
             return attachment.getAttachment();
         } catch (Exception e) {
+            e.printStackTrace();
             throw new RuntimeException("Error downloading attachment", e);
+
         }
     }
 

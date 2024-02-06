@@ -5,10 +5,13 @@ import Model.DTO.MessageDTO;
 import Model.DTO.ParticipantDto;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.ListCell;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.Client.Models.Model;
 
+import java.io.IOException;
 import java.util.List;
 
 public class MessageCellFactory extends ListCell<MessageDTO> {
@@ -19,58 +22,107 @@ public class MessageCellFactory extends ListCell<MessageDTO> {
             setGraphic(null);
             setText(null);
         } else {
-            if (message.getSenderID().equals(Model.getInstance().getClientId()) ){
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/Message_sent.fxml"));
-                MessageSent messageSent = new MessageSent();
-                messageSent.setMessage(message.getContent());
-                messageSent.setTimestamp(message.getTimestamp());
-                loader.setController(messageSent);
-                try {
-                    VBox vbox = loader.load();
-                    vbox.setAlignment(Pos.BASELINE_RIGHT);
-                    setGraphic(vbox);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-
+            if(message.getIsAttachment()==1){
+                VBox node =dealWithAttachment(message);
+                setGraphic(node);
             }
             else {
-                if (isAGroupchat(message.getChatID())) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/Message_received_group.fxml"));
-                    MessageReceivedGroupController messageReceivedGroupController = new MessageReceivedGroupController();
-                    messageReceivedGroupController.setMessage(message.getContent());
-                    messageReceivedGroupController.setTimestamp(message.getTimestamp());
-                    byte[] image = getParticipantImage(message.getChatID(), message.getSenderID());
-                    messageReceivedGroupController.setImage(image);
-                    String name = getParticipantName(message.getChatID(), message.getSenderID());
-                    messageReceivedGroupController.setSendername(name);
-                    loader.setController(messageReceivedGroupController);
+                if (message.getSenderID().equals(Model.getInstance().getClientId())) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/Message_sent.fxml"));
+                    MessageSent messageSent = new MessageSent();
+                    messageSent.setMessage(message.getContent());
+                    messageSent.setTimestamp(message.getTimestamp());
+                    loader.setController(messageSent);
                     try {
                         VBox vbox = loader.load();
-                        vbox.setAlignment(Pos.BASELINE_LEFT);
+                        vbox.setAlignment(Pos.BASELINE_RIGHT);
                         setGraphic(vbox);
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+
+
                 } else {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/Message_received.fxml"));
-                    MessageReceived messageReceived = new MessageReceived();
-                    messageReceived.setMessage(message.getContent());
-                    messageReceived.setTimestamp(message.getTimestamp());
-                    loader.setController(messageReceived);
-                    try {
-                        VBox vbox = loader.load();
-                        vbox.setAlignment(Pos.BASELINE_LEFT);
-                        setGraphic(vbox);
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    if (isAGroupchat(message.getChatID())) {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/Message_received_group.fxml"));
+                        MessageReceivedGroupController messageReceivedGroupController = new MessageReceivedGroupController();
+                        messageReceivedGroupController.setMessage(message.getContent());
+                        messageReceivedGroupController.setTimestamp(message.getTimestamp());
+                        byte[] image = getParticipantImage(message.getChatID(), message.getSenderID());
+                        messageReceivedGroupController.setImage(image);
+                        String name = getParticipantName(message.getChatID(), message.getSenderID());
+                        messageReceivedGroupController.setSendername(name);
+                        loader.setController(messageReceivedGroupController);
+                        try {
+                            VBox vbox = loader.load();
+                            vbox.setAlignment(Pos.BASELINE_LEFT);
+                            setGraphic(vbox);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/Message_received.fxml"));
+                        MessageReceived messageReceived = new MessageReceived();
+                        messageReceived.setMessage(message.getContent());
+                        messageReceived.setTimestamp(message.getTimestamp());
+                        loader.setController(messageReceived);
+                        try {
+                            VBox vbox = loader.load();
+                            vbox.setAlignment(Pos.BASELINE_LEFT);
+                            setGraphic(vbox);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
 
         }
+    }
+
+    private VBox dealWithAttachment(MessageDTO message) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/attachemnt.fxml"));
+        AttachementController controller = new AttachementController();
+        controller.setAttachmentID(message.getAttachmentID());
+        controller.setMessage(message.getContent());
+        controller.setTime(message.getTimestamp());
+        System.out.println("this is the attachment id "+message.getAttachmentID());
+         if(isAGroupchat(message.getChatID())&&!message.getSenderID().equals(Model.getInstance().getClientId())){
+            controller.setImg(getParticipantImage(message.getChatID(), message.getSenderID()));
+            controller.setUserName(getParticipantName(message.getChatID(), message.getSenderID()));
+        }
+        loader.setController(controller);
+        VBox vbox;
+        try {
+            vbox =loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        if(message.getSenderID().equals(Model.getInstance().getClientId())){
+            controller.getLabelContainer().setStyle(" -fx-background-color: #6e00ff;\n" +
+                    "    -fx-text-fill: #FFFFFF;\n" +
+                    "    -fx-background-radius: 15px;\n" +
+                    "    -fx-wrap-text: true;\n" +
+                    "    -fx-padding: 10px;" +
+                    "   -fx-alignment: center-right;");
+            vbox.setAlignment(Pos.BASELINE_RIGHT);
+        }
+
+        else {
+
+            controller.getLabelContainer().setStyle("-fx-background-color: #e7e7e7;\n" +
+                    "    -fx-text-fill: #303030;\n" +
+                    "    -fx-background-radius: 15px;\n" +
+                    "    -fx-wrap-text: true;\n" +
+                    "    -fx-padding: 10px;" +
+                    "   -fx-alignment: center-left;");
+            vbox.setAlignment(Pos.BASELINE_LEFT);
+
+        }
+
+
+        return vbox;
     }
 
     private byte[] getParticipantImage(Integer ChatID, Integer senderID) {

@@ -16,7 +16,7 @@ public class MessageRepository implements MessageRepoInterface {
     @Override
     public Integer save(Message message) {
         String query = "INSERT INTO Messages (SenderID, ReceiverID, MessageContent, IsAttachement) " +
-                "VALUES (?, ?, ?, ?)";
+                "VALUES (?, ?, ?, ?);";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
 
@@ -29,6 +29,7 @@ public class MessageRepository implements MessageRepoInterface {
 
             try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
+                    System.out.println("Generated MessageID: " + generatedKeys.getInt(1));
                     return generatedKeys.getInt(1);
                 } else {
                     throw new SQLException("Creating attachment failed, no ID obtained.");
@@ -38,7 +39,7 @@ public class MessageRepository implements MessageRepoInterface {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return 0;
+        return null;
     }
 
     @Override

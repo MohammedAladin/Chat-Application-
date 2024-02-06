@@ -33,7 +33,7 @@ public class ServerHomeController implements Initializable {
             ServicesFactoryInterface serviceFactory = new ServicesFactory();
             userService = serviceFactory.createUserService();
             callBackServices = new CallBackServicesImpl();
-            registry = LocateRegistry.createRegistry(1100);
+            registry = LocateRegistry.createRegistry(1099);
 
             announceButton.setOnAction((e)->handleAnnouncement());
         } catch (RemoteException e) {

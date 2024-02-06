@@ -52,17 +52,20 @@ public class AttachmentReopsitory implements AttachmentRepoInterface {
 
     @Override
     public Attachment findById(Integer id) {
-        String query = "select * from attachment where AttachmentID = ?";
+        String query = "SELECT * FROM Attachment WHERE AttachmentID = ?;";
         Attachment attachment = new Attachment();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, id);
+            System.out.println(preparedStatement.toString());
            try (ResultSet resultSet = preparedStatement.executeQuery()) {
                if (resultSet.next()) {
                    attachment.setAttachmentID(id);
                    attachment.setMessageID(resultSet.getInt("MessageID"));
                    attachment.setAttachment(resultSet.getBytes("Attachment"));
+                   System.out.println("attachment = "+attachment.getAttachment().length);
                }
+               return attachment;
            }
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,7 +82,7 @@ public class AttachmentReopsitory implements AttachmentRepoInterface {
             preparedStatement.setInt(1, messageId);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    attachment.setAttachmentID(messageId);
+                    attachment.setAttachmentID(resultSet.getInt("AttachmentID"));
                     attachment.setMessageID(resultSet.getInt("MessageID"));
                     attachment.setAttachment(resultSet.getBytes("Attachment"));
                 }
