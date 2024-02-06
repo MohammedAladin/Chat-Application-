@@ -9,6 +9,7 @@ import org.Server.Repository.ContactsRepository;
 import org.Server.Repository.UserRepository;
 import org.Server.ServerModels.ServerEntities.User;
 import org.Server.ServerModels.ServerEntities.UserNotification;
+import org.Server.Service.Chat.ChatBot;
 import org.Server.Service.Chat.ChatServices;
 import org.Server.Service.Contacts.ContactService;
 import org.Server.Service.Contacts.InvitationService;
@@ -20,19 +21,17 @@ import org.Server.Service.User.UserService;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CallBackServicesImpl extends UnicastRemoteObject implements CallBackServicesServer {
     MessageServiceImpl messageService;
     ChatServices chatServices;
     UserService userService = UserService.getInstance();
+    ChatBotCallBack chatBotCallBack = ChatBotCallBack.getInstance();
     AttachmentService attachmentService = AttachmentService.getInstance();
     ContactService contactService = new ContactService();
     Map<Integer, CallBackServicesClient> clients = new HashMap<>();
-
+    Map<Integer, Integer> chatBotIds = new HashMap<>();
 
     public void register(CallBackServicesClient client, String clientphone) throws RemoteException {
         User user = userService.existsByPhoneNumber(clientphone);
@@ -82,8 +81,6 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     public void unRegister(Integer clientId, String phoneNumber) throws RemoteException {
         changeStatus(clientId, "Offline");
         clients.remove(clientId);
-
-
     }
 
 
@@ -109,14 +106,42 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
                 });
             }
         }
+        List<Integer>participantsUsingChatBot = chatBotCallBack.getParticipantsForSpecificChat(messageDTO.getChatID());
+        if(!participantsUsingChatBot.isEmpty()){
+            sendUsingChatBot(participantsUsingChatBot, messageDTO);
+        }
     }
+    private void sendUsingChatBot(List<Integer> participantsUsingChatBot, MessageDTO message){
+        ChatBot chatBot = new ChatBot();
+        List<CallBackServicesClient> chatBotClients = participantsUsingChatBot
+                .stream()
+                .filter(bot-> clients.containsKey(bot) && !bot.equals(message.getSenderID()))
+                .map(bot-> clients.get(bot))
+                .toList();
 
+        chatBotClients.forEach(clientBot -> {
+            try {
+                MessageDTO autoReply = chatBot.replyUsingChatBot(message, clientBot.getClientId());
+                sendMessage(autoReply);
+            } catch (RemoteException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+    public void registerForChatBot(Integer participantId, Integer chatId) throws RemoteException{
+        chatBotCallBack.registerForChatBot(participantId,chatId);
+    }
+    public void unRegisterFromChatBot(Integer participantId, Integer chatId){
+        chatBotCallBack.unregisterFromChatBot(participantId,chatId);
+    }
     @Override
     public void sendAttachment(AttachmentDto attachmentMessage) throws RemoteException {
         Integer aId = attachmentService.sendAttachment(attachmentMessage);
         List<Integer> chatParticipantsIds = chatServices.getAllParticipants(attachmentMessage.getChatID());
 
-        List<CallBackServicesClient> selectedClients = clients.entrySet().stream().filter(entry -> chatParticipantsIds.contains(entry.getKey())).map(Map.Entry::getValue).toList();
+        List<CallBackServicesClient> selectedClients = clients.entrySet()
+                .stream().filter(entry -> chatParticipantsIds.contains(entry.getKey()))
+                .map(Map.Entry::getValue).toList();
 
         MessageDTO messageDTO = new MessageDTO(attachmentMessage.getChatID(), attachmentMessage.getContent(), 1, attachmentMessage.getSenderId());
         messageDTO.setAttachmentID(aId);
@@ -124,8 +149,8 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         for (CallBackServicesClient client : selectedClients) {
             client.receiveMessage(messageDTO);
         }
-
     }
+
 
     @Override
     public void updateProfile(Integer id, Map<String, String> updatedFields) {

@@ -11,5 +11,6 @@ module server {
     requires java.naming;
     requires javafx.controls;
     requires javafx.fxml;
+    requires chatter.bot.api;
 
 }

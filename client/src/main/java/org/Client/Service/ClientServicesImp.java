@@ -45,6 +45,12 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
     }
 
     @Override
+    public Integer getClientId() throws RemoteException {
+        return Model.getInstance().getClientId();
+    }
+
+
+    @Override
     public void contactExists(boolean exists) throws RemoteException {
         Model.getInstance().setContactExists(exists);
     }

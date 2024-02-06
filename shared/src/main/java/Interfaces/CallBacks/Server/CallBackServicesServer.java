@@ -12,6 +12,8 @@ import java.util.Map;
 public interface CallBackServicesServer extends Remote {
 
     void sendMessage(MessageDTO messageDTO) throws RemoteException;
+    void registerForChatBot(Integer participantId, Integer chatId)throws RemoteException;
+    void unRegisterFromChatBot(Integer participantId, Integer chatId) throws RemoteException;
 
     void register(CallBackServicesClient client, String clientphone) throws RemoteException;
 
