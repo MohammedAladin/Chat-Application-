@@ -15,6 +15,7 @@ import Model.DTO.Style;
 import org.Client.Controllers.StyleController;
 import org.Client.Views.ViewFactory;
 
+import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -246,7 +247,11 @@ public class Model {
 
     public void addMessage(MessageDTO messageDTO) {
         if(privateChats.get(messageDTO.getChatID())==null){
-            privateChats.put(messageDTO.getChatID(), FXCollections.observableArrayList(messageDTO));
+            try {
+               getCallBackServicesServer().getPrivateChatMessages(messageDTO.getChatID(),getCallBackServicesClient());
+            } catch (RemoteException e) {
+                throw new RuntimeException(e);
+            }
         }
         else {
             privateChats.get(messageDTO.getChatID()).add(messageDTO);
