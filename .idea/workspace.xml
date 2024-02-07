@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="Some styling adjustments.">
+    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="fixes in the logout and exit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/ClientFxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/ClientFxml/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/ClientStyles/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/ClientStyles/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/styles/ServerHome.css" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/styles/ServerHome.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerSideBarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerSideBarController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/styles/ServerHome.css" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/styles/ServerHome.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/styles/ServerSideBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/styles/ServerSideBar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dp.properties" beforeDir="false" afterPath="$PROJECT_DIR$/dp.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/MessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/MessageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/fxml/ServerHome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/fxml/ServerHome.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +23,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="FxmlFile" />
         <option value="CSS File" />
         <option value="Interface" />
-        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -72,7 +72,7 @@
     &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/LENOVO/IdeaProjects/Chat-Application-/server/src/main/resources/images&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Chat-Application-/client/src/main/resources/ClientImages&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -87,11 +87,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\resources\images" />
       <recent name="E:\Chat-Application-\client\src\main\resources\ClientImages" />
       <recent name="E:\Chat-Application-\server\src\main\resources" />
       <recent name="E:\try\Chat-Application\client\src\main\resources\ClientImages" />
       <recent name="E:\try\Chat-Application\client\src\main\resources\ClientStyles" />
+      <recent name="E:\try\Chat-Application\client\src\main\resources\ClientFxml" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.Server.ServerModels.ServerEntities" />
@@ -100,7 +100,7 @@
       <recent name="org.Client.Controllers" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Mohammed">
     <configuration name="Amin" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.Client.ClientApplication" />
       <module name="client" />
@@ -136,9 +136,9 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Server" />
-      <item itemvalue="Application.Mohammed" />
       <item itemvalue="Application.Amin" />
+      <item itemvalue="Application.Mohammed" />
+      <item itemvalue="Application.Server" />
       <item itemvalue="Application.org.Server.TestApp" />
     </list>
     <recent_temporary>
@@ -146,13 +146,6 @@
         <item itemvalue="Application.org.Server.TestApp" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-f98dd351" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -399,31 +392,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707171881977</updated>
     </task>
-    <task id="LOCAL-00025" summary="Fixed bugs.">
+    <task id="LOCAL-00025" summary="fixes in the logout and exit">
       <option name="closed" value="true" />
-      <created>1707228429263</created>
+      <created>1707236566635</created>
       <option name="number" value="00025" />
       <option name="presentableId" value="LOCAL-00025" />
       <option name="project" value="LOCAL" />
-      <updated>1707228429263</updated>
+      <updated>1707236566635</updated>
     </task>
-    <task id="LOCAL-00026" summary="Added updating database from Server Gui feature.">
-      <option name="closed" value="true" />
-      <created>1707261498701</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1707261498701</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Some styling adjustments.">
-      <option name="closed" value="true" />
-      <created>1707267586512</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1707267586512</updated>
-    </task>
-    <option name="localTasksCounter" value="28" />
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -469,9 +446,7 @@
     <MESSAGE value="Edit Profile Image callback and edit profile info functionality has been added" />
     <MESSAGE value="Ability to package to an uber jar added." />
     <MESSAGE value="Fixed stopping Server Thread upon closing the program." />
-    <MESSAGE value="Fixed bugs." />
-    <MESSAGE value="Added updating database from Server Gui feature." />
-    <MESSAGE value="Some styling adjustments." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some styling adjustments." />
+    <MESSAGE value="fixes in the logout and exit" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixes in the logout and exit" />
   </component>
 </project>

@@ -158,7 +158,6 @@ public class MessageRepository implements MessageRepoInterface {
         List<Message> messagesList = new ArrayList<>();
         String query = "select * from Messages where ReceiverID=?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-
             preparedStatement.setInt(1, chatID);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
