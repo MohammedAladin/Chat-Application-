@@ -48,7 +48,7 @@ public class StyleController implements Initializable {
         userStyle = new Style(fontSize, fontStyle, fontColor, backgroundColor);
         model.setStyle(userStyle);
         model.getViewFactory().getChatUserController().setStyle(userStyle);
-        model.getViewFactory().getGoupChatController().setStyle(userStyle);
+       // model.getViewFactory().getGoupChatController().setStyle(userStyle);
 
     }
 
@@ -89,6 +89,6 @@ public class StyleController implements Initializable {
         Color defaultBackgroundColor = Color.web("#EFF6FC");
         backGroundColorID.setValue(defaultBackgroundColor); // Default color is white
         model.getViewFactory().getChatUserController().setStyle(null);
-        model.getViewFactory().getGoupChatController().setStyle(null);
+       // model.getViewFactory().getGoupChatController().setStyle(null);
     }
 }

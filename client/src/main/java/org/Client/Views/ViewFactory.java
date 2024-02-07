@@ -2,6 +2,7 @@ package org.Client.Views;
 
 import Model.DTO.ChatDto;
 import Model.DTO.ContactDto;
+import Model.DTO.ParticipantDto;
 import javafx.animation.FadeTransition;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -25,6 +26,7 @@ import org.Client.Controllers.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 import org.Client.Models.Model;
@@ -45,7 +47,6 @@ public class ViewFactory {
     Popup addContactPopup;
     Popup notificationPopup;
 
-    GoupChatController goupChatController;
     ChatUserController chatUserController;
     Button notiButton;
 
@@ -54,13 +55,6 @@ public class ViewFactory {
     private ObjectProperty<ContactDto> selectedChat = new SimpleObjectProperty<>();
     private String phoneNumber;
 
-    public GoupChatController getGoupChatController() {
-        return goupChatController;
-    }
-
-    public void setGoupChatController(GoupChatController goupChatController) {
-        this.goupChatController = goupChatController;
-    }
 
     public ChatUserController getChatUserController() {
         return chatUserController;
@@ -386,12 +380,19 @@ public class ViewFactory {
 
     public void showGroupChatArea(ChatDto chat) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/PrivateChat.fxml"));
-        goupChatController = new GoupChatController();
-        goupChatController.setName(chat.getChatName());
-        goupChatController.setImage(chat.getChatImage());
-        goupChatController.setChatID(chat.getChatID());
-        goupChatController.setParticipants(chat.getParticipants());
-        fxmlLoader.setController(goupChatController);
+        chatUserController= new ChatUserController();
+        chatUserController.setName(chat.getChatName());
+        chatUserController.setImage(chat.getChatImage());
+        chatUserController.setChatID(chat.getChatID());
+        List<ParticipantDto> participants = chat.getParticipants();
+        chatUserController.setParticipants(participants);
+        StringBuilder chatParticipants = new StringBuilder();
+        for (ParticipantDto participant : participants) {
+            chatParticipants.append(participant.getParticipantName()).append(", ");
+        }
+        chatParticipants.delete(chatParticipants.length() - 2, chatParticipants.length());
+        chatUserController.setBioString(chatParticipants.toString());
+        fxmlLoader.setController(chatUserController);
         try {
             home.setCenter(fxmlLoader.load());
             System.out.println("function implemeneted");

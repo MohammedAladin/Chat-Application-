@@ -1,7 +1,6 @@
 package org.Client.Controllers;
 
-import Model.DTO.AttachmentDto;
-import Model.DTO.MessageDTO;
+import Model.DTO.*;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +11,6 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.util.Callback;
-import Model.DTO.Style;
 import org.Client.Models.Model;
 import org.Client.Service.ImageServices;
 
@@ -20,6 +18,8 @@ import java.io.File;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ChatUserController implements Initializable {
@@ -43,6 +43,15 @@ public class ChatUserController implements Initializable {
     String name;
     StyleController styleController;
     Style style;
+    public List<ParticipantDto> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<ParticipantDto> participants) {
+        this.participants = participants;
+    }
+
+    private List<ParticipantDto> participants = new ArrayList<>();
 
     public StyleController getStyleController() {
         return styleController;
@@ -100,10 +109,14 @@ public class ChatUserController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         nameID.setText(name);
         bio.setText(bioString);
-        if (image == null) {
-            circleID.setFill(new ImagePattern(ImageServices.getDefaultImage()));
-        } else circleID.setFill(new ImagePattern(ImageServices.convertToImage(image)));
-        //statusID.setText();
+        if (image == null||image.length==0){
+            if(isChatInGroupList(chatID)){
+                circleID.setFill(new ImagePattern(ImageServices.getDefaultGroupImage()));
+            }
+           else circleID.setFill(new ImagePattern(ImageServices.getDefaultImage()));
+        }
+        else circleID.setFill(new ImagePattern(ImageServices.convertToImage(image)));
+
         textFieldID.setOnAction(actionEvent -> {
             send_btn.fire();
         });
@@ -154,7 +167,9 @@ public class ChatUserController implements Initializable {
 
             Model.getInstance().getCallBackServicesServer().sendMessage(message);
         } catch (RemoteException e) {
-            throw new RuntimeException(e);
+           Alert alert = new Alert(Alert.AlertType.ERROR);
+              alert.setContentText("Sorry, we couldn't send your message. Please check your connection and try again later.");
+              alert.show();
         }
         messageListView.setItems(Model.getInstance().getPrivateChats().get(chatID));
         textFieldID.clear();
@@ -178,10 +193,15 @@ public class ChatUserController implements Initializable {
 
         });
     }
-    /*public String toCssColor(javafx.scene.paint.Color color) {
-        return String.format( "#%02X%02X%02X",
-                (int)( color.getRed() * 255 ),
-                (int)( color.getGreen() * 255 ),
-                (int)( color.getBlue() * 255 ) );
-    }*/
+
+    public boolean isChatInGroupList(int chatID) {
+        ObservableList<ChatDto> groupList = Model.getInstance().getGroupList();
+        for (ChatDto chat : groupList) {
+            if (chat.getChatID() == chatID) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
