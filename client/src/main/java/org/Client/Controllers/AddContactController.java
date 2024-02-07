@@ -19,6 +19,7 @@ public class AddContactController implements Initializable {
     public Text error;
     public VBox vbox;
     public Button find_btn;
+    public boolean isFriend = false;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -54,13 +55,15 @@ public class AddContactController implements Initializable {
                     if (contactDto.getContactID().equals(user.getContactID())) {
                         error.setText("User already in your contact list");
                         error.setVisible(true);
+                        isFriend = true;
                         return;
                     }
                 }
+
             }
 
             //show the contact
-            AnchorPane contactCard = Model.getInstance().getViewFactory().showUserCard(user, phoneNumber);
+            AnchorPane contactCard = Model.getInstance().getViewFactory().showUserCard(user, phoneNumber, isFriend);
             vbox.getChildren().add(contactCard);
         } else {
             //show error

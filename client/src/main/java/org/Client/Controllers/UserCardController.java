@@ -18,15 +18,25 @@ import java.util.ResourceBundle;
 
 public class UserCardController implements Initializable {
     public Button add_btn;
+    private boolean isFriend;
+    public Button blockButton;
     public ImageView userImage;
     public Label name_label;
     String name;
 
-    @FXML
+
     public AnchorPane parentPane;
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public boolean isFriend() {
+        return isFriend;
+    }
+
+    public void setFriend(boolean friend) {
+        isFriend = friend;
     }
 
     public void setPhoneNumber(String phoneNumber) {
@@ -48,7 +58,10 @@ public class UserCardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        if (isFriend) {
+            add_btn.setVisible(false);
+        }
+        blockButton.setOnAction(actionEvent -> blockContact(phoneNumber));
         name_label.setText(name);
         add_btn.setOnAction(e -> addContact(phoneNumber));
         if (image == null) {
@@ -70,6 +83,10 @@ public class UserCardController implements Initializable {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+    }
+
+    private void blockContact (String phoneNumber){
+
     }
 
 }

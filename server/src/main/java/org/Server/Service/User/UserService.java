@@ -53,7 +53,7 @@ public class UserService extends UnicastRemoteObject implements RemoteUserServic
         return loginService.loginUser(userLoginDTO);
     }
     @Override
-    public boolean existsByPhoneNumber(UserLoginDTO userLoginDTO) throws RemoteException {
+    public boolean existsByUserLoginDTO(UserLoginDTO userLoginDTO) throws RemoteException {
         if (loginService.phoneNumberExists(userLoginDTO)) return true;
         return false;
     }

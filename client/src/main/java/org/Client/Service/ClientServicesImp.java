@@ -4,7 +4,6 @@ import Interfaces.CallBacks.Client.CallBackServicesClient;
 import Model.DTO.*;
 import javafx.application.Platform;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import org.Client.Models.Model;
 
 import javax.imageio.ImageIO;
@@ -14,7 +13,6 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -53,6 +51,11 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
     @Override
     public void contactExists(boolean exists) throws RemoteException {
         Model.getInstance().setContactExists(exists);
+    }
+
+    @Override
+    public void deleteContact(Integer contactID) throws RemoteException {
+        Model.getInstance().getContacts().removeIf(contactDto -> contactDto.getContactID().equals(contactID));
     }
 
     @Override

@@ -339,13 +339,14 @@ public class ViewFactory {
 
     }
 
-    public AnchorPane showUserCard(ContactDto user, String phoneNumber) {
+    public AnchorPane showUserCard(ContactDto user, String phoneNumber, boolean isFriend) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/userCard.fxml"));
         try {
             UserCardController controller = new UserCardController();
             controller.setName(user.getContactName());
             controller.setPhoneNumber(phoneNumber);
             controller.setImage(user.getContactImage());
+            controller.setFriend(isFriend);
             fxmlLoader.setController(controller);
             AnchorPane card = fxmlLoader.load();
             return card;

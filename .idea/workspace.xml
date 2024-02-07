@@ -4,10 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="bug fixes in messages">
+    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="Some styling adjustments.">
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/RepoInterfaces/BlockedContactsRepoInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/BlockedContactsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerModels/ServerEntities/BlockedEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Contacts/BlockedContactsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/RmiServices/BlockedContactsInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/Model/DTO/BlockedContactDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Models/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Models/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Models/Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/AddContactController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/AddContactController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/UserCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/UserCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Views/ViewFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/userCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/userCard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerDatabaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerDatabaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerHomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/User/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/User/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/TestApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/TestApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerHomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerHomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/ServerApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/ServerApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/User/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/TestApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/TestApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Client/CallBackServicesClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Client/CallBackServicesClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Server/CallBackServicesServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Server/CallBackServicesServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/RmiServices/RemoteUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/RmiServices/RemoteUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/RmiServices/RemoteUserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/Interfaces/RmiServices/RemoteUserService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,10 +42,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="FxmlFile" />
         <option value="CSS File" />
-        <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -32,7 +56,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -68,7 +91,7 @@
     &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Chat-Application-/client/src/main/resources/ClientImages&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/LENOVO/IdeaProjects/Chat-Application-/server/src/main/resources/images&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -83,11 +106,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\resources\images" />
       <recent name="E:\Chat-Application-\client\src\main\resources\ClientImages" />
       <recent name="E:\Chat-Application-\server\src\main\resources" />
       <recent name="E:\try\Chat-Application\client\src\main\resources\ClientImages" />
       <recent name="E:\try\Chat-Application\client\src\main\resources\ClientStyles" />
-      <recent name="E:\try\Chat-Application\client\src\main\resources\ClientFxml" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.Server.ServerModels.ServerEntities" />
@@ -96,7 +119,7 @@
       <recent name="org.Client.Controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Mohammed">
+  <component name="RunManager">
     <configuration name="Amin" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.Client.ClientApplication" />
       <module name="client" />
@@ -132,9 +155,9 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Amin" />
-      <item itemvalue="Application.Mohammed" />
       <item itemvalue="Application.Server" />
+      <item itemvalue="Application.Mohammed" />
+      <item itemvalue="Application.Amin" />
       <item itemvalue="Application.org.Server.TestApp" />
     </list>
     <recent_temporary>
@@ -142,6 +165,13 @@
         <item itemvalue="Application.org.Server.TestApp" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-f98dd351" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -388,31 +418,47 @@
       <option name="project" value="LOCAL" />
       <updated>1707171881977</updated>
     </task>
-    <task id="LOCAL-00025" summary="fixes in the logout and exit">
+    <task id="LOCAL-00025" summary="Fixed bugs.">
       <option name="closed" value="true" />
-      <created>1707236566635</created>
+      <created>1707228429263</created>
       <option name="number" value="00025" />
       <option name="presentableId" value="LOCAL-00025" />
       <option name="project" value="LOCAL" />
-      <updated>1707236566635</updated>
+      <updated>1707228429263</updated>
     </task>
-    <task id="LOCAL-00026" summary="bug fix">
+    <task id="LOCAL-00026" summary="Added updating database from Server Gui feature.">
       <option name="closed" value="true" />
-      <created>1707327277360</created>
+      <created>1707261498701</created>
       <option name="number" value="00026" />
       <option name="presentableId" value="LOCAL-00026" />
       <option name="project" value="LOCAL" />
-      <updated>1707327277360</updated>
+      <updated>1707261498701</updated>
     </task>
-    <task id="LOCAL-00027" summary="bug fixes in messages">
+    <task id="LOCAL-00027" summary="Some styling adjustments.">
       <option name="closed" value="true" />
-      <created>1707331225193</created>
+      <created>1707267586512</created>
       <option name="number" value="00027" />
       <option name="presentableId" value="LOCAL-00027" />
       <option name="project" value="LOCAL" />
-      <updated>1707331225194</updated>
+      <updated>1707267586512</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Some styling adjustments.">
+      <option name="closed" value="true" />
+      <created>1707268016879</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1707268016879</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Some styling adjustments.">
+      <option name="closed" value="true" />
+      <created>1707268095933</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1707268095933</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -458,9 +504,9 @@
     <MESSAGE value="Edit Profile Image callback and edit profile info functionality has been added" />
     <MESSAGE value="Ability to package to an uber jar added." />
     <MESSAGE value="Fixed stopping Server Thread upon closing the program." />
-    <MESSAGE value="fixes in the logout and exit" />
-    <MESSAGE value="bug fix" />
-    <MESSAGE value="bug fixes in messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixes in messages" />
+    <MESSAGE value="Fixed bugs." />
+    <MESSAGE value="Added updating database from Server Gui feature." />
+    <MESSAGE value="Some styling adjustments." />
+    <option name="LAST_COMMIT_MESSAGE" value="Some styling adjustments." />
   </component>
 </project>

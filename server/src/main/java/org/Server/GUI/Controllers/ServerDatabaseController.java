@@ -43,6 +43,7 @@ public class ServerDatabaseController implements Initializable {
 
         tableView.setEditable(true);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
+
         tableView.prefHeightProperty().bind(root.heightProperty());
 
         root.getChildren().add(tableView);
@@ -67,10 +68,6 @@ public class ServerDatabaseController implements Initializable {
         // User IDs
         TableColumn<User, Integer> userIDsColumn = new TableColumn<User, Integer>("User ID");
         userIDsColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("userID"));
-//        userIDsColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-//        userIDsColumn.setOnEditCommit(event -> {
-//            event.getRowValue().setUserID(event.getNewValue());
-//        });
         tableView.getColumns().add(userIDsColumn);
 
         // Display Names

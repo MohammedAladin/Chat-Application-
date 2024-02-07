@@ -22,6 +22,7 @@ public interface CallBackServicesServer extends Remote {
     void sendAnnouncement(String announcement) throws RemoteException;
 
     void addContact(Integer clientId, String contactPhoneNumber) throws RemoteException;
+    void blockContact(BlockedContactDTO blockedContactDTO) throws RemoteException;
 
     void acceptInvitation(Integer clientId, Integer acceptedUserID) throws RemoteException;
 

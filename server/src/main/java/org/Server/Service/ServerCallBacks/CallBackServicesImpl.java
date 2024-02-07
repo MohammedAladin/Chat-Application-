@@ -11,6 +11,7 @@ import org.Server.ServerModels.ServerEntities.User;
 import org.Server.ServerModels.ServerEntities.UserNotification;
 import org.Server.Service.Chat.ChatBot;
 import org.Server.Service.Chat.ChatServices;
+import org.Server.Service.Contacts.BlockedContactsService;
 import org.Server.Service.Contacts.ContactService;
 import org.Server.Service.Contacts.InvitationService;
 import org.Server.Service.Contacts.NotificationMapper;
@@ -24,6 +25,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class CallBackServicesImpl extends UnicastRemoteObject implements CallBackServicesServer {
+    BlockedContactsService blockedContactsService = new BlockedContactsService();
     MessageServiceImpl messageService;
     ChatServices chatServices;
     UserService userService = UserService.getInstance();
@@ -208,6 +210,15 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         });
 
 
+    }
+
+    @Override
+    public void blockContact(BlockedContactDTO blockedContactDTO) throws RemoteException{
+        blockedContactsService.blockContact(blockedContactDTO);
+        if (clients.containsKey(blockedContactDTO.getBlockedUserID())){
+            CallBackServicesClient client = clients.get(blockedContactDTO.getBlockedUserID());
+            client.deleteContact(blockedContactDTO.getUserID());
+        }
     }
 
     @Override

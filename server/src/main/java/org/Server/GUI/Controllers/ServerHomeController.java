@@ -2,12 +2,14 @@ package org.Server.GUI.Controllers;
 
 import Interfaces.CallBacks.Client.CallBackServicesClient;
 import Interfaces.CallBacks.Server.CallBackServicesServer;
+import Interfaces.RmiServices.BlockedContactsInterface;
 import Interfaces.RmiServices.RemoteUserService;
 import Interfaces.RmiServices.ServicesFactoryInterface;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import org.Server.Service.Contacts.BlockedContactsService;
 import org.Server.Service.Factories.ServicesFactory;
 import org.Server.Service.ServerCallBacks.CallBackServicesImpl;
 
@@ -26,6 +28,7 @@ public class ServerHomeController implements Initializable {
     private RemoteUserService userService;
     private Registry registry;
     private CallBackServicesServer callBackServices;
+    private BlockedContactsInterface blockedContactsService;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -33,6 +36,7 @@ public class ServerHomeController implements Initializable {
             ServicesFactoryInterface serviceFactory = new ServicesFactory();
             userService = serviceFactory.createUserService();
             callBackServices = new CallBackServicesImpl();
+            blockedContactsService = new BlockedContactsService();
             registry = LocateRegistry.createRegistry(1099);
 
             announceButton.setOnAction((e)->handleAnnouncement());
@@ -47,6 +51,7 @@ public class ServerHomeController implements Initializable {
         try {
             registry.rebind("UserServices", userService);
             registry.rebind("Callbacks", callBackServices);
+            registry.rebind("BlockingServices", blockedContactsService);
             System.out.println("working");
         } catch (RemoteException e) {
             throw new RuntimeException(e);

@@ -16,6 +16,8 @@ public interface CallBackServicesClient extends Remote {
 
     void contactExists(boolean exists) throws RemoteException;
 
+    void deleteContact(Integer contactID) throws RemoteException;
+
     void setNotificationList(ArrayList<NotificationDTO> notificationDTOS) throws RemoteException;
 
     void deleteNotification(Integer acceptedUserID) throws RemoteException;
