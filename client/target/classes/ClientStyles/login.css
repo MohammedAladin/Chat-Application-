@@ -15,42 +15,48 @@
 
 }
 
-.login_logo_container FontAwsomeIconView{
-    -fx-fill: #ecf39e;
-}
-
-.login_form_container{
-    -fx-spacing:15;
-    -fx-alignment: top_left;
-}
-
-.login_form_container Label{
-    -fx-text-fill: #727272;
-    -fx-font-family: Work Sans;
-    -fx-font-size: 20px;
-    -fx-font-style: normal;
-    -fx-line-height: normal;
-    -fx-letter-spacing: -0.5px;
-}
-
 .input_field{
     -fx-fill: white;
     -fx-pref-height: 35;
     -fx-font-size: 1.2em;
 }
 
-.login_form_container Button:hover{
-    -fx-cursor:hand;
-}
 
 .login_register_label:hover{
     -fx-cursor:hand;
 }
 
-#signing_button {
+#signingButton {
     -fx-background-color: linear-gradient(to bottom, #6E00FF, #9C00FF);
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-padding: 8 16;
     -fx-border-radius: 5;
+}
+
+#proceedButton {
+    -fx-background-color: linear-gradient(to bottom, #8E4FFF, #AF7FFF);
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-border-radius: 5;
+}
+
+#signingButton:hover {
+    -fx-background-color: linear-gradient(to bottom, #4D0099, #7300CC);
+}
+
+#proceedButton:hover {
+    -fx-background-color: linear-gradient(to bottom, #7A2CA6, #8E4FFF);
+}
+
+#signingButton:pressed {
+    -fx-background-color: #330066; /* Dark purple background color */
+}
+
+#proceedButton:pressed {
+    -fx-background-color: #6633CC; /* Darker purple background color */
+}
+
+Button {
+    -fx-cursor:hand;
 }

@@ -4,17 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="Added updating database from Server Gui feature.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="Some styling adjustments.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientStyles/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientStyles/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/ClientFxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/ClientFxml/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/ClientStyles/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/ClientStyles/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/resources/styles/ServerHome.css" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/styles/ServerHome.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/styles/ServerSideBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/styles/ServerSideBar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/ServerCallBacks/CallBackServicesImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/ServerCallBacks/CallBackServicesImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Client/CallBackServicesClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Client/CallBackServicesClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Server/CallBackServicesServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Server/CallBackServicesServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerSideBarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerSideBarController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/styles/ServerHome.css" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/styles/ServerHome.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/styles/ServerSideBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/styles/ServerSideBar.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -417,7 +415,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707261498701</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Some styling adjustments.">
+      <option name="closed" value="true" />
+      <created>1707267586512</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1707267586512</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,6 +471,7 @@
     <MESSAGE value="Fixed stopping Server Thread upon closing the program." />
     <MESSAGE value="Fixed bugs." />
     <MESSAGE value="Added updating database from Server Gui feature." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added updating database from Server Gui feature." />
+    <MESSAGE value="Some styling adjustments." />
+    <option name="LAST_COMMIT_MESSAGE" value="Some styling adjustments." />
   </component>
 </project>

@@ -31,12 +31,12 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="30.0" prefWidth="398.0">
                <children>
-                     <TextField fx:id="phoneField" prefHeight="30.0" prefWidth="254.0">
+                     <TextField fx:id="phoneField" prefHeight="30.0" prefWidth="254.0" styleClass="inputField">
                          <font>
                              <Font name="Segoe UI" size="13.0" />
                          </font>
                      </TextField>
-                  <Button fx:id="proceedButton" mnemonicParsing="false" onAction="#phoneNumberExists" text="Proceed">
+                  <Button fx:id="proceedButton" mnemonicParsing="false" onAction="#phoneNumberExists" styleClass="inputField" text="Proceed">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
@@ -87,7 +87,7 @@
                      </Label>
                </children>
                <VBox.margin>
-                  <Insets right="20.0" top="40.0" />
+                  <Insets right="20.0" top="30.0" />
                </VBox.margin>
             </HBox>
             <HBox alignment="CENTER">
