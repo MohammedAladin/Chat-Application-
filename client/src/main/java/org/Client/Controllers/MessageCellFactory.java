@@ -3,9 +3,12 @@ package org.Client.Controllers;
 import Model.DTO.ChatDto;
 import Model.DTO.MessageDTO;
 import Model.DTO.ParticipantDto;
+import Model.DTO.Style;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -36,6 +39,10 @@ public class MessageCellFactory extends ListCell<MessageDTO> {
                     try {
                         VBox vbox = loader.load();
                         vbox.setAlignment(Pos.BASELINE_RIGHT);
+                        if (message.getStyle() != null){
+                            Label messageLabel = messageSent.getMessageLabelID();
+                            messageLabel.setStyle(decodeStyle(message.getStyle()));
+                        }
                         setGraphic(vbox);
 
                     } catch (Exception e) {
@@ -57,6 +64,10 @@ public class MessageCellFactory extends ListCell<MessageDTO> {
                         try {
                             VBox vbox = loader.load();
                             vbox.setAlignment(Pos.BASELINE_LEFT);
+                            if (message.getStyle() != null){
+                                Label messageLabel = messageReceivedGroupController.getMessageLabel();
+                                messageLabel.setStyle(decodeStyle(message.getStyle()));
+                            }
                             setGraphic(vbox);
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -70,6 +81,10 @@ public class MessageCellFactory extends ListCell<MessageDTO> {
                         try {
                             VBox vbox = loader.load();
                             vbox.setAlignment(Pos.BASELINE_LEFT);
+                            if (message.getStyle() != null){
+                                Label messageLabel = messageReceived.getMessageLabelID();
+                                messageLabel.setStyle(decodeStyle(message.getStyle()));
+                            }
                             setGraphic(vbox);
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -164,5 +179,21 @@ public class MessageCellFactory extends ListCell<MessageDTO> {
             }
         }
         return false;
+    }
+    public String decodeStyle(Style style){
+
+            String fontColor = style.getColor();
+            String backgroundColor = style.getBackgroundColor();
+            System.out.println(style.getColor() + " "+style.getBackgroundColor());
+            String css = String.format("-fx-font-size: %d; -fx-font-style: %s; -fx-font-weight: %s; -fx-text-fill: %s; -fx-background-color: %s;",
+                    style.getFontSize(),
+                    style.getFontStyle()[0],
+                    style.getFontStyle()[1],
+                    fontColor,
+                    backgroundColor
+            );
+
+          return css ;
+
     }
 }

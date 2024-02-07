@@ -1,5 +1,7 @@
 package org.Server.ServerModels.ServerEntities;
 
+import Model.DTO.Style;
+
 import java.sql.Timestamp;
 
 public class Message {
@@ -9,6 +11,16 @@ public class Message {
     private String messageContent;
     private Timestamp messageTimestamp;
     private boolean isAttachment;
+    private Style style;
+
+    public Message(int senderID, int receiverID, String messageContent, Timestamp messageTimestamp, boolean isAttachment, Style style) {
+        this.senderID = senderID;
+        this.receiverID = receiverID;
+        this.messageContent = messageContent;
+        this.messageTimestamp = messageTimestamp;
+        this.isAttachment = isAttachment;
+        this.style = style;
+    }
 
     public Message(int senderID, int receiverID, String messageContent, Timestamp messageTimestamp, boolean isAttachment) {
         this.senderID = senderID;
@@ -16,6 +28,14 @@ public class Message {
         this.messageContent = messageContent;
         this.messageTimestamp = messageTimestamp;
         this.isAttachment = isAttachment;
+    }
+
+    public Style getStyle() {
+        return style;
+    }
+
+    public void setStyle(Style style) {
+        this.style = style;
     }
 
     public Message() {

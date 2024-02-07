@@ -45,14 +45,30 @@ public class ViewFactory {
     Popup addContactPopup;
     Popup notificationPopup;
 
-
-
+    GoupChatController goupChatController;
+    ChatUserController chatUserController;
     Button notiButton;
 
     Popup stylePopup;
 
     private ObjectProperty<ContactDto> selectedChat = new SimpleObjectProperty<>();
     private String phoneNumber;
+
+    public GoupChatController getGoupChatController() {
+        return goupChatController;
+    }
+
+    public void setGoupChatController(GoupChatController goupChatController) {
+        this.goupChatController = goupChatController;
+    }
+
+    public ChatUserController getChatUserController() {
+        return chatUserController;
+    }
+
+    public void setChatUserController(ChatUserController chatUserController) {
+        this.chatUserController = chatUserController;
+    }
 
     public String getImageChange() {
         return imageChange.get();
@@ -177,7 +193,7 @@ public class ViewFactory {
 
     public void showChatArea(ContactDto selectedChat) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/PrivateChat.fxml"));
-        ChatUserController chatUserController = new ChatUserController();
+        chatUserController = new ChatUserController();
         chatUserController.setName(selectedChat.getContactName());
         chatUserController.setImage(selectedChat.getContactImage());
         chatUserController.setChatID(selectedChat.getChatId());
@@ -370,7 +386,7 @@ public class ViewFactory {
 
     public void showGroupChatArea(ChatDto chat) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/PrivateChat.fxml"));
-        GoupChatController goupChatController = new GoupChatController();
+        goupChatController = new GoupChatController();
         goupChatController.setName(chat.getChatName());
         goupChatController.setImage(chat.getChatImage());
         goupChatController.setChatID(chat.getChatID());
@@ -433,12 +449,13 @@ public class ViewFactory {
 
     public void showStylePopup(Button styleBtn) {
         Bounds buttonBounds = styleBtn.localToScreen(styleBtn.getBoundsInLocal());
+        StyleController styleController = new StyleController();
         double popupX = buttonBounds.getMaxX() - 30;
         double popupY = buttonBounds.getMinY();
         if (stylePopup == null) {
             stylePopup = new Popup();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/StylePopup.fxml"));
-
+            fxmlLoader.setController(styleController);
 
             // Set the position of the popup next to the button
 

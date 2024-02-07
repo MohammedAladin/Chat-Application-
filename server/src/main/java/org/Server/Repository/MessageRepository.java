@@ -1,12 +1,12 @@
 package org.Server.Repository;
+import Model.DTO.Style;
 import org.Server.RepoInterfaces.MessageRepoInterface;
 import org.Server.ServerModels.ServerEntities.Message;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.lang.reflect.Type;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.Connection;
 
 public class MessageRepository implements MessageRepoInterface {
     private final Connection connection;
@@ -15,8 +15,8 @@ public class MessageRepository implements MessageRepoInterface {
     }
     @Override
     public Integer save(Message message) {
-        String query = "INSERT INTO Messages (SenderID, ReceiverID, MessageContent, IsAttachement) " +
-                "VALUES (?, ?, ?, ?);";
+        String query = "INSERT INTO Messages (SenderID, ReceiverID, MessageContent, IsAttachement,FontSize, FontStyle, FontWeight, TextFill,BackgroundColor) " +
+                "VALUES (?, ?, ?, ?,?,?,?,?,?);";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
 
@@ -24,6 +24,20 @@ public class MessageRepository implements MessageRepoInterface {
             preparedStatement.setInt(2, message.getReceiverID());
             preparedStatement.setString(3, message.getMessageContent());
             preparedStatement.setInt(4, message.isAttachment() ? 1 : 0);
+           if (message.getStyle() != null){
+               preparedStatement.setInt(5, message.getStyle().getFontSize());
+               preparedStatement.setString(6, message.getStyle().getFontStyle()[0]);
+               preparedStatement.setString(7, message.getStyle().getFontStyle()[1]);
+               preparedStatement.setString(8, message.getStyle().getColor());
+               preparedStatement.setString(9, message.getStyle().getBackgroundColor());
+           }
+            else  {
+                preparedStatement.setNull(5, Types.INTEGER);
+                preparedStatement.setNull(6, Types.VARCHAR);
+                preparedStatement.setNull(7, Types.VARCHAR);
+                preparedStatement.setNull(8, Types.VARCHAR);
+                preparedStatement.setNull(9, Types.VARCHAR);
+            }
 
             preparedStatement.executeUpdate();
 
@@ -85,7 +99,21 @@ public class MessageRepository implements MessageRepoInterface {
         message.setMessageContent(resultSet.getString("MessageContent"));
         message.setMessageTimestamp(resultSet.getTimestamp("MessageTimestamp"));
         message.setAttachment(resultSet.getInt("IsAttachement") == 1 ? true : false);
-
+        int fontSize = resultSet.getInt("FontSize");
+        if (resultSet.wasNull()) {
+            message.setStyle(null);
+        }
+        else{
+            String [] fontStyles = new String[3];
+            Style style = new Style();
+            style.setFontSize(fontSize);
+            style.setColor(resultSet.getString("TextFill"));
+            style.setBackgroundColor(resultSet.getString("BackgroundColor"));
+            fontStyles[0] = resultSet.getString("FontStyle");
+            fontStyles[1] = resultSet.getString("FontWeight");
+            style.setFontStyle(fontStyles);
+            message.setStyle(style);
+        }
     }
 
     @Override

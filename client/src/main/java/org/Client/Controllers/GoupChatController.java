@@ -2,6 +2,8 @@ package org.Client.Controllers;
 
 import Model.DTO.MessageDTO;
 import Model.DTO.ParticipantDto;
+import Model.DTO.Style;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -41,6 +43,27 @@ public class GoupChatController implements Initializable {
     @FXML
     private Button attachemnt_btn;
 
+    @FXML
+    private Button styleBtn;
+
+    private Style style;
+
+    public Style getStyle() {
+        return style;
+    }
+
+    public void setStyle(Style style) {
+        this.style = style;
+    }
+
+    public TextField getTextFieldID() {
+        return textFieldID;
+    }
+
+    public void setTextFieldID(TextField textFieldID) {
+        this.textFieldID = textFieldID;
+    }
+
     public List<ParticipantDto> getParticipants() {
         return participants;
     }
@@ -49,7 +72,7 @@ public class GoupChatController implements Initializable {
         this.participants = participants;
     }
 
-    private List<ParticipantDto> participants=new ArrayList<>();
+    private List<ParticipantDto> participants = new ArrayList<>();
 
     public byte[] getImage() {
         return image;
@@ -84,10 +107,9 @@ public class GoupChatController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         nameID.setText(name);
-        if(image == null|| image.length == 0){
+        if (image == null || image.length == 0) {
             circleID.setFill(new ImagePattern(ImageServices.getDefaultGroupImage()));
-        }
-        else circleID.setFill(new ImagePattern(ImageServices.convertToImage(image)));
+        } else circleID.setFill(new ImagePattern(ImageServices.convertToImage(image)));
         textFieldID.setOnAction(event -> sendMessage());
         send_btn.setOnAction(event -> sendMessage());
         StringBuilder chatParticipants = new StringBuilder();
@@ -97,6 +119,8 @@ public class GoupChatController implements Initializable {
         chatParticipants.delete(chatParticipants.length() - 2, chatParticipants.length());
         bio.setText(chatParticipants.toString());
 
+        textFieldID.textProperty().addListener((observable, oldValue, newValue) -> applyStyle());
+
         messageListView.setCellFactory(new Callback<ListView<MessageDTO>, ListCell<MessageDTO>>() {
             @Override
             public ListCell<MessageDTO> call(ListView<MessageDTO> messageListView) {
@@ -104,15 +128,18 @@ public class GoupChatController implements Initializable {
             }
         });
         messageListView.setItems(Model.getInstance().getPrivateChats().get(chatID));
-        System.out.println("Group Chat ID: " + chatID);
+        messageListView.scrollTo(Model.getInstance().getPrivateChats().get(chatID).size() - 1);
         messageListView.refresh();
+        styleBtn.setOnAction(actionEvent -> {
+            Model.getInstance().getViewFactory().showStylePopup(styleBtn);
+        });
     }
 
     public void sendMessage() {
         String message = textFieldID.getText();
         if (!message.isEmpty()) {
             textFieldID.clear();
-            MessageDTO messageDTO = new MessageDTO(chatID, message, 0, Model.getInstance().getClientId(), Timestamp.valueOf(java.time.LocalDateTime.now()));
+            MessageDTO messageDTO = new MessageDTO(chatID, message, 0, Model.getInstance().getClientId(), style,Timestamp.valueOf(java.time.LocalDateTime.now()));
             try {
                 Model.getInstance().getCallBackServicesServer().sendGroupMessage(messageDTO, participants);
             } catch (RemoteException e) {
@@ -122,5 +149,23 @@ public class GoupChatController implements Initializable {
         messageListView.setItems(Model.getInstance().getPrivateChats().get(chatID));
     }
 
+    private void applyStyle() {
+        Style tempStyle = Model.getInstance().getStyle();
+        String fontColor = tempStyle.getColor();
+        String backgroundColor = tempStyle.getBackgroundColor();
+        System.out.println(tempStyle.getColor() + " " + tempStyle.getBackgroundColor());
+        String css = String.format("-fx-font-size: %d; -fx-font-style: %s; -fx-font-weight: %s; -fx-text-fill: %s; -fx-background-color: %s;",
+                tempStyle.getFontSize(),
+                tempStyle.getFontStyle()[0],
+                tempStyle.getFontStyle()[1],
+                fontColor,
+                backgroundColor
+        );
 
+        // Set the CSS string as the style of the textFieldID
+        Platform.runLater(() -> {
+            textFieldID.setStyle(css);
+
+        });
+    }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -8,14 +9,17 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="214.0" prefWidth="240.0" spacing="30.0" styleClass="container" stylesheets="@../ClientStyles/stylePopup.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="32.0" prefWidth="220.0" spacing="10.0">
          <children>
-            <ToggleButton mnemonicParsing="false" text="Italic" />
-            <ToggleButton mnemonicParsing="false" text="Bold" />
-            <ToggleButton mnemonicParsing="false" text="Underline" />
+            <ToggleButton fx:id="italicID" mnemonicParsing="false" text="Italic" />
+            <ToggleButton fx:id="boldID" mnemonicParsing="false" text="Bold" />
+            <Button fx:id="resetID" mnemonicParsing="false" styleClass="toggle-button" text="Reset">
+               <HBox.margin>
+                  <Insets left="70.0" />
+               </HBox.margin>
+            </Button>
          </children>
          <VBox.margin>
             <Insets left="10.0" top="10.0" />
@@ -27,7 +31,7 @@
          </VBox.margin>
          <children>
             <Label text="Font color" />
-            <ColorPicker>
+            <ColorPicker fx:id="fontColorID">
                <HBox.margin>
                   <Insets left="38.0" />
                </HBox.margin>
@@ -40,7 +44,7 @@
          </VBox.margin>
          <children>
             <Label text="Background" />
-            <ColorPicker>
+            <ColorPicker fx:id="backGroundColorID">
                <HBox.margin>
                   <Insets left="29.0" />
                </HBox.margin>
@@ -53,7 +57,7 @@
          </VBox.margin>
          <children>
             <Label text="Font size" />
-            <ComboBox prefHeight="25.0" prefWidth="68.0" promptText="size">
+            <ComboBox fx:id="sizeID" prefHeight="25.0" prefWidth="68.0" promptText="size">
                <HBox.margin>
                   <Insets left="55.0" />
                </HBox.margin>

@@ -44,6 +44,14 @@ public class MessageReceivedGroupController implements Initializable {
     private Timestamp timestamp;
     private byte [] image;
 
+    public Label getMessageLabel() {
+        return messageLabel;
+    }
+
+    public void setMessageLabel(Label messageLabel) {
+        this.messageLabel = messageLabel;
+    }
+
     public String getSendername() {
         return sendername;
     }

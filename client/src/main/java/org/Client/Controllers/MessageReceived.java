@@ -32,6 +32,14 @@ public class MessageReceived implements Initializable
         message = text;
     }
 
+    public Label getMessageLabelID() {
+        return messageLabelID;
+    }
+
+    public void setMessageLabelID(Label messageLabelID) {
+        this.messageLabelID = messageLabelID;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         messageLabelID.setText(message);

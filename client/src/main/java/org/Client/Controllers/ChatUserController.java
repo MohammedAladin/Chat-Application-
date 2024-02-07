@@ -1,35 +1,22 @@
 package org.Client.Controllers;
 
 import Model.DTO.AttachmentDto;
-import Model.DTO.ContactDto;
 import Model.DTO.MessageDTO;
-import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.util.Callback;
-import javafx.util.Duration;
+import Model.DTO.Style;
 import org.Client.Models.Model;
 import org.Client.Service.ImageServices;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.sql.Timestamp;
@@ -54,6 +41,24 @@ public class ChatUserController implements Initializable {
     private Button styleBtn;
     byte[] image;
     String name;
+    StyleController styleController;
+    Style style;
+
+    public StyleController getStyleController() {
+        return styleController;
+    }
+
+    public void setStyleController(StyleController styleController) {
+        this.styleController = styleController;
+    }
+
+    public Style getStyle() {
+        return style;
+    }
+
+    public void setStyle(Style style) {
+        this.style = style;
+    }
 
     public String getBioString() {
         return bioString;
@@ -61,6 +66,14 @@ public class ChatUserController implements Initializable {
 
     public void setBioString(String bioString) {
         this.bioString = bioString;
+    }
+
+    public TextField getTextFieldID() {
+        return textFieldID;
+    }
+
+    public void setTextFieldID(TextField textFieldID) {
+        this.textFieldID = textFieldID;
     }
 
     String bioString;
@@ -95,6 +108,8 @@ public class ChatUserController implements Initializable {
             send_btn.fire();
         });
         messageListView.setItems(Model.getInstance().getPrivateChats().get(chatID));
+        messageListView.scrollTo(Model.getInstance().getPrivateChats().get(chatID).size() - 1);
+        textFieldID.textProperty().addListener((observable, oldValue, newValue) -> applyStyle());
 
 
         messageListView.setCellFactory(new Callback<ListView<MessageDTO>, ListCell<MessageDTO>>() {
@@ -135,7 +150,7 @@ public class ChatUserController implements Initializable {
 
         try {
 
-            MessageDTO message = new MessageDTO(chatID, textFieldID.getText(), 0, Model.getInstance().getClientId(), Timestamp.valueOf(java.time.LocalDateTime.now()));
+            MessageDTO message = new MessageDTO(chatID, textFieldID.getText(), 0, Model.getInstance().getClientId(), style,Timestamp.valueOf(java.time.LocalDateTime.now()));
 
             Model.getInstance().getCallBackServicesServer().sendMessage(message);
         } catch (RemoteException e) {
@@ -144,4 +159,29 @@ public class ChatUserController implements Initializable {
         messageListView.setItems(Model.getInstance().getPrivateChats().get(chatID));
         textFieldID.clear();
     }
+    private void applyStyle() {
+        Style tempStyle = Model.getInstance().getStyle();
+        String fontColor = tempStyle.getColor();
+        String backgroundColor = tempStyle.getBackgroundColor();
+        System.out.println(tempStyle.getColor() + " "+tempStyle.getBackgroundColor());
+        String css = String.format("-fx-font-size: %d; -fx-font-style: %s; -fx-font-weight: %s; -fx-text-fill: %s; -fx-background-color: %s;",
+                tempStyle.getFontSize(),
+                tempStyle.getFontStyle()[0],
+                tempStyle.getFontStyle()[1],
+                fontColor,
+                backgroundColor
+        );
+
+        // Set the CSS string as the style of the textFieldID
+        Platform.runLater(() -> {
+            textFieldID.setStyle(css);
+
+        });
+    }
+    /*public String toCssColor(javafx.scene.paint.Color color) {
+        return String.format( "#%02X%02X%02X",
+                (int)( color.getRed() * 255 ),
+                (int)( color.getGreen() * 255 ),
+                (int)( color.getBlue() * 255 ) );
+    }*/
 }

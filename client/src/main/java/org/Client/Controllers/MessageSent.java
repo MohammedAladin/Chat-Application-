@@ -30,6 +30,10 @@ public class MessageSent implements Initializable
     private String message;
     public Label getMessageLabelID(){return messageLabelID;}
 
+    public void setMessageLabelID(Label messageLabelID) {
+        this.messageLabelID = messageLabelID;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         messageLabelID.setText(message);

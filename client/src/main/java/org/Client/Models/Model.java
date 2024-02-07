@@ -10,6 +10,9 @@ import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
+import javafx.scene.paint.Color;
+import Model.DTO.Style;
+import org.Client.Controllers.StyleController;
 import org.Client.Views.ViewFactory;
 
 import java.sql.Date;
@@ -27,6 +30,29 @@ public class Model {
     private String email;
     private String gender;
 
+    private StyleController styleController;
+    private Style style = new Style(12,new String[]{"normal","normal" ,"none"},"#000000","#EFF6FC");
+    private Style defaultStyle = new Style(12,new String[]{"normal","normal" ,"none"},"#000000","#EFF6FC");
+
+    public Style getDefaultStyle() {
+        return defaultStyle;
+    }
+
+    public StyleController getStyleController() {
+        return styleController;
+    }
+
+    public void setStyleController(StyleController styleController) {
+        this.styleController = styleController;
+    }
+
+    public Style getStyle() {
+        return style;
+    }
+
+    public void setStyle(Style style) {
+        this.style = style;
+    }
     public Date getBirthDate() {
         return birthDate;
     }

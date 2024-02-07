@@ -55,13 +55,26 @@ public class MessageServiceImpl {
     }
 
     public Message messageDTOToMessage(MessageDTO messageDTO) {
-        return new Message(
-                messageDTO.getSenderID(),
-                messageDTO.getChatID(),
-                messageDTO.getContent(),
-                new Timestamp(System.currentTimeMillis()),
-                messageDTO.getIsAttachment() == 1
-        );
+        if (messageDTO.getStyle()==null){
+            return new Message(
+                    messageDTO.getSenderID(),
+                    messageDTO.getChatID(),
+                    messageDTO.getContent(),
+                    new Timestamp(System.currentTimeMillis()),
+                    messageDTO.getIsAttachment() == 1
+            );
+        }
+        else {
+            return new Message(
+                    messageDTO.getSenderID(),
+                    messageDTO.getChatID(),
+                    messageDTO.getContent(),
+                    new Timestamp(System.currentTimeMillis()),
+                    messageDTO.getIsAttachment() == 1,
+                    messageDTO.getStyle()
+            );
+        }
+
     }
 
     public List<MessageDTO> getPrivateChatMessages(Integer chatID) {
@@ -86,13 +99,26 @@ public class MessageServiceImpl {
                     message.getMessageTimestamp()
             );
         }
-        return new MessageDTO(
-                message.getReceiverID(),
-                message.getMessageContent(),
-                message.isAttachment() ? 1 : 0,
-                message.getSenderID(),
-                message.getMessageTimestamp()
-        );
+        if (message.getStyle() != null){
+            return new MessageDTO(
+                    message.getReceiverID(),
+                    message.getMessageContent(),
+                    message.isAttachment() ? 1 : 0,
+                    message.getSenderID(),
+                    message.getStyle(),
+                    message.getMessageTimestamp()
+            );
+        }
+        else {
+            return new MessageDTO(
+                    message.getReceiverID(),
+                    message.getMessageContent(),
+                    message.isAttachment() ? 1 : 0,
+                    message.getSenderID(),
+                    message.getMessageTimestamp()
+            );
+        }
+
     }
 
 
