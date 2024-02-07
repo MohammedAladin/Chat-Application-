@@ -377,7 +377,7 @@ public class ViewFactory {
         }
 
         addGroupPopup.show(groupBtn.getParent(), popupX, popupY);
-        addGroupPopup.setAutoHide(true);
+        //addGroupPopup.setAutoHide(true);
 
     }
 

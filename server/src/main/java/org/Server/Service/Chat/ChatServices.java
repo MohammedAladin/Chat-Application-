@@ -31,7 +31,7 @@ public class ChatServices {
         }
         return chatServices;
     }
-    public void createNewChat(ChatDto chatDto, List<Integer> participantsIds) {
+    public Integer createNewChat(ChatDto chatDto, List<Integer> participantsIds) {
         chatRepository.saveGroup(mapToChat(chatDto));
         try {
             int chatId = chatRepository.findByName(chatDto.getChatName()).getChatID();
@@ -39,9 +39,11 @@ public class ChatServices {
                     chatId,
                     participantsIds
             );
+            return chatId;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
     }
     public void createPrivateChat(Integer user1,Integer user2){
         Timestamp current = new Timestamp(System.currentTimeMillis());
@@ -111,7 +113,7 @@ public class ChatServices {
         );
     }
 
-    private List<ParticipantDto> mapToParticipantDTO(List<Integer> allParticipants) {
+    public List<ParticipantDto> mapToParticipantDTO(List<Integer> allParticipants) {
         List<ParticipantDto> participantDtos = new ArrayList<>();
         for (Integer id:allParticipants){
             String name;

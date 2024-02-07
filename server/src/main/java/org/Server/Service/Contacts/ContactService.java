@@ -2,6 +2,7 @@ package org.Server.Service.Contacts;
 
 import Model.DTO.ChatDto;
 import Model.DTO.ContactDto;
+import Model.DTO.ParticipantDto;
 import org.Server.Repository.ChatRepository;
 import org.Server.Repository.UserRepository;
 import org.Server.ServerModels.ServerEntities.Contact;
@@ -121,10 +122,14 @@ public class ContactService {
         Timestamp current = new Timestamp(System.currentTimeMillis());
         ChatDto chatDto = new ChatDto(grpName, grpImage, adminID, current, current);
         System.out.println("contactService : "+ chatDto.getAdminID());
-        chatServices.createNewChat(
+        Integer chatID =  chatServices.createNewChat(
                 chatDto,
                 participants
         );
+        List<ParticipantDto>participantsDTO =chatServices.mapToParticipantDTO(participants);
+
+        chatDto.setChatID(chatID);
+        chatDto.setParticipants(new ArrayList<>(participantsDTO));
         return chatDto;
     }
 
