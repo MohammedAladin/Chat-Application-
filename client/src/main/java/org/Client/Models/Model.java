@@ -17,6 +17,7 @@ import org.Client.Views.ViewFactory;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Model {
@@ -244,8 +245,32 @@ public class Model {
     }
 
     public void addMessage(MessageDTO messageDTO) {
-        privateChats.get(messageDTO.getChatID()).add(messageDTO);
-        System.out.println("this is the message" + messageDTO.getContent());
+        if(privateChats.get(messageDTO.getChatID())==null){
+            privateChats.put(messageDTO.getChatID(), FXCollections.observableArrayList(messageDTO));
+        }
+        else {
+            privateChats.get(messageDTO.getChatID()).add(messageDTO);
+        }
+
+        String senderName="";
+        if(!messageDTO.getSenderID().equals(clientId)){
+            boolean isContact = contacts.stream()
+                    .anyMatch(contact -> contact.getContactID().equals(messageDTO.getSenderID()));
+            if (!isContact) {
+               senderName =groupList.stream()
+                        .filter(chatDto -> chatDto.getChatID().equals(messageDTO.getChatID()))
+                        .findFirst()
+                        .map(ChatDto::getChatName)
+                        .orElse(null);
+
+            }
+            else {
+                senderName = contacts.stream()
+                        .filter(contact -> contact.getContactID().equals(messageDTO.getSenderID()))
+                        .findFirst().get().getContactName();
+            }
+            getViewFactory().notify("New message from " + senderName);
+        }
     }
 
     public void addGroupMessage(MessageDTO messageDTO) {
