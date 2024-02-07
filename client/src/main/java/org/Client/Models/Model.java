@@ -35,6 +35,7 @@ public class Model {
     private StyleController styleController;
     private Style style = new Style(12,new String[]{"normal","normal" ,"none"},"#000000","#EFF6FC");
     private Style defaultStyle = new Style(12,new String[]{"normal","normal" ,"none"},"#000000","#EFF6FC");
+    private ArrayList<Integer> botChats = new ArrayList<>();
 
     public Style getDefaultStyle() {
         return defaultStyle;
@@ -238,6 +239,13 @@ public class Model {
 
     }
 
+    public ArrayList<Integer> getBotChats() {
+        return botChats;
+    }
+
+    public void setBotChats(ArrayList<Integer> botChats) {
+        this.botChats = botChats;
+    }
 
     public ObservableList<ChatDto> getGroupList() {
         System.out.println("this is the group list" + groupList);

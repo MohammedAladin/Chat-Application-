@@ -32,6 +32,8 @@ public class ChatUserController implements Initializable {
     @FXML
     private Label bio;
     @FXML
+    private ToggleButton bot_btn;
+    @FXML
     private ListView<MessageDTO> messageListView;
     @FXML
     private Button send_btn;
@@ -39,10 +41,12 @@ public class ChatUserController implements Initializable {
     private Button attachemnt_btn;
     @FXML
     private Button styleBtn;
+    private boolean isBot;
     byte[] image;
     String name;
     StyleController styleController;
     Style style;
+
     public List<ParticipantDto> getParticipants() {
         return participants;
     }
@@ -109,6 +113,9 @@ public class ChatUserController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         nameID.setText(name);
         bio.setText(bioString);
+        if(isBot){
+            bot_btn.setSelected(true);
+        }
         if (image == null||image.length==0){
             if(isChatInGroupList(chatID)){
                 circleID.setFill(new ImagePattern(ImageServices.getDefaultGroupImage()));
@@ -138,6 +145,25 @@ public class ChatUserController implements Initializable {
             Model.getInstance().getViewFactory().showStylePopup(styleBtn);
         });
         attachemnt_btn.setOnAction(e->handleFileAttachement());
+        bot_btn.setOnAction(e-> {
+            if(bot_btn.isSelected()) {
+                try {
+                    Model.getInstance().getCallBackServicesServer().registerForChatBot(Model.getInstance().getClientId(), chatID);
+                    Model.getInstance().getBotChats().add(chatID);
+                } catch (RemoteException ex) {
+                    ex.printStackTrace();
+                }
+
+            }
+            else {
+                try {
+                    Model.getInstance().getCallBackServicesServer().unRegisterFromChatBot(Model.getInstance().getClientId(), chatID);
+                    Model.getInstance().getBotChats().remove(chatID);
+                } catch (RemoteException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 
     private void handleFileAttachement() {
@@ -204,4 +230,11 @@ public class ChatUserController implements Initializable {
         return false;
     }
 
+    public boolean isBot() {
+        return isBot;
+    }
+
+    public void setBot(boolean bot) {
+        isBot = bot;
+    }
 }

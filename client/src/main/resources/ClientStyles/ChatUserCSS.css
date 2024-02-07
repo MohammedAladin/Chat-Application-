@@ -101,4 +101,16 @@
     -fx-background-color: #4B0082;
 }
 
+.toggleButton{
+    -fx-background-color: #EFF6FC;
+}
+
+.toggleButton:hover{
+    -fx-cursor: hand;
+}
+.toggleButton:selected{
+    -fx-background-color: #d8e6f2;
+    -fx-text-fill: #FFFFFF;
+}
+
 

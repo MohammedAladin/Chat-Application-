@@ -3,6 +3,8 @@ import Model.DTO.MessageDTO;
 import com.google.code.chatterbotapi.*;
 import org.Server.Service.Messages.MessageServiceImpl;
 
+import java.sql.Timestamp;
+
 public class ChatBot {
     private static ChatterBotSession replierBot;
     private MessageServiceImpl messageService;
@@ -25,7 +27,8 @@ public class ChatBot {
                     message.getChatID(),
                     reply,
                     0,
-                    senderId
+                    senderId,
+                    Timestamp.valueOf(java.time.LocalDateTime.now())
 
             );
 

@@ -6,12 +6,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 
-<VBox prefHeight="751.0" prefWidth="700.0" styleClass="background" stylesheets="@../ClientStyles/contactStyle.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="751.0" prefWidth="700.0" styleClass="background" stylesheets="@../ClientStyles/contactStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739.0" prefWidth="758.0" styleClass="background" stylesheets="@../ClientStyles/ChatUserCSS.css">
          <children>
@@ -95,6 +96,11 @@
                                           <Insets />
                                        </HBox.margin>
                                     </TextField>
+                                    <ToggleButton fx:id="bot_btn" mnemonicParsing="false" prefHeight="40.0" prefWidth="85.0" styleClass="toggleButton">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="ANDROID" size="30" wrappingWidth="21.385689735412598" />
+                                       </graphic>
+                                    </ToggleButton>
                                  </children>
                               </HBox>
                               <Button fx:id="send_btn" mnemonicParsing="false" prefHeight="46.0" prefWidth="46.0" styleClass="sendButton">

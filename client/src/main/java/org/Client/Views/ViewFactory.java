@@ -192,6 +192,12 @@ public class ViewFactory {
         chatUserController.setImage(selectedChat.getContactImage());
         chatUserController.setChatID(selectedChat.getChatId());
         chatUserController.setBioString(selectedChat.getBio());
+        if(Model.getInstance().getBotChats().contains(selectedChat.getChatId())){
+            chatUserController.setBot(true);
+        }
+        else {
+            chatUserController.setBot(false);
+        }
         fxmlLoader.setController(chatUserController);
         try {
             home.setCenter(fxmlLoader.load());
@@ -386,6 +392,12 @@ public class ViewFactory {
         chatUserController.setImage(chat.getChatImage());
         chatUserController.setChatID(chat.getChatID());
         List<ParticipantDto> participants = chat.getParticipants();
+        if(Model.getInstance().getBotChats().contains(chat.getChatID())){
+            chatUserController.setBot(true);
+        }
+        else {
+            chatUserController.setBot(false);
+        }
         chatUserController.setParticipants(participants);
         StringBuilder chatParticipants = new StringBuilder();
         for (ParticipantDto participant : participants) {
