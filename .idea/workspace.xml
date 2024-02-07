@@ -4,22 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="Fixed bugs.">
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerDatabaseController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/fxml/ServerDatabase.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/images/database.png" afterDir="false" />
+    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="Added updating database from Server Gui feature.">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/RemoteServiceHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/RemoteServiceHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dp.properties" beforeDir="false" afterPath="$PROJECT_DIR$/dp.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerSideBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerSideBarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerModels/ServerEntities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerModels/ServerEntities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/dp.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/dp.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/fxml/ServerSideBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/fxml/ServerSideBar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/dp.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/dp.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientStyles/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientStyles/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/styles/ServerHome.css" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/styles/ServerHome.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/styles/ServerSideBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/styles/ServerSideBar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/ServerCallBacks/CallBackServicesImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/ServerCallBacks/CallBackServicesImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Client/CallBackServicesClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Client/CallBackServicesClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Server/CallBackServicesServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Server/CallBackServicesServer.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,36 +57,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Amin.executor": "Run",
-    "Application.App.executor": "Run",
-    "Application.ClientApplication.executor": "Run",
-    "Application.Mohammed.executor": "Run",
-    "Application.Server.executor": "Run",
-    "Application.ServerApplication.executor": "Run",
-    "Application.TestApp.executor": "Run",
-    "Application.org.Server.TestApp.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/LENOVO/IdeaProjects/Chat-Application-/server/src/main/resources/images",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Amin.executor&quot;: &quot;Run&quot;,
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ClientApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Mohammed.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Server.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ServerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestApp.executor&quot;: &quot;Run&quot;,
+    &quot;Application.org.Server.TestApp.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/LENOVO/IdeaProjects/Chat-Application-/server/src/main/resources/images&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\resources\images" />
@@ -414,7 +409,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707228429263</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Added updating database from Server Gui feature.">
+      <option name="closed" value="true" />
+      <created>1707261498701</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1707261498701</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,6 +464,7 @@
     <MESSAGE value="Ability to package to an uber jar added." />
     <MESSAGE value="Fixed stopping Server Thread upon closing the program." />
     <MESSAGE value="Fixed bugs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bugs." />
+    <MESSAGE value="Added updating database from Server Gui feature." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added updating database from Server Gui feature." />
   </component>
 </project>

@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
 import org.Server.ServerApplication;
 
 import java.io.IOException;
@@ -15,9 +17,17 @@ import java.util.ResourceBundle;
 import static org.Server.ServerApplication.*;
 
 public class ServerSideBarController implements Initializable {
+    @FXML
+    public ImageView home_icon;
+    @FXML
+    public ImageView statistics_icon;
+    @FXML
+    public ImageView database_icon;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        Tooltip.install(home_icon, new Tooltip("Home"));
+        Tooltip.install(statistics_icon, new Tooltip("Statistics"));
+        Tooltip.install(database_icon, new Tooltip("Database"));
     }
 
     @FXML

@@ -73,6 +73,7 @@ public class LoginController implements Initializable {
                 showPasswordField();
             } else {
                 remoteServiceHandler.showAlert("Phone number does not exist. Please enter a valid phone number." , Alert.AlertType.INFORMATION);
+//                System.exit(0);
             }
         } catch (RemoteException e) {
             throw new RuntimeException(e);
@@ -160,5 +161,4 @@ public class LoginController implements Initializable {
         phoneField.clear();
         passwordField.clear();
     }
-
 }
