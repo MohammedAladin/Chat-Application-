@@ -1,5 +1,7 @@
 package org.Client.Controllers;
 
+import Interfaces.CallBacks.Server.CallBackServicesServer;
+import Model.DTO.BlockedContactDTO;
 import Model.DTO.ContactDto;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -35,14 +37,6 @@ public class UserCardController implements Initializable {
         return isFriend;
     }
 
-    public void setFriend(boolean friend) {
-        isFriend = friend;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
     String phoneNumber;
 
     public byte[] getImage() {
@@ -55,9 +49,11 @@ public class UserCardController implements Initializable {
 
     byte[] image;
     Image defaultImage = new Image(getClass().getResource("/ClientImages/defaultUser.jpg").toString());
+    Model model;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        model = Model.getInstance();
         if (isFriend) {
             add_btn.setVisible(false);
         }
@@ -74,6 +70,12 @@ public class UserCardController implements Initializable {
     public void setName(String name) {
         this.name = name;
     }
+    public void setFriend(boolean friend) {
+        isFriend = friend;
+    }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public void addContact(String contact) {
         try {
@@ -84,9 +86,24 @@ public class UserCardController implements Initializable {
             e.printStackTrace();
         }
     }
-
+    
     private void blockContact (String phoneNumber){
+        try {
+            CallBackServicesServer server = model.getCallBackServicesServer();
+            BlockedContactDTO blockedContactDTO = new BlockedContactDTO(model.getClientId(), phoneNumber);
+            server.blockContact(blockedContactDTO);
 
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
+    private void unblockContact (String phoneNumber){
+        BlockedContactDTO blockedContactDTO = new BlockedContactDTO(model.getClientId(), phoneNumber);
+        try {
+            RemoteServiceHandler.getInstance().getBlockedContactsService().unblock(blockedContactDTO);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

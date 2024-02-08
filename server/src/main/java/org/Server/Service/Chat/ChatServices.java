@@ -45,13 +45,19 @@ public class ChatServices {
         }
 
     }
-    public void createPrivateChat(Integer user1,Integer user2){
+
+    public void createPrivateChat(Integer user1,Integer user2) throws SQLException {
+        Integer chatId;
         Timestamp current = new Timestamp(System.currentTimeMillis());
         ChatDto chatDto = new ChatDto(user1+user2+"", null, null, current, current);
         List<Integer> ids = List.of(user1,user2);
+        chatId = chatParticipantServices.ifParticipantsExisted(user1,user2);
+        if(chatId!=-1){
+            return;
+        }
         chatRepository.save(mapToChat(chatDto));
         try {
-            int chatId = chatRepository.findByName(chatDto.getChatName()).getChatID();
+             chatId = chatRepository.findByName(chatDto.getChatName()).getChatID();
             chatParticipantServices.addParticipants(
                     chatId,
                     ids

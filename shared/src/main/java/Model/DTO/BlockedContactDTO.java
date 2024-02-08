@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 public class BlockedContactDTO implements Serializable {
     private Integer userID;
-    private Integer blockedUserID;
+    private String blockedUserPhoneNumber;
 
-    public BlockedContactDTO(Integer userID, Integer blockedUserID) {
+    public BlockedContactDTO(Integer userID, String blockedUserPhoneNumber) {
         this.userID = userID;
-        this.blockedUserID = blockedUserID;
+        this.blockedUserPhoneNumber = blockedUserPhoneNumber;
     }
 
     public Integer getUserID() {
@@ -19,11 +19,11 @@ public class BlockedContactDTO implements Serializable {
         this.userID = userID;
     }
 
-    public Integer getBlockedUserID() {
-        return blockedUserID;
+    public String getBlockedUserPhoneNumber() {
+        return blockedUserPhoneNumber;
     }
 
-    public void setBlockedUserID(Integer blockedUserID) {
-        this.blockedUserID = blockedUserID;
+    public void setBlockedUserPhoneNumber(String blockedUserPhoneNumber) {
+        this.blockedUserPhoneNumber = blockedUserPhoneNumber;
     }
 }

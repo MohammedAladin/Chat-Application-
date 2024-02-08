@@ -1,5 +1,6 @@
 package org.Server.Service.Contacts;
 
+import Model.DTO.BlockedContactDTO;
 import Model.DTO.ChatDto;
 import Model.DTO.ContactDto;
 import Model.DTO.ParticipantDto;
@@ -12,6 +13,7 @@ import org.Server.Service.Chat.ChatServices;
 import org.Server.Service.User.UserService;
 import org.Server.Service.UserSession;
 
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -21,6 +23,8 @@ import java.util.List;
 public class ContactService {
     private final InvitationService invitationService;
     private final ContactsRepository contactsRepository;
+
+    private final BlockedContactsService blockedContactsService;
     //private final User loggedUser;
     private final UserService userService;
     private final ChatServices chatServices;
@@ -32,29 +36,16 @@ public class ContactService {
         //this.loggedUser = UserSession.getCurrentUser();
         this.userService = UserService.getInstance();
         chatServices = ChatServices.getInstance();
-    }
-
-    private void createNewChat(Integer acceptedUserID, Integer userId) {
-        Timestamp current = new Timestamp(System.currentTimeMillis());
-        ChatDto chatDto = new ChatDto(null, null, null, current, current);
-
-        int user1Id = userId;
-        int user2Id = acceptedUserID;
-
-        List<Integer> ids = new ArrayList<>();
-        ids.add(user1Id);
-        ids.add(user2Id);
-
-        chatServices.createNewChat(
-                chatDto,
-                ids
-        );
+        try {
+            this.blockedContactsService = new BlockedContactsService();
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void acceptInvitation(int userId, Integer acceptedUserID) {
 
         try {
-            //acceptedUser = userService.existsByPhoneNumber(acceptedUserPhoneNumber);
 
             invitationService.deleteInvitation(acceptedUserID, userId);
             Contact contact = new Contact(userId, acceptedUserID, new Timestamp(System.currentTimeMillis()));
@@ -74,11 +65,18 @@ public class ContactService {
     }
 
     public boolean addContact(int loggedUser, String phone) {
-        return invitationService.sendInvitation(loggedUser, phone);
+        if(blockedContactsService.existsByDTO(new BlockedContactDTO(loggedUser, phone))==-1)
+            return invitationService.sendInvitation(loggedUser, phone);
+        return false;
     }
 
-    public void deleteContact() {
-
+    public void deleteContact(Integer userId, Integer contactId) {
+        Contact contact = new Contact(userId, contactId);
+        try {
+            contactsRepository.deleteByEntity(contact);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public List<ContactDto> getContacts(int userId) {

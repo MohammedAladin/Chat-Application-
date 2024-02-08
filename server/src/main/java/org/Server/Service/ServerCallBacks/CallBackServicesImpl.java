@@ -213,13 +213,30 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     }
 
     @Override
-    public void blockContact(BlockedContactDTO blockedContactDTO) throws RemoteException{
+    public void blockContact(BlockedContactDTO blockedContactDTO) throws RemoteException {
         blockedContactsService.blockContact(blockedContactDTO);
-        if (clients.containsKey(blockedContactDTO.getBlockedUserID())){
-            CallBackServicesClient client = clients.get(blockedContactDTO.getBlockedUserID());
-            client.deleteContact(blockedContactDTO.getUserID());
-        }
+        Integer userID = blockedContactDTO.getUserID();
+        String blockedUserPhoneNumber = blockedContactDTO.getBlockedUserPhoneNumber();
+
+        User blockedUser = userService.existsByPhoneNumber(blockedUserPhoneNumber);
+
+        removeFromClientContacts(blockedUser.getUserID(), userID);
+        removeFromClientContacts(userID, blockedUser.getUserID());
     }
+
+    private void removeFromClientContacts(Integer userID1, Integer userID2) throws RemoteException {
+        Platform.runLater(()->{
+            if (clients.containsKey(userID1)) {
+                try {
+                    CallBackServicesClient client = clients.get(userID1);
+                    client.deleteContact(userID2);
+                } catch (RemoteException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
+
 
     @Override
     public void acceptInvitation(Integer clientId, Integer acceptedUserID) throws RemoteException {

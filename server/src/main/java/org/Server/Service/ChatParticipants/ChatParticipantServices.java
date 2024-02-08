@@ -30,4 +30,7 @@ public class ChatParticipantServices {
             }
         }
     }
+    public Integer ifParticipantsExisted(Integer userId1, Integer userId2){
+        return chatParticipantRepository.getChatIDForParticipants(userId1,userId2);
+    }
 }

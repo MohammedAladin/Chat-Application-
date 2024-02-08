@@ -12,6 +12,11 @@ public class ChatParticipants {
         this.participantUserID = participantUserID;
         this.participantStartDate = participantStartDate;
     }
+    public ChatParticipants(int chatID, int participantUserID) {
+        this.chatID = chatID;
+        this.participantUserID = participantUserID;
+    }
+
 
     public ChatParticipants() {
     }

@@ -54,6 +54,23 @@ public class ContactsRepository implements Repository<Contact, Integer> {
 
     }
 
+
+    public void deleteByEntity(Contact contact) throws SQLException {
+        String sql = "DELETE FROM UserContacts WHERE UserID = ? AND FriendID = ?";
+
+        try (PreparedStatement statement = myConnection.prepareStatement(sql)) {
+            statement.setInt(1, contact.getUserID());
+            statement.setInt(2, contact.getFriendID());
+            int result;
+            result = statement.executeUpdate();
+            if(result==-1){
+                 statement.setInt(2, contact.getUserID());
+                 statement.setInt(1, contact.getFriendID());
+                 statement.executeUpdate();
+            }
+        }
+    }
+
     public List<Integer> getContacts(int userID)  {
         List<Integer> contacts = new ArrayList<>();
         String query = "SELECT * FROM UserContacts WHERE userid = ? or friendid=?";
@@ -61,7 +78,6 @@ public class ContactsRepository implements Repository<Contact, Integer> {
             preparedStatement.setInt(1, userID);
             preparedStatement.setInt(2, userID);
             ResultSet rs = preparedStatement.executeQuery();
-            //gets the contacts of the user with the given userID even if they were recorded in the friend id
             while (rs.next()) {
                 if (rs.getInt("userid") == userID) {
                     contacts.add(rs.getInt("friendid"));

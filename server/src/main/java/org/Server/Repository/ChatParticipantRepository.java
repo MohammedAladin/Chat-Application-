@@ -74,6 +74,28 @@ public class ChatParticipantRepository implements Repository<ChatParticipants,In
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         }
+    }
+    public int getChatIDForParticipants(int participantUserID1, int participantUserID2) {
+        String query = "SELECT cp1.ChatID " +
+                "FROM ChatParticipants cp1 " +
+                "JOIN ChatParticipants cp2 ON cp1.ChatID = cp2.ChatID " +
+                "JOIN Chat c ON cp1.ChatID = c.ChatID " +
+                "WHERE cp1.ParticipantUserID = ? " +
+                "AND cp2.ParticipantUserID = ? " +
+                "AND c.AdminID IS NULL";
 
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, participantUserID1);
+            statement.setInt(2, participantUserID2);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt("ChatID");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 }

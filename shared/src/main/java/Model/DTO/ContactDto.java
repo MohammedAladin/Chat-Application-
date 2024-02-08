@@ -10,7 +10,6 @@ import javafx.beans.property.StringProperty;
 public class ContactDto implements Serializable {
     int contactID;
     String contactName;
-
     String mode;
     String bio;
     byte[] contactImage;

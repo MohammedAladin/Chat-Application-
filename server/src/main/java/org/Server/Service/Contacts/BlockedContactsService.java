@@ -16,23 +16,25 @@ import java.sql.SQLException;
 public class BlockedContactsService extends UnicastRemoteObject implements BlockedContactsInterface{
     UserService userService;
     private BlockedContactsRepository blockedContactsRepository;
+    private ContactService contactService;
 
     public BlockedContactsService() throws RemoteException {
         this.blockedContactsRepository = new BlockedContactsRepository();
         this.userService = UserService.getInstance();
+        this.contactService = new ContactService();
     }
 
     public void blockContact (BlockedContactDTO blockedContactDTO) {
-////        User user = userService.existsByPhoneNumber(blockedContactDTO.getBlockedPhoneNumber());
-//        if (user != null) {
-//            try {
-//                Integer userID = user.getUserID();
-//                BlockedEntity blockedEntity = new BlockedEntity(blockedContactDTO.getUserID(), userID);
-//                blockedContactsRepository.save(blockedEntity);
-//            } catch (SQLException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
+        User user = userService.existsByPhoneNumber(blockedContactDTO.getBlockedUserPhoneNumber());
+        contactService.deleteContact(user.getUserID(), blockedContactDTO.getUserID());
+
+        try {
+            Integer userID = user.getUserID();
+            BlockedEntity blockedEntity = new BlockedEntity(blockedContactDTO.getUserID(), userID);
+            blockedContactsRepository.save(blockedEntity);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void unblock (BlockedContactDTO blockedContactDTO){
@@ -47,14 +49,13 @@ public class BlockedContactsService extends UnicastRemoteObject implements Block
     }
 
     public Integer existsByDTO (BlockedContactDTO blockedContactDTO) {
-//        Integer userId = blockedContactDTO.getUserID();
-//        User user = userService.existsByPhoneNumber(blockedContactDTO.getBlockedPhoneNumber());
-//        if (user != null) {
-//            int blockedContactID = user.getUserID();
-//            BlockedEntity blockedEntity = new BlockedEntity(userId, blockedContactID);
-//            return blockedContactsRepository.existsByBlockedEntity(blockedEntity);
-//        }
-//        return -1;
+        Integer userId = blockedContactDTO.getUserID();
+        User user = userService.existsByPhoneNumber(blockedContactDTO.getBlockedUserPhoneNumber());
+        if (user != null) {
+            int blockedContactID = user.getUserID();
+            BlockedEntity blockedEntity = new BlockedEntity(userId, blockedContactID);
+            return blockedContactsRepository.existsByBlockedEntity(blockedEntity);
+        }
         return -1;
     }
 

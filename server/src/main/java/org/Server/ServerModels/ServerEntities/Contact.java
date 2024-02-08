@@ -13,6 +13,11 @@ public class Contact {
         this.userID = userID;
         this.creationDate = creationDate;
     }
+    public Contact(int userID, int friendID) {
+        this.friendID = friendID;
+        this.userID = userID;
+
+    }
 
     public int getFriendID() {
         return friendID;
