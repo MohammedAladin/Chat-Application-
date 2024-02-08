@@ -25,6 +25,7 @@ public class UserCardController implements Initializable {
     public ImageView userImage;
     public Label name_label;
     String name;
+    public Button unblockButton;
 
 
     public AnchorPane parentPane;
@@ -57,6 +58,7 @@ public class UserCardController implements Initializable {
         if (isFriend) {
             add_btn.setVisible(false);
         }
+        unblockButton.setOnAction(actionEvent -> unblockContact(phoneNumber));
         blockButton.setOnAction(actionEvent -> blockContact(phoneNumber));
         name_label.setText(name);
         add_btn.setOnAction(e -> addContact(phoneNumber));

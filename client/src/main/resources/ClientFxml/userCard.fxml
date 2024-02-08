@@ -5,11 +5,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="parentPane" prefHeight="93.0" prefWidth="342.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="parentPane" prefHeight="123.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="add_btn" layoutX="240.0" layoutY="53.0" mnemonicParsing="false" text="Send Request" />
+      <Button fx:id="add_btn" layoutX="272.0" layoutY="49.0" mnemonicParsing="false" text="Send Request" />
       <ImageView fx:id="userImage" fitHeight="48.0" fitWidth="70.0" layoutX="6.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="name_label" layoutX="102.0" layoutY="18.0" text="Name" />
-      <Button fx:id="blockButton" layoutX="15.0" layoutY="53.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" text="Block" />
+      <Button fx:id="blockButton" layoutX="12.0" layoutY="82.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="90.0" text="Block" />
+      <Button fx:id="unblockButton" layoutX="118.0" layoutY="82.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="90.0" text="Unblock" />
    </children>
 </AnchorPane>

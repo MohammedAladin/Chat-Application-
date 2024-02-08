@@ -69,7 +69,6 @@ public class LoginController implements Initializable {
         try {
             boolean phoneNumberExists = remoteServiceHandler.getRemoteUserService().existsByUserLoginDTO(userLogin);
             if (phoneNumberExists) {
-                remoteServiceHandler.showAlert("Phone number exists. Please enter the corresponding password!" , Alert.AlertType.INFORMATION);
                 showPasswordField();
             } else {
                 remoteServiceHandler.showAlert("Phone number does not exist. Please enter a valid phone number." , Alert.AlertType.INFORMATION);
@@ -93,8 +92,6 @@ public class LoginController implements Initializable {
     private void handleLoginResult(boolean loginResult) {
         if (loginResult) {
             try {
-                remoteServiceHandler.showAlert("Login Successful", Alert.AlertType.INFORMATION);
-
                 Model.getInstance().setCallBackServicesClient(new ClientServicesImp());// client representation to be sent.
                 callBackServicesServer =  remoteServiceHandler.getCallbacks();
                 Model.getInstance().setCallBackServicesServer(callBackServicesServer);
