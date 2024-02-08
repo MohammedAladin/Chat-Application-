@@ -59,9 +59,20 @@ public class UserCardController implements Initializable {
         if (isFriend) {
             add_btn.setVisible(false);
             unblockButton.setVisible(false);
+            add_btn.setManaged(false);
+            unblockButton.setManaged(false);
         }
-        if(isBlocked){
+        else if(isBlocked){
             blockButton.setVisible(false);
+            blockButton.setManaged(false);
+            add_btn.setVisible(false);
+            add_btn.setManaged(false);
+        }
+        else {
+            blockButton.setVisible(true);
+            blockButton.setManaged(true);
+            unblockButton.setVisible(false);
+            unblockButton.setManaged(false);
         }
         unblockButton.setOnAction(actionEvent -> unblockContact(phoneNumber));
         blockButton.setOnAction(actionEvent -> blockContact(phoneNumber));
@@ -109,7 +120,11 @@ public class UserCardController implements Initializable {
             CallBackServicesServer server = model.getCallBackServicesServer();
             BlockedContactDTO blockedContactDTO = new BlockedContactDTO(model.getClientId(), phoneNumber);
             server.blockContact(blockedContactDTO);
-            ((VBox) parentPane.getParent()).getChildren().remove(parentPane);
+            //((VBox) parentPane.getParent()).getChildren().remove(parentPane);
+            blockButton.setVisible(false);
+            blockButton.setManaged(false);
+            unblockButton.setVisible(true);
+            unblockButton.setManaged(true);
 
             System.out.println("after calling the server");
         } catch (RemoteException e) {
@@ -120,8 +135,11 @@ public class UserCardController implements Initializable {
     private void unblockContact (String phoneNumber){
         BlockedContactDTO blockedContactDTO = new BlockedContactDTO(model.getClientId(), phoneNumber);
         blockButton.setVisible(true);
+        blockButton.setManaged(true);
         unblockButton.setVisible(false);
+        unblockButton.setManaged(false);
         add_btn.setVisible(true);
+        add_btn.setManaged(true);
 
         try {
             RemoteServiceHandler.getInstance().getBlockedContactsService().unblock(blockedContactDTO);
