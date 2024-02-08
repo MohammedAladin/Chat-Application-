@@ -4,6 +4,7 @@ import Model.DTO.ChatDto;
 import Model.DTO.ContactDto;
 import Model.DTO.ParticipantDto;
 import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -170,7 +171,7 @@ public class ViewFactory {
                 loginStage.close();
             }
             Stage stage = new Stage();
-            stage.setMinWidth(800);
+            stage.setMinWidth(1400);
             stage.setMinHeight(800);
             stage.setTitle("Chat App");
             stage.getIcons().add(new Image(getClass().getResourceAsStream("/ClientImages/icon.png")));
@@ -269,6 +270,10 @@ public class ViewFactory {
         stage.setScene(scene);
         stage.setTitle("Chat ServerApplication");
         stage.show();
+        stage.setOnCloseRequest(e -> {
+            Platform.exit();
+            System.exit(0);
+        });
         stage.setResizable(true);
     }
 

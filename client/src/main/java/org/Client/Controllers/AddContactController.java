@@ -4,6 +4,7 @@ import Interfaces.RmiServices.BlockedContactsInterface;
 import Model.DTO.BlockedContactDTO;
 import Model.DTO.ContactDto;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -80,7 +81,11 @@ public class AddContactController implements Initializable {
                 AnchorPane contactCard = Model.getInstance().getViewFactory().showUserCard(user, phoneNumber, isFriend, isBlocked,sentBefore);
                 vbox.getChildren().add(contactCard);
             }catch (RemoteException e) {
-                throw new RuntimeException(e);
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Connection Error");
+                alert.setContentText("Sorry, we couldn't connect to the server. Please check your connection and try again later.");
+                alert.show();
+                e.printStackTrace();
             }
         }    else{
             //show error

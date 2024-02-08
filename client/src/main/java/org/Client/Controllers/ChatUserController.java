@@ -151,6 +151,7 @@ public class ChatUserController implements Initializable {
                     Model.getInstance().getCallBackServicesServer().registerForChatBot(Model.getInstance().getClientId(), chatID);
                     Model.getInstance().getBotChats().add(chatID);
                 } catch (RemoteException ex) {
+                    showAlert();
                     ex.printStackTrace();
                 }
 
@@ -160,6 +161,7 @@ public class ChatUserController implements Initializable {
                     Model.getInstance().getCallBackServicesServer().unRegisterFromChatBot(Model.getInstance().getClientId(), chatID);
                     Model.getInstance().getBotChats().remove(chatID);
                 } catch (RemoteException ex) {
+                    showAlert();
                     ex.printStackTrace();
                 }
             }
@@ -176,7 +178,7 @@ public class ChatUserController implements Initializable {
                    try {
                        Model.getInstance().getCallBackServicesServer().sendAttachment(message);
                    } catch (RemoteException e) {
-                       throw new RuntimeException(e);
+                       Platform.runLater(this::showAlert);
                    }
                }).start();
                 messageListView.setItems(Model.getInstance().getPrivateChats().get(chatID));
@@ -204,7 +206,6 @@ public class ChatUserController implements Initializable {
         Style tempStyle = Model.getInstance().getStyle();
         String fontColor = tempStyle.getColor();
         String backgroundColor = tempStyle.getBackgroundColor();
-        System.out.println(tempStyle.getColor() + " "+tempStyle.getBackgroundColor());
         String css = String.format("-fx-font-size: %d; -fx-font-style: %s; -fx-font-weight: %s; -fx-text-fill: %s; -fx-background-color: %s;",
                 tempStyle.getFontSize(),
                 tempStyle.getFontStyle()[0],
@@ -237,4 +238,10 @@ public class ChatUserController implements Initializable {
     public void setBot(boolean bot) {
         isBot = bot;
     }
+    public void showAlert(){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText("There seems to be a problem in the connection. Please check your connection and try again later.");
+        alert.show();
+    }
 }
+

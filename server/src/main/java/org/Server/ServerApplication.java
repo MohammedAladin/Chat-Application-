@@ -52,6 +52,7 @@ public class ServerApplication extends Application {
             public void handle(WindowEvent event) {
                 System.out.println("Closing application...");
                 Platform.exit();
+                System.exit(0);
             }
         });
 

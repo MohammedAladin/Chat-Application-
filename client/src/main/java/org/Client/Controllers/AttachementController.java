@@ -2,6 +2,7 @@ package org.Client.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
@@ -58,6 +59,10 @@ public class AttachementController implements Initializable {
             try {
                 Model.getInstance().getCallBackServicesServer().downloadAttachment(Model.getInstance().getClientId(), attachmentID,message);
             } catch (RemoteException ex) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Connection Error");
+                alert.setHeaderText("Connection Error");
+                alert.setContentText("Connection Unstable, please check your connection try again later");
                 throw new RuntimeException(ex);
             }
         });

@@ -4,20 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="bug fixes">
+    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="add contact improvements">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/AddContactController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/AddContactController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/UserCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/UserCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/AttachementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/AttachementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatUserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Views/ViewFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientStyles/AddContactStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientStyles/AddContactStyles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/AddContactController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/AddContactController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/UserCardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/UserCardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/ClientStyles/AddContactStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/ClientStyles/AddContactStyles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Models/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Models/Model.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dp.properties" beforeDir="false" afterPath="$PROJECT_DIR$/dp.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/ServerCallBacks/CallBackServicesImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/ServerCallBacks/CallBackServicesImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Server/CallBackServicesServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Server/CallBackServicesServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/ServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Server/CallBackServicesServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Server/CallBackServicesServer.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -470,7 +468,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707400369550</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="add contact improvements">
+      <option name="closed" value="true" />
+      <created>1707403076085</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1707403076085</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -522,6 +528,7 @@
     <MESSAGE value="ChatBot gui" />
     <MESSAGE value="blocked contacted gui fixes" />
     <MESSAGE value="bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixes" />
+    <MESSAGE value="add contact improvements" />
+    <option name="LAST_COMMIT_MESSAGE" value="add contact improvements" />
   </component>
 </project>
