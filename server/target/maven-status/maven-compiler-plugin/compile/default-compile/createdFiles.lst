@@ -11,9 +11,14 @@ org\Server\ServerModels\ServerEntities\ServerAnnouncement.class
 org\Server\Service\ChatParticipants\ChatParticipantServices.class
 org\Server\Service\ServerCallBacks\CallBackServicesImpl.class
 org\Server\ServerApplication.class
+org\Server\RepoInterfaces\BlockedContactsRepoInterface.class
 org\Server\Repository\MessageRepository.class
+org\Server\Service\ServerCallBacks\ChatBotCallBack.class
 org\Server\Repository\UserRepository.class
+org\Server\Repository\BlockedContactsRepository.class
+org\Server\Service\Chat\ChatBot.class
 org\Server\RepoInterfaces\UserRepoInterface.class
+org\Server\GUI\Controllers\ServerDatabaseController.class
 org\Server\RepoInterfaces\ChatRepoInterface.class
 org\Server\ServerModels\ServerEntities\Group.class
 org\Server\Service\Chat\ChatServices.class
@@ -37,10 +42,12 @@ org\Server\RepoInterfaces\AttachmentRepoInterface.class
 org\Server\ServerModels\ServerEntities\Contact.class
 org\Server\Service\User\RegistrationService.class
 org\Server\Repository\ChatRepository.class
+org\Server\Service\Contacts\BlockedContactsService.class
 org\Server\GUI\Controllers\ServerSideBarController.class
 org\Server\ServerModels\ServerEntities\Message.class
 org\Server\ServerModels\ServerEntities\Attachment.class
 org\Server\Repository\UserNotificationRepository.class
 org\Server\Service\User\LoginService.class
 org\Server\GUI\Controllers\ServerHomeController.class
+org\Server\ServerModels\ServerEntities\BlockedEntity.class
 org\Server\ServerModels\ServerEntities\Notification.class

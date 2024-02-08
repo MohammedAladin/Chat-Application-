@@ -202,8 +202,6 @@ public class ViewFactory {
         fxmlLoader.setController(chatUserController);
         try {
             home.setCenter(fxmlLoader.load());
-            System.out.println("function implemeneted");
-
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -470,8 +468,8 @@ public class ViewFactory {
     public void showStylePopup(Button styleBtn) {
         Bounds buttonBounds = styleBtn.localToScreen(styleBtn.getBoundsInLocal());
         StyleController styleController = new StyleController();
-        double popupX = buttonBounds.getMaxX() - 30;
-        double popupY = buttonBounds.getMinY();
+        double popupX = buttonBounds.getMaxX() - 20;
+        double popupY = buttonBounds.getMinY()-220;
         if (stylePopup == null) {
             stylePopup = new Popup();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/StylePopup.fxml"));

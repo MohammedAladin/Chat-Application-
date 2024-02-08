@@ -23,12 +23,10 @@ module-info.class
 org\Client\Controllers\AttachementController.class
 org\Client\Controllers\AddGroupCellFactory.class
 org\Client\Service\ImageServices.class
-org\Client\ClientEntities\Style.class
 org\Client\Controllers\AddGroupController.class
 org\Client\Models\Model.class
 org\Client\Views\ViewFactory.class
 org\Client\Controllers\MessageCellFactory.class
-org\Client\Controllers\GoupChatController.class
 org\Client\Controllers\GroupsController$2.class
 org\Client\Controllers\HomeController.class
 org\Client\Controllers\ChatAreaController.class
@@ -38,7 +36,6 @@ org\Client\Controllers\NotificationListController$1.class
 org\Client\Controllers\ChatAreaController$2.class
 org\Client\Controllers\NotificationPopController.class
 org\Client\Controllers\LoginController$1.class
-org\Client\Controllers\GoupChatController$1.class
 org\Client\Controllers\ChatUserController.class
 org\Client\Controllers\UserCardController.class
 org\Client\Controllers\FriendRequestController.class
