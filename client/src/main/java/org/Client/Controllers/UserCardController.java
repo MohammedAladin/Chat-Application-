@@ -123,6 +123,8 @@ public class UserCardController implements Initializable {
             //((VBox) parentPane.getParent()).getChildren().remove(parentPane);
             blockButton.setVisible(false);
             blockButton.setManaged(false);
+            add_btn.setVisible(false);
+            add_btn.setManaged(false);
             unblockButton.setVisible(true);
             unblockButton.setManaged(true);
 

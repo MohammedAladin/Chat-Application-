@@ -298,7 +298,6 @@ public class ViewFactory {
         Bounds buttonBounds = button.localToScreen(button.getBoundsInLocal());
         double popupX = buttonBounds.getMaxX() - 30;
         double popupY = buttonBounds.getMinY();
-        if (addContactPopup == null) {
             addContactPopup = new Popup();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/addContact.fxml"));
 
@@ -313,7 +312,7 @@ public class ViewFactory {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
+
 
         addContactPopup.show(button.getParent(), popupX, popupY);
         addContactPopup.setAutoHide(true);
