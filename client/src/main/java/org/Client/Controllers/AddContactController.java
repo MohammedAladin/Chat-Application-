@@ -23,6 +23,7 @@ public class AddContactController implements Initializable {
     public Button find_btn;
     public boolean isFriend = false;
     public boolean isBlocked = false;
+    boolean sentBefore = false;
     private BlockedContactsInterface blockedContactsService;
 
     @Override
@@ -61,6 +62,7 @@ public class AddContactController implements Initializable {
                             return;
                         }
                     }
+                    sentBefore = Model.getInstance().getCallBackServicesServer().checkIfSent(user.getContactID(), Model.getInstance().getClientId());
                     if (user.getContactID().equals(Model.getInstance().getClientId())) {
 
                         error.setText("You can't add yourself");
@@ -75,7 +77,7 @@ public class AddContactController implements Initializable {
                     }
                 }
                 //show the contact
-                AnchorPane contactCard = Model.getInstance().getViewFactory().showUserCard(user, phoneNumber, isFriend, isBlocked);
+                AnchorPane contactCard = Model.getInstance().getViewFactory().showUserCard(user, phoneNumber, isFriend, isBlocked,sentBefore);
                 vbox.getChildren().add(contactCard);
             }catch (RemoteException e) {
                 throw new RuntimeException(e);

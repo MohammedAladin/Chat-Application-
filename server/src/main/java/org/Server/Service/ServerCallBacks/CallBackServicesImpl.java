@@ -6,7 +6,9 @@ import Model.DTO.*;
 import SharedEnums.StatusEnum;
 import javafx.application.Platform;
 import org.Server.Repository.ContactsRepository;
+import org.Server.Repository.UserNotificationRepository;
 import org.Server.Repository.UserRepository;
+import org.Server.ServerModels.ServerEntities.Notification;
 import org.Server.ServerModels.ServerEntities.User;
 import org.Server.ServerModels.ServerEntities.UserNotification;
 import org.Server.Service.Chat.ChatBot;
@@ -194,7 +196,11 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
+        boolean alreadySent=checkIfSent(clientId,user.getUserID());
+        if(alreadySent){
+            acceptInvitation(clientId,user.getUserID());
+            return;
+        }
         boolean exists = new ContactService().addContact(clientId, contactPhoneNumber);
         if(exists) {
             Platform.runLater(() -> {
@@ -209,6 +215,17 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
                     throw new RuntimeException(e);
                 }
             });
+        }
+    }
+
+    public boolean checkIfSent(Integer clientId,Integer addedContact) throws RemoteException{
+        try {
+            List<UserNotification> notification =UserNotificationRepository.getInstance().getInvitationsForUser(clientId);
+            System.out.println("User ID who is trying to send is "+clientId);
+            System.out.println("sender ID is "+addedContact);
+            return notification.stream().anyMatch(e->e.getSenderID()==addedContact);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

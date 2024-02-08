@@ -22,6 +22,7 @@ public class UserCardController implements Initializable {
     public Button add_btn;
     private boolean isFriend;
     private boolean isBlocked;
+    private boolean sentBefore;
     public Button blockButton;
     public ImageView userImage;
     public Label name_label;
@@ -67,6 +68,12 @@ public class UserCardController implements Initializable {
             blockButton.setManaged(false);
             add_btn.setVisible(false);
             add_btn.setManaged(false);
+        }
+        else if (sentBefore) {
+            add_btn.setDisable(true);
+            unblockButton.setVisible(false);
+            add_btn.setText("Invitation Sent and pending");
+            add_btn.setStyle("-fx-background-color: #a3a2a2; -fx-text-fill: #030303;");
         }
         else {
             blockButton.setVisible(true);
@@ -148,5 +155,13 @@ public class UserCardController implements Initializable {
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public boolean isSentBefore() {
+        return sentBefore;
+    }
+
+    public void setSentBefore(boolean sentBefore) {
+        this.sentBefore = sentBefore;
     }
 }

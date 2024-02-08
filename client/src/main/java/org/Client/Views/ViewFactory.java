@@ -344,7 +344,7 @@ public class ViewFactory {
 
     }
 
-    public AnchorPane showUserCard(ContactDto user, String phoneNumber, boolean isFriend, boolean isBlocked) {
+    public AnchorPane showUserCard(ContactDto user, String phoneNumber, boolean isFriend, boolean isBlocked,boolean sentbefore) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ClientFxml/userCard.fxml"));
         try {
             UserCardController controller = new UserCardController();
@@ -353,6 +353,7 @@ public class ViewFactory {
             controller.setImage(user.getContactImage());
             controller.setFriend(isFriend);
             controller.setBlocked(isBlocked);
+            controller.setSentBefore(sentbefore);
             fxmlLoader.setController(controller);
             AnchorPane card = fxmlLoader.load();
             return card;
