@@ -63,6 +63,7 @@ public class UserCardController implements Initializable {
         if(isBlocked){
             blockButton.setVisible(false);
         }
+        unblockButton.setOnAction(actionEvent -> unblockContact(phoneNumber));
         blockButton.setOnAction(actionEvent -> blockContact(phoneNumber));
         unblockButton.setOnAction(actionEvent -> unblockContact(phoneNumber));
         name_label.setText(name);

@@ -69,7 +69,6 @@ public class LoginController implements Initializable {
         try {
             boolean phoneNumberExists = remoteServiceHandler.getRemoteUserService().existsByUserLoginDTO(userLogin);
             if (phoneNumberExists) {
-                remoteServiceHandler.showAlert("Phone number exists. Please enter the corresponding password!" , Alert.AlertType.INFORMATION);
                 showPasswordField();
             } else {
                 remoteServiceHandler.showAlert("Phone number does not exist. Please enter a valid phone number." , Alert.AlertType.INFORMATION);
