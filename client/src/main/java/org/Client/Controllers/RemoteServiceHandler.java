@@ -2,10 +2,12 @@
 package org.Client.Controllers;
 
 import Interfaces.CallBacks.Server.CallBackServicesServer;
+import Interfaces.RmiServices.BlockedContactsInterface;
 import Interfaces.RmiServices.RemoteUserService;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 
+import java.rmi.AccessException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -47,6 +49,16 @@ public class RemoteServiceHandler {
             throw new RuntimeException(e);
         }
         return serverCallbacks;
+    }
+
+    public BlockedContactsInterface getBlockedContactsService (){
+        BlockedContactsInterface blockedContactsService;
+        try {
+            blockedContactsService = (BlockedContactsInterface) registry.lookup("BlockingServices");
+        } catch (RemoteException | NotBoundException e) {
+            throw new RuntimeException(e);
+        }
+        return blockedContactsService;
     }
 
 
