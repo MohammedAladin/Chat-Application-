@@ -90,11 +90,12 @@ public class UserCardController implements Initializable {
     }
     
     private void blockContact (String phoneNumber){
+        System.out.println("before calling the server");
         try {
             CallBackServicesServer server = model.getCallBackServicesServer();
             BlockedContactDTO blockedContactDTO = new BlockedContactDTO(model.getClientId(), phoneNumber);
             server.blockContact(blockedContactDTO);
-
+            System.out.println("after calling the server");
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }

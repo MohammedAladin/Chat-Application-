@@ -55,7 +55,7 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
 
     @Override
     public void deleteContact(Integer contactID) throws RemoteException {
-        Model.getInstance().getContacts().removeIf(contactDto -> contactDto.getContactID().equals(contactID));
+        Platform.runLater(()->Model.getInstance().getContacts().removeIf(contactDto -> contactDto.getContactID().equals(contactID)));
     }
 
     @Override

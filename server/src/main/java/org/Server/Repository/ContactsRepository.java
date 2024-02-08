@@ -68,6 +68,7 @@ public class ContactsRepository implements Repository<Contact, Integer> {
                  statement.setInt(1, contact.getFriendID());
                  statement.executeUpdate();
             }
+            System.out.println(result);
         }
     }
 

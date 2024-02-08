@@ -27,11 +27,12 @@ public class BlockedContactsService extends UnicastRemoteObject implements Block
     public void blockContact (BlockedContactDTO blockedContactDTO) {
         User user = userService.existsByPhoneNumber(blockedContactDTO.getBlockedUserPhoneNumber());
         contactService.deleteContact(user.getUserID(), blockedContactDTO.getUserID());
-
+        System.out.println("After deleting the contact");
         try {
             Integer userID = user.getUserID();
             BlockedEntity blockedEntity = new BlockedEntity(blockedContactDTO.getUserID(), userID);
             blockedContactsRepository.save(blockedEntity);
+            System.out.println("after saving");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

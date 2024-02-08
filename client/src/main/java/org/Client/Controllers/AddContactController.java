@@ -51,14 +51,14 @@ public class AddContactController implements Initializable {
                     return;
                 }
                 List<ContactDto> contctList = Model.getInstance().getContacts();
-                for (ContactDto contactDto : contctList) {
-                    if (contactDto.getContactID().equals(user.getContactID())) {
-                        error.setText("User already in your contact list");
-                        error.setVisible(true);
-                        isFriend = true;
-                        return;
-                    }
-                }
+//                for (ContactDto contactDto : contctList) {
+//                    if (contactDto.getContactID().equals(user.getContactID())) {
+////                        error.setText("User already in your contact list");
+////                        error.setVisible(true);
+//                        isFriend = true;
+//                        return;
+//                    }
+//                }
 
             }
 

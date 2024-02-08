@@ -73,7 +73,6 @@ public class LoginController implements Initializable {
                 showPasswordField();
             } else {
                 remoteServiceHandler.showAlert("Phone number does not exist. Please enter a valid phone number." , Alert.AlertType.INFORMATION);
-//                System.exit(0);
             }
         } catch (RemoteException e) {
             throw new RuntimeException(e);
@@ -93,8 +92,6 @@ public class LoginController implements Initializable {
     private void handleLoginResult(boolean loginResult) {
         if (loginResult) {
             try {
-                remoteServiceHandler.showAlert("Login Successful", Alert.AlertType.INFORMATION);
-
                 Model.getInstance().setCallBackServicesClient(new ClientServicesImp());// client representation to be sent.
                 callBackServicesServer =  remoteServiceHandler.getCallbacks();
                 Model.getInstance().setCallBackServicesServer(callBackServicesServer);

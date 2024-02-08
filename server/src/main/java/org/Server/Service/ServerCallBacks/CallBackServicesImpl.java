@@ -214,6 +214,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
 
     @Override
     public void blockContact(BlockedContactDTO blockedContactDTO) throws RemoteException {
+        System.out.println("reached block contact method");
         blockedContactsService.blockContact(blockedContactDTO);
         Integer userID = blockedContactDTO.getUserID();
         String blockedUserPhoneNumber = blockedContactDTO.getBlockedUserPhoneNumber();
@@ -225,7 +226,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     }
 
     private void removeFromClientContacts(Integer userID1, Integer userID2) throws RemoteException {
-        Platform.runLater(()->{
+            System.out.println("run Later reached");
             if (clients.containsKey(userID1)) {
                 try {
                     CallBackServicesClient client = clients.get(userID1);
@@ -234,7 +235,6 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
                     throw new RuntimeException(e);
                 }
             }
-        });
     }
 
 
