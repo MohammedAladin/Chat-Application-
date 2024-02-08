@@ -80,6 +80,9 @@ public class AddContactController implements Initializable {
                 //show the contact
                 AnchorPane contactCard = Model.getInstance().getViewFactory().showUserCard(user, phoneNumber, isFriend, isBlocked,sentBefore);
                 vbox.getChildren().add(contactCard);
+                isBlocked= false;
+                isFriend = false;
+                sentBefore = false;
             }catch (RemoteException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Connection Error");
