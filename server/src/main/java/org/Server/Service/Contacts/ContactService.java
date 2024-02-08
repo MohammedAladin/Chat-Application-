@@ -50,7 +50,7 @@ public class ContactService {
             invitationService.deleteInvitation(acceptedUserID, userId);
             Contact contact = new Contact(userId, acceptedUserID, new Timestamp(System.currentTimeMillis()));
             contactsRepository.save(contact);
-
+            System.out.println("Contact has been saved to db....");
             chatServices.createPrivateChat(acceptedUserID, userId);
 
         } catch (SQLException e) {

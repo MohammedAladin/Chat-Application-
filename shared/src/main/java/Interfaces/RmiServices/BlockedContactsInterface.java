@@ -9,6 +9,7 @@ public interface BlockedContactsInterface extends Remote {
     void blockContact(BlockedContactDTO blockedContactDTO) throws RemoteException;
 
     void unblock(BlockedContactDTO blockedContactDTO) throws RemoteException;
+    Integer getIdIfUserIsBlocking (BlockedContactDTO blockedContactDTO) throws RemoteException;
 
     Integer existsByDTO(BlockedContactDTO blockedContactDTO) throws RemoteException;
 }

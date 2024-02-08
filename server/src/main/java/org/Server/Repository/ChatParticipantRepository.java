@@ -88,6 +88,8 @@ public class ChatParticipantRepository implements Repository<ChatParticipants,In
             statement.setInt(1, participantUserID1);
             statement.setInt(2, participantUserID2);
 
+            System.out.println("getChatIDForParticipants....");
+
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     return resultSet.getInt("ChatID");

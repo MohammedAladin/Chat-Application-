@@ -21,13 +21,16 @@ public class BlockedContactsService extends UnicastRemoteObject implements Block
     public BlockedContactsService() throws RemoteException {
         this.blockedContactsRepository = new BlockedContactsRepository();
         this.userService = UserService.getInstance();
-        this.contactService = new ContactService();
+
     }
 
     public void blockContact (BlockedContactDTO blockedContactDTO) {
+        this.contactService = new ContactService();
+
         User user = userService.existsByPhoneNumber(blockedContactDTO.getBlockedUserPhoneNumber());
         contactService.deleteContact(user.getUserID(), blockedContactDTO.getUserID());
         System.out.println("After deleting the contact");
+
         try {
             Integer userID = user.getUserID();
             BlockedEntity blockedEntity = new BlockedEntity(blockedContactDTO.getUserID(), userID);
@@ -39,7 +42,10 @@ public class BlockedContactsService extends UnicastRemoteObject implements Block
     }
 
     public void unblock (BlockedContactDTO blockedContactDTO){
-        Integer id = existsByDTO(blockedContactDTO);
+        User blockedUser = userService.existsByPhoneNumber(blockedContactDTO.getBlockedUserPhoneNumber());
+
+        BlockedEntity blockedEntity = new BlockedEntity(blockedContactDTO.getUserID(), blockedUser.getUserID());
+        Integer id = blockedContactsRepository.getIdIfBlocked(blockedEntity);
         if (id != -1) {
             try {
                 blockedContactsRepository.deleteById(id);
@@ -48,7 +54,11 @@ public class BlockedContactsService extends UnicastRemoteObject implements Block
             }
         }
     }
-
+    public Integer getIdIfUserIsBlocking (BlockedContactDTO blockedContactDTO) {
+        User blockedUser = userService.existsByPhoneNumber(blockedContactDTO.getBlockedUserPhoneNumber());
+        BlockedEntity blockedEntity = new BlockedEntity(blockedContactDTO.getUserID(), blockedUser.getUserID());
+        return blockedContactsRepository.getIdIfBlocked(blockedEntity);
+    }
     public Integer existsByDTO (BlockedContactDTO blockedContactDTO) {
         Integer userId = blockedContactDTO.getUserID();
         User user = userService.existsByPhoneNumber(blockedContactDTO.getBlockedUserPhoneNumber());

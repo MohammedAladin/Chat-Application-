@@ -103,6 +103,14 @@ public class BlockedContactsRepository implements BlockedContactsRepoInterface{
             throw new RuntimeException(e);
         }
     }
+    public Integer getIdIfBlocked (BlockedEntity blockedEntity) {
+        String query = "SELECT * FROM BlockedContacts WHERE userID = ? AND blockedContactID = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            return getID(preparedStatement, blockedEntity.getUserID(), blockedEntity.getBlockedContactID());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private Integer getID (PreparedStatement preparedStatement, Integer userID, Integer blockedContactID) {
         ResultSet resultSet = null;

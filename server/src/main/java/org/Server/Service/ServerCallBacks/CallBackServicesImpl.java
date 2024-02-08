@@ -196,20 +196,20 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         }
 
         boolean exists = new ContactService().addContact(clientId, contactPhoneNumber);
-        Platform.runLater(() -> {
-            try {
-                client.contactExists(exists);
-                if (clients.containsKey(user.getUserID())) {
-                    CallBackServicesClient addedContact = clients.get(user.getUserID());
-                    addedContact.setNotificationList(getNotificationList(user.getUserID()));
-                    addedContact.notifyClient("You have a new friend request");
+        if(exists) {
+            Platform.runLater(() -> {
+                try {
+                    client.contactExists(exists);
+                    if (clients.containsKey(user.getUserID())) {
+                        CallBackServicesClient addedContact = clients.get(user.getUserID());
+                        addedContact.setNotificationList(getNotificationList(user.getUserID()));
+                        addedContact.notifyClient("You have a new friend request");
+                    }
+                } catch (RemoteException e) {
+                    throw new RuntimeException(e);
                 }
-            } catch (RemoteException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-
+            });
+        }
     }
 
     @Override

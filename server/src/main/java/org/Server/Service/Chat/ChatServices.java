@@ -47,12 +47,19 @@ public class ChatServices {
     }
 
     public void createPrivateChat(Integer user1,Integer user2) throws SQLException {
+        System.out.println("They Were Friends Before0");
+
         Integer chatId;
         Timestamp current = new Timestamp(System.currentTimeMillis());
         ChatDto chatDto = new ChatDto(user1+user2+"", null, null, current, current);
         List<Integer> ids = List.of(user1,user2);
+        System.out.println("They Were Friends Before1");
+
         chatId = chatParticipantServices.ifParticipantsExisted(user1,user2);
+        System.out.println("They Were Friends Before2");
+
         if(chatId!=-1){
+            System.out.println("They Were Friends Before3");
             return;
         }
         chatRepository.save(mapToChat(chatDto));

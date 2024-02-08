@@ -63,7 +63,7 @@ public class ContactsRepository implements Repository<Contact, Integer> {
             statement.setInt(2, contact.getFriendID());
             int result;
             result = statement.executeUpdate();
-            if(result==-1){
+            if(result==0){
                  statement.setInt(2, contact.getUserID());
                  statement.setInt(1, contact.getFriendID());
                  statement.executeUpdate();
