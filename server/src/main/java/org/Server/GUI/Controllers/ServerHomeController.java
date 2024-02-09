@@ -62,6 +62,7 @@ public class ServerHomeController implements Initializable {
         try {
             for (String name : registry.list()){
                 registry.unbind(name);
+                System.out.println(name);
             }
             System.out.println("stopping");
         } catch (RemoteException | NotBoundException e) {

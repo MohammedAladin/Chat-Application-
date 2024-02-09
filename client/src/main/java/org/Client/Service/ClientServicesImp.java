@@ -15,9 +15,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.*;
 
 public class ClientServicesImp extends UnicastRemoteObject implements CallBackServicesClient {
@@ -55,16 +53,21 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
 
     @Override
     public void startSendingHeartBeatToTheServer() throws RemoteException {
-        Runnable sendHeartBeats = ()->{
-            try {
-                Model.getInstance().getCallBackServicesServer().receivingHeartBeatsFromClients(Model.getInstance().getClientId());
-            } catch (RemoteException e) {
-                throw new RuntimeException(e);
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                sendHeartbeat(); // Send heartbeat message to the server
             }
-        };
-        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
-        executorService.schedule(sendHeartBeats, 1, TimeUnit.SECONDS);
+        }, 0, 2000);
 
+    }
+    private void sendHeartbeat(){
+        try {
+            Model.getInstance().getCallBackServicesServer().receivingHeartBeatsFromClients(Model.getInstance().getClientId());
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

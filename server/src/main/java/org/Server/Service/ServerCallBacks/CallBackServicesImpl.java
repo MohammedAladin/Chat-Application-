@@ -41,6 +41,13 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     Map<Integer, Integer> chatBotIds = new HashMap<>();
     HeartBeatMechanism heartBeat = HeartBeatMechanism.getInstance();
 
+    public CallBackServicesImpl() throws RemoteException {
+        messageService = MessageServiceImpl.getInstance();
+        chatServices = ChatServices.getInstance();
+        startDisconnectCheckTimer();
+    }
+
+
     public void register(CallBackServicesClient client, String clientPhone) throws RemoteException {
         User user = userService.existsByPhoneNumber(clientPhone);
 
@@ -86,24 +93,23 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
 
     @Override
     public void receivingHeartBeatsFromClients(Integer clientId) throws RemoteException{
-
-        heartBeat.refreshClientsHeartBeats(clientId);
-
-        Runnable checkBeats = ()->{
-            Integer id = heartBeat.checkDisconnectedClients();
-            if(id!=-1){
-                try {
-                    unRegister(id);
-                } catch (RemoteException e) {
-                    throw new RuntimeException(e);
+            heartBeat.refreshClientsHeartBeats(clientId);
+    }
+    private void startDisconnectCheckTimer() {
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                int id = heartBeat.checkDisconnectedClients();
+                if(id!=-1){
+                    try {
+                        unRegister(id);
+                    } catch (RemoteException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
-        };
-
-        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
-        executorService.schedule(checkBeats, 100, TimeUnit.MILLISECONDS);
-        executorService.shutdown();
-
+        }, 0, 3000); // Check for disconnected clients every 5 seconds (adjust as needed)
     }
 
     private ArrayList<NotificationDTO> getNotificationList(Integer clientId) {
@@ -118,10 +124,6 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     }
 
 
-    public CallBackServicesImpl() throws RemoteException {
-        messageService = MessageServiceImpl.getInstance();
-        chatServices = ChatServices.getInstance();
-    }
 
     @Override
     public void sendMessage(MessageDTO messageDTO) throws RemoteException {

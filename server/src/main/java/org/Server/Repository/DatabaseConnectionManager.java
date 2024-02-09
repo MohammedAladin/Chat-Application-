@@ -69,7 +69,7 @@ public class DatabaseConnectionManager {
         comboPooledDataSource.setUser(properties.getProperty("User"));
         comboPooledDataSource.setPassword(properties.getProperty("Password"));
 
-        comboPooledDataSource.setMinPoolSize(5);
+        comboPooledDataSource.setMinPoolSize(1);
         comboPooledDataSource.setAcquireIncrement(5);
         comboPooledDataSource.setMaxPoolSize(50);
 
