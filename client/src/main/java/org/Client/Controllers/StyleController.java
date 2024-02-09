@@ -66,13 +66,29 @@ public class StyleController implements Initializable {
         Color defaultBackgroundColor = Color.web("#EFF6FC");
         backGroundColorID.setValue(defaultBackgroundColor); // Default color is white
 
-        italicID.selectedProperty().addListener((observable, oldValue, newValue) -> saveStyle());
-        boldID.selectedProperty().addListener((observable, oldValue, newValue) -> saveStyle());
-        fontColorID.valueProperty().addListener((observable, oldValue, newValue) -> saveStyle());
-        backGroundColorID.valueProperty().addListener((observable, oldValue, newValue) -> saveStyle());
-        sizeID.valueProperty().addListener((observable, oldValue, newValue) -> saveStyle());
+        italicID.selectedProperty().addListener((observable, oldValue, newValue) ->{
+            saveStyle();
+            refresh();
+        });
+        boldID.selectedProperty().addListener((observable, oldValue, newValue) ->{
+            saveStyle();
+            refresh();
+        });
+        fontColorID.valueProperty().addListener((observable, oldValue, newValue) -> {
+            saveStyle();
+            refresh();
+        });
+        backGroundColorID.valueProperty().addListener((observable, oldValue, newValue) -> {
+            saveStyle();
+            refresh();
+        });
+        sizeID.valueProperty().addListener((observable, oldValue, newValue) -> {
+            saveStyle();
+            refresh();
+        });
         resetID.setOnAction(actionEvent -> {
             reset();
+            refresh();
         });
     }
     public String toCssColor(javafx.scene.paint.Color color) {
@@ -90,5 +106,12 @@ public class StyleController implements Initializable {
         backGroundColorID.setValue(defaultBackgroundColor); // Default color is white
         model.getViewFactory().getChatUserController().setStyle(null);
        // model.getViewFactory().getGoupChatController().setStyle(null);
+        model.getViewFactory().getChatUserController().getTextFieldID().setStyle(null);
+    }
+    public void refresh(){
+        String originalText = Model.getInstance().getViewFactory().getChatUserController().getTextFieldID().getText();
+        Model.getInstance().getViewFactory().getChatUserController().getTextFieldID().setText("");
+        Model.getInstance().getViewFactory().getChatUserController().getTextFieldID().setText(originalText);
+
     }
 }

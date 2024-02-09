@@ -51,7 +51,7 @@ public class DatabaseConnectionManager {
 //    }
     private ComboPooledDataSource createCompoPooledDataSource() {
 
-        if(isPropFileGenerated()){
+        if(!isPropFileGenerated()){
           generatePropFile();
         }
 
