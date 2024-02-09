@@ -8,10 +8,11 @@ module server {
     requires java.rmi;
     requires java.sql;
     requires shared;
-    requires mysql.connector.java;
     requires java.naming;
     requires javafx.controls;
     requires javafx.fxml;
     requires chatter.bot.api;
+    requires commons.dbcp2;
+    requires c3p0;
 
 }
