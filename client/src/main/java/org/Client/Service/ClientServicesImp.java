@@ -53,13 +53,9 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
 
     @Override
     public void startSendingHeartBeatToTheServer() throws RemoteException {
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                sendHeartbeat(); // Send heartbeat message to the server
-            }
-        }, 0, 2000);
+
+        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
+        executorService.schedule(this::sendHeartbeat, 1, TimeUnit.SECONDS);
 
     }
     private void sendHeartbeat(){

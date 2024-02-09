@@ -96,20 +96,17 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
             heartBeat.refreshClientsHeartBeats(clientId);
     }
     private void startDisconnectCheckTimer() {
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                int id = heartBeat.checkDisconnectedClients();
-                if(id!=-1){
-                    try {
-                        unRegister(id);
-                    } catch (RemoteException e) {
-                        throw new RuntimeException(e);
-                    }
+        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
+        executorService.schedule(()->{
+            int id = heartBeat.checkDisconnectedClients();
+            if(id!=-1){
+                try {
+                    unRegister(id);
+                } catch (RemoteException e) {
+                    throw new RuntimeException(e);
                 }
             }
-        }, 0, 3000); // Check for disconnected clients every 5 seconds (adjust as needed)
+        }, 1, TimeUnit.SECONDS);
     }
 
     private ArrayList<NotificationDTO> getNotificationList(Integer clientId) {
