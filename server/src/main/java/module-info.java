@@ -14,5 +14,6 @@ module server {
     requires chatter.bot.api;
     requires commons.dbcp2;
     requires c3p0;
+    requires mysql.connector.java;
 
 }

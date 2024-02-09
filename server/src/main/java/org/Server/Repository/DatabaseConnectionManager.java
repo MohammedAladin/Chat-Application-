@@ -1,16 +1,16 @@
 package org.Server.Repository;
 
 
-import org.apache.commons.dbcp2.BasicDataSource;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
-import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.mysql.cj.jdbc.MysqlConnectionPoolDataSource;
+
 public class DatabaseConnectionManager {
     private static final String PROPERTIES_FILE_PATH = "dp.properties";
     private static DatabaseConnectionManager instance;
-    static ComboPooledDataSource comboPooledDataSource = null;
+    static MysqlConnectionPoolDataSource mysqlConnectionPoolDataSource = null;
 
     private DatabaseConnectionManager() {
     }
@@ -49,7 +49,7 @@ public class DatabaseConnectionManager {
 //        ds.setMaxOpenPreparedStatements(100);
 //        return ds;
 //    }
-    private ComboPooledDataSource createCompoPooledDataSource() {
+    private  MysqlConnectionPoolDataSource createCompoPooledDataSource() {
 
         if(!isPropFileGenerated()){
           generatePropFile();
@@ -64,16 +64,12 @@ public class DatabaseConnectionManager {
             throw new RuntimeException(e);
         }
 
-        comboPooledDataSource = new ComboPooledDataSource();
-        comboPooledDataSource.setJdbcUrl(properties.getProperty("URL"));
-        comboPooledDataSource.setUser(properties.getProperty("User"));
-        comboPooledDataSource.setPassword(properties.getProperty("Password"));
+        mysqlConnectionPoolDataSource = new MysqlConnectionPoolDataSource();
+        mysqlConnectionPoolDataSource.setUrl(properties.getProperty("URL"));
+        mysqlConnectionPoolDataSource.setUser(properties.getProperty("User"));
+        mysqlConnectionPoolDataSource.setPassword(properties.getProperty("Password"));
 
-        comboPooledDataSource.setMinPoolSize(1);
-        comboPooledDataSource.setAcquireIncrement(5);
-        comboPooledDataSource.setMaxPoolSize(50);
-
-        return comboPooledDataSource;
+        return mysqlConnectionPoolDataSource;
     }
 
     private boolean isPropFileGenerated() {
@@ -82,10 +78,13 @@ public class DatabaseConnectionManager {
     }
 
     public Connection getMyConnection() {
-        ComboPooledDataSource ds = createCompoPooledDataSource();
+        if(mysqlConnectionPoolDataSource == null){
+            createCompoPooledDataSource();
+        }
+
 
         try {
-            return ds.getConnection();
+            return mysqlConnectionPoolDataSource.getConnection();
         } catch (SQLException e) {
             System.out.println("Can not create connection... ");
             e.printStackTrace();
