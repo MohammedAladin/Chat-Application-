@@ -267,6 +267,7 @@ public class ViewFactory {
         }
         stage.setScene(scene);
         stage.setTitle("Chat ServerApplication");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/ClientImages/icon.png")));
         stage.show();
         stage.setOnCloseRequest(e -> {
             Platform.exit();
