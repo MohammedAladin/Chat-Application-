@@ -4,28 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="MySqlConnectionPool">
+    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="added counties to registration and edit profile and fixed callbacks for edit profile">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ProfileEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ProfileEditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/Register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/Register.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/ClientFxml/Register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/ClientFxml/Register.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/RegisterController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/EditProfilenew.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/ClientFxml/EditProfilenew.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/AddGroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/AddGroupController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Views/ViewFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dp.properties" beforeDir="false" afterPath="$PROJECT_DIR$/dp.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/ServerCallBacks/CallBackServicesImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/ServerCallBacks/CallBackServicesImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <list id="1db2b3ef-1f9a-43ec-9b5c-15616a4c6d08" name="Changes by LENOVO" comment="" />
@@ -494,7 +480,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707488922787</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="added counties to registration and edit profile and fixed callbacks for edit profile">
+      <option name="closed" value="true" />
+      <created>1707496142803</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1707496142803</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -544,6 +538,7 @@
     <MESSAGE value="Creating HeartBeat Mechanism to check frequently if the client stills alive" />
     <MESSAGE value="Creating HeartBeat Mechanism to check frequently if the client stills alive (V3)" />
     <MESSAGE value="MySqlConnectionPool" />
-    <option name="LAST_COMMIT_MESSAGE" value="MySqlConnectionPool" />
+    <MESSAGE value="added counties to registration and edit profile and fixed callbacks for edit profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="added counties to registration and edit profile and fixed callbacks for edit profile" />
   </component>
 </project>

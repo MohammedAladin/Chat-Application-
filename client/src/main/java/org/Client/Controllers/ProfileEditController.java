@@ -125,6 +125,7 @@ public class ProfileEditController implements Initializable {
             try {
                 model.getCallBackServicesServer().updateProfile(model.getClientId(), updatedFields);
                 Model.getInstance().setDisplayName(name);
+                Model.getInstance().getViewFactory().showNoti("Your profile has been updated successfully");
             } catch (RemoteException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Connection Error");

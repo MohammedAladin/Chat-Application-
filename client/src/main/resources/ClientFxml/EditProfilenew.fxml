@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="bigbackground" stylesheets="@../ClientStyles/profile.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.ProfileEditController">
+<AnchorPane styleClass="bigbackground" stylesheets="@../ClientStyles/profile.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.ProfileEditController">
    <children>
         <VBox layoutY="3.0" prefHeight="776.0" prefWidth="672.0" spacing="4.0" styleClass="background" AnchorPane.rightAnchor="10.0">
             <children>
@@ -193,4 +193,7 @@
          </stylesheets>
         </VBox>
    </children>
+   <padding>
+      <Insets right="60.0" />
+   </padding>
 </AnchorPane>
