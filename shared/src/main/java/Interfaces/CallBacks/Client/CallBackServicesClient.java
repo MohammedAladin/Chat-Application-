@@ -41,4 +41,5 @@ public interface CallBackServicesClient extends Remote {
     void notifyClient(String message) throws RemoteException;
 
     void downloadAttachment(byte[] data,String message) throws RemoteException;
+    public void sendAnnouncement(String message) throws RemoteException;
 }

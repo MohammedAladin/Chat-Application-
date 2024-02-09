@@ -4,18 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="Creating HeartBeat Mechanism to check frequently if the client stills alive">
+    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="bug fix in add contact gui">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Service/ClientServicesImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Views/ViewFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/HomeController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dp.properties" beforeDir="false" afterPath="$PROJECT_DIR$/dp.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerHomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/DatabaseConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/DatabaseConnectionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerHomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/GUI/Controllers/ServerHomeController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/DatabaseConnectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Repository/DatabaseConnectionManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/org/Server/Service/ServerCallBacks/CallBackServicesImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/org/Server/Service/ServerCallBacks/CallBackServicesImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Client/CallBackServicesClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Client/CallBackServicesClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Client/CallBackServicesClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/Interfaces/CallBacks/Client/CallBackServicesClient.class" afterDir="false" />
     </list>
-    <list id="1db2b3ef-1f9a-43ec-9b5c-15616a4c6d08" name="Changes by LENOVO" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,10 +28,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="FxmlFile" />
         <option value="CSS File" />
-        <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -39,30 +42,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="HARD" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="dd10b0e6-5f08-445c-b211-53839cc4de92" />
-        <option name="url" value="https://github.com/MohammedAladin/Chat-Application-.git" />
-      </UrlAndAccount>
-    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -84,6 +66,7 @@
     &quot;Application.App.executor&quot;: &quot;Run&quot;,
     &quot;Application.ClientApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.Mohammed.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Nada.executor&quot;: &quot;Run&quot;,
     &quot;Application.Server.executor&quot;: &quot;Run&quot;,
     &quot;Application.ServerApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.TestApp.executor&quot;: &quot;Run&quot;,
@@ -95,7 +78,7 @@
     &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Chat-Application-/client/src/main/resources/ClientImages&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/LENOVO/IdeaProjects/Chat-Application-/server/src/main/resources/images&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -110,11 +93,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\LENOVO\IdeaProjects\Chat-Application-\server\src\main\resources\images" />
       <recent name="E:\Chat-Application-\client\src\main\resources\ClientImages" />
       <recent name="E:\Chat-Application-\server\src\main\resources" />
       <recent name="E:\try\Chat-Application\client\src\main\resources\ClientImages" />
       <recent name="E:\try\Chat-Application\client\src\main\resources\ClientStyles" />
-      <recent name="E:\try\Chat-Application\client\src\main\resources\ClientFxml" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.Server.ServerModels.ServerEntities" />
@@ -122,13 +105,6 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.Client.Controllers" />
     </key>
-  </component>
-  <component name="RunAnythingCache">
-    <option name="myCommands">
-      <command value="mvn clean" />
-      <command value="mvn install" />
-      <command value="mvn compile" />
-    </option>
   </component>
   <component name="RunManager" selected="Application.Amin">
     <configuration name="Amin" type="Application" factoryName="Application">
@@ -140,6 +116,13 @@
     </configuration>
     <configuration name="Mohammed" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.Client.ClientApplication" />
+      <module name="client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Nada" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.Client.Main" />
       <module name="client" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -169,6 +152,7 @@
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.Mohammed" />
       <item itemvalue="Application.Amin" />
+      <item itemvalue="Application.Nada" />
       <item itemvalue="Application.org.Server.TestApp" />
     </list>
     <recent_temporary>
@@ -229,14 +213,6 @@
       <workItem from="1707136125157" duration="6878000" />
       <workItem from="1707156845199" duration="1350000" />
       <workItem from="1707162234272" duration="1744000" />
-      <workItem from="1707249065791" duration="5113000" />
-      <workItem from="1707335360702" duration="1875000" />
-      <workItem from="1707339684744" duration="3277000" />
-      <workItem from="1707381648955" duration="923000" />
-      <workItem from="1707455866531" duration="45000" />
-      <workItem from="1707455919864" duration="2564000" />
-      <workItem from="1707458505566" duration="69000" />
-      <workItem from="1707458580623" duration="11261000" />
     </task>
     <task id="LOCAL-00001" summary="Add server gui">
       <option name="closed" value="true" />
@@ -430,39 +406,103 @@
       <option name="project" value="LOCAL" />
       <updated>1707171881977</updated>
     </task>
-    <task id="LOCAL-00025" summary="Fixed stopping Server Thread upon closing the program.">
+    <task id="LOCAL-00025" summary="Fixed bugs.">
       <option name="closed" value="true" />
-      <created>1707249719999</created>
+      <created>1707228429263</created>
       <option name="number" value="00025" />
       <option name="presentableId" value="LOCAL-00025" />
       <option name="project" value="LOCAL" />
-      <updated>1707249719999</updated>
+      <updated>1707228429263</updated>
     </task>
-    <task id="LOCAL-00026" summary="Fixed stopping Server Thread upon closing the program.">
+    <task id="LOCAL-00026" summary="Added updating database from Server Gui feature.">
       <option name="closed" value="true" />
-      <created>1707253673826</created>
+      <created>1707261498701</created>
       <option name="number" value="00026" />
       <option name="presentableId" value="LOCAL-00026" />
       <option name="project" value="LOCAL" />
-      <updated>1707253673827</updated>
+      <updated>1707261498701</updated>
     </task>
-    <task id="LOCAL-00027" summary="Creating a connection pool using CompoPooledDataSource has been done successfully.">
+    <task id="LOCAL-00027" summary="Some styling adjustments.">
       <option name="closed" value="true" />
-      <created>1707462304133</created>
+      <created>1707267586512</created>
       <option name="number" value="00027" />
       <option name="presentableId" value="LOCAL-00027" />
       <option name="project" value="LOCAL" />
-      <updated>1707462304133</updated>
+      <updated>1707267586512</updated>
     </task>
-    <task id="LOCAL-00028" summary="Creating HeartBeat Mechanism to check frequently if the client stills alive">
+    <task id="LOCAL-00028" summary="Some styling adjustments.">
       <option name="closed" value="true" />
-      <created>1707466995364</created>
+      <created>1707268016879</created>
       <option name="number" value="00028" />
       <option name="presentableId" value="LOCAL-00028" />
       <option name="project" value="LOCAL" />
-      <updated>1707466995364</updated>
+      <updated>1707268016879</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Some styling adjustments.">
+      <option name="closed" value="true" />
+      <created>1707268095933</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1707268095933</updated>
+    </task>
+    <task id="LOCAL-00030" summary="ChatBot gui">
+      <option name="closed" value="true" />
+      <created>1707343943174</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1707343943175</updated>
+    </task>
+    <task id="LOCAL-00031" summary="blocked contacted gui fixes">
+      <option name="closed" value="true" />
+      <created>1707399905206</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1707399905206</updated>
+    </task>
+    <task id="LOCAL-00032" summary="bug fixes">
+      <option name="closed" value="true" />
+      <created>1707400369550</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1707400369550</updated>
+    </task>
+    <task id="LOCAL-00033" summary="add contact improvements">
+      <option name="closed" value="true" />
+      <created>1707403076085</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1707403076085</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Exception handling">
+      <option name="closed" value="true" />
+      <created>1707409528377</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1707409528377</updated>
+    </task>
+    <task id="LOCAL-00035" summary="small gui fix">
+      <option name="closed" value="true" />
+      <created>1707412943493</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1707412943493</updated>
+    </task>
+    <task id="LOCAL-00036" summary="bug fix in add contact gui">
+      <option name="closed" value="true" />
+      <created>1707425038269</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1707425038270</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -492,7 +532,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add server gui" />
     <MESSAGE value="add server gui side bar, home and statistics" />
     <MESSAGE value="connect server FXMLs together" />
     <MESSAGE value="Chat participants has been added" />
@@ -508,8 +547,16 @@
     <MESSAGE value="Edit Profile Image callback and edit profile info functionality has been added" />
     <MESSAGE value="Ability to package to an uber jar added." />
     <MESSAGE value="Fixed stopping Server Thread upon closing the program." />
-    <MESSAGE value="Creating a connection pool using CompoPooledDataSource has been done successfully." />
-    <MESSAGE value="Creating HeartBeat Mechanism to check frequently if the client stills alive" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creating HeartBeat Mechanism to check frequently if the client stills alive" />
+    <MESSAGE value="Fixed bugs." />
+    <MESSAGE value="Added updating database from Server Gui feature." />
+    <MESSAGE value="Some styling adjustments." />
+    <MESSAGE value="ChatBot gui" />
+    <MESSAGE value="blocked contacted gui fixes" />
+    <MESSAGE value="bug fixes" />
+    <MESSAGE value="add contact improvements" />
+    <MESSAGE value="Exception handling" />
+    <MESSAGE value="small gui fix" />
+    <MESSAGE value="bug fix in add contact gui" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fix in add contact gui" />
   </component>
 </project>

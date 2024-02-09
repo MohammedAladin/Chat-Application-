@@ -54,9 +54,18 @@ public class HomeController implements Initializable {
                 }
             });
         });
-                Model.getInstance().getViewFactory().serverAnnouncementProperty().addListener((observable, newValue, oldValue)->{
-            RemoteServiceHandler.getInstance().showAlert(oldValue, Alert.AlertType.INFORMATION);
-        } );
-
+        Model.getInstance().getViewFactory().serverAnnouncementProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                Platform.runLater(() -> {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Server Announcement");
+                    alert.setHeaderText("Announcement");
+                    alert.setContentText(newValue);
+                    alert.initOwner(parentPane.getScene().getWindow());
+                    alert.show();
+                });
+            }
+        });
     }
+
 }

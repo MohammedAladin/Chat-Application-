@@ -31,9 +31,6 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         remoteServiceHandler = RemoteServiceHandler.getInstance();
-        Model.getInstance().getViewFactory().serverAnnouncementProperty().addListener((observable, newValue, oldValue)->{
-            remoteServiceHandler.showAlert(oldValue, Alert.AlertType.INFORMATION);
-        } );
         signingButton.setOnAction((e)->handleSignIn());
         registerLabel.setOnMouseClicked(e-> Model.getInstance().getViewFactory().showRegistrationWindow());
 

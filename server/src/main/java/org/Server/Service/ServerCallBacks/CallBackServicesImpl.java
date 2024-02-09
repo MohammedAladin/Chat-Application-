@@ -214,6 +214,9 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     }
 
     public void sendAnnouncement(String announcement) throws RemoteException {
+        for (CallBackServicesClient client : clients.values()) {
+            client.sendAnnouncement(announcement);
+        }
 
     }
 
