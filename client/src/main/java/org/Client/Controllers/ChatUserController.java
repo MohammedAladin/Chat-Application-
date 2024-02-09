@@ -200,7 +200,7 @@ public class ChatUserController implements Initializable {
               alert.show();
         }
         messageListView.setItems(Model.getInstance().getPrivateChats().get(chatID));
-        messageListView.scrollTo(Model.getInstance().getPrivateChats().get(chatID).size());
+        messageListView.scrollTo(Model.getInstance().getPrivateChats().get(chatID).size()-1);
         textFieldID.clear();
     }
     private void applyStyle() {

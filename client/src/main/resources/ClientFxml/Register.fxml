@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -11,6 +10,8 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -20,7 +21,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="664.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.RegisterController">
+<BorderPane prefHeight="664.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.RegisterController">
    <center>
       <VBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER_LEFT">
          <children>
@@ -268,13 +269,14 @@
       </VBox>
    </center>
    <left>
-      <VBox fx:id="leftVBox" alignment="CENTER" prefHeight="502.0" prefWidth="221.0" style="-fx-background-color: linear-gradient(to bottom, #6E00FF, #9C00FF);;" BorderPane.alignment="CENTER">
+      <VBox fx:id="leftVBox" alignment="CENTER" prefHeight="664.0" prefWidth="213.0" style="-fx-background-color: #6e00ff;" BorderPane.alignment="CENTER">
          <children>
-            <Label text="ChatApp!">
-               <font>
-                  <Font name="Verdana Bold Italic" size="24.0" />
-               </font>
-            </Label>
+            <ImageView fitHeight="222.0" fitWidth="215.0">
+               <image>
+                  <Image url="@../ClientImages/ChatAppcreativelogo.png" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="146.0" prefWidth="198.0" />
          </children>
       </VBox>
    </left>
