@@ -40,6 +40,8 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     Map<Integer, CallBackServicesClient> clients = new HashMap<>();
     Map<Integer, Integer> chatBotIds = new HashMap<>();
     HeartBeatMechanism heartBeat = HeartBeatMechanism.getInstance();
+    static ScheduledExecutorService  executorService = Executors.newScheduledThreadPool(1);
+
 
     public CallBackServicesImpl() throws RemoteException {
         messageService = MessageServiceImpl.getInstance();
@@ -96,8 +98,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
             heartBeat.refreshClientsHeartBeats(clientId);
     }
     private void startDisconnectCheckTimer() {
-        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
-        executorService.schedule(()->{
+        executorService.scheduleAtFixedRate(()->{
             int id = heartBeat.checkDisconnectedClients();
             if(id!=-1){
                 try {
@@ -106,7 +107,8 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
                     throw new RuntimeException(e);
                 }
             }
-        }, 1, TimeUnit.SECONDS);
+        }, 0,1, TimeUnit.SECONDS);
+
     }
 
     private ArrayList<NotificationDTO> getNotificationList(Integer clientId) {

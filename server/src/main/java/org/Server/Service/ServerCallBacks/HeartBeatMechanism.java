@@ -19,6 +19,7 @@ public class HeartBeatMechanism{
     }
 
     public void refreshClientsHeartBeats(Integer clientId){
+        System.out.println("HeartBeating ClientID : " + clientId);
         lastHeartbeatTimes.put(clientId, System.currentTimeMillis());
     }
 
@@ -28,6 +29,7 @@ public class HeartBeatMechanism{
         for (Integer clientId : lastHeartbeatTimes.keySet()) {
             long lastHeartbeatTime = lastHeartbeatTimes.get(clientId);
             if (currentTime - lastHeartbeatTime > HEARTBEAT_TIMEOUT) {
+                System.out.println("Force Stopped Client ID : " + clientId);
                 lastHeartbeatTimes.remove(clientId);
                 return clientId;
             }

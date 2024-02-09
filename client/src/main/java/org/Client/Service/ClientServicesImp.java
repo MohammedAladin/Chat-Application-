@@ -55,7 +55,7 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
     public void startSendingHeartBeatToTheServer() throws RemoteException {
 
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
-        executorService.schedule(this::sendHeartbeat, 1, TimeUnit.SECONDS);
+        executorService.scheduleAtFixedRate(this::sendHeartbeat, 0,1, TimeUnit.SECONDS);
 
     }
     private void sendHeartbeat(){
