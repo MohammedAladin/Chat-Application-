@@ -67,9 +67,11 @@ public class ProfileEditController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         setDefaultInfo();
+        System.out.println(model.getCountry());
 
         editProfilePicButton.setOnMouseClicked((e)->handleEditProfilePicButton());
         saveButton.setOnAction((e)->handleSaveButtonAction());
+        countryChooser.getItems().addAll("Egypt", "USA", "UK", "Germany", "France", "Italy", "Spain", "China", "Japan", "Korea", "Brazil", "Argentina", "Australia", "Canada", "Russia", "India", "South Africa", "Nigeria", "Kenya", "Ghana", "Morocco", "Tunisia", "Saudi Arabia", "UAE", "Qatar", "Kuwait", "Bahrain", "Oman", "Jordan", "Lebanon");
 
     }
     private void setDefaultInfo(){
@@ -78,6 +80,7 @@ public class ProfileEditController implements Initializable {
         phoneTextField.setText(model.getPhoneNumber());
         dateOfBirth.setValue(model.getBirthDate().toLocalDate());
         emailTextField.setText(model.getEmail());
+        countryChooser.setValue(model.getCountry());
         if(model.getProfilePicture()==null||model.getProfilePicture().length==0){
             profileImageView.setFill(new ImagePattern(ImageServices.getDefaultImage()));
         }

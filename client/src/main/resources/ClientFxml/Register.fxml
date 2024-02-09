@@ -236,16 +236,9 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                  
+
                                 <ComboBox fx:id="countryComboBox" prefHeight="26.0" prefWidth="258.0" promptText="Select Country" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                              <items>
-                                  <FXCollections fx:factory="observableArrayList">
-                                      <String fx:value="United States" />
-                                      <String fx:value="Egypt" />
-                                      <String fx:value="Canada" />
-                  
-                                        </FXCollections>
-                              </items>
+
                           </ComboBox>
                      </children>
                   </GridPane>

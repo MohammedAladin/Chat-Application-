@@ -43,7 +43,7 @@ public class RegisterController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         countryPhoneRulesInitialization();
-
+        countryComboBox.getItems().addAll("Egypt", "USA", "UK", "Germany", "France", "Italy", "Spain", "China", "Japan", "Korea", "Brazil", "Argentina", "Australia", "Canada", "Russia", "India", "South Africa", "Nigeria", "Kenya", "Ghana", "Morocco", "Tunisia", "Saudi Arabia", "UAE", "Qatar", "Kuwait", "Bahrain", "Oman", "Jordan", "Lebanon");
         remoteServiceHandler = RemoteServiceHandler.getInstance();
         registerButton.setOnAction(e -> handleRegistration());
         alreadyAUser.setOnMouseClicked(mouseEvent -> Model.getInstance().getViewFactory().showLoginWindow());
@@ -53,7 +53,35 @@ public class RegisterController implements Initializable {
         countryPhoneRules.put("United States", "^\\d{10}$");
         countryPhoneRules.put("Canada", "^\\(?[\\d]{3}\\)?[\\s-]?[\\d]{3}[\\s-]?[\\d]{4}$");
         countryPhoneRules.put("Egypt", "^01[0125][0-9]{8}$");
+        countryPhoneRules.put("United Kingdom", "^\\+?44\\s?\\d{10}$");
+        countryPhoneRules.put("Germany", "^\\+?49\\s?\\d{10,14}$");
+        countryPhoneRules.put("France", "^\\+?33\\s?\\d{9}$");
+        countryPhoneRules.put("Australia", "^\\+?61\\s?\\d{9}$");
+        countryPhoneRules.put("India", "^\\+?91\\s?\\d{10}$");
+        countryPhoneRules.put("Italy", "^\\+?39\\s?\\d{10}$");
+        countryPhoneRules.put("Spain", "^\\+?34\\s?\\d{9}$");
+        countryPhoneRules.put("China", "^\\+?86\\s?\\d{11}$");
+        countryPhoneRules.put("Japan", "^\\+?81\\s?\\d{10}$");
+        countryPhoneRules.put("Korea", "^\\+?82\\s?\\d{10}$");
+        countryPhoneRules.put("Brazil", "^\\+?55\\s?\\d{11}$");
+        countryPhoneRules.put("Argentina", "^\\+?54\\s?\\d{10}$");
+        countryPhoneRules.put("Russia", "^\\+?7\\s?\\d{10}$");
+        countryPhoneRules.put("South Africa", "^\\+?27\\s?\\d{9}$");
+        countryPhoneRules.put("Nigeria", "^\\+?234\\s?\\d{10}$");
+        countryPhoneRules.put("Kenya", "^\\+?254\\s?\\d{9}$");
+        countryPhoneRules.put("Ghana", "^\\+?233\\s?\\d{9}$");
+        countryPhoneRules.put("Morocco", "^\\+?212\\s?\\d{9}$");
+        countryPhoneRules.put("Tunisia", "^\\+?216\\s?\\d{8}$");
+        countryPhoneRules.put("Saudi Arabia", "^\\+?966\\s?\\d{9}$");
+        countryPhoneRules.put("UAE", "^\\+?971\\s?\\d{9}$");
+        countryPhoneRules.put("Qatar", "^\\+?974\\s?\\d{8}$");
+        countryPhoneRules.put("Kuwait", "^\\+?965\\s?\\d{8}$");
+        countryPhoneRules.put("Bahrain", "^\\+?973\\s?\\d{8}$");
+        countryPhoneRules.put("Oman", "^\\+?968\\s?\\d{8}$");
+        countryPhoneRules.put("Jordan", "^\\+?962\\s?\\d{9}$");
+        countryPhoneRules.put("Lebanon", "^\\+?961\\s?\\d{7}$");
     }
+
 
     private void handleRegistration() {
         try {

@@ -108,6 +108,7 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
             Model.getInstance().setBirthDate(userInfo.getDateOfBirth());
             Model.getInstance().setEmail(userInfo.getEmailAddress());
             Model.getInstance().setGender(userInfo.getGender());
+            Model.getInstance().setCountry(userInfo.getCountry());
         });
     }
 

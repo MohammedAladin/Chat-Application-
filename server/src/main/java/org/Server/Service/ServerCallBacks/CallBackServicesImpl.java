@@ -40,7 +40,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     Map<Integer, CallBackServicesClient> clients = new HashMap<>();
     Map<Integer, Integer> chatBotIds = new HashMap<>();
     HeartBeatMechanism heartBeat = HeartBeatMechanism.getInstance();
-    static ScheduledExecutorService  executorService = Executors.newScheduledThreadPool(1);
+    static ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
 
 
     public CallBackServicesImpl() throws RemoteException {
@@ -94,20 +94,21 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     }
 
     @Override
-    public void receivingHeartBeatsFromClients(Integer clientId) throws RemoteException{
-            heartBeat.refreshClientsHeartBeats(clientId);
+    public void receivingHeartBeatsFromClients(Integer clientId) throws RemoteException {
+        heartBeat.refreshClientsHeartBeats(clientId);
     }
+
     private void startDisconnectCheckTimer() {
-        executorService.scheduleAtFixedRate(()->{
+        executorService.scheduleAtFixedRate(() -> {
             int id = heartBeat.checkDisconnectedClients();
-            if(id!=-1){
+            if (id != -1) {
                 try {
                     unRegister(id);
                 } catch (RemoteException e) {
                     throw new RuntimeException(e);
                 }
             }
-        }, 0,1, TimeUnit.SECONDS);
+        }, 0, 1, TimeUnit.SECONDS);
 
     }
 
@@ -121,7 +122,6 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         changeStatus(clientId, "Offline");
         clients.remove(clientId);
     }
-
 
 
     @Override
@@ -141,17 +141,18 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
                 });
             }
         }
-        List<Integer>participantsUsingChatBot = chatBotCallBack.getParticipantsForSpecificChat(messageDTO.getChatID());
-        if(!participantsUsingChatBot.isEmpty()){
+        List<Integer> participantsUsingChatBot = chatBotCallBack.getParticipantsForSpecificChat(messageDTO.getChatID());
+        if (!participantsUsingChatBot.isEmpty()) {
             sendUsingChatBot(participantsUsingChatBot, messageDTO);
         }
     }
-    private void sendUsingChatBot(List<Integer> participantsUsingChatBot, MessageDTO message){
+
+    private void sendUsingChatBot(List<Integer> participantsUsingChatBot, MessageDTO message) {
         ChatBot chatBot = new ChatBot();
         List<CallBackServicesClient> chatBotClients = participantsUsingChatBot
                 .stream()
-                .filter(bot-> clients.containsKey(bot) && !bot.equals(message.getSenderID()))
-                .map(bot-> clients.get(bot))
+                .filter(bot -> clients.containsKey(bot) && !bot.equals(message.getSenderID()))
+                .map(bot -> clients.get(bot))
                 .toList();
 
         chatBotClients.forEach(clientBot -> {
@@ -163,12 +164,15 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
             }
         });
     }
-    public void registerForChatBot(Integer participantId, Integer chatId) throws RemoteException{
-        chatBotCallBack.registerForChatBot(participantId,chatId);
+
+    public void registerForChatBot(Integer participantId, Integer chatId) throws RemoteException {
+        chatBotCallBack.registerForChatBot(participantId, chatId);
     }
-    public void unRegisterFromChatBot(Integer participantId, Integer chatId){
-        chatBotCallBack.unregisterFromChatBot(participantId,chatId);
+
+    public void unRegisterFromChatBot(Integer participantId, Integer chatId) {
+        chatBotCallBack.unregisterFromChatBot(participantId, chatId);
     }
+
     @Override
     public void sendAttachment(AttachmentDto attachmentMessage) throws RemoteException {
         Integer aId = attachmentService.sendAttachment(attachmentMessage);
@@ -188,8 +192,13 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
 
 
     @Override
-    public void updateProfile(Integer id, Map<String, String> updatedFields) {
+    public void updateProfile(Integer id, Map<String, String> updatedFields) throws RemoteException {
         userService.updateUserInfo(id, updatedFields);
+        User user = null;
+        CallBackServicesClient client = clients.get(id);
+        user = userService.existsByPhoneNumber(client.getPhone());
+        UserRegistrationDTO userDTO = userService.toUserDto(user);
+        client.setData(userDTO);
         updateContactList(id);
     }
 
@@ -230,13 +239,13 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        boolean alreadySent=checkIfSent(clientId,user.getUserID());
-        if(alreadySent){
-            acceptInvitation(clientId,user.getUserID());
+        boolean alreadySent = checkIfSent(clientId, user.getUserID());
+        if (alreadySent) {
+            acceptInvitation(clientId, user.getUserID());
             return;
         }
         boolean exists = new ContactService().addContact(clientId, contactPhoneNumber);
-        if(exists) {
+        if (exists) {
             Platform.runLater(() -> {
                 try {
                     client.contactExists(exists);
@@ -252,12 +261,12 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         }
     }
 
-    public boolean checkIfSent(Integer clientId,Integer addedContact) throws RemoteException{
+    public boolean checkIfSent(Integer clientId, Integer addedContact) throws RemoteException {
         try {
-            List<UserNotification> notification =UserNotificationRepository.getInstance().getInvitationsForUser(clientId);
-            System.out.println("User ID who is trying to send is "+clientId);
-            System.out.println("sender ID is "+addedContact);
-            return notification.stream().anyMatch(e->e.getSenderID()==addedContact);
+            List<UserNotification> notification = UserNotificationRepository.getInstance().getInvitationsForUser(clientId);
+            System.out.println("User ID who is trying to send is " + clientId);
+            System.out.println("sender ID is " + addedContact);
+            return notification.stream().anyMatch(e -> e.getSenderID() == addedContact);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -277,15 +286,15 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     }
 
     private void removeFromClientContacts(Integer userID1, Integer userID2) throws RemoteException {
-            System.out.println("run Later reached");
-            if (clients.containsKey(userID1)) {
-                try {
-                    CallBackServicesClient client = clients.get(userID1);
-                    client.deleteContact(userID2);
-                } catch (RemoteException e) {
-                    throw new RuntimeException(e);
-                }
+        System.out.println("run Later reached");
+        if (clients.containsKey(userID1)) {
+            try {
+                CallBackServicesClient client = clients.get(userID1);
+                client.deleteContact(userID2);
+            } catch (RemoteException e) {
+                throw new RuntimeException(e);
             }
+        }
     }
 
 

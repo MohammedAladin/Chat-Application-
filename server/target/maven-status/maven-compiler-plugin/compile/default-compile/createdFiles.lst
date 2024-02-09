@@ -36,6 +36,7 @@ org\Server\ServerModels\ServerEntities\BlockedContact.class
 org\Server\TestApp.class
 org\Server\Service\Factories\ServicesFactory.class
 org\Server\Service\Messages\AttachmentService.class
+org\Server\Service\ServerCallBacks\HeartBeatMechanism.class
 org\Server\Repository\DatabaseConnectionManager.class
 org\Server\GUI\Controllers\ServerStatisticsController.class
 org\Server\RepoInterfaces\AttachmentRepoInterface.class
