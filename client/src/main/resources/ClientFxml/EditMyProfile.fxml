@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="801.0" prefWidth="600.0" styleClass="background" stylesheets="@../ClientStyles/profile.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.ProfileEditController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="801.0" prefWidth="600.0" styleClass="background" stylesheets="@../ClientStyles/profile.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.ProfileEditController">
     <top>
         <VBox prefHeight="179.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <children>
@@ -43,7 +37,7 @@
                             <children>
                                 <ImageView fitHeight="128.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true" styleClass="image-view">
                                 </ImageView>
-                                <Button fx:id="editProfilePicButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="183.0" styleClass="imagePicker" stylesheets="@../ClientStyles/Register.css" text="Edit Profile Picture" />
+                                <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="183.0" styleClass="imagePicker" stylesheets="@../ClientStyles/Register.css" text="Edit Profile Picture" />
                             </children>
                         </VBox>
                     </children>
@@ -85,7 +79,17 @@
                                     </font>
                                 </Label>
                                 <Pane prefHeight="40.0" prefWidth="80.0" />
-                                <ComboBox fx:id="countryChooser" prefHeight="24.0" prefWidth="223.0" styleClass="text-field2" />
+                                <ComboBox fx:id="countryChooser" prefHeight="24.0" prefWidth="223.0" promptText="Select Country">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="United States" />
+                                            <String fx:value="Egypt" />
+                                            <String fx:value="Canada" />
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+
+
                             </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="268.0">

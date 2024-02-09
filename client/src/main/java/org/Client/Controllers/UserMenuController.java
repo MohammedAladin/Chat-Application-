@@ -123,7 +123,7 @@ public class UserMenuController implements Initializable {
         logout_btn.setOnAction(e -> {
             Model.getInstance().getViewFactory().showLogoutPopup(logout_btn);
             try {
-                Model.getInstance().getCallBackServicesServer().unRegister(Model.getInstance().getClientId(), Model.getInstance().getPhoneNumber());
+                Model.getInstance().getCallBackServicesServer().unRegister(Model.getInstance().getClientId());
                 ((Stage) logout_btn.getParent().getScene().getWindow()).close();
                 UserSessionManager.deleteUserInfo();
                 Model.getInstance().getViewFactory().showLoginWindow();

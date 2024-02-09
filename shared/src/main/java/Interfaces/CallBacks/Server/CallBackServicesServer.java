@@ -15,9 +15,9 @@ public interface CallBackServicesServer extends Remote {
     void registerForChatBot(Integer participantId, Integer chatId)throws RemoteException;
     void unRegisterFromChatBot(Integer participantId, Integer chatId) throws RemoteException;
 
-    void register(CallBackServicesClient client, String clientphone) throws RemoteException;
-
-    void unRegister(Integer client,String phoneNumber) throws RemoteException;
+    void register(CallBackServicesClient client, String clientPhone) throws RemoteException;
+    void receivingHeartBeatsFromClients(Integer clientId) throws RemoteException;
+    void unRegister(Integer client) throws RemoteException;
 
     void sendAnnouncement(String announcement) throws RemoteException;
 

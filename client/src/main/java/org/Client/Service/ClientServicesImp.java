@@ -18,13 +18,13 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.*;
 
 public class ClientServicesImp extends UnicastRemoteObject implements CallBackServicesClient {
 
     public ClientServicesImp() throws RemoteException {
         super();
+        startSendingHeartBeatToTheServer();
     }
 
     public void sendAnnouncement(String message) throws RemoteException {
@@ -51,6 +51,20 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
     @Override
     public void contactExists(boolean exists) throws RemoteException {
         Model.getInstance().setContactExists(exists);
+    }
+
+    @Override
+    public void startSendingHeartBeatToTheServer() throws RemoteException {
+        Runnable sendHeartBeats = ()->{
+            try {
+                Model.getInstance().getCallBackServicesServer().receivingHeartBeatsFromClients(Model.getInstance().getClientId());
+            } catch (RemoteException e) {
+                throw new RuntimeException(e);
+            }
+        };
+        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
+        executorService.schedule(sendHeartBeats, 1, TimeUnit.SECONDS);
+
     }
 
     @Override

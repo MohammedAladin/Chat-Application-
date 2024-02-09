@@ -110,7 +110,7 @@ public class LoginController implements Initializable {
         Task<Void> task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                callBackServicesServer.register(Model.getInstance().getCallBackServicesClient(), phoneNumber);
+                callBackServicesServer.register(Model.getInstance().getCallBackServicesClient(),phoneNumber);
                 return null;
             }
         };

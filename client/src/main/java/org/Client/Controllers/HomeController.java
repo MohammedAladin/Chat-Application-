@@ -45,7 +45,7 @@ public class HomeController implements Initializable {
         Platform.runLater(() -> {
             parentPane.getScene().getWindow().setOnCloseRequest(e -> {
                 try {
-                    Model.getInstance().getCallBackServicesServer().unRegister(Model.getInstance().getClientId(), Model.getInstance().getPhoneNumber());
+                    Model.getInstance().getCallBackServicesServer().unRegister(Model.getInstance().getClientId());
                     Platform.exit();
                     System.exit(0);
                 } catch (RemoteException ex) {

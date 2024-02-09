@@ -15,6 +15,7 @@ public interface CallBackServicesClient extends Remote {
     void setClientId(Integer clientId) throws RemoteException;
 
     void contactExists(boolean exists) throws RemoteException;
+    void startSendingHeartBeatToTheServer() throws RemoteException;
 
     void deleteContact(Integer contactID) throws RemoteException;
 

@@ -25,6 +25,9 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class CallBackServicesImpl extends UnicastRemoteObject implements CallBackServicesServer {
     BlockedContactsService blockedContactsService = new BlockedContactsService();
@@ -36,9 +39,10 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     ContactService contactService = new ContactService();
     Map<Integer, CallBackServicesClient> clients = new HashMap<>();
     Map<Integer, Integer> chatBotIds = new HashMap<>();
+    HeartBeatMechanism heartBeat = HeartBeatMechanism.getInstance();
 
-    public void register(CallBackServicesClient client, String clientphone) throws RemoteException {
-        User user = userService.existsByPhoneNumber(clientphone);
+    public void register(CallBackServicesClient client, String clientPhone) throws RemoteException {
+        User user = userService.existsByPhoneNumber(clientPhone);
 
         ArrayList<NotificationDTO> notificationDTOS = getNotificationList(user.getUserID());
         clients.put(user.getUserID(), client);
@@ -48,11 +52,15 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         UserRegistrationDTO userDTO = userService.toUserDto(user);
         client.setData(userDTO);
 
+
+        client.startSendingHeartBeatToTheServer();
+
+
         try {
             client.setNotificationList(notificationDTOS);
             client.setContactList(new ContactService().getContacts(user.getUserID()));
             client.setGroupList(ChatServices.getInstance().getGroupChats(user.getUserID()));
-            noyifyContacts(user.getUserID(), user.getDisplayName());
+            notifyContacts(user.getUserID(), user.getDisplayName());
             changeStatus(user.getUserID(), "Online");
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -61,7 +69,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         System.out.println("Client registered :id = " + user.getUserID());
     }
 
-    private void noyifyContacts(int userID, String name) {
+    private void notifyContacts(int userID, String name) {
         List<Integer> contacts = ContactsRepository.getInstance().getContacts(userID);
         for (Integer contact : contacts) {
             if (!clients.containsKey(contact)) continue;
@@ -76,13 +84,35 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         }
     }
 
+    @Override
+    public void receivingHeartBeatsFromClients(Integer clientId) throws RemoteException{
+
+        heartBeat.refreshClientsHeartBeats(clientId);
+
+        Runnable checkBeats = ()->{
+            Integer id = heartBeat.checkDisconnectedClients();
+            if(id!=-1){
+                try {
+                    unRegister(id);
+                } catch (RemoteException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        };
+
+        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
+        executorService.schedule(checkBeats, 100, TimeUnit.MILLISECONDS);
+        executorService.shutdown();
+
+    }
+
     private ArrayList<NotificationDTO> getNotificationList(Integer clientId) {
         ArrayList<UserNotification> notifications = new ArrayList<>(new InvitationService().getInvitations(clientId));
         NotificationMapper notificationMapper = new NotificationMapper();
         return notificationMapper.mapToDTOList(notifications);
     }
 
-    public void unRegister(Integer clientId, String phoneNumber) throws RemoteException {
+    public void unRegister(Integer clientId) throws RemoteException {
         changeStatus(clientId, "Offline");
         clients.remove(clientId);
     }
