@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
+import org.Client.Models.Model;
+
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.sql.Date;
@@ -32,6 +34,8 @@ public class RegisterController implements Initializable {
     @FXML
     public Button registerButton;
 
+    @FXML
+    Label alreadyAUser;
     private Map<String, String> countryPhoneRules = new HashMap<>();
     public RemoteServiceHandler remoteServiceHandler;
 
@@ -42,7 +46,7 @@ public class RegisterController implements Initializable {
 
         remoteServiceHandler = RemoteServiceHandler.getInstance();
         registerButton.setOnAction(e -> handleRegistration());
-
+        alreadyAUser.setOnMouseClicked(mouseEvent -> Model.getInstance().getViewFactory().showLoginWindow());
 
     }
     private void countryPhoneRulesInitialization(){
@@ -67,6 +71,7 @@ public class RegisterController implements Initializable {
             UserRegistrationDTO userRegistrationDTO = new UserRegistrationDTO(
                     phoneNumber, name, email, password, gender, country, dateOfBirth
             );
+            Model.getInstance().getViewFactory().showLoginWindow();
 
             boolean registrationResult = remoteServiceHandler.getRemoteUserService().registerUser(userRegistrationDTO);
             handleRegistrationResult(registrationResult);
@@ -76,7 +81,7 @@ public class RegisterController implements Initializable {
         } catch (RemoteException e) {
             handleException(e);
         } finally {
-            clearRegistrationFields();
+           // clearRegistrationFields();
         }
     }
     private void handleException(Exception exception) {

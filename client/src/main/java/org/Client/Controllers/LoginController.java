@@ -83,6 +83,8 @@ public class LoginController implements Initializable {
         passwordLabel.setVisible(true);
         passwordField.setVisible(true);
         signingButton.setVisible(true);
+        registerLabel.setVisible(false);
+        notAUser.setVisible(false);
     }
 
     private void handleLoginResult(boolean loginResult) {
