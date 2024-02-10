@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class HeartBeatMechanism{
     private final Map<Integer, Long> lastHeartbeatTimes;
-    private static final long HEARTBEAT_TIMEOUT = 15000;
+    private static final long HEARTBEAT_TIMEOUT = 7000;
 
     private static HeartBeatMechanism heartBeatMechanism;
     private HeartBeatMechanism(){

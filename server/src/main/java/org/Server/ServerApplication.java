@@ -11,6 +11,7 @@ import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.Server.GUI.Controllers.ServerHomeController;
 
 public class ServerApplication extends Application {
     public static BorderPane sideBar;
@@ -51,8 +52,15 @@ public class ServerApplication extends Application {
             @Override
             public void handle(WindowEvent event) {
                 System.out.println("Closing application...");
-                Platform.exit();
+                ServerHomeController controller = loader2.getController();
+                controller.stop();
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 System.exit(0);
+                Platform.exit();
             }
         });
 

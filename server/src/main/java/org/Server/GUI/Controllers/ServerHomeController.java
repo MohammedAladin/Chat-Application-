@@ -18,7 +18,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -30,29 +29,35 @@ public class ServerHomeController implements Initializable {
     private Registry registry;
     private CallBackServicesServer callBackServices;
     private BlockedContactsInterface blockedContactsService;
-
-    public static List<ScheduledExecutorService> threads;
+    private ScheduledExecutorService executorService;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+
             ServicesFactoryInterface serviceFactory = new ServicesFactory();
             userService = serviceFactory.createUserService();
+
             callBackServices = new CallBackServicesImpl();
             blockedContactsService = new BlockedContactsService();
 
             registry = LocateRegistry.createRegistry(2000);
-
             announceButton.setOnAction((e)->handleAnnouncement());
+
+            executorService = CallBackServicesImpl.executorService;
+
+
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
-
-
     }
+
     @FXML
     private void start (){
         try {
+
+            Runtime.getRuntime().addShutdownHook(new Thread(executorService::shutdown));
+
             registry.rebind("UserServices", userService);
             registry.rebind("Callbacks", callBackServices);
             registry.rebind("BlockingServices", blockedContactsService);
@@ -63,7 +68,7 @@ public class ServerHomeController implements Initializable {
         }
     }
     @FXML
-    private void stop (){
+    public void stop (){
         try {
             for (String name : registry.list()){
                 registry.unbind(name);

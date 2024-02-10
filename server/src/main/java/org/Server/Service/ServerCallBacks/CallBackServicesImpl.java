@@ -25,9 +25,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.*;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 public class CallBackServicesImpl extends UnicastRemoteObject implements CallBackServicesServer {
     BlockedContactsService blockedContactsService = new BlockedContactsService();
@@ -39,7 +37,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     ContactService contactService = new ContactService();
     public static Map<Integer, CallBackServicesClient> clients = new HashMap<>();
     HeartBeatMechanism heartBeat = HeartBeatMechanism.getInstance();
-    ScheduledExecutorService executorService = Executors.newScheduledThreadPool(3);
+    public static ScheduledExecutorService executorService = Executors.newScheduledThreadPool(5);
 
 
 
@@ -108,7 +106,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
                     throw new RuntimeException(e);
                 }
             }
-        }, 1, 5, TimeUnit.SECONDS);
+        }, 1, 2, TimeUnit.SECONDS);
 
     }
 
@@ -142,13 +140,12 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
             }
         }
         List<Integer> participantsUsingChatBot = chatBotCallBack.getParticipantsForSpecificChat(messageDTO.getChatID());
-
         if (!participantsUsingChatBot.isEmpty()) {
             Runnable chatBotTask = () -> sendUsingChatBot(participantsUsingChatBot, messageDTO);
             executorService.schedule(chatBotTask, 7, TimeUnit.SECONDS);
         }
-    }
 
+    }
     private void sendUsingChatBot(List<Integer> participantsUsingChatBot, MessageDTO message) {
         ChatBot chatBot = new ChatBot();
         List<CallBackServicesClient> chatBotClients = participantsUsingChatBot
@@ -177,19 +174,30 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
 
     @Override
     public void sendAttachment(AttachmentDto attachmentMessage) throws RemoteException {
-        Integer aId = attachmentService.sendAttachment(attachmentMessage);
-        List<Integer> chatParticipantsIds = chatServices.getAllParticipants(attachmentMessage.getChatID());
 
-        List<CallBackServicesClient> selectedClients = clients.entrySet()
-                .stream().filter(entry -> chatParticipantsIds.contains(entry.getKey()))
-                .map(Map.Entry::getValue).toList();
+        Future<Integer> attachmentIdFuture = executorService.submit(() -> {
+            Integer aId = attachmentService.sendAttachment(attachmentMessage);
+            return aId;
+        });
 
-        MessageDTO messageDTO = new MessageDTO(attachmentMessage.getChatID(), attachmentMessage.getContent(), 1, attachmentMessage.getSenderId());
-        messageDTO.setAttachmentID(aId);
+        try {
+            Integer aId = attachmentIdFuture.get();
+            List<Integer> chatParticipantsIds = chatServices.getAllParticipants(attachmentMessage.getChatID());
 
-        for (CallBackServicesClient client : selectedClients) {
-            client.receiveMessage(messageDTO);
+            List<CallBackServicesClient> selectedClients = clients.entrySet()
+                    .stream().filter(entry -> chatParticipantsIds.contains(entry.getKey()))
+                    .map(Map.Entry::getValue).toList();
+
+            MessageDTO messageDTO = new MessageDTO(attachmentMessage.getChatID(), attachmentMessage.getContent(), 1, attachmentMessage.getSenderId());
+            messageDTO.setAttachmentID(aId);
+
+            for (CallBackServicesClient client : selectedClients) {
+                client.receiveMessage(messageDTO);
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            throw new RuntimeException(e);
         }
+
     }
 
 
