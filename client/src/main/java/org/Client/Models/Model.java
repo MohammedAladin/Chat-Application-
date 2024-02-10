@@ -31,6 +31,7 @@ public class Model {
     private String country;
     private String email;
     private String gender;
+    private String bio;
 
     private StyleController styleController;
     private Style style = new Style(12,new String[]{"normal","normal" ,"none"},"#000000","#EFF6FC");
@@ -285,5 +286,13 @@ public class Model {
 
     public void addGroupMessage(MessageDTO messageDTO) {
         groupChats.get(messageDTO.getChatID()).add(messageDTO);
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }

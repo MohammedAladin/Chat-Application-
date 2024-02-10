@@ -40,6 +40,8 @@ public class ProfileEditController implements Initializable {
 
     @FXML
     private DatePicker dateOfBirth;
+    @FXML
+    private TextField bioTextField;
 
     @FXML
     private Circle profileImageView;
@@ -115,6 +117,9 @@ public class ProfileEditController implements Initializable {
             }
             if (!email.equals(model.getEmail())) {
                 updatedFields.put(UserField.EMAIL.getFieldName(), email);
+            }
+            if (!bioTextField.getText().equals(model.getBio())) {
+                updatedFields.put(UserField.BIO.getFieldName(), bioTextField.getText());
             }
 
 //            String []userInfo = UserSessionManager.loadUserInfo();

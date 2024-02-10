@@ -13,6 +13,7 @@ public class UserRegistrationDTO implements Serializable {
     private String country;
     private Date dateOfBirth;
     private byte[] profilePic;
+    private String bio;
 
     public UserRegistrationDTO(String phoneNumber, String displayName, String emailAddress, String passwordHash, String gender, String country, Date dateOfBirth) {
         this.phoneNumber = phoneNumber;
@@ -96,5 +97,25 @@ public class UserRegistrationDTO implements Serializable {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public UserRegistrationDTO(String phoneNumber, String displayName, String emailAddress, String passwordHash, String gender, String country, Date dateOfBirth, byte[] profilePic, String bio) {
+        this.phoneNumber = phoneNumber;
+        this.displayName = displayName;
+        this.emailAddress = emailAddress;
+        this.passwordHash = passwordHash;
+        this.gender = gender;
+        this.country = country;
+        this.dateOfBirth = dateOfBirth;
+        this.profilePic = profilePic;
+        this.bio = bio;
     }
 }

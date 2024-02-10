@@ -17,7 +17,7 @@
 
 <AnchorPane styleClass="bigbackground" stylesheets="@../ClientStyles/profile.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Client.Controllers.ProfileEditController">
    <children>
-        <VBox layoutY="3.0" prefHeight="776.0" prefWidth="672.0" spacing="4.0" styleClass="background" AnchorPane.rightAnchor="10.0">
+        <VBox layoutY="3.0" prefHeight="763.0" prefWidth="672.0" spacing="4.0" styleClass="background" AnchorPane.rightAnchor="10.0">
             <children>
             <HBox prefHeight="104.0" prefWidth="542.0">
                <children>
@@ -40,14 +40,12 @@
                      </graphic>
                   </Label>
                </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
             </HBox>
                 <VBox prefHeight="171.0" prefWidth="520.0" spacing="3.0">
                     <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="268.0">
-                            <children>
-                                <Pane prefHeight="40.0" prefWidth="71.0" />
-                            </children>
-                        </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="268.0">
                             <children>
                                 <Label prefHeight="19.0" prefWidth="125.0" text="Name">
@@ -59,6 +57,17 @@
                                 <TextField fx:id="nameTextField" prefHeight="24.0" prefWidth="225.0" styleClass="text-field2" />
                             </children>
                         </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="268.0">
+                     <children>
+                        <Label prefHeight="19.0" prefWidth="125.0" text="Bio">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="40.0" prefWidth="80.0" />
+                        <TextField fx:id="bioTextField" prefHeight="24.0" prefWidth="225.0" styleClass="text-field2" />
+                     </children>
+                  </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="268.0">
                             <children>
                                 <Label prefHeight="19.0" prefWidth="125.0" text="Country">
@@ -175,7 +184,7 @@
                         <Insets left="14.0" />
                     </padding>
                 </VBox>
-                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                <HBox alignment="CENTER" prefHeight="82.0" prefWidth="571.0">
                     <children>
                         <Button fx:id="saveButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="129.0" text="Save" />
                     </children>

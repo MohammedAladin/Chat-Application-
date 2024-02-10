@@ -105,7 +105,8 @@ public class UserService extends UnicastRemoteObject implements RemoteUserServic
                 userD.getGender(),
                 userD.getCountry(),
                 (java.sql.Date) userD.getDateOfBirth(),
-                userD.getProfilePicture()
+                userD.getProfilePicture(),
+                userD.getBio()
         );
     }
 
