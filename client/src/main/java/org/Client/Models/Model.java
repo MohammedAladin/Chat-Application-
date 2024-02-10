@@ -34,8 +34,8 @@ public class Model {
     private String bio;
 
     private StyleController styleController;
-    private Style style = new Style(12,new String[]{"normal","normal" ,"none"},"#000000","#EFF6FC");
-    private Style defaultStyle = new Style(12,new String[]{"normal","normal" ,"none"},"#000000","#EFF6FC");
+    private Style style = new Style(12, new String[]{"normal", "normal", "none"}, "#000000", "#EFF6FC");
+    private Style defaultStyle = new Style(12, new String[]{"normal", "normal", "none"}, "#000000", "#EFF6FC");
     private ArrayList<Integer> botChats = new ArrayList<>();
 
     public Style getDefaultStyle() {
@@ -57,6 +57,7 @@ public class Model {
     public void setStyle(Style style) {
         this.style = style;
     }
+
     public Date getBirthDate() {
         return birthDate;
     }
@@ -252,30 +253,28 @@ public class Model {
     }
 
     public void addMessage(MessageDTO messageDTO) {
-        if(privateChats.get(messageDTO.getChatID())==null){
+        if (privateChats.get(messageDTO.getChatID()) == null) {
             try {
-               getCallBackServicesServer().getPrivateChatMessages(messageDTO.getChatID(),getCallBackServicesClient());
+                getCallBackServicesServer().getPrivateChatMessages(messageDTO.getChatID(), getCallBackServicesClient());
             } catch (RemoteException e) {
                 throw new RuntimeException(e);
             }
-        }
-        else {
+        } else {
             privateChats.get(messageDTO.getChatID()).add(messageDTO);
         }
 
-        String senderName="";
-        if(!messageDTO.getSenderID().equals(clientId)){
+        String senderName = "";
+        if (!messageDTO.getSenderID().equals(clientId)) {
             boolean isContact = contacts.stream()
                     .anyMatch(contact -> contact.getContactID().equals(messageDTO.getSenderID()));
             if (!isContact) {
-               senderName =groupList.stream()
+                senderName = groupList.stream()
                         .filter(chatDto -> chatDto.getChatID().equals(messageDTO.getChatID()))
                         .findFirst()
                         .map(ChatDto::getChatName)
                         .orElse(null);
 
-            }
-            else {
+            } else {
                 senderName = contacts.stream()
                         .filter(contact -> contact.getContactID().equals(messageDTO.getSenderID()))
                         .findFirst().get().getContactName();
@@ -293,6 +292,8 @@ public class Model {
     }
 
     public void setBio(String bio) {
-        this.bio = bio;
+        if (bio != null && !bio.isEmpty())
+            this.bio = bio;
+        else this.bio = "";
     }
 }
