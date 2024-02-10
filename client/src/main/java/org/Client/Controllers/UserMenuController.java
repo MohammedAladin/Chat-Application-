@@ -121,17 +121,8 @@ public class UserMenuController implements Initializable {
         });
 
         logout_btn.setOnAction(e -> {
-            Model.getInstance().getViewFactory().showLogoutPopup(logout_btn);
-            try {
-                Model.getInstance().getCallBackServicesServer().unRegister(Model.getInstance().getClientId());
-                ((Stage) logout_btn.getParent().getScene().getWindow()).close();
-                UserSessionManager.deleteUserInfo();
-                Model.getInstance().getViewFactory().showLoginWindow();
-            } catch (RemoteException ex) {
-                ((Stage) logout_btn.getParent().getScene().getWindow()).close();
-                UserSessionManager.deleteUserInfo();
-                Model.getInstance().getViewFactory().showLoginWindow();
-            }
+            Model.getInstance().getViewFactory().logout();
+
         });
     }
 
