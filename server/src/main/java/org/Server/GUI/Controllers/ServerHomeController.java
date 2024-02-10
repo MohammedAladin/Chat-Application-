@@ -1,6 +1,5 @@
 package org.Server.GUI.Controllers;
 
-import Interfaces.CallBacks.Client.CallBackServicesClient;
 import Interfaces.CallBacks.Server.CallBackServicesServer;
 import Interfaces.RmiServices.BlockedContactsInterface;
 import Interfaces.RmiServices.RemoteUserService;
@@ -21,7 +20,6 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 public class ServerHomeController implements Initializable {
@@ -58,6 +56,7 @@ public class ServerHomeController implements Initializable {
             registry.rebind("UserServices", userService);
             registry.rebind("Callbacks", callBackServices);
             registry.rebind("BlockingServices", blockedContactsService);
+
             System.out.println("working");
         } catch (RemoteException e) {
             throw new RuntimeException(e);
@@ -70,9 +69,15 @@ public class ServerHomeController implements Initializable {
                 registry.unbind(name);
                 System.out.println(name);
             }
-            for(ScheduledExecutorService thread : threads){
-                thread.shutdown();
-            }
+
+            CallBackServicesImpl.clients.forEach((id, client)-> {
+                try {
+                    client.logout();
+                    client.sendAnnouncement("Sorry, The Server Is not Running Right Now, Try To login Later..");
+                } catch (RemoteException e) {
+                    throw new RuntimeException(e);
+                }
+            });
             System.out.println("stopping");
         } catch (RemoteException | NotBoundException e) {
             throw new RuntimeException(e);

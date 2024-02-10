@@ -37,16 +37,15 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     ChatBotCallBack chatBotCallBack = ChatBotCallBack.getInstance();
     AttachmentService attachmentService = AttachmentService.getInstance();
     ContactService contactService = new ContactService();
-    Map<Integer, CallBackServicesClient> clients = new HashMap<>();
-    Map<Integer, Integer> chatBotIds = new HashMap<>();
+    public static Map<Integer, CallBackServicesClient> clients = new HashMap<>();
     HeartBeatMechanism heartBeat = HeartBeatMechanism.getInstance();
-    static ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
+    ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
 
 
     public CallBackServicesImpl() throws RemoteException {
         messageService = MessageServiceImpl.getInstance();
         chatServices = ChatServices.getInstance();
-        //startDisconnectCheckTimer();
+        startDisconnectCheckTimer();
     }
 
 
@@ -62,7 +61,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         client.setData(userDTO);
 
 
-        //client.startSendingHeartBeatToTheServer();
+        client.startSendingHeartBeatToTheServer();
 
 
         try {
