@@ -83,6 +83,7 @@ public class ProfileEditController implements Initializable {
         dateOfBirth.setValue(model.getBirthDate().toLocalDate());
         emailTextField.setText(model.getEmail());
         countryChooser.setValue(model.getCountry());
+        bioTextField.setText(model.getBio());
         if(model.getProfilePicture()==null||model.getProfilePicture().length==0){
             profileImageView.setFill(new ImagePattern(ImageServices.getDefaultImage()));
         }
