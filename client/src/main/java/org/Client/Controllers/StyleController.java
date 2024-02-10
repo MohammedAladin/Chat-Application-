@@ -104,14 +104,17 @@ public class StyleController implements Initializable {
         fontColorID.setValue(Color.BLACK); // Default color is black
         Color defaultBackgroundColor = Color.web("#EFF6FC");
         backGroundColorID.setValue(defaultBackgroundColor); // Default color is white
+        sizeID.setValue(12);
         model.getViewFactory().getChatUserController().setStyle(null);
        // model.getViewFactory().getGoupChatController().setStyle(null);
         model.getViewFactory().getChatUserController().getTextFieldID().setStyle(null);
     }
     public void refresh(){
         String originalText = Model.getInstance().getViewFactory().getChatUserController().getTextFieldID().getText();
+
         Model.getInstance().getViewFactory().getChatUserController().getTextFieldID().setText("");
         Model.getInstance().getViewFactory().getChatUserController().getTextFieldID().setText(originalText);
+
 
     }
 }

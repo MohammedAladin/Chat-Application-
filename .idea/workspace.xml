@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="small gui fix">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_3_2024_8_19_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_3_2024_8_19_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_3_2024_8_20_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_3_2024_8_20_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_3_2024_8_21_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_3_2024_8_21_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2_3_2024_12_34_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2_3_2024_12_34_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2_3_2024_8_21_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2_3_2024_8_21_PM__Changes_.xml" afterDir="false" />
+    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="Logo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/RemoteServiceHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/RemoteServiceHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dp.properties" beforeDir="false" afterPath="$PROJECT_DIR$/dp.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/StyleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/StyleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/ClientFxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/ClientFxml/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/ClientFxml/Register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/ClientFxml/Register.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/ClientStyles/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/ClientStyles/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/ChatUserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/RemoteServiceHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/org/Client/Controllers/RemoteServiceHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/GUI/Controllers/ServerHomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Main.java" afterDir="false" />
     </list>
     <list id="1db2b3ef-1f9a-43ec-9b5c-15616a4c6d08" name="Changes by LENOVO" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,36 +71,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Amin.executor&quot;: &quot;Run&quot;,
-    &quot;Application.App.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ClientApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Mohammed.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Server.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ServerApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TestApp.executor&quot;: &quot;Run&quot;,
-    &quot;Application.org.Server.TestApp.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/nadam/newClone/client/src/main/resources/ClientImages&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Amin.executor": "Run",
+    "Application.App.executor": "Run",
+    "Application.ClientApplication.executor": "Run",
+    "Application.Mohammed.executor": "Run",
+    "Application.Server.executor": "Run",
+    "Application.ServerApplication.executor": "Run",
+    "Application.TestApp.executor": "Run",
+    "Application.org.Server.TestApp.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/nadam/newClone/client/src/main/resources/ClientImages",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\nadam\newClone\client\src\main\resources\ClientImages" />
@@ -171,13 +170,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-f644763e9732-c0c073db" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -240,7 +232,6 @@
       <workItem from="1707458580623" duration="12189000" />
       <workItem from="1707470754284" duration="103000" />
       <workItem from="1707470874822" duration="3121000" />
-      <workItem from="1707540340926" duration="2451000" />
     </task>
     <task id="LOCAL-00001" summary="Add server gui">
       <option name="closed" value="true" />
@@ -506,7 +497,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707498128234</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Logo">
+      <option name="closed" value="true" />
+      <created>1707512510275</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1707512510275</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -558,6 +557,7 @@
     <MESSAGE value="MySqlConnectionPool" />
     <MESSAGE value="added counties to registration and edit profile and fixed callbacks for edit profile" />
     <MESSAGE value="small gui fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="small gui fix" />
+    <MESSAGE value="Logo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Logo" />
   </component>
 </project>
