@@ -71,7 +71,9 @@ public class LoginController implements Initializable {
                 remoteServiceHandler.showAlert("Phone number does not exist. Please enter a valid phone number." , Alert.AlertType.INFORMATION);
             }
         } catch (RemoteException e) {
-            throw new RuntimeException(e);
+           Alert alert = new Alert(Alert.AlertType.ERROR);
+              alert.setContentText("Sorry, There seems to be a connection error, please check your connection and try again later.");
+                alert.show();
         }
     }
 

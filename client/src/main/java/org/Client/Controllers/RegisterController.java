@@ -99,10 +99,10 @@ public class RegisterController implements Initializable {
             UserRegistrationDTO userRegistrationDTO = new UserRegistrationDTO(
                     phoneNumber, name, email, password, gender, country, dateOfBirth
             );
-            Model.getInstance().getViewFactory().showLoginWindow();
 
             boolean registrationResult = remoteServiceHandler.getRemoteUserService().registerUser(userRegistrationDTO);
             handleRegistrationResult(registrationResult);
+            Model.getInstance().getViewFactory().showLoginWindow();
 
         } catch (IllegalArgumentException e) {
             remoteServiceHandler.showAlert(e.getMessage(), Alert.AlertType.ERROR);
@@ -160,7 +160,7 @@ public class RegisterController implements Initializable {
     }
     private void handleRegistrationResult(boolean registrationResult) {
         if (!registrationResult) {
-            remoteServiceHandler.showAlert("User is Already Existed", Alert.AlertType.INFORMATION);
+            remoteServiceHandler.showAlert("User Already Exists,Consider Logging in", Alert.AlertType.INFORMATION);
         } else {
             remoteServiceHandler.showAlert("Sign Up Successfully", Alert.AlertType.INFORMATION);
         }
