@@ -1,18 +1,13 @@
 package org.Server.GUI.Controllers;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.util.converter.DateStringConverter;
-import javafx.util.converter.IntegerStringConverter;
 import org.Server.Repository.UserRepository;
 import org.Server.ServerModels.ServerEntities.User;
 
@@ -21,7 +16,6 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 
 public class ServerDatabaseController implements Initializable {

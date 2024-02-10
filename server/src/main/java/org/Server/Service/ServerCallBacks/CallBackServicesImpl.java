@@ -39,7 +39,8 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     ContactService contactService = new ContactService();
     public static Map<Integer, CallBackServicesClient> clients = new HashMap<>();
     HeartBeatMechanism heartBeat = HeartBeatMechanism.getInstance();
-    ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
+    ScheduledExecutorService executorService = Executors.newScheduledThreadPool(3);
+
 
 
     public CallBackServicesImpl() throws RemoteException {
@@ -141,8 +142,10 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
             }
         }
         List<Integer> participantsUsingChatBot = chatBotCallBack.getParticipantsForSpecificChat(messageDTO.getChatID());
+
         if (!participantsUsingChatBot.isEmpty()) {
-            sendUsingChatBot(participantsUsingChatBot, messageDTO);
+            Runnable chatBotTask = () -> sendUsingChatBot(participantsUsingChatBot, messageDTO);
+            executorService.schedule(chatBotTask, 7, TimeUnit.SECONDS);
         }
     }
 
@@ -283,7 +286,6 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         removeFromClientContacts(blockedUser.getUserID(), userID);
         removeFromClientContacts(userID, blockedUser.getUserID());
     }
-
     private void removeFromClientContacts(Integer userID1, Integer userID2) throws RemoteException {
         System.out.println("run Later reached");
         if (clients.containsKey(userID1)) {
