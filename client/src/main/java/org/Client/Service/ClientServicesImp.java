@@ -22,7 +22,7 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
 
     public ClientServicesImp() throws RemoteException {
         super();
-        startSendingHeartBeatToTheServer();
+
     }
 
     public void sendAnnouncement(String message) throws RemoteException {
@@ -55,7 +55,7 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
     public void startSendingHeartBeatToTheServer() throws RemoteException {
 
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
-        executorService.scheduleAtFixedRate(this::sendHeartbeat, 5,10, TimeUnit.SECONDS);
+        executorService.scheduleAtFixedRate(this::sendHeartbeat, 5,3, TimeUnit.SECONDS);
 
     }
     private void sendHeartbeat(){

@@ -46,7 +46,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     public CallBackServicesImpl() throws RemoteException {
         messageService = MessageServiceImpl.getInstance();
         chatServices = ChatServices.getInstance();
-        startDisconnectCheckTimer();
+        //startDisconnectCheckTimer();
     }
 
 
@@ -62,7 +62,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         client.setData(userDTO);
 
 
-        client.startSendingHeartBeatToTheServer();
+        //client.startSendingHeartBeatToTheServer();
 
 
         try {
@@ -108,7 +108,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
                     throw new RuntimeException(e);
                 }
             }
-        }, 0, 10, TimeUnit.SECONDS);
+        }, 1, 5, TimeUnit.SECONDS);
 
     }
 

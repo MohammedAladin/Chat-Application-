@@ -43,7 +43,7 @@ public class ServerHomeController implements Initializable {
             callBackServices = new CallBackServicesImpl();
             blockedContactsService = new BlockedContactsService();
 
-            registry = LocateRegistry.createRegistry(1099);
+            registry = LocateRegistry.createRegistry(2000);
 
             announceButton.setOnAction((e)->handleAnnouncement());
         } catch (RemoteException e) {
