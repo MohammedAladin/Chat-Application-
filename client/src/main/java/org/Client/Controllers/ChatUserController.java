@@ -15,7 +15,9 @@ import org.Client.Models.Model;
 import org.Client.Service.ImageServices;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.rmi.RemoteException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -144,7 +146,13 @@ public class ChatUserController implements Initializable {
         styleBtn.setOnAction(actionEvent -> {
             Model.getInstance().getViewFactory().showStylePopup(styleBtn);
         });
-        attachemnt_btn.setOnAction(e->handleFileAttachement());
+        attachemnt_btn.setOnAction(e-> {
+            try {
+                handleFileAttachement();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
         bot_btn.setOnAction(e-> {
             if(bot_btn.isSelected()) {
                 try {
@@ -168,12 +176,13 @@ public class ChatUserController implements Initializable {
         });
     }
 
-    private void handleFileAttachement() {
+    private void handleFileAttachement() throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose a file to send");
         File file = fileChooser.showOpenDialog(null);
         if (file != null) {
-                AttachmentDto message = new AttachmentDto(chatID, Model.getInstance().getClientId(), file, file.getName());
+                byte [] uploadedFileBytes = Files.readAllBytes(file.toPath());
+                AttachmentDto message = new AttachmentDto(chatID, Model.getInstance().getClientId(), uploadedFileBytes, file.getName());
                new Thread(()->{
                    try {
                        Model.getInstance().getCallBackServicesServer().sendAttachment(message);
@@ -185,6 +194,7 @@ public class ChatUserController implements Initializable {
 
         }
     }
+
 
     private void sendMessage() {
         if (textFieldID.getText().isEmpty()) return;

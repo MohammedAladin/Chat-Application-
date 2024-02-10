@@ -30,11 +30,11 @@ public class AttachmentService {
         try {
 
             Integer messageId = messageService.sendMessage(new MessageDTO(fileDto.getChatID(), fileDto.getContent(), 1, fileDto.getSenderId()));
-            byte[] fileBytes = readFileToBytes(fileDto.getFile());
+            Attachment attachment = new Attachment(messageId, fileDto.getFile());
             System.out.println(
                     "MessageId" + messageId
             );
-            Attachment attachment = new Attachment(messageId, fileBytes);
+            System.out.println(attachment.getMessageID());
             return attachmentReopsitory.save(attachment);
 
         } catch (Exception e) {

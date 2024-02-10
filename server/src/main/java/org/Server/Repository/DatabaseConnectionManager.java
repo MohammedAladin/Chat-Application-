@@ -10,12 +10,12 @@ import com.mysql.cj.jdbc.MysqlConnectionPoolDataSource;
 public class DatabaseConnectionManager {
     private static final String PROPERTIES_FILE_PATH = "dp.properties";
     private static DatabaseConnectionManager instance;
-    static MysqlConnectionPoolDataSource mysqlConnectionPoolDataSource = null;
+    MysqlConnectionPoolDataSource mysqlConnectionPoolDataSource = null;
 
     private DatabaseConnectionManager() {
     }
 
-    public static synchronized DatabaseConnectionManager getInstance() {
+    public static DatabaseConnectionManager getInstance() {
         if (instance == null) {
             instance = new DatabaseConnectionManager();
         }
@@ -27,7 +27,7 @@ public class DatabaseConnectionManager {
 
         try {
             OutputStream oStream = new FileOutputStream(PROPERTIES_FILE_PATH);
-            prop.setProperty("URL", "jdbc:mysql://localhost:3306/ChatApplicationDB");
+            prop.setProperty("URL", "jdbc:mysql://localhost:3306/chatapplication");
             prop.setProperty("User", "root");
             prop.setProperty("Password", "password");
 

@@ -6,10 +6,10 @@ import java.io.Serializable;
 public class AttachmentDto implements Serializable {
     Integer chatID;
     Integer senderId;
-    File file;
+    byte [] file;
     String content;
 
-    public AttachmentDto(Integer chatID, Integer senderId, File file, String content) {
+    public AttachmentDto(Integer chatID, Integer senderId, byte[] file, String content) {
         this.chatID = chatID;
         this.senderId = senderId;
         this.file = file;
@@ -32,11 +32,11 @@ public class AttachmentDto implements Serializable {
         this.senderId = senderId;
     }
 
-    public File getFile() {
+    public byte[] getFile() {
         return file;
     }
 
-    public void setFile(File file) {
+    public void setFile(byte[] file) {
         this.file = file;
     }
 

@@ -12,10 +12,9 @@ import java.util.List;
 import java.util.Map;
 
 public class UserRepository implements UserRepoInterface {
-    private final Connection myConnection;
 
     public UserRepository() {
-        myConnection = DatabaseConnectionManager.getInstance().getMyConnection();
+
     }
 
     @Override
@@ -23,7 +22,8 @@ public class UserRepository implements UserRepoInterface {
         String query = "INSERT INTO UserAccounts (PhoneNumber, DisplayName, EmailAddress, PasswordHash, Gender, Country, DateOfBirth, Bio, UserStatus, UserMode, LastLogin) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
+        try ( Connection myConnection = DatabaseConnectionManager.getInstance().getMyConnection();
+              PreparedStatement preparedStatement = myConnection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, user.getPhoneNumber());
             preparedStatement.setString(2, user.getDisplayName());
             preparedStatement.setString(3, user.getEmailAddress());
@@ -58,7 +58,8 @@ public class UserRepository implements UserRepoInterface {
         String query = "SELECT * FROM UserAccounts WHERE PhoneNumber = ?";
         User user = null;
 
-        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
+        try ( Connection myConnection = DatabaseConnectionManager.getInstance().getMyConnection();
+              PreparedStatement preparedStatement = myConnection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, phoneNumber);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -78,7 +79,8 @@ public class UserRepository implements UserRepoInterface {
         String query = "SELECT * FROM UserAccounts WHERE userID = ?";
         User user = null;
 
-        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
+        try ( Connection myConnection = DatabaseConnectionManager.getInstance().getMyConnection();
+              PreparedStatement preparedStatement = myConnection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setInt(1, id);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -104,7 +106,8 @@ public class UserRepository implements UserRepoInterface {
         String query = "SELECT * FROM UserAccounts";
         List<User> userList = new ArrayList<>();
 
-        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query);
+        try ( Connection myConnection = DatabaseConnectionManager.getInstance().getMyConnection();
+              PreparedStatement preparedStatement = myConnection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
             while (resultSet.next()) {
@@ -120,7 +123,8 @@ public class UserRepository implements UserRepoInterface {
     public void updateStatus(String phoneNumber, StatusEnum status) throws SQLException {
         String query = "UPDATE UserAccounts SET UserStatus=? WHERE PhoneNumber=?";
 
-        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
+        try (Connection myConnection = DatabaseConnectionManager.getInstance().getMyConnection();
+             PreparedStatement preparedStatement = myConnection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, status.name());
             preparedStatement.setString(2, phoneNumber);
 
@@ -132,7 +136,8 @@ public class UserRepository implements UserRepoInterface {
     public void updateLoginDate(String phone, Timestamp lastLogin) throws SQLException {
         String query = "UPDATE UserAccounts SET LastLogin=? WHERE PhoneNumber=?";
 
-        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
+        try (Connection myConnection = DatabaseConnectionManager.getInstance().getMyConnection();
+             PreparedStatement preparedStatement = myConnection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setTimestamp(1, lastLogin);
             preparedStatement.setString(2, phone);
 
@@ -146,7 +151,8 @@ public class UserRepository implements UserRepoInterface {
     public void updateDateOfBirth(Integer id, Date dof) throws SQLException {
         String query = "UPDATE UserAccounts SET DateOfBirth=? WHERE UserID=?";
 
-        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
+        try (Connection myConnection = DatabaseConnectionManager.getInstance().getMyConnection();
+             PreparedStatement preparedStatement = myConnection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setDate(1, new Date(dof.getTime()));
             preparedStatement.setInt(2, id);
 
@@ -159,7 +165,8 @@ public class UserRepository implements UserRepoInterface {
     public void update(Integer id, String fieldName, String value) throws SQLException {
         String query = "UPDATE UserAccounts SET "+fieldName+" = ? WHERE UserID= ?";
 
-        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
+        try (Connection myConnection = DatabaseConnectionManager.getInstance().getMyConnection();
+             PreparedStatement preparedStatement = myConnection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, value);
             preparedStatement.setInt(2, id);
 
@@ -193,7 +200,8 @@ public class UserRepository implements UserRepoInterface {
 
     public void updateUserImage(int i,byte[] image) {
         String query = "UPDATE UserAccounts SET ProfilePicture = ?  WHERE UserID=?";
-        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
+        try (Connection myConnection = DatabaseConnectionManager.getInstance().getMyConnection();
+             PreparedStatement preparedStatement = myConnection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setBytes(1, image);
             preparedStatement.setInt(2, i);
             preparedStatement.executeUpdate();
@@ -205,7 +213,8 @@ public class UserRepository implements UserRepoInterface {
     public Map<String, Integer> getAllUsersStatus(){
         Map<String, Integer> userStatusCountMap = new HashMap<>();
         String query = "SELECT userstatus, COUNT(*) AS status_count FROM useraccounts GROUP BY userstatus";
-        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
+        try (Connection myConnection = DatabaseConnectionManager.getInstance().getMyConnection();
+             PreparedStatement preparedStatement = myConnection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
                     String userStatus = resultSet.getString("userstatus");
@@ -222,7 +231,8 @@ public class UserRepository implements UserRepoInterface {
     public Map<String, Integer> getAllUsersGenders(){
         Map<String, Integer> userGenderCountMap = new HashMap<>();
         String query = "SELECT Gender, COUNT(*) AS gender_count FROM useraccounts GROUP BY Gender";
-        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
+        try (Connection myConnection = DatabaseConnectionManager.getInstance().getMyConnection();
+             PreparedStatement preparedStatement = myConnection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
                     String userGender = resultSet.getString("gender");
@@ -239,7 +249,8 @@ public class UserRepository implements UserRepoInterface {
     public Map<String, Integer> getAllUsersCountryCount(){
         Map<String, Integer> countryCountMap = new HashMap<>();
         String query = "SELECT Country, COUNT(*) AS country_count FROM useraccounts GROUP BY Country";
-        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
+        try (Connection myConnection = DatabaseConnectionManager.getInstance().getMyConnection();
+             PreparedStatement preparedStatement = myConnection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
                     String country = resultSet.getString("country");
@@ -266,7 +277,8 @@ public class UserRepository implements UserRepoInterface {
                 + "LastLogin = ? "
                 + "WHERE UserID = ?";
 
-        try (PreparedStatement preparedStatement = myConnection.prepareStatement(query)) {
+        try (Connection myConnection = DatabaseConnectionManager.getInstance().getMyConnection();
+             PreparedStatement preparedStatement = myConnection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, user.getPhoneNumber());
             preparedStatement.setString(2, user.getDisplayName());
             preparedStatement.setString(3, user.getEmailAddress());
