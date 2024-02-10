@@ -37,6 +37,7 @@ public class ServerHomeController implements Initializable {
             userService = serviceFactory.createUserService();
             callBackServices = new CallBackServicesImpl();
             blockedContactsService = new BlockedContactsService();
+
             registry = LocateRegistry.createRegistry(1099);
 
             announceButton.setOnAction((e)->handleAnnouncement());

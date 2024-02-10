@@ -20,7 +20,7 @@ public class RemoteServiceHandler {
 
     private RemoteServiceHandler(){
         try {
-            registry = LocateRegistry.getRegistry("localhost", 1099);
+            registry = LocateRegistry.getRegistry("10.145.14.66", 1099);
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
