@@ -4,10 +4,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import org.Client.Models.Model;
 import org.Client.Service.ImageServices;
 
 import java.net.URL;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class MessageReceivedGroupController implements Initializable {
@@ -64,9 +67,12 @@ public class MessageReceivedGroupController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        messageLabel.maxWidthProperty().bind(Model.getInstance().getViewFactory().getChatUserController().getMessageListView().widthProperty().multiply(0.65));
         messageLabel.setText(message);
         senderName.setText(sendername);
-        time.setText(timestamp.toString());
+        LocalDateTime localDateTime = timestamp.toLocalDateTime();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        time.setText(localDateTime.format(formatter));
         if(image==null||image.length==0){
             imageCircle.setFill(new ImagePattern(ImageServices.getDefaultImage()));
         }

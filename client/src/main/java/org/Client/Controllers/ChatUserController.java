@@ -254,5 +254,12 @@ public class ChatUserController implements Initializable {
         alert.setContentText("There seems to be a problem in the connection. Please check your connection and try again later.");
         alert.show();
     }
+    public ListView<MessageDTO> getMessageListView() {
+        return messageListView;
+    }
+
+    public void setMessageListView(ListView<MessageDTO> messageListView) {
+        this.messageListView = messageListView;
+    }
 }
 

@@ -4,9 +4,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
+import org.Client.Models.Model;
 
 import java.net.URL;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class MessageSent implements Initializable
@@ -36,8 +39,11 @@ public class MessageSent implements Initializable
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        messageLabelID.maxWidthProperty().bind(Model.getInstance().getViewFactory().getChatUserController().getMessageListView().widthProperty().multiply(0.65));
         messageLabelID.setText(message);
-        time.setText(timestamp.toString());
+        LocalDateTime localDateTime = timestamp.toLocalDateTime();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        time.setText(localDateTime.format(formatter));
     }
 
     public void setTimestamp(Timestamp timestamp) {
