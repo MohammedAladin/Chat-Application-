@@ -28,16 +28,12 @@ public class AttachmentService {
 
     public Integer sendAttachment(AttachmentDto fileDto) {
         try {
-            Message message = new Message(
-                    fileDto.getSenderId(),
-                    fileDto.getChatID(),
-                    fileDto.getContent(),
-                    new Timestamp(System.currentTimeMillis()),
-                    true);
-
 
             Integer messageId = messageService.sendMessage(new MessageDTO(fileDto.getChatID(), fileDto.getContent(), 1, fileDto.getSenderId()));
             byte[] fileBytes = readFileToBytes(fileDto.getFile());
+            System.out.println(
+                    "MessageId" + messageId
+            );
             Attachment attachment = new Attachment(messageId, fileBytes);
             return attachmentReopsitory.save(attachment);
 

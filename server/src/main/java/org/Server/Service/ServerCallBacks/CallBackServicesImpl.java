@@ -108,7 +108,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
                     throw new RuntimeException(e);
                 }
             }
-        }, 0, 1, TimeUnit.SECONDS);
+        }, 0, 10, TimeUnit.SECONDS);
 
     }
 

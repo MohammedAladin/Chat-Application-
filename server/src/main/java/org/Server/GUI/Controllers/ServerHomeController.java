@@ -19,7 +19,10 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class ServerHomeController implements Initializable {
 
@@ -29,6 +32,8 @@ public class ServerHomeController implements Initializable {
     private Registry registry;
     private CallBackServicesServer callBackServices;
     private BlockedContactsInterface blockedContactsService;
+
+    public static List<ScheduledExecutorService> threads;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -64,6 +69,9 @@ public class ServerHomeController implements Initializable {
             for (String name : registry.list()){
                 registry.unbind(name);
                 System.out.println(name);
+            }
+            for(ScheduledExecutorService thread : threads){
+                thread.shutdown();
             }
             System.out.println("stopping");
         } catch (RemoteException | NotBoundException e) {
