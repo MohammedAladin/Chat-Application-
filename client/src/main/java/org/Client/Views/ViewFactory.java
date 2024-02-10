@@ -27,10 +27,12 @@ import org.Client.Controllers.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.List;
 import java.util.Objects;
 
 import org.Client.Models.Model;
+import org.Client.UserSessionManager;
 
 
 public class ViewFactory {
@@ -489,5 +491,18 @@ public class ViewFactory {
 
         stylePopup.show(styleBtn.getParent(), popupX, popupY);
         stylePopup.setAutoHide(true);
+    }
+
+    public void logout() {
+        try {
+            Model.getInstance().getCallBackServicesServer().unRegister(Model.getInstance().getClientId());
+        } catch (RemoteException ex) {
+            ex.printStackTrace();
+        }
+        finally {
+            ((Stage) notiButton.getParent().getScene().getWindow()).close();
+            UserSessionManager.deleteUserInfo();
+            Model.getInstance().getViewFactory().showLoginWindow();
+        }
     }
 }

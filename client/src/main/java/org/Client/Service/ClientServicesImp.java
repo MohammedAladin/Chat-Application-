@@ -196,5 +196,9 @@ public class ClientServicesImp extends UnicastRemoteObject implements CallBackSe
         return null;
     }
 
+    public void logout() throws RemoteException{
+        Platform.runLater(()->Model.getInstance().getViewFactory().logout());
+    }
+
 
 }
