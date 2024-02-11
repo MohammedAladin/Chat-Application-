@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.Client.Models.Model;
 import org.Client.Service.ClientServicesImp;
+import org.Client.UserSessionManager;
+
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ResourceBundle;
@@ -26,12 +28,14 @@ public class LoginController implements Initializable {
     String phoneNumber;
     private CallBackServicesClient callBackServicesClient;
     private CallBackServicesServer callBackServicesServer;
+    String password;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         remoteServiceHandler = RemoteServiceHandler.getInstance();
         signingButton.setOnAction((e)->handleSignIn());
+        passwordField.setOnAction((e)->handleSignIn());
         registerLabel.setOnMouseClicked(e-> Model.getInstance().getViewFactory().showRegistrationWindow());
 
         passwordLabel.setVisible(false);
@@ -44,11 +48,11 @@ public class LoginController implements Initializable {
         try {
 //            validateUserInputLogin();
 
-            String password = passwordField.getText();
+            password = passwordField.getText();
             UserLoginDTO userLogin = new UserLoginDTO(phoneNumber, password);
 
             boolean loginResult = remoteServiceHandler.getRemoteUserService().signInUser(userLogin);
-            handleLoginResult(loginResult);
+            handleLoginResult(loginResult, phoneNumber);
 
         }catch (IllegalArgumentException e) {
             remoteServiceHandler.showAlert(e.getMessage(), Alert.AlertType.ERROR);
@@ -71,9 +75,9 @@ public class LoginController implements Initializable {
                 remoteServiceHandler.showAlert("Phone number does not exist. Please enter a valid phone number." , Alert.AlertType.INFORMATION);
             }
         } catch (RemoteException e) {
-           Alert alert = new Alert(Alert.AlertType.ERROR);
-              alert.setContentText("Sorry, There seems to be a connection error, please check your connection and try again later.");
-                alert.show();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Sorry, There seems to be a connection error, please check your connection and try again later.");
+            alert.show();
         }
     }
 
@@ -89,13 +93,16 @@ public class LoginController implements Initializable {
         notAUser.setVisible(false);
     }
 
-    private void handleLoginResult(boolean loginResult) {
+    public void handleLoginResult(boolean loginResult, String phoneNumber) {
         if (loginResult) {
             try {
+                this.phoneNumber = phoneNumber;
                 Model.getInstance().setCallBackServicesClient(new ClientServicesImp());// client representation to be sent.
-                callBackServicesServer =  remoteServiceHandler.getCallbacks();
+                callBackServicesServer = RemoteServiceHandler.getInstance().getCallbacks();
                 Model.getInstance().setCallBackServicesServer(callBackServicesServer);
                 setData();
+                if(!UserSessionManager.checkFileExisted())
+                    UserSessionManager.saveUserInfo(this.phoneNumber, password);
 
             } catch (RemoteException e) {
                 throw new RuntimeException(e);
