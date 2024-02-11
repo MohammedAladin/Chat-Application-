@@ -35,7 +35,7 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="30.0" prefWidth="398.0">
                <children>
-                     <TextField fx:id="phoneField" prefHeight="30.0" prefWidth="254.0" styleClass="inputField">
+                     <TextField fx:id="phoneField" onAction="#phoneNumberExists" prefHeight="30.0" prefWidth="254.0" styleClass="inputField">
                          <font>
                              <Font name="Segoe UI" size="13.0" />
                          </font>

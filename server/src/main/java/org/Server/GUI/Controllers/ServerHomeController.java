@@ -7,6 +7,7 @@ import Interfaces.RmiServices.ServicesFactoryInterface;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.Server.Service.Contacts.BlockedContactsService;
 import org.Server.Service.Factories.ServicesFactory;
@@ -25,6 +26,7 @@ public class ServerHomeController implements Initializable {
 
     public Button announceButton;
     public TextField announcementField;
+    public Label serverStatus;
     private RemoteUserService userService;
     private Registry registry;
     private CallBackServicesServer callBackServices;
@@ -34,7 +36,7 @@ public class ServerHomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-
+            serverStatus.setStyle("-fx-text-fill: darkred;");
             ServicesFactoryInterface serviceFactory = new ServicesFactory();
             userService = serviceFactory.createUserService();
 
@@ -62,10 +64,13 @@ public class ServerHomeController implements Initializable {
             registry.rebind("Callbacks", callBackServices);
             registry.rebind("BlockingServices", blockedContactsService);
 
+
             System.out.println("working");
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
+        serverStatus.setText("ON");
+        serverStatus.setStyle("-fx-text-fill: darkgreen;");
     }
     @FXML
     public void stop (){
@@ -87,6 +92,8 @@ public class ServerHomeController implements Initializable {
         } catch (RemoteException | NotBoundException e) {
             throw new RuntimeException(e);
         }
+        serverStatus.setText("OFF");
+        serverStatus.setStyle("-fx-text-fill: darkred;");
     }
     private void handleAnnouncement() {
         String announcement = announcementField.getText();

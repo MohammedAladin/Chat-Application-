@@ -1,0 +1,18 @@
+#refreshButton {
+    -fx-background-color: #4CAF50; /* Green */
+    -fx-background-radius: 5;
+    -fx-border-color: #388E3C; /* Darker Green */
+    -fx-border-radius: 5;
+    -fx-text-fill: white; /* White text color */
+    -fx-font-size: 14px; /* Font size */
+    -fx-padding: 5 10 5 10; /* Padding */
+}
+
+#refreshButton:hover {
+    -fx-background-color: #45A049; /* Darker Green on hover */
+    -fx-border-color: #357635; /* Even Darker Green on hover */
+}
+
+#refreshButton:pressed {
+    -fx-background-color: #357635; /* Even Darker Green on press */
+}

@@ -1,39 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Server.GUI.Controllers.ServerSideBarController">
    <left>
-      <VBox fx:id="side_bar" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="60.0" stylesheets="@../styles/ServerSideBar.css" BorderPane.alignment="CENTER">
+      <VBox fx:id="side_bar" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="159.0" stylesheets="@../styles/ServerSideBar.css" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="home_icon" fitHeight="25.0" fitWidth="29.0" onMouseClicked="#showHome" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/home.png" />
-               </image>
+            <HBox fx:id="home_icon" alignment="CENTER_LEFT" onMouseClicked="#showHome" spacing="15.0">
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets left="20.0" top="20.0" />
                </VBox.margin>
-            </ImageView>
-            <ImageView fx:id="statistics_icon" fitHeight="25.0" fitWidth="29.0" onMouseClicked="#showStatistics" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/statistics.png" />
-               </image>
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="29.0" onMouseClicked="#showHome" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/home.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Home">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="statistics_icon" alignment="CENTER_LEFT" onMouseClicked="#showStatistics" spacing="15.0">
                <VBox.margin>
-                  <Insets top="12.0" />
+                  <Insets left="20.0" top="12.0" />
                </VBox.margin>
-            </ImageView>
-            <ImageView fx:id="database_icon" fitHeight="19.0" fitWidth="20.0" onMouseClicked="#showDatabase" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/database.png" />
-               </image>
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="29.0" onMouseClicked="#showStatistics" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/statistics.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Statistics">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="database_icon" alignment="CENTER_LEFT" onMouseClicked="#showDatabase" spacing="15.0">
                <VBox.margin>
-                  <Insets top="12.0" />
+                  <Insets left="20.0" top="12.0" />
                </VBox.margin>
-            </ImageView>
+               <children>
+                  <ImageView fitHeight="19.0" fitWidth="20.0" onMouseClicked="#showDatabase" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/database.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="3.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Database">
+                     <HBox.margin>
+                        <Insets left="2.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </left>

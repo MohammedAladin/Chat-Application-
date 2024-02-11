@@ -212,7 +212,7 @@ public class UserRepository implements UserRepoInterface {
 
     public Map<String, Integer> getAllUsersStatus(){
         Map<String, Integer> userStatusCountMap = new HashMap<>();
-        String query = "SELECT userstatus, COUNT(*) AS status_count FROM useraccounts GROUP BY userstatus";
+        String query = "SELECT userstatus, COUNT(*) AS status_count FROM useraccounts WHERE userstatus = 'Offline' GROUP BY userstatus";
         try (Connection myConnection = DatabaseConnectionManager.getInstance().getMyConnection();
              PreparedStatement preparedStatement = myConnection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {

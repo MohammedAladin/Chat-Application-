@@ -5,6 +5,7 @@ import Interfaces.CallBacks.Server.CallBackServicesServer;
 import Model.DTO.*;
 import SharedEnums.StatusEnum;
 import javafx.application.Platform;
+import org.Server.GUI.Controllers.ServerStatisticsController;
 import org.Server.Repository.ContactsRepository;
 import org.Server.Repository.UserNotificationRepository;
 import org.Server.Repository.UserRepository;
@@ -74,6 +75,8 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         }
 
         System.out.println("Client registered :id = " + user.getUserID());
+        ServerStatisticsController.getInstance().updateOnlineUsers();
+
     }
 
     private void notifyContacts(int userID, String name) {
@@ -119,6 +122,7 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     public void unRegister(Integer clientId) throws RemoteException {
         changeStatus(clientId, "Offline");
         clients.remove(clientId);
+        ServerStatisticsController.getInstance().updateOnlineUsers();
     }
 
 
@@ -205,10 +209,13 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
     public void updateProfile(Integer id, Map<String, String> updatedFields) throws RemoteException {
         userService.updateUserInfo(id, updatedFields);
         User user = null;
-        CallBackServicesClient client = clients.get(id);
-        user = userService.existsByPhoneNumber(client.getPhone());
-        UserRegistrationDTO userDTO = userService.toUserDto(user);
-        client.setData(userDTO);
+        if (clients.get(id) != null){
+            CallBackServicesClient client = clients.get(id);
+            System.out.println(client.getClientId());
+            user = userService.existsByPhoneNumber(client.getPhone());
+            UserRegistrationDTO userDTO = userService.toUserDto(user);
+            client.setData(userDTO);
+        }
         updateContactList(id);
     }
 

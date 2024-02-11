@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import org.Server.ServerApplication;
 
 import java.io.IOException;
@@ -18,11 +19,11 @@ import static org.Server.ServerApplication.*;
 
 public class ServerSideBarController implements Initializable {
     @FXML
-    public ImageView home_icon;
+    public HBox home_icon;
     @FXML
-    public ImageView statistics_icon;
+    public HBox statistics_icon;
     @FXML
-    public ImageView database_icon;
+    public HBox database_icon;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Tooltip.install(home_icon, new Tooltip("Home"));

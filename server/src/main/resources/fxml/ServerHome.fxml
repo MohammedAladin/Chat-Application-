@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox fx:id="buttons_container" alignment="CENTER" prefHeight="400.0" prefWidth="642.0" stylesheets="@../styles/ServerHome.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.Server.GUI.Controllers.ServerHomeController">
    <children>
       <Label text="Server Manager">
@@ -19,6 +18,17 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
+      <HBox alignment="CENTER" prefHeight="62.0" prefWidth="642.0">
+         <children>
+            <Label fx:id="serverStatus" text="OFF">
+               <font>
+                  <Font name="Verdana Bold Italic" size="19.0" />
+               </font></Label>
+         </children>
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin>
+      </HBox>
       <HBox alignment="CENTER">
          <children>
             <Button fx:id="start_button" mnemonicParsing="false" onAction="#start" text="Start">
