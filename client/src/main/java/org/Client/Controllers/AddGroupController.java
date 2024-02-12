@@ -6,10 +6,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -31,8 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AddGroupController implements Initializable
-{
+public class AddGroupController implements Initializable {
     byte[] grpImage;
     @FXML
     public ImageView userImage;
@@ -41,14 +37,16 @@ public class AddGroupController implements Initializable
     @javafx.fxml.FXML
     private TextField textFieldID;
     @javafx.fxml.FXML
-    private ListView <ContactDto>contactsLV;
+    private ListView<ContactDto> contactsLV;
     @javafx.fxml.FXML
     private Button createBtn;
 
     ArrayList<Integer> selected = new ArrayList<>();
-    public void addToSelected(int id){
+
+    public void addToSelected(int id) {
         selected.add(id);
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         contactsLV.getItems().addAll(Model.getInstance().getContacts());
@@ -57,16 +55,23 @@ public class AddGroupController implements Initializable
 
         createBtn.setOnAction(event -> {
 
-            System.out.println(textFieldID.getText() + " " +selected.size());
+            System.out.println(textFieldID.getText() + " " + selected.size());
             int adminID = Model.getInstance().getClientId();
             String grpName = textFieldID.getText();
             selected.add(adminID);
             try {
-                Model.getInstance().getCallBackServicesServer().createGroupChat(adminID,grpName , selected , grpImage);
+                if (grpName.isEmpty()) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Warning Dialog");
+                    alert.setHeaderText(null);
+                    alert.setContentText("The group name is empty!");
+                    alert.show();
+                } else
+                    Model.getInstance().getCallBackServicesServer().createGroupChat(adminID, grpName, selected, grpImage);
             } catch (RemoteException e) {
                 throw new RuntimeException(e);
             }
-            ((Popup)createBtn.getScene().getWindow()).hide();
+            ((Popup) createBtn.getScene().getWindow()).hide();
 
         });
         imageViewID.setOnMouseClicked(mouseEvent -> {
@@ -74,6 +79,7 @@ public class AddGroupController implements Initializable
         });
         System.out.println("gowa el init");
     }
+
     private void changePic() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose a profile picture");

@@ -12,6 +12,7 @@ import org.Client.Service.ClientServicesImp;
 import org.Client.UserSessionManager;
 
 import java.net.URL;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
@@ -74,7 +75,7 @@ public class LoginController implements Initializable {
             } else {
                 remoteServiceHandler.showAlert("Phone number does not exist. Please enter a valid phone number." , Alert.AlertType.INFORMATION);
             }
-        } catch (RemoteException e) {
+        } catch (RuntimeException |RemoteException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Sorry, There seems to be a connection error, please check your connection and try again later.");
             alert.show();
@@ -105,7 +106,9 @@ public class LoginController implements Initializable {
                     UserSessionManager.saveUserInfo(this.phoneNumber, password);
 
             } catch (RemoteException e) {
-                throw new RuntimeException(e);
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Sorry, There seems to be a connection error, please check your connection and try again later.");
+                alert.show();
             }
 
 
