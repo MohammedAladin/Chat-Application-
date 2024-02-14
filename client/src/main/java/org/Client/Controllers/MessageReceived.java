@@ -25,7 +25,6 @@ public class MessageReceived implements Initializable
     }
 
     public void setTimestamp(Timestamp timestamp) {
-
         this.timestamp =timestamp;
     }
 

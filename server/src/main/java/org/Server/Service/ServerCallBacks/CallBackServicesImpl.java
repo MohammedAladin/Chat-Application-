@@ -9,6 +9,7 @@ import org.Server.GUI.Controllers.ServerStatisticsController;
 import org.Server.Repository.ContactsRepository;
 import org.Server.Repository.UserNotificationRepository;
 import org.Server.Repository.UserRepository;
+import org.Server.ServerModels.ServerEntities.Message;
 import org.Server.ServerModels.ServerEntities.Notification;
 import org.Server.ServerModels.ServerEntities.User;
 import org.Server.ServerModels.ServerEntities.UserNotification;
@@ -287,6 +288,11 @@ public class CallBackServicesImpl extends UnicastRemoteObject implements CallBac
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void deleteMessage(MessageDTO messageDTO) throws RemoteException {
+        messageService.deleteMessage(messageDTO);
     }
 
     @Override

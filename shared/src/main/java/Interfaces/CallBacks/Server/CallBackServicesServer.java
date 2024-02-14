@@ -43,4 +43,5 @@ public interface CallBackServicesServer extends Remote {
     void notify(Integer clientID,String message) throws RemoteException;
    void downloadAttachment(Integer clientid, Integer attachmentID, String message) throws RemoteException;
     boolean checkIfSent(Integer clientId,Integer addedContact) throws RemoteException;
+    void deleteMessage (MessageDTO messageDTO) throws RemoteException;
 }

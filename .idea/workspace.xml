@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="Logo">
+    <list default="true" id="cec0fd1a-f2d0-4f37-8f2f-5bbe38b86a9d" name="Changes" comment="Omar's commits retrieved.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/AddGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/AddGroupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/RemoteServiceHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/RemoteServiceHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatCellFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/ChatCellFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/MessageCellFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/MessageCellFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/MessageReceived.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/Client/Controllers/MessageReceived.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/MessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Repository/MessageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Messages/MessageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/Messages/MessageServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/Service/ServerCallBacks/CallBackServicesImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/Server/TestApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/Server/TestApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Server/CallBackServicesServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/Interfaces/CallBacks/Server/CallBackServicesServer.java" afterDir="false" />
     </list>
     <list id="1db2b3ef-1f9a-43ec-9b5c-15616a4c6d08" name="Changes by LENOVO" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +124,7 @@
       <command value="mvn compile" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.Mohammed">
+  <component name="RunManager" selected="Application.Amin">
     <configuration name="Amin" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.Client.ClientApplication" />
       <module name="client" />
@@ -156,9 +160,9 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Amin" />
-      <item itemvalue="Application.Mohammed" />
       <item itemvalue="Application.Server" />
+      <item itemvalue="Application.Mohammed" />
+      <item itemvalue="Application.Amin" />
       <item itemvalue="Application.org.Server.TestApp" />
     </list>
     <recent_temporary>
@@ -166,6 +170,13 @@
         <item itemvalue="Application.org.Server.TestApp" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-23eed401" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -519,7 +530,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707556109483</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Omar's commits retrieved.">
+      <option name="closed" value="true" />
+      <created>1707616220598</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1707616220598</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,6 +591,7 @@
     <MESSAGE value="added counties to registration and edit profile and fixed callbacks for edit profile" />
     <MESSAGE value="small gui fix" />
     <MESSAGE value="Logo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Logo" />
+    <MESSAGE value="Omar's commits retrieved." />
+    <option name="LAST_COMMIT_MESSAGE" value="Omar's commits retrieved." />
   </component>
 </project>

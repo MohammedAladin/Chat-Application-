@@ -50,6 +50,10 @@ public class MessageServiceImpl {
         return messageRepository.save(message);
     }
 
+    public void deleteMessage(MessageDTO messageDTO){
+        messageRepository.deleteMessageByDTO(messageDTO);
+    }
+
     public Integer getLastId() throws SQLException {
         return messageRepository.getLastInsertedId();
     }

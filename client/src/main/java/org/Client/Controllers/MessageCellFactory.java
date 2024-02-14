@@ -5,17 +5,20 @@ import Model.DTO.MessageDTO;
 import Model.DTO.ParticipantDto;
 import Model.DTO.Style;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.Client.Models.Model;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.List;
+import java.util.Objects;
 
 public class MessageCellFactory extends ListCell<MessageDTO> {
     @Override
@@ -25,11 +28,26 @@ public class MessageCellFactory extends ListCell<MessageDTO> {
             setGraphic(null);
             setText(null);
         } else {
-            if(message.getIsAttachment()==1){
-                VBox node =dealWithAttachment(message);
-                setGraphic(node);
+            if(Objects.equals(message.getSenderID(), Model.getInstance().getClientId())) {
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem deleteMenuItem = new MenuItem("Delete");
+                deleteMenuItem.setStyle("-fx-text-fill: red;");
+                deleteMenuItem.setOnAction(event -> {
+                    deleteMessage(message);
+                });
+                contextMenu.getItems().add(deleteMenuItem);
+
+                // Right-click action handling
+                setOnMouseClicked(event -> {
+                    if (event.getButton() == MouseButton.SECONDARY) {
+                        contextMenu.show(this, event.getScreenX(), event.getScreenY());
+                    }
+                });
             }
-            else {
+            if (message.getIsAttachment() == 1) {
+                VBox node = dealWithAttachment(message);
+                setGraphic(node);
+            } else {
                 if (message.getSenderID().equals(Model.getInstance().getClientId())) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/Message_sent.fxml"));
                     MessageSent messageSent = new MessageSent();
@@ -39,17 +57,14 @@ public class MessageCellFactory extends ListCell<MessageDTO> {
                     try {
                         VBox vbox = loader.load();
                         vbox.setAlignment(Pos.BASELINE_RIGHT);
-                        if (message.getStyle() != null){
+                        if (message.getStyle() != null) {
                             Label messageLabel = messageSent.getMessageLabelID();
                             messageLabel.setStyle(decodeStyle(message.getStyle()));
                         }
                         setGraphic(vbox);
-
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-
-
                 } else {
                     if (isAGroupchat(message.getChatID())) {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/Message_received_group.fxml"));
@@ -64,7 +79,7 @@ public class MessageCellFactory extends ListCell<MessageDTO> {
                         try {
                             VBox vbox = loader.load();
                             vbox.setAlignment(Pos.BASELINE_LEFT);
-                            if (message.getStyle() != null){
+                            if (message.getStyle() != null) {
                                 Label messageLabel = messageReceivedGroupController.getMessageLabel();
                                 messageLabel.setStyle(decodeStyle(message.getStyle()));
                             }
@@ -81,7 +96,7 @@ public class MessageCellFactory extends ListCell<MessageDTO> {
                         try {
                             VBox vbox = loader.load();
                             vbox.setAlignment(Pos.BASELINE_LEFT);
-                            if (message.getStyle() != null){
+                            if (message.getStyle() != null) {
                                 Label messageLabel = messageReceived.getMessageLabelID();
                                 messageLabel.setStyle(decodeStyle(message.getStyle()));
                             }
@@ -92,9 +107,23 @@ public class MessageCellFactory extends ListCell<MessageDTO> {
                     }
                 }
             }
-
         }
     }
+
+    private void deleteMessage(MessageDTO message) {
+        if (message.getChatID() != null) {
+            ObservableList<MessageDTO> messages = Model.getInstance().getPrivateChats().get(message.getChatID());
+            if (messages != null) {
+                messages.remove(message);
+                try {
+                    Model.getInstance().getCallBackServicesServer().deleteMessage(message);
+                } catch (RemoteException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+    }
+
 
     private VBox dealWithAttachment(MessageDTO message) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClientFxml/attachemnt.fxml"));

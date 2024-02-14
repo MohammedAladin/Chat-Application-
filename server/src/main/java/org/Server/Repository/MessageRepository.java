@@ -1,9 +1,9 @@
 package org.Server.Repository;
+import Model.DTO.MessageDTO;
 import Model.DTO.Style;
 import org.Server.RepoInterfaces.MessageRepoInterface;
 import org.Server.ServerModels.ServerEntities.Message;
 
-import java.lang.reflect.Type;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -173,6 +173,19 @@ public class MessageRepository implements MessageRepoInterface {
         }
         return messagesList;
     }
+
+    public void deleteMessageByDTO(MessageDTO messageDTO) {
+        System.out.println(messageDTO.getSenderID());
+        String query = "DELETE FROM Messages WHERE MessageTimestamp = ? AND SenderID = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setTimestamp(1, messageDTO.getTimestamp());
+            preparedStatement.setInt(2, messageDTO.getSenderID());
+            int rowsDeleted = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 
 
