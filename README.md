@@ -36,24 +36,20 @@ The project is a comprehensive chat application encompassing both client-side an
 2. **Clone the Repository**: Clone the repository to your local machine using Git. Open a terminal or command prompt and run the following command:
 
    ```bash
-   git clone https://github.com/yourusername/yourproject.git
+   git clone https://github.com/OmarAminn27/Chat-Application-.git
 
 3. **Package the Application**: Navigate to the project directory and run the Maven package command to build the application:
 4. 
    ```MVN
    mvn clean package
- 
 5. **Run the Server**: navigate to the server directory and run the following command:
    
    ```java
    java -jar target/Server-1.0-SNAPSHOT-shaded.jar
-
 7. **Run the Client**: navigate to the Client directory and run the following command:
    
    ```java
    java -jar target/Client-1.0-SNAPSHOT-shaded.jar
-
-
 ## Contributors
 
 - [Mohamed Alaa](https://github.com/MohammedAladin)
