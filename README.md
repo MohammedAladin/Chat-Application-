@@ -12,6 +12,7 @@ The project is a comprehensive chat application encompassing both client-side an
 - **Status Updates**: Easily update and display your current online status.
 - **File Sharing**: Share various file types, including images, documents, and videos.
 - **Profile Management**: Customize your profile information and preferences.
+- **Delete Message**: Allows users to delete messages.
 - **Server-side Statistics**: Access real-time statistics about user activity and apply database changes accordingly.
 - **Announcement Broadcast**: Broadcast important announcements to all users from the server.
 
